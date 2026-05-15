@@ -54,7 +54,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = getExtraActualApplicationId()
+        applicationId = "${getExtraActualApplicationId()}.patched"
 
         versionCode = 85
         versionName = "3.5.1"

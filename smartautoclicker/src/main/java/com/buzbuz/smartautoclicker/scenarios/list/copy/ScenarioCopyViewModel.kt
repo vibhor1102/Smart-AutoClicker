@@ -27,6 +27,7 @@ import com.buzbuz.smartautoclicker.core.dumb.domain.DumbRepository
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.map
@@ -55,8 +56,10 @@ class ScenarioCopyViewModel @Inject constructor(
         if (name.isNullOrEmpty()) return
 
         viewModelScope.launch(ioDispatcher) {
-            if (isSmart) smartRepository.addScenarioCopy(scenarioId, name)
-            else dumbRepository.addDumbScenarioCopy(scenarioId, name)
+            withContext(NonCancellable) {
+                if (isSmart) smartRepository.addScenarioCopy(scenarioId, name)
+                else dumbRepository.addDumbScenarioCopy(scenarioId, name)
+            }
 
             withContext(mainDispatcher) {
                 onCompleted()

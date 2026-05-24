@@ -23,6 +23,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
 
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -32,6 +33,8 @@ import com.buzbuz.smartautoclicker.core.base.isStopScenarioKey
 import com.buzbuz.smartautoclicker.core.common.overlays.base.viewModels
 import com.buzbuz.smartautoclicker.core.common.overlays.manager.OverlayManager.Companion.showAsOverlay
 import com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu
+import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common.HorizontalSidePanelController
+import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common.HorizontalSidePanelSide
 import com.buzbuz.smartautoclicker.core.domain.model.scenario.Scenario
 import com.buzbuz.smartautoclicker.core.ui.utils.AnimatedStatesImageButtonController
 import com.buzbuz.smartautoclicker.core.ui.utils.getDynamicColorsContext
@@ -84,6 +87,8 @@ class MainMenu(
     private lateinit var viewBinding: OverlayMenuBinding
     /** Controls the animations of the play/pause button. */
     private lateinit var playPauseButtonController: AnimatedStatesImageButtonController
+    /** Controls the position of the debug panel around the menu buttons. */
+    private lateinit var debugSidePanelController: HorizontalSidePanelController
     /** Adapter upon actions being executed while in live debugging. */
     private val debugLiveActionsAdapter: LiveDebuggingActionsAdapter = LiveDebuggingActionsAdapter()
 
@@ -106,6 +111,11 @@ class MainMenu(
         )
         viewBinding = OverlayMenuBinding.inflate(layoutInflater)
         playPauseButtonController.attachView(viewBinding.btnPlay)
+        debugSidePanelController = HorizontalSidePanelController(
+            parent = viewBinding.layoutDebug.parent as ConstraintLayout,
+            menuItems = viewBinding.menuItems,
+            sidePanel = viewBinding.layoutDebug,
+        )
 
         return viewBinding.root
     }
@@ -202,6 +212,30 @@ class MainMenu(
             bgSize.width + context.resources.getDimensionPixelSize(R.dimen.overlay_debug_panel_width),
             bgSize.height,
         )
+    }
+
+    override fun getMenuAnchorWidth(windowSize: Size): Int =
+        viewBinding.menuItems.width.takeIf { it > 0 } ?: super.getMenuAnchorWidth(windowSize)
+
+    override fun onMenuAnchorPositionUpdated(anchorPosition: android.graphics.Point, windowSize: Size): android.graphics.Point {
+        if (viewBinding.layoutDebug.visibility != View.VISIBLE) {
+            debugSidePanelController.applySide(HorizontalSidePanelSide.RIGHT)
+            return anchorPosition
+        }
+
+        val anchorWidth = getMenuAnchorWidth(windowSize)
+        val panelWidth = (windowSize.width - anchorWidth).coerceAtLeast(0)
+        val side = chooseHorizontalSidePanelSide(
+            anchorPosition = anchorPosition,
+            anchorWidth = anchorWidth,
+            panelWidth = panelWidth,
+            sidePanelController = debugSidePanelController,
+        )
+
+        debugSidePanelController.applySide(side)
+        return if (side == HorizontalSidePanelSide.LEFT) {
+            android.graphics.Point(anchorPosition.x - panelWidth, anchorPosition.y)
+        } else anchorPosition
     }
 
     fun onMediaProjectionLost() {
@@ -305,6 +339,7 @@ class MainMenu(
     private fun updateDebugOverlayViewVisibility(isVisible: Boolean) {
         if (isVisible && debugObservableJob == null) {
             viewBinding.layoutDebug.visibility = View.VISIBLE
+            refreshMenuLayout()
             debugObservableJob = observeDebugValues()
 
         } else if (!isVisible && debugObservableJob != null) {
@@ -313,6 +348,7 @@ class MainMenu(
 
             updateLiveDebugUiState(null)
             viewBinding.layoutDebug.visibility = View.GONE
+            refreshMenuLayout()
         }
     }
 

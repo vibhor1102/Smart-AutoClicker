@@ -17,33 +17,36 @@
 package com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.Configuration
+import android.os.Build
+
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.ext.junit.runners.AndroidJUnit4
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
-import org.mockito.Mockito.`when` as mockWhen
+import org.junit.runner.RunWith
+import org.robolectric.annotation.Config
 
 /** Test the [OverlayMenuPositionDataSource] class. */
+@RunWith(AndroidJUnit4::class)
+@Config(sdk = [Build.VERSION_CODES.Q])
 class OverlayMenuPositionDataSourceTests {
 
-    @Mock private lateinit var mockContext: Context
-    @Mock private lateinit var mockSharedPrefs: SharedPreferences
-
+    private lateinit var context: Context
     private lateinit var dataSource: OverlayMenuPositionDataSource
 
     @Before
     fun setUp() {
-        MockitoAnnotations.openMocks(this)
+        context = ApplicationProvider.getApplicationContext()
+        context.getSharedPreferences(OverlayMenuPositionDataSource.PREFERENCE_NAME, Context.MODE_PRIVATE)
+            .edit()
+            .clear()
+            .commit()
 
-        mockWhen(mockContext.getSharedPreferences(OverlayMenuPositionDataSource.PREFERENCE_NAME, Context.MODE_PRIVATE))
-            .thenReturn(mockSharedPrefs)
-
-        dataSource = OverlayMenuPositionDataSource(mockContext)
+        dataSource = OverlayMenuPositionDataSource(context)
     }
 
     @Test
@@ -78,22 +81,14 @@ class OverlayMenuPositionDataSourceTests {
 
     @Test
     fun loadLandscapePosition_withMissingKeys_returnsNull() {
-        mockWhen(mockSharedPrefs.contains(OverlayMenuPositionDataSource.PREFERENCE_MENU_X_LANDSCAPE_KEY))
-            .thenReturn(false)
-        mockWhen(mockSharedPrefs.contains(OverlayMenuPositionDataSource.PREFERENCE_MENU_Y_LANDSCAPE_KEY))
-            .thenReturn(false)
-
         assertNull(dataSource.loadMenuPosition(Configuration.ORIENTATION_LANDSCAPE))
     }
 
     private fun mockSavedLandscapePosition(x: Int, y: Int) {
-        mockWhen(mockSharedPrefs.contains(OverlayMenuPositionDataSource.PREFERENCE_MENU_X_LANDSCAPE_KEY))
-            .thenReturn(true)
-        mockWhen(mockSharedPrefs.contains(OverlayMenuPositionDataSource.PREFERENCE_MENU_Y_LANDSCAPE_KEY))
-            .thenReturn(true)
-        mockWhen(mockSharedPrefs.getInt(OverlayMenuPositionDataSource.PREFERENCE_MENU_X_LANDSCAPE_KEY, 0))
-            .thenReturn(x)
-        mockWhen(mockSharedPrefs.getInt(OverlayMenuPositionDataSource.PREFERENCE_MENU_Y_LANDSCAPE_KEY, 0))
-            .thenReturn(y)
+        context.getSharedPreferences(OverlayMenuPositionDataSource.PREFERENCE_NAME, Context.MODE_PRIVATE)
+            .edit()
+            .putInt(OverlayMenuPositionDataSource.PREFERENCE_MENU_X_LANDSCAPE_KEY, x)
+            .putInt(OverlayMenuPositionDataSource.PREFERENCE_MENU_Y_LANDSCAPE_KEY, y)
+            .commit()
     }
 }

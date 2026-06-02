@@ -32,7 +32,7 @@ class ManualClickRepository @Inject constructor() {
 
     private val lock = Any()
     private var captureRequested: Boolean = false
-    private var capturePaused: Boolean = false
+    private var capturePausedCount: Int = 0
     private var pendingTap: Point? = null
 
     fun setCaptureRequested(enabled: Boolean) {
@@ -58,31 +58,46 @@ class ManualClickRepository @Inject constructor() {
         synchronized(lock) {
             pendingTap = null
             captureRequested = false
-            capturePaused = false
+            capturePausedCount = 0
             updateCaptureState()
         }
     }
 
     suspend fun <T> withCapturePaused(block: suspend () -> T): T {
-        synchronized(lock) {
-            capturePaused = true
-            updateCaptureState()
+        val shouldPause = synchronized(lock) {
+            captureRequested
         }
-        delay(CAPTURE_PAUSE_DELAY_MS)
+        if (!shouldPause) {
+            return block()
+        }
+
+        val isFirstPause = synchronized(lock) {
+            val first = capturePausedCount == 0
+            capturePausedCount++
+            updateCaptureState()
+            first
+        }
+
+        if (isFirstPause) {
+            delay(CAPTURE_PAUSE_DELAY_MS)
+        }
 
         return try {
             block()
         } finally {
-            delay(CAPTURE_RESUME_DELAY_MS)
-            synchronized(lock) {
-                capturePaused = false
+            val isLastResume = synchronized(lock) {
+                capturePausedCount = (capturePausedCount - 1).coerceAtLeast(0)
                 updateCaptureState()
+                capturePausedCount == 0
+            }
+            if (isLastResume) {
+                delay(CAPTURE_RESUME_DELAY_MS)
             }
         }
     }
 
     private fun updateCaptureState() {
-        _captureEnabled.value = captureRequested && !capturePaused
+        _captureEnabled.value = captureRequested && (capturePausedCount == 0)
     }
 }
 

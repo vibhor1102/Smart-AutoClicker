@@ -145,7 +145,9 @@ internal class ScenarioProcessor(
 
             progressListener?.onEventProcessingCompleted(triggerEvent, results.fulfilled == true, results.getAllTriggerConditionsResults())
             if (results.fulfilled  == true) {
-                actionExecutor.executeActions(triggerEvent, results)
+                manualClickRepository.withCapturePaused {
+                    actionExecutor.executeActions(triggerEvent, results)
+                }
                 progressListener?.onEventActionsExecuted(triggerEvent, results.getAllTriggerConditionsResults())
             }
         }
@@ -175,7 +177,9 @@ internal class ScenarioProcessor(
 
                 progressListener?.onEventProcessingCompleted(imageEvent, results.fulfilled == true, imageResults)
                 if (results.fulfilled == true) {
-                    actionExecutor.executeActions(imageEvent, results)
+                    manualClickRepository.withCapturePaused {
+                        actionExecutor.executeActions(imageEvent, results)
+                    }
                     progressListener?.onEventActionsExecuted(imageEvent, imageResults)
 
                     if (!imageEvent.keepDetecting) break

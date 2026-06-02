@@ -57,10 +57,19 @@ jobs:
           --decrypt --output smartautoclicker/smartautoclicker.jks \
           smartautoclicker.jks.asc
 
+    - name: Validate keystore secrets
+      shell: bash
+      run: |
+        keytool -list \
+          -keystore smartautoclicker/smartautoclicker.jks \
+          -storepass "${{ secrets.SIGNING_STORE_PASSWORD }}" \
+          -alias "${{ secrets.SIGNING_KEY_ALIAS }}" \
+          >/dev/null
+
     - name: Build with Gradle
       shell: bash
       run: |
-        ./gradlew --info \
+        ./gradlew --no-daemon --max-workers=1 \
           -PsigningStorePassword="${{ secrets.SIGNING_STORE_PASSWORD }}" \
           -PsigningKeyAlias="${{ secrets.SIGNING_KEY_ALIAS }}" \
           -PsigningKeyPassword="${{ secrets.SIGNING_KEY_PASSWORD }}" \

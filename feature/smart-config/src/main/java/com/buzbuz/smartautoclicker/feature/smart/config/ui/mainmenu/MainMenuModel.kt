@@ -17,6 +17,7 @@
 package com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu
 
 import android.content.Context
+import android.graphics.Point
 import android.util.Log
 import android.view.View
 
@@ -24,6 +25,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.buzbuz.smartautoclicker.core.domain.IRepository
 import com.buzbuz.smartautoclicker.core.domain.model.scenario.Scenario
+import com.buzbuz.smartautoclicker.core.processing.domain.ManualClickRepository
 import com.buzbuz.smartautoclicker.core.processing.domain.SmartProcessingRepository
 
 import com.buzbuz.smartautoclicker.core.processing.domain.model.DetectionState
@@ -60,6 +62,7 @@ class MainMenuModel @Inject constructor(
     private val revenueRepository: IRevenueRepository,
     private val monitoredViewsManager: MonitoredViewsManager,
     private val debuggingRepository: DebuggingRepository,
+    private val manualClickRepository: ManualClickRepository,
 ) : ViewModel() {
 
     private val scenarioDbId: StateFlow<Long?> = smartProcessingRepository.scenarioId
@@ -117,6 +120,9 @@ class MainMenuModel @Inject constructor(
     val nativeLibError: Flow<Boolean> = smartProcessingRepository.detectionState
         .map { it == DetectionState.ERROR_NO_NATIVE_LIB }
         .distinctUntilChanged()
+
+    val manualClickCaptureEnabled: StateFlow<Boolean> =
+        manualClickRepository.captureEnabled
 
     /** Load an advertisement, if needed. Should be called before showing the paywall to reduce user waiting time. */
     fun loadAdIfNeeded(context: Context) {
@@ -217,6 +223,10 @@ class MainMenuModel @Inject constructor(
 
     fun setStopWithVolumeDownDontShowAgain(): Unit =
         tutorialRepository.setStopWithVolumeDownDontShowAgain()
+
+    fun submitManualClick(position: Point) {
+        manualClickRepository.submitTap(position)
+    }
 
     private fun UserBillingState.isAdRequested(): Boolean =
         this == UserBillingState.AD_REQUESTED

@@ -24,6 +24,8 @@ import androidx.lifecycle.viewModelScope
 import com.buzbuz.smartautoclicker.core.bitmaps.BitmapRepository
 
 import com.buzbuz.smartautoclicker.core.domain.model.ConditionOperator
+import com.buzbuz.smartautoclicker.core.domain.model.MANUAL_CLICK
+import com.buzbuz.smartautoclicker.core.domain.model.OR
 import com.buzbuz.smartautoclicker.core.domain.model.action.Action
 import com.buzbuz.smartautoclicker.core.domain.model.condition.ImageCondition
 import com.buzbuz.smartautoclicker.core.domain.model.condition.TriggerCondition
@@ -111,6 +113,10 @@ class EventDialogViewModel @Inject constructor(
     val conditionOperator: Flow<Int> = configuredEvent
         .map { event -> event.conditionOperator }
 
+    val isManualClickMode: StateFlow<Boolean> = configuredEvent
+        .map { event -> event.conditionOperator == MANUAL_CLICK }
+        .stateIn(viewModelScope, SharingStarted.Eagerly, false)
+
     val actionsDescriptions: Flow<List<EventChildrenItem>> = editionRepository.editionState.editedEventActionsState.mapNotNull { actionsState ->
         actionsState.value?.toActionsChildrenItem()
     }
@@ -155,7 +161,8 @@ class EventDialogViewModel @Inject constructor(
 
     fun setConditionOperator(@ConditionOperator operator: Int) {
         updateEditedEvent { oldValue ->
-            oldValue.copyBase(conditionOperator = operator)
+            val safeOperator = if (oldValue is ImageEvent) operator else operator.takeUnless { it == MANUAL_CLICK } ?: OR
+            oldValue.copyBase(conditionOperator = safeOperator)
         }
     }
 

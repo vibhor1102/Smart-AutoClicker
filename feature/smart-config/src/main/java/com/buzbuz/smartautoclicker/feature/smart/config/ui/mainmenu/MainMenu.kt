@@ -17,9 +17,11 @@
 package com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu
 
 import android.content.DialogInterface
+import android.graphics.Point
 import android.util.Size
 import android.view.KeyEvent
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.ViewGroup
 import android.view.View
 
@@ -133,10 +135,24 @@ class MainMenu(
                 launch { viewModel.isSwitchButtonVisible.collect(::updateSwitchButtonVisibility) }
                 launch { viewModel.detectionState.collect(::updateDetectionState) }
                 launch { viewModel.nativeLibError.collect(::showNativeLibErrorDialogIfNeeded) }
+                launch { viewModel.manualClickCaptureEnabled.collect(::setOverlayViewVisibility) }
                 launch { debuggingViewModel.isDebugging.collect(::updateDebugOverlayViewVisibility) }
             }
         }
     }
+
+    override fun onCreateOverlayView(): View =
+        View(context).apply {
+            setBackgroundColor(android.graphics.Color.TRANSPARENT)
+            setOnTouchListener { _, event ->
+                if (event.action == MotionEvent.ACTION_DOWN) {
+                    viewModel.submitManualClick(Point(event.rawX.toInt(), event.rawY.toInt()))
+                }
+                true
+            }
+        }
+
+    override fun animateOverlayView(): Boolean = false
 
     override fun onStart() {
         super.onStart()

@@ -33,6 +33,10 @@ internal class ConditionsResults {
         _results.values.find { it is ProcessedConditionResult.Image && it.isFulfilled && it.condition.shouldBeDetected }
                 as ProcessedConditionResult.Image?
 
+    fun getManualClickResult(): ProcessedConditionResult.ManualClick? =
+        _results.values.find { it is ProcessedConditionResult.ManualClick && it.isFulfilled }
+                as ProcessedConditionResult.ManualClick?
+
     fun getAllTriggerConditionsResults(): List<ProcessedConditionResult.Trigger> =
         _results.mapNotNull { it.value as? ProcessedConditionResult.Trigger }
 

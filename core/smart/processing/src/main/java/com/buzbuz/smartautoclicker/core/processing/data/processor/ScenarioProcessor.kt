@@ -22,11 +22,13 @@ import androidx.annotation.VisibleForTesting
 
 import com.buzbuz.smartautoclicker.core.common.actions.AndroidActionExecutor
 import com.buzbuz.smartautoclicker.core.detection.ImageDetector
+import com.buzbuz.smartautoclicker.core.domain.model.MANUAL_CLICK
 import com.buzbuz.smartautoclicker.core.domain.model.event.ImageEvent
 import com.buzbuz.smartautoclicker.core.domain.model.event.TriggerEvent
 import com.buzbuz.smartautoclicker.core.processing.data.processor.state.ProcessingState
 import com.buzbuz.smartautoclicker.core.processing.data.scaling.ScalingManager
 import com.buzbuz.smartautoclicker.core.processing.domain.EventType
+import com.buzbuz.smartautoclicker.core.processing.domain.ManualClickRepository
 import com.buzbuz.smartautoclicker.core.processing.domain.SmartProcessingListener
 
 import kotlinx.coroutines.yield
@@ -51,6 +53,7 @@ internal class ScenarioProcessor(
     triggerEvents: List<TriggerEvent>,
     private val bitmapSupplier: suspend (String, Int, Int) -> Bitmap?,
     androidExecutor: AndroidActionExecutor,
+    private val manualClickRepository: ManualClickRepository = ManualClickRepository(),
     unblockWorkaroundEnabled: Boolean = false,
     private val onStopRequested: () -> Unit,
     private val progressListener: SmartProcessingListener?,
@@ -61,6 +64,7 @@ internal class ScenarioProcessor(
         imageEvents = imageEvents,
         triggerEvents = triggerEvents,
         progressListener = progressListener,
+        manualClickRepository = manualClickRepository,
     )
     /** Check conditions and tell if they are fulfilled. */
     private val conditionsVerifier = ConditionsVerifier(
@@ -74,6 +78,7 @@ internal class ScenarioProcessor(
     private val actionExecutor = ActionExecutor(
         androidExecutor = androidExecutor,
         processingState = processingState,
+        manualClickRepository = manualClickRepository,
         randomize = randomize,
         unblockWorkaroundEnabled = unblockWorkaroundEnabled,
     )
@@ -149,23 +154,29 @@ internal class ScenarioProcessor(
     private suspend fun processImageEvents(screenFrame: Bitmap, events: Collection<ImageEvent>) {
         // Set the current screen image
         imageDetector.setScreenBitmap(screenFrame, processingTag)
+        val manualClickPosition = manualClickRepository.consumeTap()
 
         try {
             // Check all events
             for (imageEvent in events) {
                 // No conditions ? This should not happen, skip this event
-                if (imageEvent.conditions.isEmpty()) continue
+                if (imageEvent.conditionOperator != MANUAL_CLICK && imageEvent.conditions.isEmpty()) continue
 
                 progressListener?.onEventProcessingStarted(imageEvent)
                 val results = conditionsVerifier.verifyConditions(
                     operator = imageEvent.conditionOperator,
                     conditions = imageEvent.conditions,
+                    manualClickPosition = manualClickPosition,
                 )
 
-                progressListener?.onEventProcessingCompleted(imageEvent, results.fulfilled == true, results.getAllImageConditionsResults())
+                val imageResults =
+                    if (imageEvent.conditionOperator == MANUAL_CLICK) emptyList()
+                    else results.getAllImageConditionsResults()
+
+                progressListener?.onEventProcessingCompleted(imageEvent, results.fulfilled == true, imageResults)
                 if (results.fulfilled == true) {
                     actionExecutor.executeActions(imageEvent, results)
-                    progressListener?.onEventActionsExecuted(imageEvent, results.getAllImageConditionsResults())
+                    progressListener?.onEventActionsExecuted(imageEvent, imageResults)
 
                     if (!imageEvent.keepDetecting) break
                 }

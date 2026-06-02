@@ -13,10 +13,8 @@ fork-only.
 
 ## Build Tasks
 
-- Fast debug compile: `.\gradlew.bat :smartautoclicker:compileFDroidDebugKotlin`
-- Debug APK: `.\gradlew.bat :smartautoclicker:assembleFDroidDebug`
-- Public fork release: `.\gradlew.bat :smartautoclicker:assembleFDroidRelease`
-- When Gradle is unstable or memory-sensitive, add `--no-daemon --max-workers=1`.
+- Do not run Gradle builds or compilations locally due to severe resource constraints.
+- All verification compilations are run on GitHub Actions via `.github/workflows/verify.yml` automatically on push/PR.
 
 ## Signing
 

@@ -56,8 +56,8 @@ android {
     defaultConfig {
         applicationId = "${getExtraActualApplicationId()}.patched"
 
-        versionCode = 87
-        versionName = "3.5.1-patched.6"
+        versionCode = 88
+        versionName = "3.5.1-patched.7"
     }
 
     if (project.isBuildForVariant(KlickrFlavour.F_DROID, KlickrBuildType.DEBUG)) {

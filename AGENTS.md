@@ -41,6 +41,7 @@ fork-only.
 
 ## Releases
 
+- Releases must be built and published using GitHub Actions compute rather than locally.
 - Use `.github/workflows/release.yml` for public fork releases.
 - Trigger it manually from GitHub Actions with the tag, release name, and notes.
 - The workflow builds on GitHub-hosted runners, restores the release keystore

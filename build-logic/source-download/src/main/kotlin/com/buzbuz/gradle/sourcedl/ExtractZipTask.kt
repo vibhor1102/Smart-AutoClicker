@@ -39,35 +39,34 @@ abstract class ExtractZipTask : DefaultTask() {
 
     @TaskAction
     fun extract() {
-        val outputDir = outputDirectory.get()
+        val outputDir = outputDirectory.get().asFile
 
-        val sourceCodeVersionFile = project.file("${outputDir.asFile.path}/version.txt")
+        val sourceCodeVersionFile = File(outputDir, "version.txt")
         if (sourceCodeVersionFile.exists()) {
             if (sourceCodeVersionFile.readText() != sourceVersion.get()) {
-                project.delete(outputDir)
+                outputDir.deleteRecursively()
             } else {
                 return
             }
         }
 
-        project.mkdir(outputDir)
+        outputDir.mkdirs()
 
         ZipFile(inputZipFile.get()).use { zipFile ->
             zipFile.entries().asSequence().forEach { entry ->
-                zipFile.copyZipEntry(entry, outputDir.asFile)
+                zipFile.copyZipEntry(entry, outputDir)
             }
         }
 
-        project.file(sourceCodeVersionFile.toPath())
-            .writeText(sourceVersion.get())
+        sourceCodeVersionFile.writeText(sourceVersion.get())
     }
 
     private fun ZipFile.copyZipEntry(entry: ZipEntry, outputDir: File) {
         if (entry.isDirectory) return
 
         val entryPath = entry.name.split("/").drop(1).joinToString("/")
-        File("${outputDir.path}/$entryPath").let { outputFile ->
-            project.mkdir(outputFile.parentFile.toPath())
+        File(outputDir, entryPath).let { outputFile ->
+            outputFile.parentFile.mkdirs()
             getInputStream(entry).use { input ->
                 FileOutputStream(outputFile).use { output ->
                     input.copyTo(output)

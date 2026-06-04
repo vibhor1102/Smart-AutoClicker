@@ -91,7 +91,7 @@ jobs:
           -PsigningStorePassword="${{ secrets.SIGNING_STORE_PASSWORD }}" \
           -PsigningKeyAlias="${{ secrets.SIGNING_KEY_ALIAS }}" \
           -PsigningKeyPassword="${{ secrets.SIGNING_KEY_PASSWORD }}" \
-          :smartautoclicker:assembleFDroidRelease :smartautoclicker:bundleFDroidRelease
+          :smartautoclicker:assembleFDroidRelease
         ccache -s
 
     - name: Verify release APK
@@ -118,7 +118,6 @@ jobs:
         fail_on_unmatched_files: true
         files: |
           smartautoclicker/build/outputs/apk/fDroid/release/smartautoclicker-fDroid-release.apk
-          smartautoclicker/build/outputs/bundle/fDroidRelease/smartautoclicker-fDroid-release.aab
 
     - name: Upload workflow artifacts
       uses: actions/upload-artifact@v4
@@ -126,4 +125,3 @@ jobs:
         name: smartautoclicker-fdroid-release
         path: |
           smartautoclicker/build/outputs/apk/fDroid/release/smartautoclicker-fDroid-release.apk
-          smartautoclicker/build/outputs/bundle/fDroidRelease/smartautoclicker-fDroid-release.aab

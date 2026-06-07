@@ -54,3 +54,10 @@ fork-only.
   upstream bugfix work.
 - Before opening upstream PRs, check upstream contribution guidance and avoid
   bundling fork release infrastructure into upstream-facing branches.
+
+## Debugging
+
+- I have an Android 14 device, which you can ask me to attach to the computer and turn on USB Debugging whenever you feel necessary. ADB is provided in the current Windows laptop.
+- For debugging, only use debug builds, compiled locally, to ensure resource minimal and quick testing.
+- Don't run actual tests yourself, let the human run the desired tests and interact with UI. Your job is to set it up for them with any adb commands and state that's required, otherwise you can be quite inefficient and burn through tokens quickly.
+- 

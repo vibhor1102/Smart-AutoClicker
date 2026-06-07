@@ -151,6 +151,7 @@ abstract class OverlayMenu(
     protected var screenOverlayView: View? = null
     /** The layout parameters of the overlay view. */
     private lateinit var overlayLayoutParams: WindowManager.LayoutParams
+    private var originalOverlayFlags: Int = 0
 
     private val onLockedPositionChangedListener: (Point?) -> Unit = ::onLockedPositionChanged
 
@@ -200,6 +201,7 @@ abstract class OverlayMenu(
         menuLayout = onCreateMenu(context.getSystemService(LayoutInflater::class.java))
         screenOverlayView = onCreateOverlayView()
         overlayLayoutParams = onCreateOverlayViewLayoutParams()
+        originalOverlayFlags = overlayLayoutParams.flags
 
         // Set the clicks listener on the menu items
         menuBackground = menuLayout.findViewById(R.id.menu_background)
@@ -274,6 +276,8 @@ abstract class OverlayMenu(
         super.start()
         loadMenuPosition(displayConfigManager.displayConfig.orientation)
 
+        updateWindowTouchability(true)
+
         // Start the show animation for the menu
         Log.d(TAG, "Start show overlay ${hashCode()} animation...")
 
@@ -324,6 +328,7 @@ abstract class OverlayMenu(
             screenOverlayView?.visibility = View.GONE
 
             super.stop()
+            updateWindowTouchability(false)
 
             if (destroyOnceHidden) {
                 destroyOnceHidden = false
@@ -561,9 +566,19 @@ abstract class OverlayMenu(
             if (isOverlayVisible) {
                 visibility = View.VISIBLE
                 hideOverlayButton?.setImageResource(R.drawable.ic_visible_on)
+
+                if (isAttachedToWindow) {
+                    overlayLayoutParams.flags = originalOverlayFlags
+                    windowManager.safeUpdateViewLayout(this, overlayLayoutParams)
+                }
             } else {
                 visibility = View.GONE
                 hideOverlayButton?.setImageResource(R.drawable.ic_visible_off)
+
+                if (isAttachedToWindow) {
+                    overlayLayoutParams.flags = overlayLayoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                    windowManager.safeUpdateViewLayout(this, overlayLayoutParams)
+                }
             }
 
             onScreenOverlayVisibilityChanged(isOverlayVisible)
@@ -665,6 +680,37 @@ abstract class OverlayMenu(
 
             animations.dump(writer, contentPrefix)
             positionDataSource.dump(writer, contentPrefix)
+        }
+    }
+
+    private fun updateWindowTouchability(isStarted: Boolean) {
+        if (!lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)) return
+
+        if (isStarted) {
+            menuLayoutParams.flags = menuLayoutParams.flags and WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE.inv()
+            windowManager.safeUpdateViewLayout(menuLayout, menuLayoutParams)
+
+            screenOverlayView?.let { view ->
+                if (view.visibility == View.VISIBLE) {
+                    overlayLayoutParams.flags = originalOverlayFlags
+                } else {
+                    overlayLayoutParams.flags = overlayLayoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                }
+
+                if (view.isAttachedToWindow) {
+                    windowManager.safeUpdateViewLayout(view, overlayLayoutParams)
+                }
+            }
+        } else {
+            menuLayoutParams.flags = menuLayoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+            windowManager.safeUpdateViewLayout(menuLayout, menuLayoutParams)
+
+            screenOverlayView?.let { view ->
+                overlayLayoutParams.flags = overlayLayoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+                if (view.isAttachedToWindow) {
+                    windowManager.safeUpdateViewLayout(view, overlayLayoutParams)
+                }
+            }
         }
     }
 }

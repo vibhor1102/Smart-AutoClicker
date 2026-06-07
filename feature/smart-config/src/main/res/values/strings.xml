@@ -55,6 +55,7 @@
     <string name="item_click_title">Click</string>
     <string name="item_click_desc">Click somewhere on the screen</string>
     <string name="item_click_details_on_condition">During %1$s on %2$s</string>
+    <string name="item_click_details_on_manual_click">During %1$s at human tap</string>
     <string name="item_click_details_at_position">During %1$s</string>
 
     <string name="item_swipe_title">Swipe</string>
@@ -117,6 +118,7 @@
     <!-- Dialog Scenario =========================================================================================== -->
 
     <string name="dialog_title_scenario_config">Scenario</string>
+    <string name="dialog_title_switch_scenario">Switch scenario</string>
 
     <string name="message_empty_screen_event_title">No screen events !</string>
     <string name="message_empty_screen_event_desc">A screen event contains a set of actions executed when a specific condition is detected on the screen.\nYou need at least one screen or trigger event in your scenario to execute it.</string>
@@ -159,10 +161,12 @@
     <string name="field_condition_selector_desc">%1$d conditions</string>
     <string name="message_empty_screen_condition_list_title">No screen conditions !</string>
     <string name="message_empty_screen_condition_list_desc">A screen condition is a part of a screenshot that will be searched on each frames displayed by your phone screen.</string>
+    <string name="message_manual_click_condition_desc">A human tap anywhere on the screen will trigger this event.</string>
     <string name="message_empty_trigger_condition_list_title">No conditions !</string>
     <string name="message_empty_trigger_condition_list_desc">A condition is a custom criteria for starting an action.</string>
     <string name="message_empty_action_list_title">No actions !</string>
     <string name="message_empty_action_list_desc">An action is an interaction (click, swipe…) with your phone triggered when the created conditions are fulfilled.</string>
+    <string name="message_empty_scenario_switch_list_title">No other Smart scenarios</string>
 
     <string name="menu_item_title_conditions">Conditions</string>
     <string name="menu_item_title_actions">Actions</string>
@@ -178,6 +182,7 @@
     <string name="field_operator_title">Operator</string>
     <string name="field_operator_desc_or">Only one condition must be fulfilled to trigger the actions</string>
     <string name="field_operator_desc_and">All conditions must be fulfilled to trigger the actions</string>
+    <string name="field_operator_desc_manual_click">A human tap on the screen triggers the actions</string>
 
 
     <!-- Brief overlays ============================================================================================ -->
@@ -246,6 +251,8 @@
 
     <string name="field_condition_selection_title_or_operator">Click on the first detected condition</string>
     <string name="field_condition_selection_desc_or_operator">Event is set to "One Condition", you can\'t select a specific one</string>
+    <string name="field_condition_selection_title_manual_click">Click at human tap</string>
+    <string name="field_condition_selection_desc_manual_click">Event is set to "Human tap"; the captured tap location will be used</string>
 
     <string name="field_click_position_desc">Click on %1$d, %2$d</string>
 
@@ -419,6 +426,7 @@
     <string name="content_desc_actions_count">The number of actions in this event</string>
     <string name="content_desc_image_condition">The image to be detected</string>
     <string name="content_desc_open_event_list">Open the event list</string>
+    <string name="content_desc_switch_scenario">Switch scenario</string>
     <string name="content_desc_application_icon">The icon of the application to start.</string>
 
 </resources>

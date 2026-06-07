@@ -18,16 +18,19 @@ package com.buzbuz.smartautoclicker.core.processing.data.processor.state
 
 import android.content.Context
 
+import com.buzbuz.smartautoclicker.core.domain.model.MANUAL_CLICK
 import com.buzbuz.smartautoclicker.core.domain.model.condition.TriggerCondition
 import com.buzbuz.smartautoclicker.core.domain.model.event.Event
 import com.buzbuz.smartautoclicker.core.domain.model.event.ImageEvent
 import com.buzbuz.smartautoclicker.core.domain.model.event.TriggerEvent
+import com.buzbuz.smartautoclicker.core.processing.domain.ManualClickRepository
 import com.buzbuz.smartautoclicker.core.processing.domain.SmartProcessingListener
 
 internal class ProcessingState(
     imageEvents: List<ImageEvent>,
     triggerEvents: List<TriggerEvent>,
     private val progressListener: SmartProcessingListener?,
+    private val manualClickRepository: ManualClickRepository,
     private val eventsState: EventsState = EventsState(imageEvents, triggerEvents),
     private val broadcastsState: BroadcastsState = BroadcastsState(triggerEvents),
     private val countersState: CountersState = CountersState(imageEvents, triggerEvents, progressListener),
@@ -44,11 +47,13 @@ internal class ProcessingState(
     fun onProcessingStarted(context: Context) {
         broadcastsState.onProcessingStarted(context)
         timersState.onProcessingStarted()
+        updateManualClickCaptureState()
     }
 
     fun onProcessingStopped() {
         broadcastsState.onProcessingStopped()
         timersState.onProcessingStopped()
+        manualClickRepository.clear()
     }
 
     fun clearIterationState() {
@@ -61,6 +66,7 @@ internal class ProcessingState(
         }
 
         progressListener?.onEventStateChanged(event = event, newValue = true)
+        updateManualClickCaptureState()
     }
 
     private fun onEventDisabled(event: Event) {
@@ -69,5 +75,12 @@ internal class ProcessingState(
         }
 
         progressListener?.onEventStateChanged(event = event, newValue = false)
+        updateManualClickCaptureState()
+    }
+
+    private fun updateManualClickCaptureState() {
+        manualClickRepository.setCaptureRequested(
+            getEnabledImageEvents().any { event -> event.conditionOperator == MANUAL_CLICK }
+        )
     }
 }

@@ -18,6 +18,7 @@ package com.buzbuz.smartautoclicker.feature.smart.config.ui.common.model.event
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import com.buzbuz.smartautoclicker.core.domain.model.MANUAL_CLICK
 import com.buzbuz.smartautoclicker.core.domain.model.event.ImageEvent
 import com.buzbuz.smartautoclicker.feature.smart.config.R
 
@@ -46,7 +47,9 @@ fun ImageEvent.toUiImageEvent(inError: Boolean): UiImageEvent {
     return UiImageEvent(
         event = this,
         name = name,
-        conditionsCountText = conditions.size.toString(),
+        conditionsCountText =
+            if (conditionOperator == MANUAL_CLICK) "Tap"
+            else conditions.size.toString(),
         actionsCountText = actions.size.toString(),
         enabledOnStartTextRes = enabledOnStartTextRes,
         enabledOnStartIconRes = enabledOnStartIconRes,

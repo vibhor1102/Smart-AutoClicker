@@ -30,6 +30,7 @@ import com.buzbuz.smartautoclicker.core.common.overlays.base.viewModels
 import com.buzbuz.smartautoclicker.core.common.overlays.dialog.OverlayDialog
 import com.buzbuz.smartautoclicker.core.domain.model.AND
 import com.buzbuz.smartautoclicker.core.domain.model.ConditionOperator
+import com.buzbuz.smartautoclicker.core.domain.model.MANUAL_CLICK
 import com.buzbuz.smartautoclicker.core.domain.model.OR
 import com.buzbuz.smartautoclicker.core.ui.bindings.buttons.DualStateButtonTextConfig
 import com.buzbuz.smartautoclicker.core.ui.bindings.dialogs.DialogNavigationButton
@@ -189,23 +190,40 @@ class EventDialog(
         }
 
         fieldConditionsOperator.apply {
+            val isImageEvent = viewModel.isConfiguringScreenEvent()
+
             setTitle(context.getString(R.string.field_operator_title))
             setupDescriptions(
-                listOf(
-                    context.getString(R.string.field_operator_desc_and),
-                    context.getString(R.string.field_operator_desc_or),
-                )
+                buildList {
+                    add(context.getString(R.string.field_operator_desc_and))
+                    add(context.getString(R.string.field_operator_desc_or))
+                    if (isImageEvent) add(context.getString(R.string.field_operator_desc_manual_click))
+                }
             )
             setButtonConfig(
-                DualStateButtonTextConfig(
-                    textLeft = context.getString(R.string.condition_operator_and),
-                    textRight = context.getString(R.string.condition_operator_or),
+                if (isImageEvent) {
+                    DualStateButtonTextConfig(
+                        textLeft = context.getString(R.string.condition_operator_and),
+                        textMiddle = context.getString(R.string.condition_operator_or),
+                        textRight = context.getString(R.string.condition_operator_manual_click),
+                        selectionRequired = true,
+                        singleSelection = true,
+                    )
+                } else DualStateButtonTextConfig(
+                    context.getString(R.string.condition_operator_and),
+                    context.getString(R.string.condition_operator_or),
                     selectionRequired = true,
                     singleSelection = true,
                 )
             )
             setOnCheckedListener { checkedId ->
-                viewModel.setConditionOperator(if (checkedId == 0) AND else OR)
+                viewModel.setConditionOperator(
+                    when (checkedId) {
+                        0 -> AND
+                        1 -> OR
+                        else -> if (isImageEvent) MANUAL_CLICK else OR
+                    }
+                )
             }
         }
     }
@@ -296,14 +314,40 @@ class EventDialog(
     }
 
     private fun updateImageConditionsField(conditions: List<UiImageCondition>) {
-        viewBinding.fieldImageConditionsSelector.setItems(conditions)
+        if (viewModel.isManualClickMode.value) {
+            viewBinding.fieldImageConditionsSelector.setItems(emptyList<UiImageCondition>())
+        } else {
+            viewBinding.fieldImageConditionsSelector.setItems(conditions)
+        }
     }
 
     private fun updateConditionOperator(@ConditionOperator operator: Int) {
+        val isImageEvent = viewModel.isConfiguringScreenEvent()
         viewBinding.fieldConditionsOperator.apply {
-            val index = if (operator == AND) 0 else 1
+            val index = when (operator) {
+                AND -> 0
+                OR -> 1
+                else -> if (isImageEvent) 2 else 1
+            }
             setChecked(index)
             setDescription(index)
+        }
+
+        updateImageConditionsSelectorState(isImageEvent && operator == MANUAL_CLICK)
+    }
+
+    private fun updateImageConditionsSelectorState(isManualClick: Boolean) {
+        viewBinding.fieldImageConditionsSelector.apply {
+            root.isEnabled = !isManualClick
+            root.alpha = if (isManualClick) DISABLED_ALPHA else 1f
+            setEmptyDescription(
+                if (isManualClick) R.string.message_manual_click_condition_desc
+                else R.string.message_empty_screen_condition_list_desc
+            )
+            setOnClickListener(
+                if (isManualClick) null
+                else ({ debounceUserInteraction { showImageConditionsBriefMenu() } })
+            )
         }
     }
 
@@ -389,3 +433,4 @@ class EventDialog(
 }
 
 private const val TAG = "EventDialog"
+private const val DISABLED_ALPHA = 0.38f

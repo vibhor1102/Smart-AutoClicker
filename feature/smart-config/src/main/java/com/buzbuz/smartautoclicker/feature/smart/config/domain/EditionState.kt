@@ -19,7 +19,7 @@ package com.buzbuz.smartautoclicker.feature.smart.config.domain
 import com.buzbuz.smartautoclicker.core.base.identifier.Identifier
 import com.buzbuz.smartautoclicker.core.base.interfaces.sortedByPriority
 import com.buzbuz.smartautoclicker.core.domain.IRepository
-import com.buzbuz.smartautoclicker.core.domain.model.OR
+import com.buzbuz.smartautoclicker.core.domain.model.AND
 import com.buzbuz.smartautoclicker.core.domain.model.action.Action
 import com.buzbuz.smartautoclicker.core.domain.model.action.Click
 import com.buzbuz.smartautoclicker.core.domain.model.action.ToggleEvent
@@ -272,7 +272,7 @@ internal class EditionState internal constructor(
 
     override fun isEditedConditionReferencedByClick(): Boolean {
         val event = getEditedEvent<Event>() ?: return false
-        if (event.conditionOperator == OR) return false
+        if (event.conditionOperator != AND) return false
 
         val condition = getEditedCondition<Condition>() ?: return false
         val actions = editor.currentEventEditor.value?.actionsEditor?.editedList?.value ?: return false

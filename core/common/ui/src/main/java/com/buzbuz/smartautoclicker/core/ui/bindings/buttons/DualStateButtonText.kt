@@ -16,6 +16,7 @@
  */
 package com.buzbuz.smartautoclicker.core.ui.bindings.buttons
 
+import android.view.View
 import com.buzbuz.smartautoclicker.core.ui.databinding.IncludeButtonMultiStateBinding
 import com.buzbuz.smartautoclicker.core.ui.databinding.IncludeButtonTextDualStateBinding
 import com.google.android.material.button.MaterialButtonToggleGroup
@@ -30,6 +31,7 @@ import com.google.android.material.button.MaterialButtonToggleGroup
 data class DualStateButtonTextConfig(
     val textLeft: String,
     val textRight: String,
+    val textMiddle: String? = null,
     val selectionRequired: Boolean,
     val singleSelection: Boolean = true,
 )
@@ -37,7 +39,14 @@ data class DualStateButtonTextConfig(
 
 fun IncludeButtonTextDualStateBinding.setup(config: DualStateButtonTextConfig) {
     buttonLeft.text = config.textLeft
-    buttonRight.text = config.textRight
+    buttonMiddle.text = config.textMiddle ?: config.textRight
+
+    if (config.textMiddle != null) {
+        buttonRight.text = config.textRight
+        buttonRight.visibility = View.VISIBLE
+    } else {
+        buttonRight.visibility = View.GONE
+    }
 
     root.isSingleSelection = config.singleSelection
     root.isSelectionRequired = config.selectionRequired
@@ -69,7 +78,8 @@ fun IncludeButtonTextDualStateBinding.setOnCheckedListener(listener: ((Int?) -> 
 
         when (checkedViewId) {
             buttonLeft.id -> listener(0)
-            buttonRight.id -> listener(1)
+            buttonMiddle.id -> listener(1)
+            buttonRight.id -> listener(2)
         }
     }
 
@@ -80,6 +90,7 @@ fun IncludeButtonTextDualStateBinding.setOnCheckedListener(listener: ((Int?) -> 
 private fun IncludeButtonTextDualStateBinding.getButtonViewIdFromCheckedId(checkedId: Int?): Int? =
     when (checkedId) {
         0 -> buttonLeft.id
-        1 -> buttonRight.id
+        1 -> buttonMiddle.id
+        2 -> buttonRight.id
         else -> null
     }

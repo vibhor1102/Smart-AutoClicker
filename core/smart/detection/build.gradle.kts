@@ -45,7 +45,14 @@ android {
     defaultConfig {
         externalNativeBuild {
             cmake {
-
+                if (System.getenv("USE_CCACHE") == "true") {
+                    arguments.addAll(
+                        listOf(
+                            "-DCMAKE_C_COMPILER_LAUNCHER=ccache",
+                            "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache"
+                        )
+                    )
+                }
             }
         }
     }

@@ -51,4 +51,9 @@ sealed class ProcessedConditionResult {
         override val isFulfilled: Boolean,
         val condition: TriggerCondition,
     )  : ProcessedConditionResult()
+
+    data class ManualClick(
+        override val isFulfilled: Boolean,
+        val position: Point?,
+    ) : ProcessedConditionResult()
 }

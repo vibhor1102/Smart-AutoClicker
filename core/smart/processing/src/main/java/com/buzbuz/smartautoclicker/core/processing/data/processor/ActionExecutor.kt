@@ -34,6 +34,7 @@ import com.buzbuz.smartautoclicker.core.common.actions.text.findCounterReference
 import com.buzbuz.smartautoclicker.core.common.actions.text.replaceCounterReferences
 import com.buzbuz.smartautoclicker.core.common.actions.utils.getPauseDurationMs
 import com.buzbuz.smartautoclicker.core.domain.model.CounterOperationValue
+import com.buzbuz.smartautoclicker.core.domain.model.MANUAL_CLICK
 import com.buzbuz.smartautoclicker.core.domain.model.OR
 import com.buzbuz.smartautoclicker.core.domain.model.action.Intent
 import com.buzbuz.smartautoclicker.core.domain.model.action.Click
@@ -48,6 +49,7 @@ import com.buzbuz.smartautoclicker.core.domain.model.action.intent.putDomainExtr
 import com.buzbuz.smartautoclicker.core.domain.model.event.Event
 import com.buzbuz.smartautoclicker.core.domain.model.event.ImageEvent
 import com.buzbuz.smartautoclicker.core.processing.data.processor.state.ProcessingState
+import com.buzbuz.smartautoclicker.core.processing.domain.ManualClickRepository
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -64,6 +66,7 @@ import kotlin.random.Random
 internal class ActionExecutor(
     private val androidExecutor: AndroidActionExecutor,
     private val processingState: ProcessingState,
+    private val manualClickRepository: ManualClickRepository = ManualClickRepository(),
     randomize: Boolean,
     unblockWorkaroundEnabled: Boolean = false,
 ) {
@@ -82,9 +85,7 @@ internal class ActionExecutor(
         if (unblockGestureScheduler?.shouldTrigger() == true) {
             withContext(Dispatchers.Main) {
                 Log.i(TAG, "Injecting unblock gesture")
-                androidExecutor.dispatchGesture(
-                    GestureDescription.Builder().buildUnblockGesture()
-                )
+                dispatchGesture(GestureDescription.Builder().buildUnblockGesture())
             }
         }
     }
@@ -124,20 +125,21 @@ internal class ActionExecutor(
         )
 
         withContext(Dispatchers.Main) {
-            androidExecutor.dispatchGesture(clickGesture)
+            dispatchGesture(clickGesture)
         }
     }
 
     private fun getOnConditionClickPath(event: Event, click: Click, results: ConditionsResults?): Path? {
         if (event !is ImageEvent) return null
 
-        val result = when {
-            event.conditionOperator == OR -> results?.getFirstImageDetectedResult()
-            click.clickOnConditionId != null -> results?.getImageConditionResult(click.clickOnConditionId!!.databaseId)
+        val resultPosition = when {
+            event.conditionOperator == MANUAL_CLICK -> results?.getManualClickResult()?.position
+            event.conditionOperator == OR -> results?.getFirstImageDetectedResult()?.position
+            click.clickOnConditionId != null -> results?.getImageConditionResult(click.clickOnConditionId!!.databaseId)?.position
             else -> null
         }
 
-        if (result == null) {
+        if (resultPosition == null) {
             Log.w(TAG, "Click is invalid, can't execute")
             return null
         }
@@ -145,8 +147,8 @@ internal class ActionExecutor(
         return Path().apply {
             moveTo(
                 position = Point(
-                    (result.position?.x ?: 0) + (click.clickOffset?.x ?: 0),
-                    (result.position?.y ?: 0) + (click.clickOffset?.y ?: 0),
+                    resultPosition.x + (click.clickOffset?.x ?: 0),
+                    resultPosition.y + (click.clickOffset?.y ?: 0),
                 ),
                 random = random,
             )
@@ -167,7 +169,7 @@ internal class ActionExecutor(
         )
 
         withContext(Dispatchers.Main) {
-            androidExecutor.dispatchGesture(swipeGesture)
+            dispatchGesture(swipeGesture)
         }
     }
 
@@ -302,6 +304,12 @@ internal class ActionExecutor(
                 text = action.text.replaceCounterReferences(counters),
                 validate = action.validateInput,
             )
+        }
+    }
+
+    private suspend fun dispatchGesture(gesture: GestureDescription) {
+        manualClickRepository.withCapturePaused {
+            androidExecutor.dispatchGesture(gesture)
         }
     }
 }

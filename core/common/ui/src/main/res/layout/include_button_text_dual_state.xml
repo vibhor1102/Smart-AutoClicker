@@ -31,9 +31,17 @@
 
     <com.google.android.material.button.MaterialButton
         style="@style/AppTheme.Widget.SegmentedTextButtons"
-        android:id="@+id/buttonRight"
+        android:id="@+id/buttonMiddle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="OR "/>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/AppTheme.Widget.SegmentedTextButtons"
+        android:id="@+id/buttonRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:text="Tap"/>
 
 </com.google.android.material.button.MaterialButtonToggleGroup>

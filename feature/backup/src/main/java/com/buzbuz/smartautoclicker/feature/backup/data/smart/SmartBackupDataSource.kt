@@ -23,6 +23,7 @@ import com.buzbuz.smartautoclicker.core.database.CLICK_DATABASE_VERSION
 import com.buzbuz.smartautoclicker.core.database.entity.CompleteScenario
 import com.buzbuz.smartautoclicker.core.database.entity.ConditionType
 import com.buzbuz.smartautoclicker.core.database.entity.EventType
+import com.buzbuz.smartautoclicker.core.domain.model.MANUAL_CLICK
 import com.buzbuz.smartautoclicker.feature.backup.data.base.CONDITION_BACKUP_MATCH_REGEX
 import com.buzbuz.smartautoclicker.feature.backup.data.base.LEGACY_CONDITION_BACKUP_MATCH_REGEX
 import com.buzbuz.smartautoclicker.feature.backup.data.base.SMART_SCENARIO_BACKUP_MATCH_REGEX
@@ -89,7 +90,9 @@ internal class SmartBackupDataSource(
                 return null
             }
 
-            if (event.conditions.isEmpty()) {
+            val isManualClickImageEvent =
+                event.event.type == EventType.IMAGE_EVENT && event.event.conditionOperator == MANUAL_CLICK
+            if (event.conditions.isEmpty() && !isManualClickImageEvent) {
                 Log.w(TAG, "Invalid scenario, condition list is empty.")
                 return null
             }

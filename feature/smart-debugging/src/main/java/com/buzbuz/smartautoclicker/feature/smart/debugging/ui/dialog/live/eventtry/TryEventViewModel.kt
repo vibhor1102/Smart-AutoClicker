@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 
 import com.buzbuz.smartautoclicker.core.domain.model.AND
+import com.buzbuz.smartautoclicker.core.domain.model.MANUAL_CLICK
 import com.buzbuz.smartautoclicker.core.domain.model.OR
 import com.buzbuz.smartautoclicker.core.domain.model.action.Action
 import com.buzbuz.smartautoclicker.core.domain.model.action.ChangeCounter
@@ -144,6 +145,7 @@ private fun Event.getConditionOperatorText(context: Context): String =
     when (conditionOperator) {
         AND -> context.getString(R.string.condition_operator_and)
         OR -> context.getString(R.string.condition_operator_or)
+        MANUAL_CLICK -> context.getString(R.string.condition_operator_manual_click)
         else -> ""
     }
 

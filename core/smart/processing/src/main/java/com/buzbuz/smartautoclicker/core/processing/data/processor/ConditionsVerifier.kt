@@ -17,11 +17,13 @@
 package com.buzbuz.smartautoclicker.core.processing.data.processor
 
 import android.graphics.Bitmap
+import android.graphics.Point
 
 import com.buzbuz.smartautoclicker.core.detection.ImageDetector
 import com.buzbuz.smartautoclicker.core.domain.model.AND
 import com.buzbuz.smartautoclicker.core.domain.model.ConditionOperator
 import com.buzbuz.smartautoclicker.core.domain.model.CounterOperationValue
+import com.buzbuz.smartautoclicker.core.domain.model.MANUAL_CLICK
 import com.buzbuz.smartautoclicker.core.domain.model.OR
 import com.buzbuz.smartautoclicker.core.domain.model.condition.Condition
 import com.buzbuz.smartautoclicker.core.domain.model.condition.ImageCondition
@@ -50,9 +52,28 @@ internal class ConditionsVerifier(
      */
     private var currentVerificationTsMs: Long? = null
 
-    suspend fun verifyConditions(@ConditionOperator operator: Int, conditions: List<Condition>): ConditionsResults {
+    suspend fun verifyConditions(
+        @ConditionOperator operator: Int,
+        conditions: List<Condition>,
+        manualClickPosition: Point? = null,
+    ): ConditionsResults {
         verificationResults.reset()
         currentVerificationTsMs = System.currentTimeMillis()
+
+        if (operator == MANUAL_CLICK) {
+            manualClickPosition?.let { tapPosition ->
+                verificationResults.addResult(
+                    conditionId = MANUAL_CLICK_RESULT_ID,
+                    result = ProcessedConditionResult.ManualClick(
+                        isFulfilled = true,
+                        position = tapPosition,
+                    )
+                )
+                verificationResults.setFulfilledState(true)
+            } ?: verificationResults.setFulfilledState(false)
+
+            return verificationResults
+        }
 
         var verificationResult: ProcessedConditionResult
         for (condition in conditions) {
@@ -177,3 +198,5 @@ internal class ConditionsVerifier(
             condition = this,
         )
 }
+
+private const val MANUAL_CLICK_RESULT_ID = -1L

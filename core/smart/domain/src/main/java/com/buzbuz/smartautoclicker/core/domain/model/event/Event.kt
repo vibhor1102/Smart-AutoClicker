@@ -26,6 +26,7 @@ import com.buzbuz.smartautoclicker.core.domain.model.AND
 import com.buzbuz.smartautoclicker.core.domain.model.action.Action
 import com.buzbuz.smartautoclicker.core.domain.model.condition.ImageCondition
 import com.buzbuz.smartautoclicker.core.domain.model.ConditionOperator
+import com.buzbuz.smartautoclicker.core.domain.model.MANUAL_CLICK
 import com.buzbuz.smartautoclicker.core.domain.model.action.Click
 import com.buzbuz.smartautoclicker.core.domain.model.condition.Condition
 import com.buzbuz.smartautoclicker.core.domain.model.condition.TriggerCondition
@@ -87,7 +88,11 @@ data class ImageEvent(
 
     /** Tells if this event is complete and valid for save. */
     override fun isComplete(): Boolean {
-        if (!super.isComplete()) return false
+        val hasValidBase =
+            name.isNotEmpty() && actions.isNotEmpty() && actions.areComplete() &&
+                    (conditionOperator == MANUAL_CLICK || conditions.isNotEmpty() && conditions.areComplete())
+
+        if (!hasValidBase) return false
 
         actions.forEach { action ->
             if (conditionOperator == AND && action is Click && !action.isClickOnConditionValid()) return false

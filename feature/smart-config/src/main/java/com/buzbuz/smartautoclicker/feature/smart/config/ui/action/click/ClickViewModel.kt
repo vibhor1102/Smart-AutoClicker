@@ -29,6 +29,7 @@ import com.buzbuz.smartautoclicker.core.bitmaps.BitmapRepository
 import com.buzbuz.smartautoclicker.core.domain.IRepository
 import com.buzbuz.smartautoclicker.core.domain.ext.getConditionBitmap
 import com.buzbuz.smartautoclicker.core.domain.model.AND
+import com.buzbuz.smartautoclicker.core.domain.model.MANUAL_CLICK
 import com.buzbuz.smartautoclicker.core.domain.model.OR
 import com.buzbuz.smartautoclicker.core.domain.model.action.Click
 import com.buzbuz.smartautoclicker.core.domain.model.condition.ImageCondition
@@ -132,6 +133,9 @@ class ClickViewModel @Inject constructor(
 
                 evt is ImageEvent && click.positionType == Click.PositionType.ON_DETECTED_CONDITION && event.value.conditionOperator == OR ->
                     context.getOnConditionWithOrPositionState(click)
+
+                evt is ImageEvent && click.positionType == Click.PositionType.ON_DETECTED_CONDITION && event.value.conditionOperator == MANUAL_CLICK ->
+                    context.getManualClickPositionState(click)
 
                 evt is ImageEvent && click.positionType == Click.PositionType.ON_DETECTED_CONDITION && event.value.conditionOperator == AND ->
                     context.getOnConditionWithAndPositionState(evt, click)
@@ -248,6 +252,18 @@ class ClickViewModel @Inject constructor(
             isSelectorEnabled = false,
             selectorTitle = getString(R.string.field_condition_selection_title_or_operator),
             selectorDescription = getString(R.string.field_condition_selection_desc_or_operator),
+            isClickOffsetVisible = true,
+            isClickOffsetEnabled = true,
+            clickOffsetDescription = getClickOffsetString(click),
+        )
+
+    private fun Context.getManualClickPositionState(click: Click): ClickPositionUiState =
+        ClickPositionUiState(
+            positionType = Click.PositionType.ON_DETECTED_CONDITION,
+            isTypeFieldVisible = true,
+            isSelectorEnabled = false,
+            selectorTitle = getString(R.string.field_condition_selection_title_manual_click),
+            selectorDescription = getString(R.string.field_condition_selection_desc_manual_click),
             isClickOffsetVisible = true,
             isClickOffsetEnabled = true,
             clickOffsetDescription = getClickOffsetString(click),

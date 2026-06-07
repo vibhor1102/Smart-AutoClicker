@@ -149,6 +149,10 @@ abstract class ItemBriefMenu(
         return briefViewBinding.root
     }
 
+    override fun getTouchableViews(): List<View> {
+        return listOf(menuBackground)
+    }
+
     override fun onResume() {
         super.onResume()
         briefPanelAnimationController.showOrResetTimer()

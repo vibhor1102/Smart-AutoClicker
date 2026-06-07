@@ -43,9 +43,9 @@ abstract class DownloadZipTask : DefaultTask() {
     fun download() {
         val zipFile = outputFile.get()
         if (zipFile.exists()) {
-            project.delete(zipFile)
+            zipFile.delete()
         }
-        project.mkdir(zipFile.parentFile)
+        zipFile.parentFile.mkdirs()
 
         getUrlFromInputs().openStream().use {
             it.copyTo(FileOutputStream(zipFile))

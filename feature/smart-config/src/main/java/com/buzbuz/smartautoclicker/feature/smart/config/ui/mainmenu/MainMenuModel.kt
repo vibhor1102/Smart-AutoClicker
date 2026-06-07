@@ -17,11 +17,15 @@
 package com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu
 
 import android.content.Context
+import android.graphics.Point
 import android.util.Log
 import android.view.View
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.buzbuz.smartautoclicker.core.domain.IRepository
+import com.buzbuz.smartautoclicker.core.domain.model.scenario.Scenario
+import com.buzbuz.smartautoclicker.core.processing.domain.ManualClickRepository
 import com.buzbuz.smartautoclicker.core.processing.domain.SmartProcessingRepository
 
 import com.buzbuz.smartautoclicker.core.processing.domain.model.DetectionState
@@ -52,11 +56,13 @@ import javax.inject.Inject
 /** View model for the [MainMenu]. */
 class MainMenuModel @Inject constructor(
     private val smartProcessingRepository: SmartProcessingRepository,
+    smartRepository: IRepository,
     private val editionRepository: EditionRepository,
     private val tutorialRepository: TutorialRepository,
     private val revenueRepository: IRevenueRepository,
     private val monitoredViewsManager: MonitoredViewsManager,
     private val debuggingRepository: DebuggingRepository,
+    private val manualClickRepository: ManualClickRepository,
 ) : ViewModel() {
 
     private val scenarioDbId: StateFlow<Long?> = smartProcessingRepository.scenarioId
@@ -87,6 +93,20 @@ class MainMenuModel @Inject constructor(
         .map { it == DetectionState.RECORDING || it == DetectionState.DETECTING }
         .stateIn(viewModelScope, SharingStarted.Eagerly, true)
 
+    val switchableScenarios: StateFlow<List<Scenario>> = combine(
+        smartRepository.scenarios,
+        scenarioDbId,
+    ) { scenarios, currentScenarioId ->
+        scenarios.filter { scenario -> scenario.id.databaseId != currentScenarioId }
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
+
+    val isSwitchButtonVisible: StateFlow<Boolean> = combine(
+        detectionState,
+        isMediaProjectionStarted,
+    ) { state, isProjectionStarted ->
+        state == UiState.Idle && isProjectionStarted
+    }.stateIn(viewModelScope, SharingStarted.Eagerly, false)
+
     /** Tells if the scenario can be started. Edited scenario must be synchronized and engine should allow it. */
     val isStartButtonEnabled: Flow<Boolean> = combine(
         smartProcessingRepository.canStartDetection,
@@ -100,6 +120,9 @@ class MainMenuModel @Inject constructor(
     val nativeLibError: Flow<Boolean> = smartProcessingRepository.detectionState
         .map { it == DetectionState.ERROR_NO_NATIVE_LIB }
         .distinctUntilChanged()
+
+    val manualClickCaptureEnabled: StateFlow<Boolean> =
+        manualClickRepository.captureEnabled
 
     /** Load an advertisement, if needed. Should be called before showing the paywall to reduce user waiting time. */
     fun loadAdIfNeeded(context: Context) {
@@ -200,6 +223,10 @@ class MainMenuModel @Inject constructor(
 
     fun setStopWithVolumeDownDontShowAgain(): Unit =
         tutorialRepository.setStopWithVolumeDownDontShowAgain()
+
+    fun submitManualClick(position: Point) {
+        manualClickRepository.submitTap(position)
+    }
 
     private fun UserBillingState.isAdRequested(): Boolean =
         this == UserBillingState.AD_REQUESTED

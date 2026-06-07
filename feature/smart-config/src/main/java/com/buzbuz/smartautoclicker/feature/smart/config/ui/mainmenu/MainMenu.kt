@@ -23,6 +23,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.View
 
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -32,6 +33,9 @@ import com.buzbuz.smartautoclicker.core.base.isStopScenarioKey
 import com.buzbuz.smartautoclicker.core.common.overlays.base.viewModels
 import com.buzbuz.smartautoclicker.core.common.overlays.manager.OverlayManager.Companion.showAsOverlay
 import com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu
+import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common.HorizontalSidePanelController
+import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common.HorizontalSidePanelSide
+import com.buzbuz.smartautoclicker.core.domain.model.scenario.Scenario
 import com.buzbuz.smartautoclicker.core.ui.utils.AnimatedStatesImageButtonController
 import com.buzbuz.smartautoclicker.core.ui.utils.getDynamicColorsContext
 import com.buzbuz.smartautoclicker.feature.smart.config.R
@@ -42,6 +46,7 @@ import com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.debugging.Li
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.debugging.LiveDebuggingUiState
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.debugging.LiveDebuggingViewModel
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.scenario.ScenarioDialog
+import com.buzbuz.smartautoclicker.feature.smart.config.ui.scenario.switcher.ScenarioSwitchDialog
 import com.buzbuz.smartautoclicker.feature.tutorial.ui.dialogs.createStopWithVolumeDownTutorialDialog
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -59,7 +64,10 @@ import kotlinx.coroutines.launch
  * There is no overlay views attached to this overlay menu, meaning that the user will always be able to clicks on the
  * Activities displayed below it.
  */
-class MainMenu(private val onStopClicked: () -> Unit) : OverlayMenu() {
+class MainMenu(
+    private val onStopClicked: () -> Unit,
+    private val onSwitchScenarioSelected: (Scenario) -> Boolean,
+) : OverlayMenu() {
 
     /** The view model for this menu. */
     private val viewModel: MainMenuModel by viewModels(
@@ -79,6 +87,8 @@ class MainMenu(private val onStopClicked: () -> Unit) : OverlayMenu() {
     private lateinit var viewBinding: OverlayMenuBinding
     /** Controls the animations of the play/pause button. */
     private lateinit var playPauseButtonController: AnimatedStatesImageButtonController
+    /** Controls the position of the debug panel around the menu buttons. */
+    private lateinit var debugSidePanelController: HorizontalSidePanelController
     /** Adapter upon actions being executed while in live debugging. */
     private val debugLiveActionsAdapter: LiveDebuggingActionsAdapter = LiveDebuggingActionsAdapter()
 
@@ -101,6 +111,12 @@ class MainMenu(private val onStopClicked: () -> Unit) : OverlayMenu() {
         )
         viewBinding = OverlayMenuBinding.inflate(layoutInflater)
         playPauseButtonController.attachView(viewBinding.btnPlay)
+        debugSidePanelController = HorizontalSidePanelController(
+            parent = viewBinding.layoutDebug.parent as ConstraintLayout,
+            menuItems = viewBinding.menuItems,
+            sidePanel = viewBinding.layoutDebug,
+            innerSeparator = viewBinding.separatorStart,
+        )
 
         return viewBinding.root
     }
@@ -125,6 +141,7 @@ class MainMenu(private val onStopClicked: () -> Unit) : OverlayMenu() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch { viewModel.isStartButtonEnabled.collect(::updatePlayPauseButtonEnabledState) }
                 launch { viewModel.isMediaProjectionStarted.collect(::updateProjectionErrorBadge) }
+                launch { viewModel.isSwitchButtonVisible.collect(::updateSwitchButtonVisibility) }
                 launch { viewModel.detectionState.collect(::updateDetectionState) }
                 launch { viewModel.nativeLibError.collect(::showNativeLibErrorDialogIfNeeded) }
                 launch { debuggingViewModel.isDebugging.collect(::updateDebugOverlayViewVisibility) }
@@ -180,16 +197,48 @@ class MainMenu(private val onStopClicked: () -> Unit) : OverlayMenu() {
         when (viewId) {
             R.id.btn_play -> onPlayPauseClicked()
             R.id.btn_click_list -> onConfigureClicked()
+            R.id.btn_switch_scenario -> onSwitchScenarioClicked()
             R.id.btn_stop -> onStopClicked()
         }
     }
 
     override fun getWindowMaximumSize(backgroundView: ViewGroup): Size {
+        val switchButtonVisibility = viewBinding.btnSwitchScenario.visibility
+
+        viewBinding.btnSwitchScenario.visibility = View.VISIBLE
         val bgSize = super.getWindowMaximumSize(backgroundView)
+        viewBinding.btnSwitchScenario.visibility = switchButtonVisibility
+
         return Size(
             bgSize.width + context.resources.getDimensionPixelSize(R.dimen.overlay_debug_panel_width),
             bgSize.height,
         )
+    }
+
+    override fun getMenuAnchorWidth(windowSize: Size): Int =
+        viewBinding.menuItems.width.takeIf { it > 0 } ?: super.getMenuAnchorWidth(windowSize)
+
+    override fun onMenuAnchorPositionUpdated(anchorPosition: android.graphics.Point, windowSize: Size): android.graphics.Point {
+        if (viewBinding.layoutDebug.visibility != View.VISIBLE) {
+            debugSidePanelController.applySide(HorizontalSidePanelSide.RIGHT)
+            return anchorPosition
+        }
+
+        val anchorWidth = getMenuAnchorWidth(windowSize)
+        val panelWidth = (windowSize.width - anchorWidth).coerceAtLeast(0)
+        val side = if (shouldRefreshSidePanelPlacement()) {
+            chooseHorizontalSidePanelSide(
+                anchorPosition = anchorPosition,
+                anchorWidth = anchorWidth,
+                panelWidth = panelWidth,
+                sidePanelController = debugSidePanelController,
+            )
+        } else debugSidePanelController.currentSide
+
+        debugSidePanelController.applySide(side)
+        return if (side == HorizontalSidePanelSide.LEFT) {
+            android.graphics.Point(anchorPosition.x - panelWidth, anchorPosition.y)
+        } else anchorPosition
     }
 
     fun onMediaProjectionLost() {
@@ -242,6 +291,7 @@ class MainMenu(private val onStopClicked: () -> Unit) : OverlayMenu() {
                     animateLayoutChanges {
                         setMenuItemVisibility(viewBinding.btnStop, true)
                         setMenuItemVisibility(viewBinding.btnClickList, true)
+                        setMenuItemVisibility(viewBinding.btnSwitchScenario, viewModel.isSwitchButtonVisible.value)
                         playPauseButtonController.toState1(true)
                     }
                 }
@@ -254,11 +304,21 @@ class MainMenu(private val onStopClicked: () -> Unit) : OverlayMenu() {
                     animateLayoutChanges {
                         setMenuItemVisibility(viewBinding.btnStop, false)
                         setMenuItemVisibility(viewBinding.btnClickList, false)
+                        setMenuItemVisibility(viewBinding.btnSwitchScenario, false)
                         playPauseButtonController.toState2(true)
                     }
                 }
             }
         }
+    }
+
+    private fun updateSwitchButtonVisibility(isVisible: Boolean) {
+        if (viewBinding.btnPlay.tag == null) {
+            viewBinding.btnSwitchScenario.visibility = if (isVisible) View.VISIBLE else View.GONE
+            return
+        }
+
+        setMenuItemVisibility(viewBinding.btnSwitchScenario, isVisible)
     }
 
     private fun updateVisibilityForPaywall(isHidden: Boolean) {
@@ -282,6 +342,7 @@ class MainMenu(private val onStopClicked: () -> Unit) : OverlayMenu() {
     private fun updateDebugOverlayViewVisibility(isVisible: Boolean) {
         if (isVisible && debugObservableJob == null) {
             viewBinding.layoutDebug.visibility = View.VISIBLE
+            refreshMenuLayout()
             debugObservableJob = observeDebugValues()
 
         } else if (!isVisible && debugObservableJob != null) {
@@ -290,6 +351,7 @@ class MainMenu(private val onStopClicked: () -> Unit) : OverlayMenu() {
 
             updateLiveDebugUiState(null)
             viewBinding.layoutDebug.visibility = View.GONE
+            refreshMenuLayout()
         }
     }
 
@@ -335,6 +397,14 @@ class MainMenu(private val onStopClicked: () -> Unit) : OverlayMenu() {
             ),
             hideCurrent = true,
         )
+
+    private fun onSwitchScenarioClicked() {
+        overlayManager.navigateTo(
+            context = context,
+            newOverlay = ScenarioSwitchDialog(onSwitchScenarioSelected),
+            hideCurrent = true,
+        )
+    }
 
     private fun showScenarioSaveErrorDialog() {
         MaterialAlertDialogBuilder(context.getDynamicColorsContext(R.style.AppTheme))

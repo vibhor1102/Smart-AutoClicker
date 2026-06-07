@@ -84,6 +84,14 @@ class TryImageConditionOverlayMenu(
 
     override fun onCreateOverlayView(): View = DebugOverlayView(context)
 
+    override fun onCreateOverlayViewLayoutParams(): android.view.WindowManager.LayoutParams =
+        super.onCreateOverlayViewLayoutParams().apply {
+            flags = flags or android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        }
+
+    override fun getTouchableViews(): List<View> =
+        listOf(buttonsContainer, viewBinding.sliderThreshold)
+
     override fun onStart() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {

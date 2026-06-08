@@ -6,11 +6,11 @@ on:
       tag_name:
         description: 'Release tag, for example v3.5.1-patched.10'
         required: true
-        default: 'v3.5.1-patched.10'
+        default: 'v3.5.1-patched.11'
       release_name:
         description: 'Public release name'
         required: true
-        default: 'Klickr Patched v3.5.1-patched.10'
+        default: 'Klickr Patched v3.5.1-patched.11'
       release_notes:
         description: 'Release notes'
         required: true

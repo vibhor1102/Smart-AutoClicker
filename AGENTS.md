@@ -38,6 +38,8 @@ Drop any commits already merged upstream during the rebase.
 ## Build & Release
 
 - Do not run routine Gradle verification locally; CI runs debug compile on push/PR.
+- Unless explicitly scoped to upstream PR work, debug/release builds mean this
+  fork's patched APKs, not upstream APKs.
 - Use `.github/workflows/debug-apk.yml` for hosted patched debug APKs.
 - Debug APK workflow defaults to `arm64-v8a`; use `abi=all` only when needed.
 - Verify hosted debug artifacts before install; patched debug package is

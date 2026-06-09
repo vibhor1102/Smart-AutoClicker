@@ -13,8 +13,13 @@ last.
 `feature/*` branches off `main`. Squash into one clean commit on `main` when
 done.
 
+Prefer `feature/*` or `wip/*` for new local work; local branch `dev` already
+exists, so avoid `dev/*` unless `dev` is retired.
+
 **Upstream PRs** get their own `feature/<name>` branch based on
 `upstream/master` (no fork infra/branding).
+Use a sibling worktree if the main checkout is dirty but upstream PR work is
+needed.
 
 **Syncing upstream:**
 ```
@@ -35,10 +40,14 @@ Drop any commits already merged upstream during the rebase.
 - Do not run routine Gradle verification locally; CI runs debug compile on push/PR.
 - Use `.github/workflows/debug-apk.yml` for hosted patched debug APKs.
 - Debug APK workflow defaults to `arm64-v8a`; use `abi=all` only when needed.
+- Verify hosted debug artifacts before install; patched debug package is
+  `com.buzbuz.smartautoclicker.patched.debug`.
 - Releases via `.github/workflows/release.yml` (manual trigger from `main` only).
 - Do not commit keystores or signing secrets.
 - GitHub releases restore signing secrets, verify the signed F-Droid APK, and
   publish artifacts. Upstream Play Store/nightly/test-report workflows are retired.
+- Do not commit downloaded artifacts, generated obfuscation outputs, or
+  temporary debug logging unless explicitly intended.
 
 ## Versioning
 
@@ -51,5 +60,6 @@ Drop any commits already merged upstream during the rebase.
 - Android 14 device available; use `platform-tools\adb.exe`.
 - Build debug APKs locally only when device debugging requires it.
 - Use debug builds only (separate `.debug` package); leave the main Patched app untouched.
+- If debug install hits a signature mismatch, uninstall only `.patched.debug`.
 - Set up adb/logcat yourself; the human only interacts with UI.
 - Minimize test requests to risky areas and do not run full test suites unless asked.

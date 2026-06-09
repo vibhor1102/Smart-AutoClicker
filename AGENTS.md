@@ -28,6 +28,7 @@ Drop any commits already merged upstream during the rebase.
 
 - Java 21, Android SDK at `C:\Users\Vibhor\AppData\Local\Android\Sdk`.
 - PowerShell from repo root on Windows.
+- Use `agents-md-maintainer` skill for AGENTS.md edits.
 
 ## Build & Release
 

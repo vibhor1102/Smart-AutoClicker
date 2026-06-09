@@ -33,6 +33,7 @@ Drop any commits already merged upstream during the rebase.
 
 - Do not run routine Gradle verification locally; CI runs debug compile on push/PR.
 - Use `.github/workflows/debug-apk.yml` for hosted patched debug APKs.
+- Debug APK workflow defaults to `arm64-v8a`; use `abi=all` only when needed.
 - Releases via `.github/workflows/release.yml` (manual trigger from `main` only).
 - Do not commit keystores or signing secrets.
 - GitHub releases restore signing secrets, verify the signed F-Droid APK, and

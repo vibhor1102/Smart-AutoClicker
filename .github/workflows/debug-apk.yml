@@ -29,6 +29,12 @@ jobs:
         echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
         echo "ANDROID_NDK_ROOT=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
 
+    - name: Cache debug keystore
+      uses: actions/cache@v4
+      with:
+        path: ~/.android/debug.keystore
+        key: ${{ runner.os }}-android-debug-keystore-${{ github.repository_id }}
+
     - name: Build debug APK
       shell: bash
       run: |

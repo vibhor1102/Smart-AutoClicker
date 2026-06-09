@@ -92,3 +92,4 @@ scripts/**/*.pyc
 /*.zip
 /*.bat
 /*.ps1
+/artifacts/

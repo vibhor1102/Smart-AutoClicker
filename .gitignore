@@ -88,3 +88,4 @@ lint/tmp/
 /*.zip
 /*.bat
 /*.ps1
+/artifacts/

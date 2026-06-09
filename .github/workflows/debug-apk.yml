@@ -2,6 +2,18 @@ name: Debug APK
 
 on:
   workflow_dispatch:
+    inputs:
+      abi:
+        description: Native ABI to package
+        required: true
+        default: arm64-v8a
+        type: choice
+        options:
+          - arm64-v8a
+          - armeabi-v7a
+          - x86_64
+          - x86
+          - all
 
 permissions:
   contents: read
@@ -35,11 +47,35 @@ jobs:
         path: ~/.android/debug.keystore
         key: ${{ runner.os }}-android-debug-keystore-${{ github.repository_id }}
 
+    - name: Install ccache
+      run: sudo apt-get install -y ccache
+
+    - name: Cache ccache
+      uses: actions/cache@v4
+      with:
+        path: .ccache
+        key: ${{ runner.os }}-debug-ccache-${{ inputs.abi }}-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-debug-ccache-${{ inputs.abi }}-
+          ${{ runner.os }}-debug-ccache-
+
     - name: Build debug APK
       shell: bash
+      env:
+        USE_CCACHE: "true"
+        CCACHE_DIR: ${{ github.workspace }}/.ccache
       run: |
+        ccache -M 500M
+
+        ABI_ARGS=()
+        if [ "${{ inputs.abi }}" != "all" ]; then
+          ABI_ARGS+=("-PklickrDebugAbi=${{ inputs.abi }}")
+        fi
+
         ./gradlew --no-daemon --max-workers=4 --parallel --build-cache \
+          "${ABI_ARGS[@]}" \
           :smartautoclicker:assembleFDroidDebug
+        ccache -s
 
     - name: Verify debug APK
       shell: bash
@@ -52,11 +88,23 @@ jobs:
         grep -q "name='com.buzbuz.smartautoclicker.patched.debug'" debug-badging.txt
         grep -q "application-debuggable" debug-badging.txt
 
+        unzip -l "$APK" | tee apk-files.txt
+        if [ "${{ inputs.abi }}" != "all" ]; then
+          grep -q "lib/${{ inputs.abi }}/libsmartautoclicker.so" apk-files.txt
+          unexpected_abis="$(grep -Eo 'lib/(arm64-v8a|armeabi-v7a|x86|x86_64)/' apk-files.txt | sort -u | grep -v "lib/${{ inputs.abi }}/" || true)"
+          if [ -n "$unexpected_abis" ]; then
+            echo "Unexpected native ABIs packaged:" >&2
+            echo "$unexpected_abis" >&2
+            exit 1
+          fi
+        fi
+
     - name: Upload debug APK
       uses: actions/upload-artifact@v4
       with:
-        name: smartautoclicker-patched-debug-apk
+        name: smartautoclicker-patched-debug-${{ inputs.abi }}-apk
         retention-days: 14
         path: |
           smartautoclicker/build/outputs/apk/fDroid/debug/smartautoclicker-fDroid-debug.apk
           debug-badging.txt
+          apk-files.txt

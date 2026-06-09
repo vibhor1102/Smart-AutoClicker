@@ -26,6 +26,13 @@ plugins {
     alias(libs.plugins.buzbuz.sourceDownload)
 }
 
+val debugAbiFilter = providers.gradleProperty("klickrDebugAbi")
+    .orNull
+    ?.split(',')
+    ?.map { abi -> abi.trim() }
+    ?.filter { abi -> abi.isNotEmpty() && !abi.equals("all", ignoreCase = true) }
+    .orEmpty()
+
 sourceDownload {
     projects {
         register("openCv") {
@@ -43,6 +50,12 @@ android {
     namespace = "com.buzbuz.smartautoclicker.core.detection"
 
     defaultConfig {
+        if (debugAbiFilter.isNotEmpty()) {
+            ndk {
+                abiFilters.addAll(debugAbiFilter)
+            }
+        }
+
         externalNativeBuild {
             cmake {
                 if (System.getenv("USE_CCACHE") == "true") {

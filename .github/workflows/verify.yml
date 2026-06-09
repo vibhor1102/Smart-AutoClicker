@@ -33,3 +33,9 @@ jobs:
       run: |
         ./gradlew --no-daemon --max-workers=4 --parallel --build-cache \
           :smartautoclicker:compileFDroidDebugKotlin
+
+    - name: Run Unit Tests
+      shell: bash
+      run: |
+        ./gradlew --no-daemon --max-workers=4 --parallel --build-cache \
+          testFDroidDebugUnitTest

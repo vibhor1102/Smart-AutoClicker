@@ -125,9 +125,21 @@ bool TemplateMatcher::isConfidenceValid(double confidence, int threshold) {
 
 bool TemplateMatcher::isColorValid(const cv::Mat& image, const ConditionImage& condition, int threshold) {
     double colorDiffThreshold = static_cast<double>(threshold);
+    double colorDiff = getColorDiff(image, condition.getColorMean());
+    double saturationDropDiff = getSaturationDropDiff(image, *condition.getColorMat());
+    bool isColorDiffValid = colorDiff < colorDiffThreshold;
+    bool isSaturationDropValid = saturationDropDiff < colorDiffThreshold;
 
-    return getColorDiff(image, condition.getColorMean()) < colorDiffThreshold
-           && getSaturationDropDiff(image, *condition.getColorMat()) < colorDiffThreshold;
+    LOGD(
+            "TemplateMatcher",
+            "Color validation: threshold=%.2f colorDiff=%.2f(%s) saturationDropDiff=%.2f(%s)",
+            colorDiffThreshold,
+            colorDiff,
+            isColorDiffValid ? "pass" : "fail",
+            saturationDropDiff,
+            isSaturationDropValid ? "pass" : "fail");
+
+    return isColorDiffValid && isSaturationDropValid;
 }
 
 double TemplateMatcher::getColorDiff(const cv::Mat& image, const cv::Scalar& conditionColorMeans) {

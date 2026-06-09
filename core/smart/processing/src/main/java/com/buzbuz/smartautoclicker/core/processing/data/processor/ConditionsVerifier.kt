@@ -18,6 +18,7 @@ package com.buzbuz.smartautoclicker.core.processing.data.processor
 
 import android.graphics.Bitmap
 import android.graphics.Point
+import android.util.Log
 
 import com.buzbuz.smartautoclicker.core.detection.ImageDetector
 import com.buzbuz.smartautoclicker.core.domain.model.AND
@@ -179,6 +180,18 @@ internal class ConditionsVerifier(
             )
         } ?: condition.toInvalidConditionResult()
 
+        Log.d(
+            TAG,
+            "Try/live image condition result: " +
+                "name=${condition.name}, " +
+                "threshold=${condition.threshold}, " +
+                "shouldBeDetected=${condition.shouldBeDetected}, " +
+                "detected=${result.haveBeenDetected}, " +
+                "fulfilled=${result.isFulfilled}, " +
+                "confidence=${"%.2f".format(result.confidenceRate)}, " +
+                "position=${result.position}"
+        )
+
         progressListener?.onImageConditionProcessingCompleted(result)
         return result
     }
@@ -200,3 +213,4 @@ internal class ConditionsVerifier(
 }
 
 private const val MANUAL_CLICK_RESULT_ID = -1L
+private const val TAG = "ConditionsVerifier"

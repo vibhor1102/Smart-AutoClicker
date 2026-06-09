@@ -132,17 +132,49 @@ internal class ActionExecutor(
     private fun getOnConditionClickPath(event: Event, click: Click, results: ConditionsResults?): Path? {
         if (event !is ImageEvent) return null
 
-        val resultPosition = when {
-            event.conditionOperator == MANUAL_CLICK -> results?.getManualClickResult()?.position
-            event.conditionOperator == OR -> results?.getFirstImageDetectedResult()?.position
-            click.clickOnConditionId != null -> results?.getImageConditionResult(click.clickOnConditionId!!.databaseId)?.position
+        val selectedManualResult = results?.getManualClickResult()
+        val selectedImageResult = when {
+            event.conditionOperator == OR -> results?.getFirstImageDetectedResult()
+            click.clickOnConditionId != null -> results?.getImageConditionResult(click.clickOnConditionId!!.databaseId)
             else -> null
         }
 
+        val resultPosition = when {
+            event.conditionOperator == MANUAL_CLICK -> selectedManualResult?.position
+            event.conditionOperator == OR -> selectedImageResult?.position
+            click.clickOnConditionId != null -> selectedImageResult?.position
+            else -> null
+        }
+
+        val selectedResultDescription = when {
+            event.conditionOperator == MANUAL_CLICK -> selectedManualResult.toString()
+            else -> selectedImageResult.toString()
+        }
+
         if (resultPosition == null) {
+            Log.d(
+                TAG,
+                "Click on detected condition has no usable position: " +
+                    "event=${event.name}, " +
+                    "action=${click.name}, " +
+                    "operator=${event.conditionOperator}, " +
+                    "targetConditionId=${click.clickOnConditionId?.databaseId}, " +
+                    "selectedResult=$selectedResultDescription"
+            )
             Log.w(TAG, "Click is invalid, can't execute")
             return null
         }
+
+        Log.d(
+            TAG,
+            "Click on detected condition will use position: " +
+                "event=${event.name}, " +
+                "action=${click.name}, " +
+                "operator=${event.conditionOperator}, " +
+                "targetConditionId=${click.clickOnConditionId?.databaseId}, " +
+                "resultPosition=$resultPosition, " +
+                "offset=${click.clickOffset}"
+        )
 
         return Path().apply {
             moveTo(

@@ -96,9 +96,11 @@ class ObfuscationPlugin : Plugin<Project> {
         val randomizeApplicationTask = target.registerRandomizeApplicationTask(obfuscatedApplication)
         val cleanupApplicationTask = target.registerCleanupTask(obfuscatedApplication)
 
-        target.tasks.withType(KotlinCompile::class.java).configureEach {
-            finalizedBy(cleanupApplicationTask)
+        target.tasks.matching { task -> task.name.startsWith("ksp") }.configureEach {
+            dependsOn(randomizeApplicationTask)
         }
+        target.tasks.first { task -> task.name.startsWith("package") }
+            .finalizedBy(cleanupApplicationTask)
 
         obfuscatedComponents.forEach { component ->
             target.logger.info("Randomizing ${component.originalClassName}")

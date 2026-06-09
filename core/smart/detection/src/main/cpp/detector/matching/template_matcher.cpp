@@ -29,6 +29,10 @@ static constexpr int MIN_COLORFUL_SATURATION = 128;
 static constexpr int MIN_COLORFUL_VALUE = 40;
 static constexpr double MIN_COLORFUL_PIXEL_RATIO = 0.05;
 
+namespace {
+    constexpr const char* LOG_TAG = "TemplateMatcher";
+}
+
 
 void TemplateMatcher::reset() {
     currentMatchingResult.reset();
@@ -104,17 +108,74 @@ void TemplateMatcher::parseMatchingResult(
                 matchingResult);
 
         // Check if the highest result is above threshold. If not, we will never find.
-        if (!isConfidenceValid(currentMatchingResult.getResultConfidence(), threshold)) break;
+        const double confidence = currentMatchingResult.getResultConfidence();
+        const double confidenceThreshold = (100.0 - threshold) / 100.0;
+        if (!isConfidenceValid(confidence, threshold)) {
+            LOGD(
+                    LOG_TAG,
+                    "Rejected best candidate before color checks: confidence=%.4f threshold=%.4f thresholdArg=%d area=(x=%d,y=%d,w=%d,h=%d)",
+                    confidence,
+                    confidenceThreshold,
+                    threshold,
+                    currentMatchingResult.getResultArea().x,
+                    currentMatchingResult.getResultArea().y,
+                    currentMatchingResult.getResultArea().width,
+                    currentMatchingResult.getResultArea().height);
+            break;
+        }
 
         // Check if result area is valid. If not, check next possible match
-        if (!isRoiBiggerOrEquals(screenImage.getRoi(), currentMatchingResult.getResultArea())) continue;
+        if (!isRoiBiggerOrEquals(screenImage.getRoi(), currentMatchingResult.getResultArea())) {
+            LOGD(
+                    LOG_TAG,
+                    "Rejected candidate due to invalid ROI: confidence=%.4f area=(x=%d,y=%d,w=%d,h=%d) screen=(x=%d,y=%d,w=%d,h=%d)",
+                    confidence,
+                    currentMatchingResult.getResultArea().x,
+                    currentMatchingResult.getResultArea().y,
+                    currentMatchingResult.getResultArea().width,
+                    currentMatchingResult.getResultArea().height,
+                    screenImage.getRoi().x,
+                    screenImage.getRoi().y,
+                    screenImage.getRoi().width,
+                    screenImage.getRoi().height);
+            continue;
+        }
 
         // Check if the colors are matching in the candidate area.
         cv::Mat fullSizeColorCroppedCurrentImage = screenImage.cropColor(currentMatchingResult.getResultArea());
 
+        const double colorDiff = getColorDiff(fullSizeColorCroppedCurrentImage, condition.getColorMean());
+        const double saturationDropDiff = getSaturationDropDiff(fullSizeColorCroppedCurrentImage, *condition.getColorMat());
+        const double colorDiffThreshold = static_cast<double>(threshold);
+        const bool colorDiffValid = colorDiff < colorDiffThreshold;
+        const bool saturationValid = saturationDropDiff < colorDiffThreshold;
+
+        LOGD(
+                LOG_TAG,
+                "Candidate checks: confidence=%.4f threshold=%.4f thresholdArg=%d area=(x=%d,y=%d,w=%d,h=%d) rgbDiff=%.2f rgbPass=%s saturationDrop=%.2f saturationPass=%s",
+                confidence,
+                confidenceThreshold,
+                threshold,
+                currentMatchingResult.getResultArea().x,
+                currentMatchingResult.getResultArea().y,
+                currentMatchingResult.getResultArea().width,
+                currentMatchingResult.getResultArea().height,
+                colorDiff,
+                colorDiffValid ? "true" : "false",
+                saturationDropDiff,
+                saturationValid ? "true" : "false");
+
         // If the colors are OK, the result is valid
-        if (isColorValid(fullSizeColorCroppedCurrentImage, condition, threshold)) {
+        if (colorDiffValid && saturationValid) {
+            LOGD(LOG_TAG, "Detection accepted: confidence=%.4f", confidence);
             currentMatchingResult.markResultAsDetected();
+        } else {
+            LOGD(
+                    LOG_TAG,
+                    "Detection rejected after color checks: confidence=%.4f rgbPass=%s saturationPass=%s",
+                    confidence,
+                    colorDiffValid ? "true" : "false",
+                    saturationValid ? "true" : "false");
         }
     }
 }

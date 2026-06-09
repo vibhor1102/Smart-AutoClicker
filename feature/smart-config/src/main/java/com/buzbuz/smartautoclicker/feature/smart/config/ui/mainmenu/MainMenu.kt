@@ -63,8 +63,8 @@ import kotlinx.coroutines.launch
  * once the user has selected a scenario to be used. It allows the user to start the detection on the currently loaded
  * scenario, as well as editing the attached list of events.
  *
- * There is no overlay views attached to this overlay menu, meaning that the user will always be able to clicks on the
- * Activities displayed below it.
+ * During normal runtime, the debug panel should stay informational and let the user interact with the app underneath.
+ * A fullscreen overlay view is only used when manual click capture is enabled.
  */
 class MainMenu(
     private val onStopClicked: () -> Unit,
@@ -96,6 +96,9 @@ class MainMenu(
 
     /** The coroutine job for the observable used in debug mode. Null when not in debug mode. */
     private var debugObservableJob: Job? = null
+    private var isScenarioRunning: Boolean = false
+    private var isDebugPanelVisible: Boolean = false
+    private var isManualClickCaptureEnabled: Boolean = false
 
     /**
      * Tells if this service has handled onKeyEvent with ACTION_DOWN for a key in order to return
@@ -146,7 +149,7 @@ class MainMenu(
                 launch { viewModel.isSwitchButtonVisible.collect(::updateSwitchButtonVisibility) }
                 launch { viewModel.detectionState.collect(::updateDetectionState) }
                 launch { viewModel.nativeLibError.collect(::showNativeLibErrorDialogIfNeeded) }
-                launch { viewModel.manualClickCaptureEnabled.collect(::setOverlayViewVisibility) }
+                launch { viewModel.manualClickCaptureEnabled.collect(::updateManualClickCaptureState) }
                 launch { debuggingViewModel.isDebugging.collect(::updateDebugOverlayViewVisibility) }
             }
         }
@@ -165,6 +168,9 @@ class MainMenu(
 
     override fun animateOverlayView(): Boolean = false
 
+    override fun shouldUseTouchableInsets(): Boolean = shouldUseRuntimeDebugPassthrough()
+
+    override fun shouldUseGestureDispatchWindowTouchability(): Boolean = shouldUseRuntimeDebugPassthrough()
     override fun onStart() {
         super.onStart()
 
@@ -175,6 +181,7 @@ class MainMenu(
 
         // Start loading advertisement if needed
         viewModel.loadAdIfNeeded(context)
+        updateRuntimeDebugTouchHandling()
     }
 
     override fun onStop() {
@@ -296,6 +303,8 @@ class MainMenu(
     /** Refresh the menu layout according to the detection state. */
     private fun updateDetectionState(newState: UiState) {
         val currentState = viewBinding.btnPlay.tag
+        isScenarioRunning = newState == UiState.Detecting
+        updateRuntimeDebugTouchHandling()
         if (currentState == newState) return
 
         viewBinding.btnPlay.tag = newState
@@ -356,6 +365,7 @@ class MainMenu(
      * @param isVisible true when the debug view should be shown, false to hide it.
      */
     private fun updateDebugOverlayViewVisibility(isVisible: Boolean) {
+        isDebugPanelVisible = isVisible
         if (isVisible && debugObservableJob == null) {
             viewBinding.layoutDebug.visibility = View.VISIBLE
             refreshMenuLayout()
@@ -369,8 +379,22 @@ class MainMenu(
             viewBinding.layoutDebug.visibility = View.GONE
             refreshMenuLayout()
         }
+
+        updateRuntimeDebugTouchHandling()
     }
 
+    private fun updateManualClickCaptureState(isEnabled: Boolean) {
+        isManualClickCaptureEnabled = isEnabled
+        setOverlayViewVisibility(isEnabled)
+        updateRuntimeDebugTouchHandling()
+    }
+
+    private fun shouldUseRuntimeDebugPassthrough(): Boolean =
+        isScenarioRunning && isDebugPanelVisible && !isManualClickCaptureEnabled
+
+    private fun updateRuntimeDebugTouchHandling() {
+        refreshTouchHandling()
+    }
     /**
      * Observe the values for the debug and update the debug views.
      * @return the coroutine job for the observable. Can be cancelled to stop the observation.

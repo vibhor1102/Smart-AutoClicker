@@ -153,13 +153,13 @@ abstract class OverlayMenu(
     /** The layout parameters of the overlay view. */
     private lateinit var overlayLayoutParams: WindowManager.LayoutParams
     private var originalOverlayFlags: Int = 0
+    private var isWindowStarted: Boolean = false
+    private var forceWindowPassthrough: Boolean = false
 
     private var internalInsetsListenerProxy: Any? = null
 
     private fun setupInternalInsetsListener() {
-        if (internalInsetsListenerProxy != null) {
-            removeInternalInsetsListener()
-        }
+        if (internalInsetsListenerProxy != null) return
         try {
             val listenerClass = Class.forName("android.view.ViewTreeObserver\$OnComputeInternalInsetsListener")
             val touchableRegionField = Class.forName("android.view.ViewTreeObserver\$InternalInsetsInfo").getField("touchableRegion")
@@ -213,9 +213,24 @@ abstract class OverlayMenu(
         }
     }
 
+    private fun updateInternalInsetsListener() {
+        if (!this::menuLayout.isInitialized || !menuLayout.isAttachedToWindow) return
+
+        if (shouldUseTouchableInsets()) {
+            setupInternalInsetsListener()
+            menuLayout.requestLayout()
+        } else {
+            removeInternalInsetsListener()
+        }
+    }
+
     protected open fun getTouchableViews(): List<View> {
         return listOf(buttonsContainer)
     }
+
+    protected open fun shouldUseTouchableInsets(): Boolean = false
+
+    protected open fun shouldForceNotTouchableOnGestureDispatch(): Boolean = false
 
     private val onLockedPositionChangedListener: (Point?) -> Unit = ::onLockedPositionChanged
 
@@ -275,7 +290,7 @@ abstract class OverlayMenu(
         // Add the attach listener to set up the insets listener when attached to the window
         menuLayout.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
             override fun onViewAttachedToWindow(v: View) {
-                setupInternalInsetsListener()
+                updateInternalInsetsListener()
             }
 
             override fun onViewDetachedFromWindow(v: View) {
@@ -351,7 +366,9 @@ abstract class OverlayMenu(
         super.start()
         loadMenuPosition(displayConfigManager.displayConfig.orientation)
 
-        updateWindowTouchability(true)
+        isWindowStarted = true
+        applyWindowTouchability()
+        updateInternalInsetsListener()
 
         // Start the show animation for the menu
         Log.d(TAG, "Start show overlay ${hashCode()} animation...")
@@ -403,7 +420,9 @@ abstract class OverlayMenu(
             screenOverlayView?.visibility = View.GONE
 
             super.stop()
-            updateWindowTouchability(false)
+            isWindowStarted = false
+            applyWindowTouchability()
+            updateInternalInsetsListener()
 
             if (destroyOnceHidden) {
                 destroyOnceHidden = false
@@ -512,6 +531,11 @@ abstract class OverlayMenu(
      * @param isVisible true if it has became visible, false if it became invisible.
      */
     protected open fun onScreenOverlayVisibilityChanged(isVisible: Boolean): Unit = Unit
+
+    protected fun refreshTouchHandling() {
+        updateInternalInsetsListener()
+        applyWindowTouchability()
+    }
 
     /**
      * Get the maximum size the window can take.
@@ -642,21 +666,12 @@ abstract class OverlayMenu(
             if (isOverlayVisible) {
                 visibility = View.VISIBLE
                 hideOverlayButton?.setImageResource(R.drawable.ic_visible_on)
-
-                if (isAttachedToWindow) {
-                    overlayLayoutParams.flags = originalOverlayFlags
-                    windowManager.safeUpdateViewLayout(this, overlayLayoutParams)
-                }
             } else {
                 visibility = View.GONE
                 hideOverlayButton?.setImageResource(R.drawable.ic_visible_off)
-
-                if (isAttachedToWindow) {
-                    overlayLayoutParams.flags = overlayLayoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-                    windowManager.safeUpdateViewLayout(this, overlayLayoutParams)
-                }
             }
 
+            refreshTouchHandling()
             onScreenOverlayVisibilityChanged(isOverlayVisible)
         }
     }
@@ -759,39 +774,46 @@ abstract class OverlayMenu(
         }
     }
 
-    private fun updateWindowTouchability(isStarted: Boolean) {
+    private fun applyWindowTouchability() {
         if (!lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)) return
 
-        if (isStarted) {
-            menuLayoutParams.flags = menuLayoutParams.flags and WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE.inv()
-            windowManager.safeUpdateViewLayout(menuLayout, menuLayoutParams)
-
-            screenOverlayView?.let { view ->
-                if (view.visibility == View.VISIBLE) {
-                    overlayLayoutParams.flags = originalOverlayFlags
-                } else {
-                    overlayLayoutParams.flags = overlayLayoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-                }
-
-                if (view.isAttachedToWindow) {
-                    windowManager.safeUpdateViewLayout(view, overlayLayoutParams)
-                }
-            }
+        val shouldForceNotTouchable = forceWindowPassthrough && shouldForceNotTouchableOnGestureDispatch()
+        val menuFlags = if (isWindowStarted && !shouldForceNotTouchable) {
+            menuLayoutParams.flags and WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE.inv()
         } else {
-            menuLayoutParams.flags = menuLayoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-            windowManager.safeUpdateViewLayout(menuLayout, menuLayoutParams)
+            menuLayoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        }
 
-            screenOverlayView?.let { view ->
-                overlayLayoutParams.flags = overlayLayoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-                if (view.isAttachedToWindow) {
-                    windowManager.safeUpdateViewLayout(view, overlayLayoutParams)
-                }
+        if (menuLayoutParams.flags != menuFlags) {
+            menuLayoutParams.flags = menuFlags
+        }
+        if (menuLayout.isAttachedToWindow) {
+            windowManager.safeUpdateViewLayout(menuLayout, menuLayoutParams)
+        }
+
+        screenOverlayView?.let { view ->
+            val overlayFlags = when {
+                !isWindowStarted || shouldForceNotTouchable || view.visibility != View.VISIBLE ->
+                    overlayLayoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+
+                else -> originalOverlayFlags
+            }
+
+            if (overlayLayoutParams.flags != overlayFlags) {
+                overlayLayoutParams.flags = overlayFlags
+            }
+            if (view.isAttachedToWindow) {
+                windowManager.safeUpdateViewLayout(view, overlayLayoutParams)
             }
         }
     }
 
     override fun setWindowTouchable(touchable: Boolean) {
-        updateWindowTouchability(touchable)
+        val shouldForceWindowPassthrough = !touchable && shouldForceNotTouchableOnGestureDispatch()
+        if (forceWindowPassthrough == shouldForceWindowPassthrough) return
+
+        forceWindowPassthrough = shouldForceWindowPassthrough
+        applyWindowTouchability()
     }
 }
 

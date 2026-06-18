@@ -24,7 +24,7 @@ interface LocalAccessibilityService {
 
     fun startDumbScenario(dumbScenario: DumbScenario)
     fun startSmartScenario(resultCode: Int, data: Intent, scenario: Scenario)
+    fun switchSmartScenario(scenario: Scenario): Boolean
     fun stopScenario()
     fun release()
-
 }

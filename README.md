@@ -1,11 +1,16 @@
 <p align="center">
   <img src="https://github.com/Nain57/SmartAutoClicker/blob/master/smartautoclicker/src/main/ic_smart_auto_clicker-playstore.png?raw=true" height="64">
-  <h3 align="center">Klick'r - Smart AutoClicker</h3>
-  <p align="center">An Autoclicker Based On Image Detection
+  <h3 align="center">Klick'r Patched - Smart AutoClicker</h3>
+  <p align="center">Vibhor's maintained fork of an autoclicker based on image detection
   </p>
 </p>
 
 <br>
+
+> This is Vibhor's maintained patched fork of Klick'r. It keeps upstream changes
+> visible while publishing fork releases as `v<upstream-version>-patched.<N>`.
+>
+> Upstream project: https://github.com/Nain57/Smart-AutoClicker
 
 <p align="center">
   <a href='https://play.google.com/store/apps/details?id=com.buzbuz.smartautoclicker&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
@@ -17,6 +22,16 @@
 </p>
 
 </br>
+
+## Fork releases
+
+Public fork builds are published from GitHub Actions using the F-Droid flavor and
+the patched package id `com.buzbuz.smartautoclicker.patched`. Release versions
+preserve the upstream base version and add a fork patch suffix, for example
+`v4.0.0-beta01-patched.1`.
+
+The Play Store and F-Droid badges below point to upstream distribution channels.
+Use this fork's GitHub releases for patched builds.
  
 <p>Klick'r is an open-source Android application designed to automate repetitive tasks effortlessly. Formerly known as Smart AutoClicker, Klick'r offers unique image detection capabilities alongside traditional auto-clicking functionalities, providing a versatile solution for all your automation needs.
 </p>
@@ -36,5 +51,6 @@
 
 ## Links:
 * A question ? Read the Wiki first: https://github.com/Nain57/Smart-AutoClicker/wiki
-* Found a bug? Open an issue here: https://github.com/Nain57/Smart-AutoClicker/issues/new?template=bug_report.yml
-* You think an application is blocking Klick'r? Try the obfuscated version: https://github.com/Nain57/Smart-AutoClicker/releases/tag/obfuscation-start
+* Found a fork-specific bug? Open an issue in this fork: https://github.com/vibhor1102/Smart-AutoClicker/issues/new
+* Found an upstream bug? Open it upstream: https://github.com/Nain57/Smart-AutoClicker/issues/new?template=bug_report.yml
+* You think an application is blocking Klick'r? Try the upstream obfuscated version: https://github.com/Nain57/Smart-AutoClicker/releases/tag/obfuscation-start

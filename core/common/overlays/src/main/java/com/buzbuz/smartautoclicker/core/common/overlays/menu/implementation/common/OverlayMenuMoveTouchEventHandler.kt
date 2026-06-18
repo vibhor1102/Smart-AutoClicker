@@ -20,10 +20,12 @@ import android.graphics.Point
 import android.view.HapticFeedbackConstants
 import android.view.MotionEvent
 import android.view.View
-import android.view.WindowManager
 
 internal class OverlayMenuMoveTouchEventHandler(
     private val onMenuMoved: (Point) -> Unit,
+    private val getCurrentMenuPosition: () -> Point,
+    private val onMoveStarted: () -> Unit,
+    private val onMoveFinished: () -> Unit,
 ) {
 
     /** The initial position of the overlay menu when pressing the move menu item. */
@@ -35,7 +37,7 @@ internal class OverlayMenuMoveTouchEventHandler(
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
                 viewToMove.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS)
-                onDownEvent(viewToMove, event)
+                onDownEvent(event)
                 true
             }
 
@@ -44,12 +46,17 @@ internal class OverlayMenuMoveTouchEventHandler(
                 true
             }
 
+            MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                onMoveFinished()
+                true
+            }
+
             else -> false
         }
 
-    private fun onDownEvent(viewToMove: View, event: MotionEvent) {
-        val layoutParams = (viewToMove.layoutParams as WindowManager.LayoutParams)
-        moveInitialViewPosition = Point(layoutParams.x, layoutParams.y)
+    private fun onDownEvent(event: MotionEvent) {
+        onMoveStarted()
+        moveInitialViewPosition = getCurrentMenuPosition()
         moveInitialTouchPosition = Point(event.rawX.toInt(), event.rawY.toInt())
     }
 

@@ -133,6 +133,7 @@ class ObfuscationPlugin : Plugin<Project> {
 
         target.logger.info("Create component config file at $path")
 
+        configFile.parentFile.mkdirs()
         configFile.writeText(configFileContent)
     }
 

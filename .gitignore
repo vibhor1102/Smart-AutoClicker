@@ -59,6 +59,14 @@ captures/
 #*.jks
 #*.keystore
 
+# Fork release signing material
+/smartautoclicker/*.jks
+/smartautoclicker/*.keystore
+/smartautoclicker/*.asc
+/smartautoclicker/*.gpg
+/keystore.properties
+/local-signing.properties
+
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
 .cxx/
@@ -96,3 +104,4 @@ scripts/**/*.pyc
 /*.zip
 /*.bat
 /*.ps1
+/artifacts/

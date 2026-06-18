@@ -17,7 +17,7 @@
 -->
 <resources>
 
-    <string name="app_name" translatable="false">Klick\'r</string>
+    <string name="app_name" translatable="false">Klick\'r Patched</string>
 
     <string name="activity_scenario_title">Scenarios</string>
     <string name="accessibility_service_description">This application needs this service to inject the clicks you have
@@ -146,7 +146,6 @@
     <string name="button_condition_migration_start">Migrate</string>
     <string name="button_condition_migration_running">Migrating</string>
     <string name="button_condition_migration_finished">OK</string>
-
 
     <string name="dialog_title_backup">Backup</string>
     <string name="message_backup">Create or import a zip archive of scenarios</string>

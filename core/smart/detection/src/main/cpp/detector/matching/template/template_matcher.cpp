@@ -151,7 +151,7 @@ bool TemplateMatcher::isColorValid(const cv::Mat& image, const ConditionImage& c
     double colorDiffThreshold = static_cast<double>(threshold);
 
     return getColorDiff(image, condition.getColorMean()) < colorDiffThreshold
-           && getSaturationDropDiff(image, *condition.getColorMat()) < SATURATION_DROP_THRESHOLD;
+           && getSaturationDropDiff(image, condition.getColorMat()) < SATURATION_DROP_THRESHOLD;
 }
 
 double TemplateMatcher::getColorDiff(const cv::Mat& image, const cv::Scalar& conditionColorMeans) {

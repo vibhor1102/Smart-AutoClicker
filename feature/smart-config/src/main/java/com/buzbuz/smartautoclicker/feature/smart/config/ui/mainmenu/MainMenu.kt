@@ -17,6 +17,7 @@
 package com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu
 
 import android.content.DialogInterface
+import android.graphics.Point
 import android.util.Size
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -24,6 +25,7 @@ import android.view.ViewGroup
 import android.view.View
 import androidx.core.view.isVisible
 
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -37,6 +39,8 @@ import com.buzbuz.smartautoclicker.core.common.overlays.manager.OverlayManager.C
 import com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu
 import com.buzbuz.smartautoclicker.core.common.tutorial.domain.model.Tip
 import com.buzbuz.smartautoclicker.core.common.tutorial.domain.model.monitoring.MonitoredOverlayType
+import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common.HorizontalSidePanelController
+import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common.HorizontalSidePanelSide
 import com.buzbuz.smartautoclicker.core.domain.model.scenario.Scenario
 import com.buzbuz.smartautoclicker.core.ui.utils.AnimatedStatesImageButtonController
 import com.buzbuz.smartautoclicker.core.ui.utils.getDynamicColorsContext
@@ -98,6 +102,8 @@ class MainMenu(
     private lateinit var playPauseButtonController: AnimatedStatesImageButtonController
     /** Adapter upon actions being executed while in live debugging. */
     private val debugLiveActionsAdapter: LiveDebuggingActionsAdapter = LiveDebuggingActionsAdapter()
+    /** Controls which side the live debug panel is attached to. */
+    private lateinit var debugSidePanelController: HorizontalSidePanelController
 
     /** The coroutine job for the observable used in debug mode. Null when not in debug mode. */
     private var debugObservableJob: Job? = null
@@ -118,6 +124,12 @@ class MainMenu(
         )
         viewBinding = OverlayMenuBinding.inflate(layoutInflater)
         playPauseButtonController.attachView(viewBinding.btnPlay)
+        debugSidePanelController = HorizontalSidePanelController(
+            parent = viewBinding.layoutDebug.parent as ConstraintLayout,
+            menuItems = viewBinding.menuItems,
+            sidePanel = viewBinding.layoutDebug,
+            innerSeparator = viewBinding.separatorStart,
+        )
 
         return viewBinding.root
     }
@@ -206,11 +218,42 @@ class MainMenu(
     }
 
     override fun getWindowMaximumSize(backgroundView: ViewGroup): Size {
+        val switchButtonVisibility = viewBinding.btnSwitchScenario.visibility
+        viewBinding.btnSwitchScenario.visibility = View.VISIBLE
+
         val bgSize = super.getWindowMaximumSize(backgroundView)
+        viewBinding.btnSwitchScenario.visibility = switchButtonVisibility
+
         return Size(
             bgSize.width + context.resources.getDimensionPixelSize(R.dimen.overlay_debug_panel_width),
             bgSize.height,
         )
+    }
+
+    override fun getMenuAnchorWidth(windowSize: Size): Int =
+        viewBinding.menuItems.width.takeIf { it > 0 } ?: super.getMenuAnchorWidth(windowSize)
+
+    override fun onMenuAnchorPositionUpdated(anchorPosition: Point, windowSize: Size): Point {
+        if (viewBinding.layoutDebug.visibility != View.VISIBLE) {
+            debugSidePanelController.applySide(HorizontalSidePanelSide.RIGHT)
+            return anchorPosition
+        }
+
+        val anchorWidth = getMenuAnchorWidth(windowSize)
+        val panelWidth = (windowSize.width - anchorWidth).coerceAtLeast(0)
+        val side =
+            if (shouldRefreshSidePanelPlacement()) {
+                chooseHorizontalSidePanelSide(anchorPosition, anchorWidth, panelWidth, debugSidePanelController)
+            } else {
+                debugSidePanelController.currentSide
+            }
+
+        debugSidePanelController.applySide(side)
+        return if (side == HorizontalSidePanelSide.LEFT) {
+            Point(anchorPosition.x - panelWidth, anchorPosition.y)
+        } else {
+            anchorPosition
+        }
     }
 
     fun onMediaProjectionLost() {
@@ -262,8 +305,14 @@ class MainMenu(
     private fun updatePlayPauseButtonEnabledState(canStartDetection: Boolean) =
         setMenuItemViewEnabled(viewBinding.btnPlay, canStartDetection)
 
-    private fun updateSwitchButtonVisibility(isVisible: Boolean) =
+    private fun updateSwitchButtonVisibility(isVisible: Boolean) {
+        if (viewBinding.btnPlay.tag == null) {
+            viewBinding.btnSwitchScenario.visibility = if (isVisible) View.VISIBLE else View.GONE
+            return
+        }
+
         setMenuItemVisibility(viewBinding.btnSwitchScenario, isVisible)
+    }
 
     /** Refresh the menu layout according to the detection state. */
     private fun updateDetectionState(newState: UiState) {
@@ -325,6 +374,7 @@ class MainMenu(
     private fun updateDebugOverlayViewVisibility(isVisible: Boolean) {
         if (isVisible && debugObservableJob == null) {
             viewBinding.layoutDebug.visibility = View.VISIBLE
+            refreshMenuLayout()
             debugObservableJob = observeDebugValues()
 
         } else if (!isVisible && debugObservableJob != null) {
@@ -333,6 +383,7 @@ class MainMenu(
 
             updateLiveDebugUiState(null)
             viewBinding.layoutDebug.visibility = View.GONE
+            refreshMenuLayout()
         }
     }
 

@@ -47,6 +47,8 @@ import com.buzbuz.smartautoclicker.core.common.overlays.R
 import com.buzbuz.smartautoclicker.core.common.overlays.base.BaseOverlay
 import com.buzbuz.smartautoclicker.core.common.overlays.di.OverlaysEntryPoint
 import com.buzbuz.smartautoclicker.core.common.overlays.manager.OverlayManager
+import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common.HorizontalSidePanelController
+import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common.HorizontalSidePanelSide
 import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common.OverlayMenuAnimations
 import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common.OverlayMenuMoveTouchEventHandler
 import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common.OverlayMenuPositionDataSource
@@ -102,6 +104,8 @@ abstract class OverlayMenu(
     /** The layout parameters of the menu layout. */
     private val menuLayoutParams: WindowManager.LayoutParams =
         WindowManager.LayoutParams().apply { copyFrom(baseLayoutParams) }
+    /** Logical position of the menu button cluster, independent from optional side panels. */
+    private val menuAnchorPosition: Point = Point(0, 0)
 
     private val animations: OverlayMenuAnimations = OverlayMenuAnimations()
 
@@ -137,6 +141,8 @@ abstract class OverlayMenu(
     private var hideOverlayButton: ImageButton? = null
     /** The move button, if provided. */
     private var moveButton: View? = null
+    /** True while the user is dragging this overlay menu. */
+    private var moveInProgress: Boolean = false
 
     /**
      * The view to be displayed between the current activity and the overlay menu.
@@ -202,7 +208,12 @@ abstract class OverlayMenu(
         setupButtons(buttonsContainer)
 
         // Setup the touch event handler for the move button
-        moveTouchEventHandler = OverlayMenuMoveTouchEventHandler(::updateMenuPosition)
+        moveTouchEventHandler = OverlayMenuMoveTouchEventHandler(
+            onMenuMoved = ::updateMenuPosition,
+            getCurrentMenuPosition = { Point(menuAnchorPosition) },
+            onMoveStarted = { moveInProgress = true },
+            onMoveFinished = ::onMenuMoveFinished,
+        )
 
         // Restore the last menu position, if any.
         menuLayoutParams.gravity = Gravity.TOP or Gravity.START
@@ -431,6 +442,30 @@ abstract class OverlayMenu(
         return Size(backgroundView.measuredWidth, backgroundView.measuredHeight)
     }
 
+    /** Width of the user-controlled menu anchor; defaults to the full overlay window. */
+    protected open fun getMenuAnchorWidth(windowSize: Size): Int = windowSize.width
+
+    /**
+     * Allows implementations to shift the actual window while keeping [anchorPosition] as the saved user position.
+     */
+    protected open fun onMenuAnchorPositionUpdated(anchorPosition: Point, windowSize: Size): Point = anchorPosition
+
+    protected fun chooseHorizontalSidePanelSide(
+        anchorPosition: Point,
+        anchorWidth: Int,
+        panelWidth: Int,
+        sidePanelController: HorizontalSidePanelController,
+    ): HorizontalSidePanelSide =
+        sidePanelController.chooseSide(
+            anchorX = anchorPosition.x,
+            anchorWidth = anchorWidth,
+            screenWidth = displayConfigManager.displayConfig.sizePx.x,
+            panelWidth = panelWidth,
+        )
+
+    protected fun shouldRefreshSidePanelPlacement(): Boolean =
+        !moveInProgress
+
     /**
      * Change the menu view visibility.
      * @param visibility the new visibility to apply.
@@ -502,6 +537,10 @@ abstract class OverlayMenu(
         !resizeController.isAnimating && !animations.showAnimationIsRunning
                 && !animations.hideAnimationIsRunning && menuBackground.width > 0
 
+    protected fun refreshMenuLayout() {
+        forceWindowResize()
+    }
+
     private fun forceWindowResize() {
         Log.d(TAG, "Force window resize")
         onNewWindowSize(resizeController.measureMenuSize())
@@ -510,6 +549,7 @@ abstract class OverlayMenu(
     private fun onNewWindowSize(size: Size) {
         menuLayoutParams.width = size.width
         menuLayoutParams.height = size.height
+        updateMenuPosition(menuAnchorPosition)
 
         if (lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED)) {
             Log.d(TAG, "Updating menu window size: ${size.width}/${size.height}")
@@ -566,14 +606,25 @@ abstract class OverlayMenu(
         return moveTouchEventHandler.onTouchEvent(menuLayout, event)
     }
 
+    private fun onMenuMoveFinished() {
+        moveInProgress = false
+        updateMenuPosition(menuAnchorPosition)
+    }
 
     /** Safe setter for the position of the overlay menu ensuring it will not be displayed outside the screen. */
     private fun updateMenuPosition(position: Point) {
         val displaySize = displayConfigManager.displayConfig.sizePx
-        if (displaySize.x < menuLayout.width || displaySize.y < menuLayout.height) return
+        val windowSize = getMenuWindowSize()
+        if (displaySize.x < windowSize.width || displaySize.y < windowSize.height) return
 
-        menuLayoutParams.x = position.x.coerceIn(0, displaySize.x - menuLayout.width)
-        menuLayoutParams.y = position.y.coerceIn(0, displaySize.y - menuLayout.height)
+        val anchorWidth = getMenuAnchorWidth(windowSize)
+        menuAnchorPosition.x = position.x.coerceIn(0, displaySize.x - anchorWidth)
+        menuAnchorPosition.y = position.y.coerceIn(0, displaySize.y - windowSize.height)
+
+        val windowPosition = onMenuAnchorPositionUpdated(Point(menuAnchorPosition), windowSize)
+
+        menuLayoutParams.x = windowPosition.x.coerceIn(0, displaySize.x - windowSize.width)
+        menuLayoutParams.y = windowPosition.y.coerceIn(0, displaySize.y - windowSize.height)
 
         if (lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)) {
             Log.d(TAG, "Updating menu window position: ${menuLayoutParams.x}/${menuLayoutParams.y}")
@@ -583,14 +634,15 @@ abstract class OverlayMenu(
 
     private fun loadMenuPosition(orientation: Int) {
         val savedPosition = positionDataSource.loadMenuPosition(orientation)
-        if (savedPosition != null && savedPosition.x != 0 && savedPosition.y != 0) {
+        if (savedPosition != null) {
             updateMenuPosition(savedPosition)
         } else {
             menuLayout.doWhenMeasured {
+                val windowSize = getMenuWindowSize()
                 updateMenuPosition(
                     Point(
-                        (displayConfigManager.displayConfig.sizePx.x - menuLayout.width) / 2,
-                        (displayConfigManager.displayConfig.sizePx.y / 2) - menuLayout.height,
+                        (displayConfigManager.displayConfig.sizePx.x - getMenuAnchorWidth(windowSize)) / 2,
+                        (displayConfigManager.displayConfig.sizePx.y / 2) - windowSize.height,
                     )
                 )
             }
@@ -599,10 +651,16 @@ abstract class OverlayMenu(
 
     private fun saveMenuPosition(orientation: Int) {
         positionDataSource.saveMenuPosition(
-            position = Point(menuLayoutParams.x, menuLayoutParams.y),
+            position = Point(menuAnchorPosition),
             orientation = orientation,
         )
     }
+
+    private fun getMenuWindowSize(): Size =
+        Size(
+            if (menuLayoutParams.width > 0) menuLayoutParams.width else menuLayout.width,
+            if (menuLayoutParams.height > 0) menuLayoutParams.height else menuLayout.height,
+        )
 
     private fun onLockedPositionChanged(lockedPosition: Point?) {
         if (lockedPosition != null) {

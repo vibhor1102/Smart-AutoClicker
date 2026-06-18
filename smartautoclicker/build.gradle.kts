@@ -28,6 +28,13 @@ plugins {
     alias(libs.plugins.buzbuz.hilt)
 }
 
+val debugAbiFilter = providers.gradleProperty("klickrDebugAbi")
+    .orNull
+    ?.split(',')
+    ?.map { abi -> abi.trim() }
+    ?.filter { abi -> abi.isNotEmpty() && !abi.equals("all", ignoreCase = true) }
+    .orEmpty()
+
 obfuscationConfig {
     obfuscatedApplication {
         create("com.buzbuz.smartautoclicker.application.SmartAutoClickerApplication")
@@ -58,6 +65,12 @@ android {
 
         versionCode = 86
         versionName = "4.0.0-beta01"
+
+        if (debugAbiFilter.isNotEmpty()) {
+            ndk {
+                abiFilters.addAll(debugAbiFilter)
+            }
+        }
     }
 
     if (project.isBuildForVariant(KlickrFlavour.F_DROID, KlickrBuildType.DEBUG)) {

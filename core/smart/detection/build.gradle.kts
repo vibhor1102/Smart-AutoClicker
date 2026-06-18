@@ -26,6 +26,13 @@ plugins {
     alias(libs.plugins.buzbuz.sourceDownload)
 }
 
+val debugAbiFilter = providers.gradleProperty("klickrDebugAbi")
+    .orNull
+    ?.split(',')
+    ?.map { abi -> abi.trim() }
+    ?.filter { abi -> abi.isNotEmpty() && !abi.equals("all", ignoreCase = true) }
+    .orEmpty()
+
 sourceDownload {
     projects {
         register("openCv") {
@@ -56,9 +63,22 @@ android {
     }
 
     defaultConfig {
+        if (debugAbiFilter.isNotEmpty()) {
+            ndk {
+                abiFilters.addAll(debugAbiFilter)
+            }
+        }
+
         externalNativeBuild {
             cmake {
-
+                if (System.getenv("USE_CCACHE") == "true") {
+                    arguments.addAll(
+                        listOf(
+                            "-DCMAKE_C_COMPILER_LAUNCHER=ccache",
+                            "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache",
+                        )
+                    )
+                }
             }
         }
     }

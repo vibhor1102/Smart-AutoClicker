@@ -137,11 +137,18 @@
     <!-- Dialog Scenario =========================================================================================== -->
 
     <string name="dialog_title_scenario_config">Scenario</string>
+    <string name="dialog_title_switch_scenario">Switch scenario</string>
 
     <string name="message_empty_screen_event_title">No screen events !</string>
     <string name="message_empty_screen_event_desc">A screen event contains a set of actions executed when a specific condition is detected on the screen.\nYou need at least one screen or trigger event in your scenario to execute it.</string>
     <string name="message_empty_trigger_event_list_title">No trigger events !</string>
     <string name="message_empty_trigger_event_list_desc">A trigger event contains a set of actions executed when a set of custom conditions are met.\nYou need at least one screen or trigger event in your scenario to execute it.</string>
+    <string name="message_empty_scenario_switch_list_title">No other scenario</string>
+    <string name="message_empty_scenario_switch_list_desc">Create another smart scenario to switch without stopping the overlay.</string>
+    <plurals name="item_desc_scenario_event_count">
+        <item quantity="one">%1$d event</item>
+        <item quantity="other">%1$d events</item>
+    </plurals>
 
     <string name="menu_item_title_image_events">Screen</string>
     <string name="menu_item_title_trigger_events">Triggers</string>
@@ -553,6 +560,7 @@
     <string name="content_desc_actions_count">The number of actions in this event</string>
     <string name="content_desc_image_condition">The image to be detected</string>
     <string name="content_desc_open_event_list">Open the event list</string>
+    <string name="content_desc_switch_scenario">Switch scenario</string>
     <string name="content_desc_application_icon">The icon of the application to start.</string>
 
 </resources>

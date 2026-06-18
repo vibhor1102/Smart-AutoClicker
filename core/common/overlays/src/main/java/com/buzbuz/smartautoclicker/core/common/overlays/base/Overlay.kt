@@ -99,10 +99,11 @@ abstract class Overlay : LifecycleOwner, ViewModelStoreOwner, HasDefaultViewMode
     internal abstract fun handleKeyEvent(keyEvent: KeyEvent): Boolean
     /** Change the orientation of the overlay. */
     internal abstract fun changeOrientation()
-
     /**
      * Tag for tutorial monitoring.
      * Useful when the Overlay is part of a tutorial, it allows to start a tutorial step upon dialog display
      */
     open fun tutorialMonitoringTag(): String = ""
+    /** Enable/disable touchability of the overlay window(s). */
+    internal open fun setWindowTouchable(touchable: Boolean) = Unit
 }

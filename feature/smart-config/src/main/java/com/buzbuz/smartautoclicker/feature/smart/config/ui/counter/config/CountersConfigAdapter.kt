@@ -16,9 +16,12 @@
  */
 package com.buzbuz.smartautoclicker.feature.smart.config.ui.counter.config
 
+import android.text.InputType
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -89,6 +92,9 @@ class CountersConfigViewHolder(
     init {
         binding.apply {
             layoutStartingValue.hint = root.context.getString(R.string.field_label_counter_starting_value)
+            textFieldStartingValue.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
+            textFieldStartingValue.imeOptions = EditorInfo.IME_ACTION_DONE
+            textFieldStartingValue.setSingleLine()
 
             contentLayout.setOnClickListener { item?.let(onCounterClicked) }
             buttonExpandCollapse.setOnClickListener { item?.let(onExpandCollapse) }
@@ -96,6 +102,15 @@ class CountersConfigViewHolder(
             readByButton.setOnClickListener { item?.let(onReadByClick) }
             deleteButton.setOnClickListener { item?.let(onDeleteClick) }
             replaceByText.setOnClickListener { onCancelReplace() }
+
+            textFieldStartingValue.setOnEditorActionListener { view, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_DONE || event.isEnterKeyUp()) {
+                    view.clearFocus()
+                    true
+                } else {
+                    false
+                }
+            }
 
             textFieldStartingValue.doAfterTextChanged { text ->
                 val counter = item ?: return@doAfterTextChanged
@@ -148,3 +163,6 @@ class CountersConfigViewHolder(
         }
     }
 }
+
+private fun KeyEvent?.isEnterKeyUp(): Boolean =
+    this != null && keyCode == KeyEvent.KEYCODE_ENTER && action == KeyEvent.ACTION_UP

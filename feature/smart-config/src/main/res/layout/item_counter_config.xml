@@ -100,6 +100,8 @@
                 android:id="@+id/text_field_starting_value"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
                 android:maxLines="1"
                 android:lines="1"
                 tools:text="12547"/>

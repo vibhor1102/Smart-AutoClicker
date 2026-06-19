@@ -41,11 +41,15 @@ jobs:
         echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
         echo "ANDROID_NDK_ROOT=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
 
-    - name: Cache debug keystore
-      uses: actions/cache@v4
-      with:
-        path: ~/.android/debug.keystore
-        key: ${{ runner.os }}-android-debug-keystore-${{ github.repository_id }}
+    - name: Restore debug keystore
+      shell: bash
+      env:
+        DEBUG_KEYSTORE_BASE64: ${{ secrets.DEBUG_KEYSTORE_BASE64 }}
+      run: |
+        test -n "$DEBUG_KEYSTORE_BASE64"
+        mkdir -p "$HOME/.android"
+        echo "$DEBUG_KEYSTORE_BASE64" | base64 --decode > "$HOME/.android/debug.keystore"
+        chmod 600 "$HOME/.android/debug.keystore"
 
     - name: Install ccache
       run: sudo apt-get install -y ccache
@@ -81,6 +85,7 @@ jobs:
       shell: bash
       run: |
         AAPT2="$ANDROID_HOME/build-tools/$(ls "$ANDROID_HOME/build-tools" | sort -V | tail -n 1)/aapt2"
+        APKSIGNER="$ANDROID_HOME/build-tools/$(ls "$ANDROID_HOME/build-tools" | sort -V | tail -n 1)/apksigner"
 
         if [ "${{ inputs.abi }}" = "all" ]; then
           mapfile -t APKS < <(find smartautoclicker/build/outputs/apk/fDroid/debug -name '*.apk' | sort)
@@ -91,11 +96,14 @@ jobs:
 
         : > debug-badging.txt
         : > apk-files.txt
+        : > debug-signing-certs.txt
         for APK in "${APKS[@]}"; do
           echo "== $APK ==" | tee -a debug-badging.txt
           "$AAPT2" dump badging "$APK" | tee current-debug-badging.txt | tee -a debug-badging.txt
           grep -q "name='com.buzbuz.smartautoclicker.patched.debug'" current-debug-badging.txt
           grep -q "application-debuggable" current-debug-badging.txt
+          echo "== $APK ==" | tee -a debug-signing-certs.txt
+          "$APKSIGNER" verify --print-certs "$APK" | tee -a debug-signing-certs.txt
           unzip -l "$APK" | tee -a apk-files.txt
         done
 
@@ -111,4 +119,5 @@ jobs:
         path: |
           smartautoclicker/build/outputs/apk/fDroid/debug/*.apk
           debug-badging.txt
+          debug-signing-certs.txt
           apk-files.txt

@@ -41,11 +41,15 @@ jobs:
         echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
         echo "ANDROID_NDK_ROOT=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
 
-    - name: Cache debug keystore
-      uses: actions/cache@v4
-      with:
-        path: ~/.android/debug.keystore
-        key: ${{ runner.os }}-android-debug-keystore-${{ github.repository_id }}
+    - name: Restore debug keystore
+      shell: bash
+      env:
+        DEBUG_KEYSTORE_BASE64: ${{ secrets.DEBUG_KEYSTORE_BASE64 }}
+      run: |
+        test -n "$DEBUG_KEYSTORE_BASE64"
+        mkdir -p "$HOME/.android"
+        echo "$DEBUG_KEYSTORE_BASE64" | base64 --decode > "$HOME/.android/debug.keystore"
+        chmod 600 "$HOME/.android/debug.keystore"
 
     - name: Install ccache
       run: sudo apt-get install -y ccache

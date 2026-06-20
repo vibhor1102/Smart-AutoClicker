@@ -48,16 +48,13 @@ Drop any commits already merged upstream during the rebase.
   the complete unit test suite.
 - **Patched Debug APKs:** Use the `Debug APK` (`debug-apk.yml`) workflow for
   building patched debug APKs. Trigger it via GitHub CLI:
-  `gh workflow run debug-apk.yml -f abi=arm64-v8a -f publish_release=false`
-  or via the web UI.
+  `gh workflow run debug-apk.yml -f abi=arm64-v8a` or via the web UI.
 - Debug APK signing uses the `DEBUG_KEYSTORE_BASE64` secret and forces
   `ANDROID_USER_HOME` to the restored keystore directory. Do not replace this
   with a generated/cached debug keystore; `adb install -r` depends on stable
   debug signing.
-- For single-ABI debug builds, `debug-apk.yml` uploads only the selected ABI
-  APK plus verification text files. If direct artifact downloads are slow, run
-  with `publish_release=true` and download the internal prerelease asset named
-  like `klickr-patched-debug-arm64-v8a.apk`.
+- For single-ABI debug builds, `debug-apk.yml` uploads the selected ABI APK
+  plus verification text files, including `debug-signing-certs.txt`.
 - Unless explicitly scoped to upstream PR work, debug/release builds mean this
   fork's patched APKs, not upstream APKs.
 - Verify hosted debug artifacts before install; patched debug package is

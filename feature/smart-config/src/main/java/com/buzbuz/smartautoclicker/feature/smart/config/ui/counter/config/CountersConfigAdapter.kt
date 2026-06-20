@@ -22,7 +22,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -83,7 +82,7 @@ class CountersConfigViewHolder(
     onReadByClick: (CounterUiItem) -> Unit,
     onDeleteClick: (CounterUiItem) -> Unit,
     onCounterClicked: (CounterUiItem) -> Unit,
-    onStartingValueChange: (CounterUiItem, Double) -> Unit,
+    private val onStartingValueChange: (CounterUiItem, Double) -> Unit,
     onCancelReplace: () -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -99,8 +98,9 @@ class CountersConfigViewHolder(
                 setSingleLine(true)
                 setOnEditorActionListener { view, actionId, event ->
                     if (actionId == EditorInfo.IME_ACTION_SEND || event.isEnterKeyUp()) {
-                        view.clearFocus()
+                        commitStartingValue()
                         view.hideSoftInput()
+                        view.clearFocus()
                         true
                     } else {
                         false
@@ -108,9 +108,8 @@ class CountersConfigViewHolder(
                 }
                 setOnFocusChangeListener { view, hasFocus ->
                     if (!hasFocus) {
-                        item?.let { counter ->
-                            updateStartingValueText(counter.startingValue.toCounterValueText())
-                        }
+                        commitStartingValue()
+                        normalizeStartingValueText()
                         view.hideSoftInput()
                     }
                 }
@@ -122,14 +121,6 @@ class CountersConfigViewHolder(
             readByButton.setOnClickListener { item?.let(onReadByClick) }
             deleteButton.setOnClickListener { item?.let(onDeleteClick) }
             replaceByText.setOnClickListener { onCancelReplace() }
-
-            textFieldStartingValue.doAfterTextChanged { text ->
-                val counter = item ?: return@doAfterTextChanged
-                val newValue = text?.toString()?.toDoubleOrNull() ?: return@doAfterTextChanged
-                if (newValue != counter.startingValue) {
-                    onStartingValueChange(counter, newValue)
-                }
-            }
         }
     }
 
@@ -176,8 +167,28 @@ class CountersConfigViewHolder(
 
     private fun updateStartingValueText(value: String) {
         binding.textFieldStartingValue.apply {
-            if (text.toString() != value) setText(value)
+            if (text.toString() != value) {
+                setText(value)
+                setSelection(value.length)
+            }
         }
+    }
+
+    private fun commitStartingValue() {
+        val counter = item ?: return
+        val newValue = binding.textFieldStartingValue.text?.toString()?.toDoubleOrNull() ?: return
+
+        if (newValue != counter.startingValue) {
+            onStartingValueChange(counter, newValue)
+        }
+    }
+
+    private fun normalizeStartingValueText() {
+        val value = binding.textFieldStartingValue.text?.toString()?.toDoubleOrNull()
+            ?: item?.startingValue
+            ?: return
+
+        updateStartingValueText(value.toCounterValueText())
     }
 
     private fun KeyEvent?.isEnterKeyUp(): Boolean =

@@ -16,12 +16,15 @@
  */
 package com.buzbuz.smartautoclicker.feature.smart.config.ui.counter.config
 
+import android.graphics.Rect
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.RecyclerView
 
 import com.buzbuz.smartautoclicker.core.common.overlays.base.viewModels
 import com.buzbuz.smartautoclicker.core.common.overlays.dialog.OverlayDialog
@@ -82,10 +85,24 @@ class CountersConfigDialog : OverlayDialog(R.style.ScenarioConfigTheme) {
             )
             layoutLoadableList.apply {
                 list.adapter = countersAdapter
+                list.addOnItemTouchListener(object : RecyclerView.SimpleOnItemTouchListener() {
+                    override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                        clearCounterValueFocusIfTouchOutside(e)
+                        return false
+                    }
+                })
                 setEmptyText(
                     id = R.string.message_empty_counter_name_list_title,
                     secondaryId = R.string.message_empty_counter_name_list_desc
                 )
+            }
+            layoutTopBar.root.setOnTouchListener { _, event ->
+                clearCounterValueFocusIfTouchOutside(event)
+                false
+            }
+            floatingButtonsLayout.setOnTouchListener { _, event ->
+                clearCounterValueFocusIfTouchOutside(event)
+                false
             }
         }
 
@@ -218,5 +235,20 @@ class CountersConfigDialog : OverlayDialog(R.style.ScenarioConfigTheme) {
             newOverlay = CounterCreationDialog(),
             hideCurrent = false,
         )
+    }
+
+    private fun clearCounterValueFocusIfTouchOutside(event: MotionEvent) {
+        if (event.action != MotionEvent.ACTION_DOWN) return
+
+        val focusedView = dialog?.currentFocus ?: return
+        if (focusedView.id != R.id.text_field_starting_value) return
+        if (focusedView.containsRawPoint(event)) return
+
+        focusedView.clearFocus()
+    }
+
+    private fun View.containsRawPoint(event: MotionEvent): Boolean {
+        val bounds = Rect()
+        return getGlobalVisibleRect(bounds) && bounds.contains(event.rawX.toInt(), event.rawY.toInt())
     }
 }

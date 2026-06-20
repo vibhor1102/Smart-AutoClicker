@@ -17,6 +17,7 @@
 package com.buzbuz.smartautoclicker.feature.smart.config.ui.counter.config
 
 import android.text.InputType
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,8 +29,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.buzbuz.smartautoclicker.feature.smart.config.R
 import com.buzbuz.smartautoclicker.feature.smart.config.databinding.ItemCounterConfigBinding
-
-import java.util.Locale
+import com.buzbuz.smartautoclicker.feature.smart.config.ui.counter.hideSoftInput
+import com.buzbuz.smartautoclicker.feature.smart.config.ui.counter.toCounterValueText
 
 /**
  * Adapter for the list of counters in the configuration.
@@ -96,12 +97,21 @@ class CountersConfigViewHolder(
                         InputType.TYPE_NUMBER_FLAG_SIGNED
                 imeOptions = EditorInfo.IME_ACTION_SEND or EditorInfo.IME_FLAG_NO_EXTRACT_UI
                 setSingleLine(true)
-                setOnEditorActionListener { view, actionId, _ ->
-                    if (actionId == EditorInfo.IME_ACTION_SEND) {
+                setOnEditorActionListener { view, actionId, event ->
+                    if (actionId == EditorInfo.IME_ACTION_SEND || event.isEnterKeyUp()) {
                         view.clearFocus()
+                        view.hideSoftInput()
                         true
                     } else {
                         false
+                    }
+                }
+                setOnFocusChangeListener { view, hasFocus ->
+                    if (!hasFocus) {
+                        item?.let { counter ->
+                            updateStartingValueText(counter.startingValue.toCounterValueText())
+                        }
+                        view.hideSoftInput()
                     }
                 }
             }
@@ -124,6 +134,7 @@ class CountersConfigViewHolder(
     }
 
     fun bind(newItem: CounterUiItem) {
+        val isSameCounter = item?.counterName == newItem.counterName
         item = newItem
         binding.apply {
             counterName.text = newItem.counterName
@@ -136,9 +147,8 @@ class CountersConfigViewHolder(
                 readByButton.visibility = View.VISIBLE
                 deleteButton.visibility = View.VISIBLE
 
-                val startingValueText = String.format(Locale.getDefault(), "%s", newItem.startingValue)
-                if (textFieldStartingValue.text.toString() != startingValueText) {
-                    textFieldStartingValue.setText(startingValueText)
+                if (!textFieldStartingValue.hasFocus() || !isSameCounter) {
+                    updateStartingValueText(newItem.startingValue.toCounterValueText())
                 }
             } else {
                 buttonExpandCollapse.setIconResource(R.drawable.ic_chevron_down)
@@ -163,4 +173,13 @@ class CountersConfigViewHolder(
             replaceByText.visibility = if (newItem.selectedForReplacement) View.VISIBLE else View.GONE
         }
     }
+
+    private fun updateStartingValueText(value: String) {
+        binding.textFieldStartingValue.apply {
+            if (text.toString() != value) setText(value)
+        }
+    }
+
+    private fun KeyEvent?.isEnterKeyUp(): Boolean =
+        this?.keyCode == KeyEvent.KEYCODE_ENTER && this.action == KeyEvent.ACTION_UP
 }

@@ -17,6 +17,7 @@
 package com.buzbuz.smartautoclicker.feature.smart.config.ui.counter.creation
 
 import android.text.InputType
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,7 @@ import com.buzbuz.smartautoclicker.core.ui.bindings.fields.setError
 import com.buzbuz.smartautoclicker.feature.smart.config.R
 import com.buzbuz.smartautoclicker.feature.smart.config.databinding.DialogCounterCreationBinding
 import com.buzbuz.smartautoclicker.feature.smart.config.di.ScenarioConfigViewModelsEntryPoint
+import com.buzbuz.smartautoclicker.feature.smart.config.ui.counter.hideSoftInput
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.launch
 
@@ -73,15 +75,17 @@ class CounterCreationDialog : OverlayDialog(R.style.ScenarioConfigTheme) {
                     InputType.TYPE_NUMBER_FLAG_SIGNED
             fieldStartingValue.textField.imeOptions = EditorInfo.IME_ACTION_SEND or EditorInfo.IME_FLAG_NO_EXTRACT_UI
             fieldStartingValue.textField.setSingleLine(true)
-            fieldStartingValue.textField.setOnEditorActionListener { view, actionId, _ ->
-                if (actionId == EditorInfo.IME_ACTION_SEND) {
+            fieldStartingValue.textField.setOnEditorActionListener { view, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_SEND || event.isEnterKeyUp()) {
                     view.clearFocus()
+                    view.hideSoftInput()
                     true
                 } else {
                     false
                 }
             }
-            fieldStartingValue.textField.setText("0.0")
+            hideSoftInputOnFocusLoss(fieldStartingValue.textField)
+            fieldStartingValue.textField.setText("0")
             fieldStartingValue.textField.doAfterTextChanged {
                 viewModel.setStartingValue(it.toString().toDoubleOrNull() ?: 0.0)
             }
@@ -109,4 +113,7 @@ class CounterCreationDialog : OverlayDialog(R.style.ScenarioConfigTheme) {
             )
         }
     }
+
+    private fun KeyEvent?.isEnterKeyUp(): Boolean =
+        this?.keyCode == KeyEvent.KEYCODE_ENTER && this.action == KeyEvent.ACTION_UP
 }

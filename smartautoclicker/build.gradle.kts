@@ -63,8 +63,8 @@ android {
     defaultConfig {
         applicationId = getExtraActualApplicationId()
 
-        versionCode = 96
-        versionName = "4.0.0-beta01-patched.2"
+        versionCode = 97
+        versionName = "4.0.0-beta01-patched.3"
 
         if (debugAbiFilter.isNotEmpty()) {
             ndk {

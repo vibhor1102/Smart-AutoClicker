@@ -62,10 +62,6 @@ internal class CountersEditor {
         _editedList.value = referenceItems.toList()
     }
 
-    fun saveEditionAsReference() {
-        referenceList.value = _editedList.value
-    }
-
     fun getCounter(name: String): Counter? =
         _editedList.value?.find { counter -> counter.counterName == name }
 
@@ -84,12 +80,16 @@ internal class CountersEditor {
 
     fun updateCounter(item: Counter) {
         val currentCounters = _editedList.value ?: emptyList()
-        val toBeUpdatedIndex = currentCounters.indexOf(item)
+        val toBeUpdatedIndex = currentCounters.indexOfFirst { counter -> counter.counterName == item.counterName }
         if (toBeUpdatedIndex !in currentCounters.indices) return
 
         _editedList.value = currentCounters.toMutableList().apply {
             set(toBeUpdatedIndex, item)
         }
+    }
+
+    fun updateCounters(items: List<Counter>) {
+        _editedList.value = items
     }
 
     fun deleteEditedCounter(item: Counter) {

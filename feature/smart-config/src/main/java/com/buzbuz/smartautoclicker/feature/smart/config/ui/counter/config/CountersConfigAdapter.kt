@@ -16,9 +16,11 @@
  */
 package com.buzbuz.smartautoclicker.feature.smart.config.ui.counter.config
 
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -89,6 +91,20 @@ class CountersConfigViewHolder(
     init {
         binding.apply {
             layoutStartingValue.hint = root.context.getString(R.string.field_label_counter_starting_value)
+            textFieldStartingValue.apply {
+                inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL or
+                        InputType.TYPE_NUMBER_FLAG_SIGNED
+                imeOptions = EditorInfo.IME_ACTION_SEND or EditorInfo.IME_FLAG_NO_EXTRACT_UI
+                setSingleLine(true)
+                setOnEditorActionListener { view, actionId, _ ->
+                    if (actionId == EditorInfo.IME_ACTION_SEND) {
+                        view.clearFocus()
+                        true
+                    } else {
+                        false
+                    }
+                }
+            }
 
             contentLayout.setOnClickListener { item?.let(onCounterClicked) }
             buttonExpandCollapse.setOnClickListener { item?.let(onExpandCollapse) }

@@ -20,6 +20,7 @@ import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -68,7 +69,18 @@ class CounterCreationDialog : OverlayDialog(R.style.ScenarioConfigTheme) {
             fieldName.textField.doAfterTextChanged { viewModel.setName(it.toString()) }
 
             fieldStartingValue.root.hint = context.getString(R.string.field_new_counter_starting_value)
-            fieldStartingValue.textField.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
+            fieldStartingValue.textField.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL or
+                    InputType.TYPE_NUMBER_FLAG_SIGNED
+            fieldStartingValue.textField.imeOptions = EditorInfo.IME_ACTION_SEND or EditorInfo.IME_FLAG_NO_EXTRACT_UI
+            fieldStartingValue.textField.setSingleLine(true)
+            fieldStartingValue.textField.setOnEditorActionListener { view, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_SEND) {
+                    view.clearFocus()
+                    true
+                } else {
+                    false
+                }
+            }
             fieldStartingValue.textField.setText("0.0")
             fieldStartingValue.textField.doAfterTextChanged {
                 viewModel.setStartingValue(it.toString().toDoubleOrNull() ?: 0.0)

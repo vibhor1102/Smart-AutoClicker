@@ -34,6 +34,7 @@ import com.buzbuz.smartautoclicker.feature.smart.config.R
 import com.buzbuz.smartautoclicker.feature.smart.config.databinding.DialogBaseListBinding
 import com.buzbuz.smartautoclicker.feature.smart.config.di.ScenarioConfigViewModelsEntryPoint
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.common.dialogs.showDeleteConfirmationDialog
+import com.buzbuz.smartautoclicker.feature.smart.config.ui.common.dialogs.showCloseWithoutSavingDialog
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.counter.creation.CounterCreationDialog
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.counter.reference.CounterReferenceDialog
 
@@ -59,9 +60,10 @@ class CountersConfigDialog : OverlayDialog(R.style.ScenarioConfigTheme) {
                 dialogTitle.setText(R.string.dialog_title_counters_config)
 
                 setButtonVisibility(DialogNavigationButton.DELETE, View.GONE)
-                setButtonVisibility(DialogNavigationButton.SAVE, View.GONE)
+                setButtonVisibility(DialogNavigationButton.SAVE, View.VISIBLE)
                 setButtonVisibility(DialogNavigationButton.DISMISS, View.VISIBLE)
                 buttonDismiss.setDebouncedOnClickListener { back() }
+                buttonSave.setDebouncedOnClickListener { onSaveClicked() }
             }
 
             floatingButtonsLayout.visibility = View.VISIBLE
@@ -82,7 +84,7 @@ class CountersConfigDialog : OverlayDialog(R.style.ScenarioConfigTheme) {
                 list.adapter = countersAdapter
                 setEmptyText(
                     id = R.string.message_empty_counter_name_list_title,
-                    secondaryId =R.string.message_empty_counter_name_list_desc
+                    secondaryId = R.string.message_empty_counter_name_list_desc
                 )
             }
         }
@@ -98,13 +100,20 @@ class CountersConfigDialog : OverlayDialog(R.style.ScenarioConfigTheme) {
         }
     }
 
-    override fun onDestroy() {
-        viewModel.saveEditions()
-        super.onDestroy()
-    }
-
     override fun back() {
         if (viewModel.getUiState() is CountersUiState.Replacing) return
+        if (viewModel.hasUnsavedModifications()) {
+            context.showCloseWithoutSavingDialog {
+                viewModel.discardChanges()
+                super.back()
+            }
+            return
+        }
+
+        super.back()
+    }
+
+    private fun onSaveClicked() {
         super.back()
     }
 
@@ -142,7 +151,13 @@ class CountersConfigDialog : OverlayDialog(R.style.ScenarioConfigTheme) {
         viewBinding.apply {
             layoutTopBar.setButtonEnabledState(
                 buttonType = DialogNavigationButton.DISMISS,
-                enabled = uiState is CountersUiState.Loaded,
+                enabled = uiState is CountersUiState.Loaded || uiState is CountersUiState.Empty,
+            )
+            layoutTopBar.setButtonEnabledState(
+                buttonType = DialogNavigationButton.SAVE,
+                enabled = uiState.let { state ->
+                    state is CountersUiState.Empty || state is CountersUiState.Loaded && state.canBeSaved
+                },
             )
 
             when (uiState) {

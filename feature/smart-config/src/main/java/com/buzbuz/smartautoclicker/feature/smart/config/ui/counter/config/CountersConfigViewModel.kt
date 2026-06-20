@@ -50,6 +50,8 @@ class CountersConfigViewModel @Inject constructor(
     private val editionRepository: EditionRepository,
 ) : ViewModel() {
 
+    private val initialCounters: List<Counter> = editionRepository.editionState.getAllEditedCounters()
+
     private val allCounters: Flow<EditedListState<Counter>> = editionRepository.editionState.editedCountersState
     private val readReferences: Flow<Map<String, Set<CounterReference>>> = getCounterReadReferencesUseCase()
     private val writeReferences: Flow<Map<String, Set<CounterReference>>> = getCounterWriteReferencesUseCase()
@@ -129,9 +131,18 @@ class CountersConfigViewModel @Inject constructor(
         }
     }
 
-    fun saveEditions() {
-        editionRepository.saveCounterEditionsAsReference()
+    fun discardChanges() {
+        selectedForReplacement.update { null }
+        expandedItems.update { emptySet() }
+        editionRepository.updateCounters(initialCounters)
     }
+
+    fun hasUnsavedModifications(): Boolean =
+        when (val state = uiState.value) {
+            is CountersUiState.Loaded -> state.hasUnsavedModifications
+            is CountersUiState.Replacing -> true
+            else -> false
+        }
 }
 
 private fun Counter.toUiItem(

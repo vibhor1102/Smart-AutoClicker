@@ -144,13 +144,13 @@ void TemplateMatcher::parseMatchingResult(
 }
 
 bool TemplateMatcher::isConfidenceValid(double confidence, int threshold) {
-    return confidence > ((100.0 - threshold) / 100.0);
+    return confidence >= ((100.0 - threshold) / 100.0);
 }
 
 bool TemplateMatcher::isColorValid(const cv::Mat& image, const ConditionImage& condition, int threshold) {
     double colorDiffThreshold = static_cast<double>(threshold);
 
-    return getColorDiff(image, condition.getColorMean()) < colorDiffThreshold
+    return getColorDiff(image, condition.getColorMean()) <= colorDiffThreshold
            && getSaturationDropDiff(image, condition.getColorMat()) < SATURATION_DROP_THRESHOLD;
 }
 

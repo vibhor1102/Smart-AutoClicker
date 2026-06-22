@@ -34,6 +34,7 @@ Drop any commits already merged upstream during the rebase.
 - Java 21, Android SDK at `C:\Users\Vibhor\AppData\Local\Android\Sdk`.
 - PowerShell from repo root on Windows.
 - Use `agents-md-maintainer` skill for AGENTS.md edits.
+- Clear the dummy `GITHUB_TOKEN` environment variable before running GitHub CLI (`gh`) commands to use the keyring credentials (e.g., prepending `$env:GITHUB_TOKEN=$null;` in PowerShell).
 
 ## Build & Release
 
@@ -76,9 +77,7 @@ Drop any commits already merged upstream during the rebase.
 
 ## Debugging
 
-- I have an Android 14 device, which you can ask me to attach to the computer
-  and turn on USB Debugging whenever you feel necessary. ADB is provided in the
-  current Windows laptop.
+- I have an Android 14 device. For debugging, use wireless debugging; the phone's IP is `192.168.1.170`, but the port refreshes every time and must be requested from the user. Sometimes ADB connects automatically since devices are already paired. ADB is provided in the current Windows laptop.
 - For debugging, only use debug builds, made using appropriate GitHub Actions,
   to ensure no local resource-limitation failures.
 - Don't run actual tests yourself; let the human run the desired tests and

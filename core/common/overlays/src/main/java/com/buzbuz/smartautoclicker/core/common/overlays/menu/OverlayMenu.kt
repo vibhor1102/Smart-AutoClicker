@@ -60,6 +60,12 @@ import com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.comm
 import dagger.hilt.EntryPoints
 import java.io.PrintWriter
 
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
 /**
  * Controller for a menu displayed as an overlay shown from a service.
  *
@@ -561,16 +567,64 @@ abstract class OverlayMenu(
      * @param layoutChanges the changes triggering a resize.
      */
     protected fun animateLayoutChanges(layoutChanges: () -> Unit) {
+        startLoggingAnimationCycle("animateLayoutChanges")
         resizeController.animateLayoutChanges(layoutChanges)
     }
 
     protected fun refreshMenuLayout() {
+        startLoggingAnimationCycle("refreshMenuLayout")
         forceWindowResize()
     }
 
     private fun forceWindowResize() {
         Log.d(TAG, "Force window resize")
         onNewWindowSize(resizeController.measureMenuSize())
+    }
+
+    private var debugLoggingJob: Job? = null
+
+    private fun startLoggingAnimationCycle(reason: String) {
+        debugLoggingJob?.cancel()
+        debugLoggingJob = lifecycleScope.launch(Dispatchers.Main) {
+            Log.d("OverlayMenuDebug", "=== Starting animation logging cycle: $reason ===")
+            for (i in 0..100) {
+                logOverlayLayoutDetails("Cycle-$reason-${i * 16}ms")
+                delay(16)
+            }
+            Log.d("OverlayMenuDebug", "=== Ending animation logging cycle: $reason ===")
+        }
+    }
+
+    private fun logOverlayLayoutDetails(label: String) {
+        if (!::menuLayout.isInitialized) {
+            Log.d("OverlayMenuDebug", "[$label] menuLayout not initialized")
+            return
+        }
+
+        val menuBackLoc = IntArray(2)
+        val menuItemsLoc = IntArray(2)
+        val layoutDebugLoc = IntArray(2)
+
+        menuBackground.getLocationOnScreen(menuBackLoc)
+        buttonsContainer.getLocationOnScreen(menuItemsLoc)
+        val debugViewId = context.resources.getIdentifier("layout_debug", "id", context.packageName)
+        val debugView = if (debugViewId != 0) menuLayout.findViewById<View>(debugViewId) else null
+        debugView?.getLocationOnScreen(layoutDebugLoc)
+
+        val debugVisibility = debugView?.visibility ?: -1
+
+        Log.d("OverlayMenuDebug", buildString {
+            append("[$label] ")
+            append("WindowLP: (x=${menuLayoutParams.x}, y=${menuLayoutParams.y}, w=${menuLayoutParams.width}, h=${menuLayoutParams.height}) ")
+            append("Background: (w=${menuBackground.width}, h=${menuBackground.height}, screenX=${menuBackLoc[0]}, screenY=${menuBackLoc[1]}) ")
+            append("MenuItems: (w=${buttonsContainer.width}, h=${buttonsContainer.height}, screenX=${menuItemsLoc[0]}, screenY=${menuItemsLoc[1]}) ")
+            if (debugView != null) {
+                append("LayoutDebug: (w=${debugView.width}, h=${debugView.height}, screenX=${layoutDebugLoc[0]}, screenY=${layoutDebugLoc[1]}, vis=${debugVisibility}) ")
+            } else {
+                append("LayoutDebug: NULL ")
+            }
+            append("isAnimating=${if (this@OverlayMenu::resizeController.isInitialized) resizeController.isAnimating else "N/A"}")
+        })
     }
 
     private fun setupInternalInsetsListener() {
@@ -711,17 +765,19 @@ abstract class OverlayMenu(
     /** Safe setter for the position of the overlay menu ensuring it will not be displayed outside the screen. */
     private fun updateMenuPosition(position: Point) {
         val displaySize = displayConfigManager.displayConfig.sizePx
-        val windowSize = getMenuWindowSize()
-        if (displaySize.x < windowSize.width || displaySize.y < windowSize.height) return
+        val contentSize = getMenuContentSize()
+        if (displaySize.x < contentSize.width || displaySize.y < contentSize.height) return
 
-        val anchorWidth = getMenuAnchorWidth(windowSize)
+        val anchorWidth = getMenuAnchorWidth(contentSize)
         menuAnchorPosition.x = position.x.coerceIn(0, displaySize.x - anchorWidth)
-        menuAnchorPosition.y = position.y.coerceIn(0, displaySize.y - windowSize.height)
+        menuAnchorPosition.y = position.y.coerceIn(0, displaySize.y - contentSize.height)
 
-        val windowPosition = onMenuAnchorPositionUpdated(Point(menuAnchorPosition), windowSize)
+        val windowPosition = onMenuAnchorPositionUpdated(Point(menuAnchorPosition), contentSize)
 
-        menuLayoutParams.x = windowPosition.x.coerceIn(0, displaySize.x - windowSize.width)
-        menuLayoutParams.y = windowPosition.y.coerceIn(0, displaySize.y - windowSize.height)
+        Log.d("OverlayMenuDebug", "[updateMenuPosition] Input anchorPosition: $position, contentSize: $contentSize, anchorWidth: $anchorWidth, onMenuAnchorPositionUpdated returned: $windowPosition")
+
+        menuLayoutParams.x = windowPosition.x.coerceIn(0, displaySize.x - contentSize.width)
+        menuLayoutParams.y = windowPosition.y.coerceIn(0, displaySize.y - contentSize.height)
 
         if (lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)) {
             Log.d(TAG, "Updating menu window position: ${menuLayoutParams.x}/${menuLayoutParams.y}")
@@ -735,11 +791,11 @@ abstract class OverlayMenu(
             updateMenuPosition(savedPosition)
         } else {
             menuLayout.doWhenMeasured {
-                val windowSize = getMenuWindowSize()
+                val contentSize = getMenuContentSize()
                 updateMenuPosition(
                     Point(
-                        (displayConfigManager.displayConfig.sizePx.x - getMenuAnchorWidth(windowSize)) / 2,
-                        (displayConfigManager.displayConfig.sizePx.y / 2) - windowSize.height,
+                        (displayConfigManager.displayConfig.sizePx.x - getMenuAnchorWidth(contentSize)) / 2,
+                        (displayConfigManager.displayConfig.sizePx.y / 2) - contentSize.height,
                     )
                 )
             }
@@ -751,6 +807,21 @@ abstract class OverlayMenu(
             position = Point(menuAnchorPosition),
             orientation = orientation,
         )
+    }
+
+    private fun getMenuContentSize(): Size {
+        if (!::menuBackground.isInitialized || !::menuLayout.isInitialized) {
+            return Size(0, 0)
+        }
+
+        return if (this::resizeController.isInitialized && resizeController.isAnimating) {
+            Size(
+                menuBackground.width.takeIf { it > 0 } ?: menuLayout.width,
+                menuBackground.height.takeIf { it > 0 } ?: menuLayout.height,
+            )
+        } else {
+            getMenuWindowSize()
+        }
     }
 
     private fun getMenuWindowSize(): Size =

@@ -112,11 +112,11 @@ internal class OverlayMenuResizeController(
 
         Log.d(TAG, "Starting layout changes animations")
 
+        // Execute layout changes first so that measureMenuSize() detects the target visibilities
+        layoutChanges()
+
         // Freeze window size to expanded size
         windowResizer(maximumSize)
-
-        // Execute layout changes that will cause a resize
-        layoutChanges()
     }
 
     /** Release this controller. */
@@ -125,26 +125,14 @@ internal class OverlayMenuResizeController(
     }
 
     fun measureMenuSize(): Size {
-        resizedContainer.measure(MeasureSpec.EXACTLY, MeasureSpec.EXACTLY)
-
-        // Get the height of all children + the padding
-        val height = resizedContainer.children.fold(0) { acc, child ->
-            acc + (if (child.isGone) 0 else child.height)
-        } + resizedContainer.paddingTop + resizedContainer.paddingBottom
-
         val firstChild = (backgroundViewGroup.getChildAt(0) as? ViewGroup)
-        val width = if (firstChild == null || firstChild.id == resizedContainer.id) {
-            resizedContainer.width
-        } else {
-            firstChild.children.fold(0) { acc, child ->
-                acc + (
-                    if (child.isGone) 0
-                    else child.width + child.marginStart + child.marginEnd
-                )
-            }
+        if (firstChild == null || firstChild.id == resizedContainer.id) {
+            resizedContainer.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
+            return Size(resizedContainer.measuredWidth, resizedContainer.measuredHeight)
         }
 
-        return Size(width, height)
+        firstChild.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
+        return Size(firstChild.measuredWidth, firstChild.measuredHeight)
     }
 }
 

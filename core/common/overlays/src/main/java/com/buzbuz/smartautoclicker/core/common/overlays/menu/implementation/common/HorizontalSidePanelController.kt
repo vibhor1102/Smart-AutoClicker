@@ -16,6 +16,7 @@
  */
 package com.buzbuz.smartautoclicker.core.common.overlays.menu.implementation.common
 
+import android.animation.LayoutTransition
 import android.view.View
 
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -32,6 +33,13 @@ class HorizontalSidePanelController(
     private val sidePanel: View,
     private val innerSeparator: View? = null,
 ) {
+
+    init {
+        parent.layoutTransition?.apply {
+            disableTransitionType(LayoutTransition.CHANGE_APPEARING)
+            disableTransitionType(LayoutTransition.CHANGE_DISAPPEARING)
+        }
+    }
 
     var currentSide: HorizontalSidePanelSide = HorizontalSidePanelSide.RIGHT
         private set

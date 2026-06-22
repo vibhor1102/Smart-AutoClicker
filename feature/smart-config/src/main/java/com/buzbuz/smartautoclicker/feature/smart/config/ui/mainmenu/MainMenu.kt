@@ -233,6 +233,7 @@ class MainMenu(
     override fun onMenuAnchorPositionUpdated(anchorPosition: Point, windowSize: Size): Point {
         if (viewBinding.layoutDebug.visibility != View.VISIBLE) {
             debugSidePanelController.applySide(HorizontalSidePanelSide.RIGHT)
+            updateMenuGravity(HorizontalSidePanelSide.RIGHT)
             return anchorPosition
         }
 
@@ -246,6 +247,7 @@ class MainMenu(
             }
 
         debugSidePanelController.applySide(side)
+        updateMenuGravity(side)
         return if (side == HorizontalSidePanelSide.LEFT) {
             Point(anchorPosition.x - panelWidth, anchorPosition.y)
         } else {

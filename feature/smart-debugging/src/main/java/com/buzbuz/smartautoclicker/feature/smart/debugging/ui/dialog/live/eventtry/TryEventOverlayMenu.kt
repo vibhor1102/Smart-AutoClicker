@@ -112,6 +112,7 @@ class TryEventOverlayMenu(
             }
 
         debugSidePanelController.applySide(side)
+        updateMenuGravity(side)
         return if (side == HorizontalSidePanelSide.LEFT) {
             Point(anchorPosition.x - panelWidth, anchorPosition.y)
         } else {

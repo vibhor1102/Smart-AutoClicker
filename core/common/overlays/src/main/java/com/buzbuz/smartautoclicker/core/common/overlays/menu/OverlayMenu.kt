@@ -32,6 +32,7 @@ import android.view.View.MeasureSpec
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import android.view.WindowManager
+import android.widget.FrameLayout
 import android.widget.ImageButton
 
 import androidx.annotation.CallSuper
@@ -117,6 +118,8 @@ abstract class OverlayMenu(
     private val menuAnchorPosition: Point = Point(0, 0)
 
     private val animations: OverlayMenuAnimations = OverlayMenuAnimations()
+
+    private var transitionTargetSize: Size? = null
 
     internal var resumeOnceShown: Boolean = false
         private set
@@ -568,7 +571,15 @@ abstract class OverlayMenu(
      */
     protected fun animateLayoutChanges(layoutChanges: () -> Unit) {
         startLoggingAnimationCycle("animateLayoutChanges")
-        resizeController.animateLayoutChanges(layoutChanges)
+        val sizeBefore = getMenuWindowSize()
+        resizeController.animateLayoutChanges {
+            layoutChanges()
+            val sizeAfter = resizeController.measureMenuSize()
+            transitionTargetSize = Size(
+                maxOf(sizeBefore.width, sizeAfter.width),
+                maxOf(sizeBefore.height, sizeAfter.height),
+            )
+        }
     }
 
     protected fun refreshMenuLayout() {
@@ -698,6 +709,9 @@ abstract class OverlayMenu(
     }
 
     private fun onNewWindowSize(size: Size) {
+        if (this::resizeController.isInitialized && !resizeController.isAnimating) {
+            transitionTargetSize = null
+        }
         menuLayoutParams.width = size.width
         menuLayoutParams.height = size.height
         updateMenuPosition(menuAnchorPosition)
@@ -815,12 +829,24 @@ abstract class OverlayMenu(
         }
 
         return if (this::resizeController.isInitialized && resizeController.isAnimating) {
-            Size(
-                menuBackground.width.takeIf { it > 0 } ?: menuLayout.width,
-                menuBackground.height.takeIf { it > 0 } ?: menuLayout.height,
-            )
+            transitionTargetSize ?: getMenuWindowSize()
         } else {
             getMenuWindowSize()
+        }
+    }
+
+    protected fun updateMenuGravity(side: HorizontalSidePanelSide) {
+        if (!::menuBackground.isInitialized) return
+        val lp = menuBackground.layoutParams as? FrameLayout.LayoutParams ?: return
+        val targetGravity = if (side == HorizontalSidePanelSide.LEFT) {
+            Gravity.TOP or Gravity.END
+        } else {
+            Gravity.TOP or Gravity.START
+        }
+        if (lp.gravity != targetGravity) {
+            Log.d("OverlayMenuDebug", "Updating menu background gravity to $targetGravity (side=$side)")
+            lp.gravity = targetGravity
+            menuBackground.layoutParams = lp
         }
     }
 

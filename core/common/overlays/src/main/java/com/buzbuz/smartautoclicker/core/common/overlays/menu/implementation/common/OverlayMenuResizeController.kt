@@ -86,10 +86,10 @@ internal class OverlayMenuResizeController(
             if (runningTransitions.isEmpty()) {
                 Log.d(TAG, "All layout changes animations completed")
 
+                isAnimating = false
+
                 // The view resize animation is over, restore the window size to wrap the content.
                 windowResizer(measureMenuSize())
-
-                isAnimating = false
             }
         }
     }

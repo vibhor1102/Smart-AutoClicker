@@ -125,14 +125,30 @@ internal class OverlayMenuResizeController(
     }
 
     fun measureMenuSize(): Size {
+        resizedContainer.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
+        val containerWidth = resizedContainer.measuredWidth
+        val containerHeight = resizedContainer.measuredHeight
+
         val firstChild = (backgroundViewGroup.getChildAt(0) as? ViewGroup)
         if (firstChild == null || firstChild.id == resizedContainer.id) {
-            resizedContainer.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
-            return Size(resizedContainer.measuredWidth, resizedContainer.measuredHeight)
+            return Size(containerWidth, containerHeight)
         }
 
-        firstChild.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
-        return Size(firstChild.measuredWidth, firstChild.measuredHeight)
+        val sidePanel = firstChild.children.firstOrNull { it.id != resizedContainer.id }
+        val totalWidth = if (sidePanel == null || sidePanel.isGone) {
+            containerWidth
+        } else {
+            sidePanel.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED)
+            containerWidth + sidePanel.measuredWidth
+        }
+
+        val totalHeight = if (sidePanel == null || sidePanel.isGone) {
+            containerHeight
+        } else {
+            maxOf(containerHeight, sidePanel.measuredHeight)
+        }
+
+        return Size(totalWidth, totalHeight)
     }
 }
 

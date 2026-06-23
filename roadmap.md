@@ -18,12 +18,6 @@ These are low-effort, high-impact improvements, layout adjustments, and critical
 *   **[RELEVANT] Event Validity Alignment Bugfix** ([nicospz/Smart-AutoClicker](https://github.com/nicospz/Smart-AutoClicker)):
     *   *Detail:* Align event validity indices (`itemValidity`) with reordered/sorted lists in `EditionState.kt`. Because events are sorted by priority during scenario editor list state updates, the parallel boolean list of invalid item states gets misaligned, resulting in error badges appearing on the wrong events in the UI.
     *   *Status:* Still missing in our codebase; sorting event lists leaves parallel validity states out of sync.
-*   **[IRRELEVANT] NativeDetector Bitmap Recycling Crash Fix** ([Menwitz/TaskEngineV1](https://github.com/Menwitz/TaskEngineV1)):
-    *   *Detail:* Checking object identities: `if (screenRegion !== screen) screenRegion.recycle()` to avoid recycling the main source screen bitmap.
-    *   *Status:* Irrelevant. Our codebase handles all cropping and template-matching in C++ OpenCV, passing crop boundaries directly to JNI without creating or recycling intermediate sub-bitmaps in Kotlin.
-*   **[IRRELEVANT / ALREADY SOLVED] Try Menu Key-Consumption Fix** ([K-S-D-M/Smart-AutoClicker](https://github.com/K-S-D-M/Smart-AutoClicker)):
-    *   *Detail:* Prevent try-matching overlays (`TryImageConditionOverlayMenu` / `TryEventOverlayMenu`) from consuming device volume-down key events unless they match the scenario stop key.
-    *   *Status:* Already solved upstream in our codebase. Both classes already return `false` if `!keyEvent.isStopScenarioKey()`.
 
 ### 🎨 UI & UX Enhancements
 *   **[RELEVANT] Node Index on Pins** ([wchen17/Smart-AutoClicker](https://github.com/wchen17/Smart-AutoClicker)):
@@ -78,9 +72,6 @@ These features require deeper changes to layouts, database structures, or core e
 *   **[RELEVANT] Multiple Template Matching** ([abewartech/Smart-AutoClicker](https://github.com/abewartech/Smart-AutoClicker)):
     *   *Detail:* Leverage JNI and OpenCV (`Detector::detectConditionMultiple`) to locate all occurrences of a template on screen meeting the threshold (by invalidating matched regions recursively), and execute actions on all matching coordinates.
     *   *Status:* Still missing.
-*   **[IRRELEVANT / ALREADY SOLVED] Overlay-Based Action & Condition Testing** ([wchen17/Smart-AutoClicker](https://github.com/wchen17/Smart-AutoClicker)):
-    *   *Detail:* Migrate "Try Action" and "Try Condition" validation flows from screen-blocking dialogs to lightweight overlays.
-    *   *Status:* Already solved. Our codebase already utilizes overlay-based try menus (`TryEventOverlayMenu` and `TryImageConditionOverlayMenu`) which run validation in real time on top of target apps.
 
 ### 🧠 Logic, Scripting & Engine Changes
 *   **[RELEVANT] Collapsible Overlay Menu** ([timo33666/Klickr](https://github.com/timo33666/Klickr)):
@@ -98,9 +89,6 @@ These features require deeper changes to layouts, database structures, or core e
 *   **[RELEVANT] Media-Projection Screenshot Action** ([muslimmuda15/Smart-AutoClicker](https://github.com/muslimmuda15/Smart-AutoClicker)):
     *   *Detail:* Create an action type that captures a screenshot of the display (requiring media projection permissions) and writes it to storage to audit failure points.
     *   *Status:* Still missing.
-*   **[IRRELEVANT / ALREADY SOLVED] Traditional Coordinate Clicker (Dumb Mode)** ([muslimmuda15/Smart-AutoClicker](https://github.com/muslimmuda15/Smart-AutoClicker)):
-    *   *Detail:* Port a coordinate-based clicker mode (DumbEngine) for users who want to run simple macros.
-    *   *Status:* Already solved. Our codebase already features a complete coordinate-based macro module (`core:dumb` and `:feature:dumb-config`), leaving this fork suggestion fully redundant.
 
 ---
 
@@ -120,9 +108,6 @@ These features are either highly complex, require external dependencies, or intr
 *   **[RELEVANT] Slack/Webhook Reporting** ([muslimmuda15/Smart-AutoClicker](https://github.com/muslimmuda15/Smart-AutoClicker)):
     *   *Detail:* Send macro completion/failure notifications, device parameters, or logs directly to a webhook.
     *   *Status:* Still missing.
-*   **[ALREADY SOLVED IN THIS FORK] Base64 Keystore Restoration in CI** ([techted89/Smart-AutoClicker](https://github.com/techted89/Smart-AutoClicker)):
-    *   *Detail:* Decode release signing keys directly from GitHub Base64 secrets instead of decrypting GPG keys.
-    *   *Status:* Already implemented. Our repository already utilizes base64-encoded keystore secrets (`DEBUG_KEYSTORE_BASE64` and release signing configurations) in its CI workflows.
 
 ---
 

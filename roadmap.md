@@ -11,8 +11,6 @@ These are low-effort, high-impact improvements, layout adjustments, and critical
 ### 🐛 Critical Bugfixes
 *   **Foreground Service Notification Cleanup** ([YanqingQQ/Smart-AutoClicker](https://github.com/YanqingQQ/Smart-AutoClicker)):
     *   *Detail:* Properly dismisses the active foreground notification (`NotificationManager.cancel` inside `ServiceNotificationController.kt`) when the service is destroyed. Currently, on some Android versions, the notification stays in the status bar even after the service is stopped.
-*   **Copy Scenario Dialog Crash Fix** ([Menwitz/TaskEngineV1](https://github.com/Menwitz/TaskEngineV1)):
-    *   *Detail:* Restores missing `android:layout_width` and `android:layout_height` parameters inside the `<include>` tag for `@layout/include_dialog_search_top_bar` in the copy scenario dialog layout (`dialog_base_copy.xml` in `:core:common:overlays`). Defining an ID on an `<include>` tag without layout dimensions triggers a runtime `InflateException` crash on some devices.
 *   **Event Error Mismatch Fix** ([nicospz/Smart-AutoClicker](https://github.com/nicospz/Smart-AutoClicker)):
     *   *Detail:* Aligns the invalid item indicators list (`itemValidity`) with reordered/sorted events in `EditionState.kt`. Because events are sorted by priority in the scenario editor list flows, the parallel boolean validity list gets misaligned, resulting in error badges (red icons) appearing on the wrong events in the UI.
 
@@ -37,6 +35,8 @@ These are low-effort, high-impact improvements, layout adjustments, and critical
     *   *Detail:* Enables turning event groups on or off in bulk in the execution engine by matching database name prefixes (e.g. toggle all actions starting with a certain string).
 *   **Overwrite Duplicate Scenario Imports** ([muslimmuda15/Smart-AutoClicker](https://github.com/muslimmuda15/Smart-AutoClicker)):
     *   *Detail:* Configures Room database scenario DAOs to overwrite duplicate records (`OnConflictStrategy.REPLACE` instead of `IGNORE`) on scenario imports or sync.
+*   **Gradle Configuration Cache** ([Menwitz/TaskEngineV1](https://github.com/Menwitz/TaskEngineV1)):
+    *   *Detail:* Enables the Gradle configuration cache (`org.gradle.configuration-cache=true` in `gradle.properties`) to speed up compilation times for developers.
 
 ---
 

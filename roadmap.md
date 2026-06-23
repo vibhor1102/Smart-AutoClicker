@@ -45,8 +45,8 @@ These are low-effort, high-impact improvements, layout adjustments, and critical
 These features require deeper changes to layouts, database structures, or core engine flows, but offer significant utility.
 
 ### 📸 Overlay & Matching Enhancements
-*   **Zoomable Screenshot Crop View** ([nicospz/Smart-AutoClicker](https://github.com/nicospz/Smart-AutoClicker)):
-    *   *Detail:* Upgrades the crop view selector (`ConditionSelectorView`) by capturing screenshots and rendering them on a zoomable/pannable canvas, allowing pixel-perfect bounding box selections.
+*   **Zoomable Detection Area Selector (IN_AREA Picker)** ([nicospz/Smart-AutoClicker](https://github.com/nicospz/Smart-AutoClicker)):
+    *   *Detail:* Upgrades the search area selection screen (`ConditionAreaSelectorMenu` / `AreaSelectorView`), which is currently just a transparent rectangle over the live screen. It captures a background screenshot and displays it on a zoomable and pannable canvas (using `ConditionSelectorView`), allowing pixel-perfect bounding box selections for image search regions.
 *   **Draggable Target Coordinates** ([YanqingQQ/Smart-AutoClicker](https://github.com/YanqingQQ/Smart-AutoClicker)):
     *   *Detail:* Displays a draggable handle overlay in the editor (`ClickPositionHandleOverlay`) allowing you to drag target pin coordinates directly around the screen in real-time.
 *   **Grid/List Offset-Repeat Matching** ([nicospz/Smart-AutoClicker](https://github.com/nicospz/Smart-AutoClicker)):

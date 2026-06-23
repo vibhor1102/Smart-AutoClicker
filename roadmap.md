@@ -72,30 +72,9 @@ These features require deeper changes to layouts, database structures, or core e
 
 These features are either highly complex, require external dependencies, or introduce architectural trade-offs that may not align with a lightweight clicker.
 
-*   **Autonomous AI Agent** ([Menwitz/TaskEngineV1](https://github.com/Menwitz/TaskEngineV1)):
-    *   *Detail:* Parses layouts via accessibility nodes (`AccessibilityParser.kt`), sends goals to OpenAI's GPT-4o (`OpenAIClient.kt`), and executes parsed action events (tap, type, scroll) dynamically.
 *   **Tasker Plugin Integration** ([nicospz/Smart-AutoClicker](https://github.com/nicospz/Smart-AutoClicker)):
     *   *Detail:* Exposes scenario broadcast hooks to Tasker to start or stop scenarios based on system-level conditions.
 *   **Screen & Battery State Event Triggers** ([K-S-D-M/Smart-AutoClicker](https://github.com/K-S-D-M/Smart-AutoClicker)):
     *   *Detail:* Starts macros automatically based on system state changes, such as screen on/off, battery levels, or target app launches.
 *   **Webhook Reporting** ([muslimmuda15/Smart-AutoClicker](https://github.com/muslimmuda15/Smart-AutoClicker)):
     *   *Detail:* Transmits macro completion or failure reports to a user-configured Webhook URL (e.g. Discord, Slack).
-
----
-
-## 4. Ideas Most Likely to be Discardable
-
-These ideas are too specific, duplicate existing features, or introduce poor architectural patterns.
-
-*   **Hardcoded API Endpoints and Messenger Redirects** ([muslimmuda15/Smart-AutoClicker](https://github.com/muslimmuda15/Smart-AutoClicker)):
-    *   *Reason:* Custom server links (`oleholeh.store`) and messenger fallbacks are specific to the fork author's setup and should be configurable rather than hardcoded.
-*   **Shizuku-Based Native Touch Daemon** ([nicospz/Smart-AutoClicker](https://github.com/nicospz/Smart-AutoClicker)):
-    *   *Reason:* Running a background daemon (`gesture-helper`) to inject low-level touch events via Shizuku is overly complex and only needed for games that actively block Android's accessibility service.
-*   **Hardcoded Personalization Color Options** ([bguf6/Smart](https://github.com/bguf6/Smart)):
-    *   *Reason:* Changing colors programmatically in individual menus (`PersonalizationOptions.kt`) makes the app look inconsistent; system themes (like Android DayNight or dynamic colors) should be used instead.
-*   **Bypassing Trial Constraints & Paywalls** ([LeQuangMien10/Smart-AutoClicker](https://github.com/LeQuangMien10/Smart-AutoClicker) / [YanqingQQ/Smart-AutoClicker](https://github.com/YanqingQQ/Smart-AutoClicker)):
-    *   *Reason:* Removing billing restrictions (`RevenueRepository.kt` hacks) is redundant. The clean F-Droid flavor in this repository is already hardcoded to be fully unlocked out of the box.
-*   **Hardcoded Development Paths / Disabling NDK versioning** ([abewartech/Smart-AutoClicker](https://github.com/abewartech/Smart-AutoClicker)):
-    *   *Reason:* Custom developer paths and disabling NDK builds break compatibility for other developers compiling the app.
-*   **Pokémon GO Niche Automations** ([nicospz/Smart-AutoClicker](https://github.com/nicospz/Smart-AutoClicker)):
-    *   *Reason:* Hardcoded coordinate flows for feeding Pokémon buddies (`Throwlet` berry-feeding) are too narrow for a general-purpose utility clicker.

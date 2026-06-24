@@ -66,8 +66,14 @@ android {
     defaultConfig {
         applicationId = getExtraActualApplicationId()
 
-        versionCode = 87
-        versionName = "4.0.0-beta02"
+        versionCode = 98
+        versionName = "4.0.0-beta02-patched.1"
+
+        if (debugAbiFilter.isNotEmpty()) {
+            ndk {
+                abiFilters.addAll(debugAbiFilter)
+            }
+        }
     }
 
     if (project.isBuildForVariant(KlickrFlavour.F_DROID, KlickrBuildType.DEBUG)) {

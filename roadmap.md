@@ -10,7 +10,7 @@ These are low-effort, high-impact improvements, layout adjustments, and critical
 
 ### 🐛 Critical Bugfixes
 *   **Foreground Service Notification Cleanup** ([YanqingQQ/Smart-AutoClicker](https://github.com/YanqingQQ/Smart-AutoClicker)):
-    *   *Detail:* Properly dismisses the active foreground notification (`notificationManager.cancel(NotificationIds.FOREGROUND_SERVICE_NOTIFICATION_ID)`) and resets `notificationState = null` inside [ServiceNotificationController.kt](core/common/android/src/main/java/com/buzbuz/smartautoclicker/core/android/notification/ServiceNotificationController.kt) when the service is destroyed. Currently, on some Android versions, the notification leaks in the status bar even after the service is stopped.
+    *   *Detail:* Properly dismisses the active foreground notification (`notificationManager.cancel(NotificationIds.FOREGROUND_SERVICE_NOTIFICATION_ID)`) and resets `notificationState = null` inside [ServiceNotificationController.kt](feature/notifications/src/main/java/com/buzbuz/smartautoclicker/feature/notifications/ServiceNotificationController.kt) when the service is destroyed. Currently, on some Android versions, the notification leaks in the status bar even after the service is stopped.
 *   **Event Error Mismatch Fix** ([nicospz/Smart-AutoClicker](https://github.com/nicospz/Smart-AutoClicker)):
     *   *Detail:* Aligns the invalid item indicators list (`itemValidity`) with reordered/sorted events in [EditionState.kt](feature/smart-config/src/main/java/com/buzbuz/smartautoclicker/feature/smart/config/domain/EditionState.kt#L80-L83). Currently, only `value` list is sorted, leaving `itemValidity` unsorted, causing red error badges to appear on the wrong events in the scenario editor list UI.
 

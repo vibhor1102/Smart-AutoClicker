@@ -79,13 +79,8 @@ jobs:
       run: |
         ccache -M 500M
 
-        ABI_ARGS=()
-        if [ "${{ inputs.abi }}" != "all" ]; then
-          ABI_ARGS+=("-PklickrDebugAbi=${{ inputs.abi }}")
-        fi
-
         ./gradlew --no-daemon --max-workers=4 --parallel --build-cache \
-          "${ABI_ARGS[@]}" \
+          "-PklickrDebugAbi=${{ inputs.abi }}" \
           :smartautoclicker:assembleFDroidDebug
         ccache -s
 

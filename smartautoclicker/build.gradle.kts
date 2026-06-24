@@ -29,12 +29,14 @@ plugins {
     alias(libs.plugins.buzbuz.hilt)
 }
 
-val debugAbiFilter = providers.gradleProperty("klickrDebugAbi")
-    .orNull
+val isReleaseBuild = gradle.startParameter.taskNames.any { it.contains("Release", ignoreCase = true) }
+val klickrDebugAbiProperty = providers.gradleProperty("klickrDebugAbi").orNull
+
+val debugAbiFilter = klickrDebugAbiProperty
     ?.split(',')
     ?.map { abi -> abi.trim() }
     ?.filter { abi -> abi.isNotEmpty() && !abi.equals("all", ignoreCase = true) }
-    .orEmpty()
+    ?: if (isReleaseBuild) emptyList() else listOf("arm64-v8a", "x86_64")
 
 obfuscationConfig {
     obfuscatedApplication {
@@ -66,12 +68,6 @@ android {
 
         versionCode = 98
         versionName = "4.0.0-beta02-patched.1"
-
-        if (debugAbiFilter.isNotEmpty()) {
-            ndk {
-                abiFilters.addAll(debugAbiFilter)
-            }
-        }
     }
 
     if (project.isBuildForVariant(KlickrFlavour.F_DROID, KlickrBuildType.DEBUG)) {
@@ -88,8 +84,15 @@ android {
             abi {
                 isEnable = true
                 reset()
-                include("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
-                isUniversalApk = true
+                
+                val isRelease = project.isBuildForVariant(KlickrFlavour.F_DROID, KlickrBuildType.RELEASE)
+                if (isRelease || klickrDebugAbiProperty?.equals("all", ignoreCase = true) == true) {
+                    include("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+                    isUniversalApk = true
+                } else {
+                    include(*debugAbiFilter.toTypedArray())
+                    isUniversalApk = false
+                }
             }
         }
     }

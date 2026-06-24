@@ -26,12 +26,14 @@ plugins {
     alias(libs.plugins.buzbuz.sourceDownload)
 }
 
-val debugAbiFilter = providers.gradleProperty("klickrDebugAbi")
-    .orNull
+val isReleaseBuild = gradle.startParameter.taskNames.any { it.contains("Release", ignoreCase = true) }
+val klickrDebugAbiProperty = providers.gradleProperty("klickrDebugAbi").orNull
+
+val debugAbiFilter = klickrDebugAbiProperty
     ?.split(',')
     ?.map { abi -> abi.trim() }
     ?.filter { abi -> abi.isNotEmpty() && !abi.equals("all", ignoreCase = true) }
-    .orEmpty()
+    ?: if (isReleaseBuild) emptyList() else listOf("arm64-v8a", "x86_64")
 
 sourceDownload {
     projects {
@@ -63,9 +65,15 @@ android {
     }
 
     defaultConfig {
-        if (debugAbiFilter.isNotEmpty()) {
+        val activeAbiFilters = if (klickrDebugAbiProperty?.equals("all", ignoreCase = true) == true) {
+            emptyList()
+        } else {
+            debugAbiFilter
+        }
+
+        if (activeAbiFilters.isNotEmpty()) {
             ndk {
-                abiFilters.addAll(debugAbiFilter)
+                abiFilters.addAll(activeAbiFilters)
             }
         }
 

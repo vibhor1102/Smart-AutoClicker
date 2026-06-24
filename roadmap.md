@@ -35,10 +35,9 @@ These are low-effort, high-impact improvements, layout adjustments, and critical
     *   *Detail:* Enables turning event groups on or off in bulk in the execution engine by matching database name prefixes (e.g. toggle all actions starting with a certain string).
 *   **Overwrite Duplicate Scenario Imports** ([muslimmuda15/Smart-AutoClicker](https://github.com/muslimmuda15/Smart-AutoClicker)):
     *   *Detail:* Configures Room database scenario DAOs to overwrite duplicate records (`OnConflictStrategy.REPLACE` instead of `IGNORE`) on scenario imports or sync.
-*   **Gradle Configuration Cache** ([Menwitz/TaskEngineV1](https://github.com/Menwitz/TaskEngineV1)):
-    *   *Detail:* Enables the Gradle configuration cache (`org.gradle.configuration-cache=true` in `gradle.properties`) to speed up compilation times for developers.
 
 ---
+
 
 ## 2. Features Requiring Moderate Development Effort
 

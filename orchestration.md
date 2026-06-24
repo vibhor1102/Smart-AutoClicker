@@ -131,7 +131,6 @@ Read them from `roadmap.md` on the `roadmap` branch. Here's a quick index for re
 9. Dynamic Accent Text Contrast
 10. Group Event Prefix Toggles
 11. Overwrite Duplicate Scenario Imports
-12. Gradle Configuration Cache
 
 ### Tier 2 (Currently "Moderate Development Effort")
 13. Zoomable Detection Area Selector (IN_AREA Picker)

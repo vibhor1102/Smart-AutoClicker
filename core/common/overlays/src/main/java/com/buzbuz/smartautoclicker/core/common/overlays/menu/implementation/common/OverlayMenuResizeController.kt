@@ -137,8 +137,16 @@ internal class OverlayMenuResizeController(
             resizedContainer.width
         } else {
             firstChild.children.fold(0) { acc, child ->
+                val name = try {
+                    if (child.id != View.NO_ID) child.context.resources.getResourceEntryName(child.id) else null
+                } catch (e: Exception) {
+                    null
+                }
+
+                val isPanel = child.id == resizedContainer.id || name == "layout_debug" || name == "layout_result"
+
                 acc + (
-                    if (child.isGone) 0
+                    if (child.isGone || !isPanel) 0
                     else child.width + child.marginStart + child.marginEnd
                 )
             }

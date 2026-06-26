@@ -142,7 +142,7 @@ class DisplayConfigManager @Inject constructor(
 
     private fun getCurrentDisplaySize(): Point =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            windowManager.maximumWindowMetrics.bounds.let { windowBound ->
+            windowManager.currentWindowMetrics.bounds.let { windowBound ->
                 Point(windowBound.width(), windowBound.height())
             }
         } else {

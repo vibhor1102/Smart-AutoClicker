@@ -44,6 +44,7 @@ internal class OverlayMenuAnimations : Dumpable {
     }
     var showAnimationIsRunning: Boolean = false
         private set
+    private var showAnimationRequestId: Int = 0
 
     /** Animation for hiding the menu. */
     private val hideOverlayMenuAnimation: Animation = AlphaAnimation(1f, 0f).apply {
@@ -57,6 +58,7 @@ internal class OverlayMenuAnimations : Dumpable {
     }
     var hideAnimationIsRunning: Boolean = false
         private set
+    private var hideAnimationRequestId: Int = 0
 
     fun startShowAnimation(view: View, overlayView: View? = null, onAnimationEnded: () -> Unit) {
         if (showAnimationIsRunning) return
@@ -64,11 +66,18 @@ internal class OverlayMenuAnimations : Dumpable {
         Log.d(TAG, "Start show animation on view ${view} with visibility ${view.visibility}")
 
         showAnimationIsRunning = true
+        val requestId = ++showAnimationRequestId
+        fun finishShowAnimation() {
+            if (!showAnimationIsRunning || requestId != showAnimationRequestId) return
+
+            showAnimationIsRunning = false
+            onAnimationEnded()
+        }
+
         showOverlayMenuAnimation.setListener(
             end = {
                 Log.d(TAG, "Show animation ended")
-                showAnimationIsRunning = false
-                onAnimationEnded()
+                finishShowAnimation()
             }
         )
 
@@ -77,6 +86,7 @@ internal class OverlayMenuAnimations : Dumpable {
             hideOverlayMenuAnimation.cancel()
             hideOverlayViewAnimation.cancel()
             hideAnimationIsRunning = false
+            hideAnimationRequestId++
         }
 
         view.measure(MeasureSpec.EXACTLY, MeasureSpec.EXACTLY)
@@ -84,6 +94,14 @@ internal class OverlayMenuAnimations : Dumpable {
         if (overlayView is ViewGroup && overlayView.childCount == 1) {
             overlayView.children.first().startAnimation(showOverlayViewAnimation)
         }
+        view.postDelayed({
+            if (showAnimationIsRunning && requestId == showAnimationRequestId) {
+                Log.w(TAG, "Show animation timed out, forcing completion.")
+                showOverlayMenuAnimation.cancel()
+                showOverlayViewAnimation.cancel()
+                finishShowAnimation()
+            }
+        }, SHOW_ANIMATION_TIMEOUT_MS)
     }
 
     fun startHideAnimation(view: View, overlayView: View? = null, onAnimationEnded: () -> Unit) {
@@ -92,11 +110,18 @@ internal class OverlayMenuAnimations : Dumpable {
         Log.d(TAG, "Start hide animation")
 
         hideAnimationIsRunning = true
+        val requestId = ++hideAnimationRequestId
+        fun finishHideAnimation() {
+            if (!hideAnimationIsRunning || requestId != hideAnimationRequestId) return
+
+            hideAnimationIsRunning = false
+            onAnimationEnded()
+        }
+
         hideOverlayMenuAnimation.setListener(
             end = {
                 Log.d(TAG, "Hide animation ended")
-                hideAnimationIsRunning = false
-                onAnimationEnded()
+                finishHideAnimation()
             }
         )
 
@@ -106,12 +131,21 @@ internal class OverlayMenuAnimations : Dumpable {
             showOverlayMenuAnimation.cancel()
             showOverlayViewAnimation.cancel()
             showAnimationIsRunning = false
+            showAnimationRequestId++
         }
 
         view.startAnimation(hideOverlayMenuAnimation)
         if (overlayView is ViewGroup && overlayView.childCount == 1) {
             overlayView.children.first().startAnimation(hideOverlayViewAnimation)
         }
+        view.postDelayed({
+            if (hideAnimationIsRunning && requestId == hideAnimationRequestId) {
+                Log.w(TAG, "Hide animation timed out, forcing completion.")
+                hideOverlayMenuAnimation.cancel()
+                hideOverlayViewAnimation.cancel()
+                finishHideAnimation()
+            }
+        }, DISMISS_ANIMATION_TIMEOUT_MS)
     }
 
     override fun dump(writer: PrintWriter, prefix: CharSequence) {
@@ -126,5 +160,9 @@ internal class OverlayMenuAnimations : Dumpable {
 private const val SHOW_ANIMATION_DURATION_MS = 250L
 /** Duration of the dismiss overlay menu animation. */
 private const val DISMISS_ANIMATION_DURATION_MS = 150L
+/** Grace period for animations that never report their completion. */
+private const val ANIMATION_TIMEOUT_GRACE_MS = 250L
+private const val SHOW_ANIMATION_TIMEOUT_MS = SHOW_ANIMATION_DURATION_MS + ANIMATION_TIMEOUT_GRACE_MS
+private const val DISMISS_ANIMATION_TIMEOUT_MS = DISMISS_ANIMATION_DURATION_MS + ANIMATION_TIMEOUT_GRACE_MS
 /** Tag for logs */
 private const val TAG = "OverlayMenuAnimations"

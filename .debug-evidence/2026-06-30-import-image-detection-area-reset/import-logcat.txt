@@ -1,0 +1,36 @@
+--------- beginning of main
+06-30 10:41:10.206 I/BackupEngine(28170): Load backup: content://com.android.providers.downloads.documents/document/24215
+06-30 10:41:10.223 D/BackupEngine(28170): Extracting file 5/5.json
+06-30 10:41:10.224 D/ScenarioDeserializer(28170): Deserializing smart scenario
+06-30 10:41:10.267 D/BackupEngine(28170): Smart scenario file 5/5.json extracted
+06-30 10:41:10.267 D/BackupEngine(28170): Extracting file 5/Condition_1618860810.png
+06-30 10:41:10.269 D/BackupEngine(28170): Extracting file 5/Condition_-643207425.png
+06-30 10:41:10.270 D/BackupEngine(28170): Extracting file 5/Condition_779097885.png
+06-30 10:41:10.271 D/BackupEngine(28170): Extracting file 5/Condition_-6897814.png
+06-30 10:41:10.272 D/BackupEngine(28170): Extracting file 5/Condition_1192731434.png
+06-30 10:41:10.273 D/BackupEngine(28170): Extracting file 5/Condition_-189214927.png
+06-30 10:41:10.274 D/BackupEngine(28170): Extracting file 5/Condition_-534940094.png
+06-30 10:41:10.275 D/BackupEngine(28170): Extracting file 5/Condition_-2025384841.png
+06-30 10:41:10.275 D/BackupEngine(28170): Extracting file 5/Condition_-1026935787.png
+06-30 10:41:10.276 D/BackupEngine(28170): Extracting file 5/Condition_-1005300670.png
+06-30 10:41:10.277 D/BackupEngine(28170): Extracting file 5/Condition_246506064.png
+06-30 10:41:10.278 D/BackupEngine(28170): Extracting file 5/Condition_1345461130.png
+06-30 10:41:10.279 D/BackupEngine(28170): Extracting file 5/Condition_415423740.png
+06-30 10:41:10.280 D/BackupEngine(28170): Extracting file 5/Condition_1734129773.png
+06-30 10:41:10.281 D/BackupEngine(28170): Extracting file 5/Condition_525627662.png
+06-30 10:41:10.281 D/BackupEngine(28170): Extracting file 5/Condition_-3816358.png
+06-30 10:41:10.282 D/BackupEngine(28170): Extracting file 5/Condition_-423745069.png
+06-30 10:41:10.283 D/BackupEngine(28170): Extracting file 5/Condition_1402554440.png
+06-30 10:41:10.284 D/BackupEngine(28170): Extracting file 5/Condition_-32102742.png
+06-30 10:41:10.284 D/BackupEngine(28170): Extracting file 5/Condition_1505228033.png
+06-30 10:41:10.285 D/BackupEngine(28170): Extracting file 5/Condition_1780613591.png
+06-30 10:41:10.286 D/BackupEngine(28170): Extracting file 5/Condition_-92251823.png
+06-30 10:41:10.286 D/BackupEngine(28170): Extracting file 5/Condition_900424467.png
+06-30 10:41:10.287 D/BackupEngine(28170): Extracting file 5/Condition_1101605291.png
+06-30 10:41:10.288 D/BackupEngine(28170): Extracting file 5/Condition_-1117594484.png
+06-30 10:41:10.288 D/BackupEngine(28170): Extracting file 5/Condition_2021749155.png
+06-30 10:41:10.289 D/BackupEngine(28170): Extracting file 5/Condition_645147228.png
+06-30 10:41:10.289 I/SmartBackupEngine(28170): Verifying smart scenario 5
+06-30 10:41:10.290 I/SmartBackupEngine(28170): Smart scenario is valid, has warnings: false
+06-30 10:41:10.290 I/BackupEngine(28170): Backup loading completed: content://com.android.providers.downloads.documents/document/24215
+06-30 10:41:10.290 I/BackupEngine(28170): Inserting extracted scenarios into database

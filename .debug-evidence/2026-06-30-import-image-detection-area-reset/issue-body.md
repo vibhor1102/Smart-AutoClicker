@@ -2,28 +2,37 @@
 
 Importing a database-v21 scenario into the current database-v22 app changes image conditions configured as **In area** to **Whole screen**, even though the saved detection rectangle is present in the backup.
 
-I can reproduce this consistently with a scenario exported from 4.0.0-beta02. I can provide the example scenario, screenshots, and further evidence if needed.
+I can reproduce this consistently with a scenario exported from 4.0.0-beta02. A minimal reproducer and a screenshot of the intended detection area are attached below.
+
+## Reproduction files
+
+[Download the minimal scenario backup: `detection area bug.zip`](PASTE_ZIP_UPLOAD_LINK_HERE)
+
+The affected `Faulty Event` contains one image condition with a 12% difference threshold. The archive also contains a separate `Stop` trigger event inherited from the source scenario, but it is not involved in the bug.
+
+This is how the custom **In area** rectangle is supposed to look before export:
+
+![Expected custom detection area](PASTE_SCREENSHOT_UPLOAD_LINK_HERE)
 
 ## Steps to reproduce
 
-1. In a database-v21 build (4.0.0-beta02), create an image condition using **In area** and select a custom detection zone.
-2. Export the scenario.
-3. Import it into the current database-v22 build.
-4. Open the imported image condition.
+1. Import the attached `detection area bug.zip` into the current app.
+2. Open the imported `detection area bug reproduction` scenario.
+3. Open the `Faulty Event` event.
+4. Edit its only image condition, which has a 12% difference threshold.
+5. Check the selected detection mode.
 
 ## Expected
 
-The condition remains configured as **In area** and retains its custom detection zone.
+The condition remains configured as **In area** and retains the small custom detection zone shown in the screenshot.
 
 ## Actual
 
 The condition is changed to **Whole screen**. The four rectangle coordinates remain in the imported database, but they are no longer used because the detection mode was changed.
 
-## Cause
+## Confirmed cause
 
-`CompatDeserializer` defines the valid detection-type range as 1 through 2. However, `IN_AREA` is value 3. During v21 compatibility import, `deserializeConditionImageDetected` applies `coerceIn(1, 2)`, converting `IN_AREA` (`3`) to `WHOLE_SCREEN` (`2`).
-
-In the reproduced example, the source JSON contained:
+The attached archive is database version 21. Its JSON correctly contains:
 
 ```json
 {
@@ -36,9 +45,12 @@ In the reproduced example, the source JSON contained:
 }
 ```
 
-Immediately after import, the database contained the same coordinates but `detection_type=2`.
+`detectionType=3` is `IN_AREA`.
+
+The current database is version 22, so the import goes through `CompatDeserializer`. That deserializer defines the accepted detection-type range as 1 through 2. `deserializeConditionImageDetected` then applies `coerceIn(1, 2)`, converting the valid `IN_AREA` value `3` to `WHOLE_SCREEN` value `2`.
+
+Immediately after reproducing the import, the database contained the same four detection-area coordinates and the same 12% threshold, but `detection_type=2`. This confirms that the rectangle itself is preserved while the mode that uses it is corrupted.
 
 ## Suggested fix
 
-Include value 3 / `IN_AREA` in the compatibility deserializer's accepted range and add a regression test for importing a v21 in-area image condition.
-
+Include value 3 / `IN_AREA` in the compatibility deserializer's accepted range, preferably using the shared detection-type constants, and add a regression test proving that importing a v21 in-area image condition preserves both its mode and rectangle.

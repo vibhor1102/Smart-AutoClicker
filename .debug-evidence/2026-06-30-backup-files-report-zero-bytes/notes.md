@@ -33,30 +33,44 @@ On Windows, LocalSend-created copies were genuinely empty, including:
 
 This establishes a metadata split: the actual file and MediaStore know the correct size, while DocumentsUI exposes or caches a zero-byte document size. LocalSend appears to trust that zero size and transfers no payload.
 
-## Relevant app behavior
+## Provider-level diagnosis
 
-`BackupEngine.createBackup` creates the ZIP with:
+The file picker returns legacy DownloadsProvider document URIs such as:
 
-```kotlin
-ZipOutputStream(contentResolver.openOutputStream(zipFileUri)).use { zipStream ->
-    // Write scenarios and images
-    progress.onCompleted(...)
-}
+```text
+content://com.android.providers.downloads.documents/document/24219
 ```
 
-The app publishes its completion state before leaving the `use` block. At that point `ZipOutputStream.close()` has not run and the document provider has not necessarily finalized its metadata.
+For `provider mode test.zip`, immediately after closing the ZIP:
 
-This ordering has existed since the original backup implementation in 2022 and is the leading app-side cause. It could allow DocumentsUI to observe and retain the initial zero-byte metadata created by `ACTION_CREATE_DOCUMENT`.
+- the physical file contained 2,789 bytes;
+- MediaStore reported `_size=2789`;
+- querying the exact picker URI from Klick'r returned `OpenableColumns.SIZE=0`.
 
-However, moving `progress.onCompleted` after stream closure still needs on-device validation. The current evidence does not rule out a separate DocumentsUI/DownloadsProvider refresh defect that may require an additional provider notification or different output-descriptor handling.
+Restarting DocumentsUI did not refresh the value. The same files still displayed as `0 B`, ruling out a temporary Files-app cursor cache.
 
-## Candidate fix and validation
+## App-side attempts
 
-1. Close/finalize the ZIP output stream before publishing `Backup.Completed`.
-2. Add a log or query after closure to verify the exported document's `OpenableColumns.SIZE` is non-zero.
-3. On-device test:
-   - export a small scenario;
-   - verify DocumentsUI immediately reports the real size;
-   - send it through LocalSend;
-   - confirm the Windows copy has the same size and SHA-256 hash.
+1. Moved `Backup.Completed` until after `ZipOutputStream.close()`: no change.
+2. Opened the document with explicit `rwt` mode and queried it after closure: no change; the provider still returned size zero.
+3. Tried a standard `ContentResolver.update` on the granted document URI: rejected with `UnsupportedOperationException: Update not supported`.
+4. Tried updating the underlying `content://downloads/all_downloads/<id>` row as a diagnostic: rejected because it requires the system-only `android.permission.ACCESS_ALL_DOWNLOADS` permission or a direct grant for that different URI.
+5. Notified observers after writing: the picker URI still returned zero.
 
+The unsuccessful completion-order commit and all diagnostic code were removed from PR #934 after testing.
+
+## Conclusion
+
+This is most likely an Android/Xiaomi DownloadsProvider or DocumentsUI integration bug, not a Klick'r ZIP-writing bug that the app can solve through supported APIs.
+
+The same underlying file receives two metadata representations:
+
+- MediaStore/file path: correct size and readable contents.
+- Legacy DownloadsProvider document URI returned by the picker: size zero.
+
+LocalSend behavior matches those two paths:
+
+- Selecting through `ACTION_OPEN_DOCUMENT` trusts the zero-size picker URI and transfers an empty file.
+- Sharing the file to LocalSend uses a different URI backed by correct metadata and transfers the complete ZIP.
+
+Recommended workaround: share the backup to LocalSend from Files, or copy it over ADB, rather than selecting it inside LocalSend's file picker. Do not file this as an upstream Klick'r issue unless it reproduces on another device/provider implementation or a supported app-side workaround is found.

@@ -2,7 +2,7 @@
 
 ## Environment
 - Branch: `dev-4.0.0-beta03-fixes`
-- Package Name (Debug): `com.buzbuz.smartautoclicker.patched.debug` or `com.buzbuz.smartautoclicker.debug`
+- Package Name (Debug): `com.buzbuz.smartautoclicker.debug` (non-patched debug app)
 - Device: Android 14
 
 ## Scenario Sorting Investigation Goals
@@ -15,6 +15,8 @@
 - [ScenarioDao.kt](file:///c:/Users/Vibhor/Scripts/Smart-AutoClicker/core/smart/database/src/main/java/com/buzbuz/smartautoclicker/core/database/dao/ScenarioDao.kt)
 - [DumbScenarioDao.kt](file:///c:/Users/Vibhor/Scripts/Smart-AutoClicker/core/dumb/src/main/java/com/buzbuz/smartautoclicker/core/dumb/data/database/DumbScenarioDao.kt)
 - [ScenarioAdapter.kt](file:///c:/Users/Vibhor/Scripts/Smart-AutoClicker/smartautoclicker/src/main/java/com/buzbuz/smartautoclicker/scenarios/list/adapter/ScenarioAdapter.kt)
+- Local copies of `click_database_after` (from device under `/data/local/tmp/click_database_after`)
+- Logcat log: `logcat_utf8.txt`
 
 ## Hypotheses & Findings
 
@@ -39,6 +41,37 @@
 
 ---
 
+## Live Device Triage (2026-07-01)
+When the user opened the smart scenario `👍Assist (Home Village)` on their phone, they observed that the uses counter did not increase.
+
+### Database State Check
+We queried the local copy of the app's `scenario_table`:
+```
+8|✅ Electro Dragons
+9|👍 Assist (Builder Base)
+10|👍Assist (Home Village)   <-- Target Scenario (ID = 10)
+11|⚒️ Builder Base
+12|⚒️ Builder Base (Elixir)   <-- Another Scenario (ID = 12)
+```
+
+Then we queried the `scenario_usage_table` (merging WAL records) after reproduction:
+```
+6|8|1782890990679|1
+7|11|1782890996170|1
+8|9|1782891001312|1
+9|14|1782891006803|1
+10|12|1782891333021|3       <-- Row updated! PK id=10, scenario_id=12, start_count=3
+11|13|1782891029042|1
+```
+
+### Analysis
+- The scenario the user opened (`👍Assist (Home Village)`) has database `id = 10`.
+- The timestamp of reproduction in logcat was `13:05:33` (which matches `1782891333021` ms exactly).
+- Instead of creating or updating a row for `scenario_id = 10`, the database updated row **10** (which has primary key `id = 10` but actually belongs to `scenario_id = 12`!).
+- This completely confirms **Bug A**: the query searches by the stats row's auto-generated primary key (`id`) instead of the scenario foreign key (`scenario_id`). So opening scenario ID `10` incorrectly updates the stats of whatever scenario has its stats row auto-assigned PK `id = 10`.
+
+---
+
 ## Bugs Identified
 
 ### Bug A: Database query in `ScenarioDao` and `DumbScenarioDao` uses wrong column for retrieving scenario stats (CRITICAL)
@@ -56,9 +89,6 @@ And in [DumbScenarioDao.kt:L121-122](file:///c:/Users/Vibhor/Scripts/Smart-AutoC
 **The Bug:**
 In both `ScenarioStatsEntity` and `DumbScenarioStatsEntity`, `id` is the auto-generated primary key of the stats row. The scenario's actual database ID is stored in the `scenario_id` (or `dumb_scenario_id`) column.
 By querying `WHERE id = :scenarioId`, the DAO queries the stats table using the scenario's ID against the stats row's auto-generated primary key instead of the corresponding foreign key column.
-This leads to:
-1. **Wrong Stats Updates:** Toggling scenario with ID `X` fetches and updates the stats row where PK `id = X`. If that row exists, it updates it, meaning stats of another scenario get modified.
-2. **Duplicate Rows / Reset Stats:** If no row in stats has PK `id = X`, it inserts a new stats row. But next time the scenario is opened, it still looks for PK `id = X`, fails to find it (since the new row was inserted with a different auto-generated PK), and inserts yet another row.
 
 **Fix:**
 Change the queries to query by the correct foreign key columns:

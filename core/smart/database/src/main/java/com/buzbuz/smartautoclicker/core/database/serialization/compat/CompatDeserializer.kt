@@ -322,6 +322,9 @@ internal open class CompatDeserializer : Deserializer {
             ?: CounterOperationValueType.NUMBER
         val counterOperationValue = jsonCondition.getDouble("numberCounterValue") ?: 0.0
         val counterOperationCounterName = jsonCondition.getString("numberCounterOperationCounterName") ?: ""
+        val threshold = jsonCondition.getInt("threshold")
+            ?.coerceIn(CONDITION_THRESHOLD_LOWER_BOUND, CONDITION_THRESHOLD_UPPER_BOUND)
+            ?: CONDITION_THRESHOLD_DEFAULT_VALUE
 
         return ConditionEntity(
             id = id,
@@ -329,6 +332,7 @@ internal open class CompatDeserializer : Deserializer {
             name = jsonCondition.getString("name") ?: "",
             priority = 0,
             type = ConditionType.ON_NUMBER_DETECTED,
+            threshold = threshold,
             detectionAreaLeft = area.left,
             detectionAreaTop = area.top,
             detectionAreaRight = area.right,

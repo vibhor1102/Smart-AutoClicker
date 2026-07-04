@@ -1,0 +1,615 @@
+================================================================================
+Inspecting ZIP file: c:\Users\Vibhor\Scripts\Smart-AutoClicker\.debug-evidence\2026-07-04-[WIP]-backup-zip-corruption\truncation_test.zip
+File size: 981821 bytes
+================================================================================
+Found 62 Central Directory Records (CDR)
+CDR #1: 20/
+  CDR Offset: 113695 (0x0001BC1F)
+  LFH Offset recorded in CDR: 0 (0x00000000)
+  CRC32: 0x00000000, Compressed: 2, Uncompressed: 0
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #2: 20/20.json
+  CDR Offset: 113744 (0x0001BC50)
+  LFH Offset recorded in CDR: 51 (0x00000033)
+  CRC32: 0x18E7C16D, Compressed: 1197, Uncompressed: 6488
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/20.json
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #3: 20/Condition_-396517155.png
+  CDR Offset: 113800 (0x0001BC88)
+  LFH Offset recorded in CDR: 1304 (0x00000518)
+  CRC32: 0xE77FED96, Compressed: 16700, Uncompressed: 16690
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_-396517155.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #4: 20/Condition_1082721742.png
+  CDR Offset: 113873 (0x0001BCD1)
+  LFH Offset recorded in CDR: 18077 (0x0000469D)
+  CRC32: 0xD410D123, Compressed: 16375, Uncompressed: 16370
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_1082721742.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #5: 20/Condition_2097105570.png
+  CDR Offset: 113946 (0x0001BD1A)
+  LFH Offset recorded in CDR: 34525 (0x000086DD)
+  CRC32: 0xBA804335, Compressed: 15158, Uncompressed: 15281
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_2097105570.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #6: 20/Condition_-645399866.png
+  CDR Offset: 114019 (0x0001BD63)
+  LFH Offset recorded in CDR: 49756 (0x0000C25C)
+  CRC32: 0xC798EBEE, Compressed: 39936, Uncompressed: 39921
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_-645399866.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #7: 20/Condition_988746362.png
+  CDR Offset: 114092 (0x0001BDAC)
+  LFH Offset recorded in CDR: 89765 (0x00015EA5)
+  CRC32: 0x3C0DDAFE, Compressed: 13272, Uncompressed: 13267
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_988746362.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #8: 20/Condition_2051383996.png
+  CDR Offset: 114164 (0x0001BDF4)
+  LFH Offset recorded in CDR: 103109 (0x000192C5)
+  CRC32: 0x043C33BD, Compressed: 10513, Uncompressed: 10528
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_2051383996.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #9: 21/
+  CDR Offset: 977988 (0x000EEC44)
+  LFH Offset recorded in CDR: 0 (0x00000000)
+  CRC32: 0x00000000, Compressed: 2, Uncompressed: 0
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #10: 21/21.json
+  CDR Offset: 978037 (0x000EEC75)
+  LFH Offset recorded in CDR: 51 (0x00000033)
+  CRC32: 0xD76B6A25, Compressed: 2711, Uncompressed: 20670
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/20.json
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #11: 21/Condition_-396517155.png
+  CDR Offset: 978093 (0x000EECAD)
+  LFH Offset recorded in CDR: 2818 (0x00000B02)
+  CRC32: 0xE77FED96, Compressed: 16700, Uncompressed: 16690
+  GP Flag: 0x0808, Comp Method: 8
+  [ERROR] LFH signature not found at 2818 (0x00000B02)! Found: b'\x9f\xad\xf0\xfd'
+    Actual LFH signature found nearby at: [1304]
+--------------------------------------------------
+CDR #12: 21/Condition_1082721742.png
+  CDR Offset: 978166 (0x000EECF6)
+  LFH Offset recorded in CDR: 19591 (0x00004C87)
+  CRC32: 0xD410D123, Compressed: 16375, Uncompressed: 16370
+  GP Flag: 0x0808, Comp Method: 8
+  [ERROR] LFH signature not found at 19591 (0x00004C87)! Found: b'6\xa6\xed\xd0'
+    Actual LFH signature found nearby at: [18077]
+--------------------------------------------------
+CDR #13: 21/Condition_2097105570.png
+  CDR Offset: 978239 (0x000EED3F)
+  LFH Offset recorded in CDR: 36039 (0x00008CC7)
+  CRC32: 0xBA804335, Compressed: 15158, Uncompressed: 15281
+  GP Flag: 0x0808, Comp Method: 8
+  [ERROR] LFH signature not found at 36039 (0x00008CC7)! Found: b'nFTS'
+    Actual LFH signature found nearby at: [34525]
+--------------------------------------------------
+CDR #14: 21/Condition_-1412507999.png
+  CDR Offset: 978312 (0x000EED88)
+  LFH Offset recorded in CDR: 51270 (0x0000C846)
+  CRC32: 0xD7BBE637, Compressed: 35171, Uncompressed: 35156
+  GP Flag: 0x0808, Comp Method: 8
+  [ERROR] LFH signature not found at 51270 (0x0000C846)! Found: b'\xcf\xae\x07>'
+    Actual LFH signature found nearby at: [49756]
+--------------------------------------------------
+CDR #15: 21/Condition_1216965812.png
+  CDR Offset: 978386 (0x000EEDD2)
+  LFH Offset recorded in CDR: 86515 (0x000151F3)
+  CRC32: 0xD787FFC2, Compressed: 33635, Uncompressed: 33620
+  GP Flag: 0x0808, Comp Method: 8
+  [ERROR] LFH signature not found at 86515 (0x000151F3)! Found: b'\x80\x0b\x11"'
+    No actual LFH signature found nearby.
+--------------------------------------------------
+CDR #16: 21/Condition_1307245591.png
+  CDR Offset: 978459 (0x000EEE1B)
+  LFH Offset recorded in CDR: 120223 (0x0001D59F)
+  CRC32: 0x61B4EB22, Compressed: 14625, Uncompressed: 14620
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 21/Condition_1307245591.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #17: 21/Condition_1088868838.png
+  CDR Offset: 978532 (0x000EEE64)
+  LFH Offset recorded in CDR: 134921 (0x00020F09)
+  CRC32: 0x9CC5E32C, Compressed: 15262, Uncompressed: 15257
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 21/Condition_1088868838.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #18: 21/Condition_988746362.png
+  CDR Offset: 978605 (0x000EEEAD)
+  LFH Offset recorded in CDR: 150256 (0x00024AF0)
+  CRC32: 0x3C0DDAFE, Compressed: 13272, Uncompressed: 13267
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 21/Condition_988746362.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #19: 21/Condition_-645399866.png
+  CDR Offset: 978677 (0x000EEEF5)
+  LFH Offset recorded in CDR: 163600 (0x00027F10)
+  CRC32: 0xC798EBEE, Compressed: 39936, Uncompressed: 39921
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 21/Condition_-645399866.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #20: 21/Condition_-1594629793.png
+  CDR Offset: 978750 (0x000EEF3E)
+  LFH Offset recorded in CDR: 203609 (0x00031B59)
+  CRC32: 0x13ECD0CE, Compressed: 8014, Uncompressed: 8009
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 21/Condition_-1594629793.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #21: 21/Condition_-255435144.png
+  CDR Offset: 978824 (0x000EEF88)
+  LFH Offset recorded in CDR: 211697 (0x00033AF1)
+  CRC32: 0xAA3ED16C, Compressed: 88425, Uncompressed: 88395
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 21/Condition_-255435144.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #22: 21/Condition_1285565128.png
+  CDR Offset: 978897 (0x000EEFD1)
+  LFH Offset recorded in CDR: 300195 (0x000494A3)
+  CRC32: 0x9A605053, Compressed: 13814, Uncompressed: 13809
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 21/Condition_1285565128.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #23: 21/Condition_-396347172.png
+  CDR Offset: 978970 (0x000EF01A)
+  LFH Offset recorded in CDR: 314082 (0x0004CAE2)
+  CRC32: 0xAD10D5C2, Compressed: 14009, Uncompressed: 14004
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 21/Condition_-396347172.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #24: 21/Condition_1588081948.png
+  CDR Offset: 979043 (0x000EF063)
+  LFH Offset recorded in CDR: 328164 (0x000501E4)
+  CRC32: 0x0728C7DA, Compressed: 7994, Uncompressed: 7989
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 21/Condition_1588081948.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #25: 21/Condition_-168799537.png
+  CDR Offset: 979116 (0x000EF0AC)
+  LFH Offset recorded in CDR: 336231 (0x00052167)
+  CRC32: 0x3DCF2E25, Compressed: 11722, Uncompressed: 11758
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 21/Condition_-168799537.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #26: 19/
+  CDR Offset: 979189 (0x000EF0F5)
+  LFH Offset recorded in CDR: 348026 (0x00054F7A)
+  CRC32: 0x00000000, Compressed: 2, Uncompressed: 0
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #27: 19/19.json
+  CDR Offset: 979238 (0x000EF126)
+  LFH Offset recorded in CDR: 348077 (0x00054FAD)
+  CRC32: 0xA33234A1, Compressed: 4275, Uncompressed: 37382
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/19.json
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #28: 19/Condition_1618860810.png
+  CDR Offset: 979294 (0x000EF15E)
+  LFH Offset recorded in CDR: 352408 (0x00056098)
+  CRC32: 0x1A7BD6A7, Compressed: 18291, Uncompressed: 18281
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_1618860810.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #29: 19/Condition_-643207425.png
+  CDR Offset: 979367 (0x000EF1A7)
+  LFH Offset recorded in CDR: 370772 (0x0005A854)
+  CRC32: 0x6282FF88, Compressed: 16038, Uncompressed: 16033
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-643207425.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #30: 19/Condition_779097885.png
+  CDR Offset: 979440 (0x000EF1F0)
+  LFH Offset recorded in CDR: 386883 (0x0005E743)
+  CRC32: 0xAFAB794D, Compressed: 28017, Uncompressed: 28007
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_779097885.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #31: 19/Condition_-6897814.png
+  CDR Offset: 979512 (0x000EF238)
+  LFH Offset recorded in CDR: 414972 (0x000654FC)
+  CRC32: 0xFAEFFFFA, Compressed: 22726, Uncompressed: 22716
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-6897814.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #32: 19/Condition_1192731434.png
+  CDR Offset: 979583 (0x000EF27F)
+  LFH Offset recorded in CDR: 437769 (0x0006AE09)
+  CRC32: 0x185C08B7, Compressed: 18025, Uncompressed: 18057
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_1192731434.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #33: 19/Condition_-189214927.png
+  CDR Offset: 979656 (0x000EF2C8)
+  LFH Offset recorded in CDR: 455867 (0x0006F4BB)
+  CRC32: 0x8EFCB6AB, Compressed: 18038, Uncompressed: 18031
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-189214927.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #34: 19/Condition_-534940094.png
+  CDR Offset: 979729 (0x000EF311)
+  LFH Offset recorded in CDR: 473978 (0x00073B7A)
+  CRC32: 0x7050F19D, Compressed: 21521, Uncompressed: 21511
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-534940094.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #35: 19/Condition_-2025384841.png
+  CDR Offset: 979802 (0x000EF35A)
+  LFH Offset recorded in CDR: 495572 (0x00078FD4)
+  CRC32: 0x1D3FD1A6, Compressed: 15967, Uncompressed: 15962
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-2025384841.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #36: 19/Condition_-1026935787.png
+  CDR Offset: 979876 (0x000EF3A4)
+  LFH Offset recorded in CDR: 511613 (0x0007CE7D)
+  CRC32: 0x9820A49A, Compressed: 14657, Uncompressed: 14652
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-1026935787.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #37: 19/Condition_-1005300670.png
+  CDR Offset: 979950 (0x000EF3EE)
+  LFH Offset recorded in CDR: 526344 (0x00080808)
+  CRC32: 0x6FBFC2FE, Compressed: 24376, Uncompressed: 24366
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-1005300670.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #38: 19/Condition_246506064.png
+  CDR Offset: 980024 (0x000EF438)
+  LFH Offset recorded in CDR: 550794 (0x0008678A)
+  CRC32: 0xCFAC267B, Compressed: 24738, Uncompressed: 24728
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_246506064.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #39: 19/Condition_1345461130.png
+  CDR Offset: 980096 (0x000EF480)
+  LFH Offset recorded in CDR: 575604 (0x0008C874)
+  CRC32: 0xEF123296, Compressed: 24072, Uncompressed: 24062
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_1345461130.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #40: 19/Condition_415423740.png
+  CDR Offset: 980169 (0x000EF4C9)
+  LFH Offset recorded in CDR: 599749 (0x000926C5)
+  CRC32: 0x8ED31A20, Compressed: 27700, Uncompressed: 27690
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_415423740.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #41: 19/Condition_1734129773.png
+  CDR Offset: 980241 (0x000EF511)
+  LFH Offset recorded in CDR: 627521 (0x00099341)
+  CRC32: 0x3BF9283B, Compressed: 26479, Uncompressed: 26469
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_1734129773.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #42: 19/Condition_525627662.png
+  CDR Offset: 980314 (0x000EF55A)
+  LFH Offset recorded in CDR: 654073 (0x0009FAF9)
+  CRC32: 0x908F51D6, Compressed: 17718, Uncompressed: 17708
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_525627662.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #43: 19/Condition_-3816358.png
+  CDR Offset: 980386 (0x000EF5A2)
+  LFH Offset recorded in CDR: 671863 (0x000A4077)
+  CRC32: 0x41B5003E, Compressed: 17608, Uncompressed: 17598
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-3816358.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #44: 19/Condition_-423745069.png
+  CDR Offset: 980457 (0x000EF5E9)
+  LFH Offset recorded in CDR: 689542 (0x000A8586)
+  CRC32: 0x2B1898B6, Compressed: 18532, Uncompressed: 18522
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-423745069.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #45: 19/Condition_1402554440.png
+  CDR Offset: 980530 (0x000EF632)
+  LFH Offset recorded in CDR: 708147 (0x000ACE33)
+  CRC32: 0xED2AC423, Compressed: 22508, Uncompressed: 22498
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_1402554440.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #46: 19/Condition_-32102742.png
+  CDR Offset: 980603 (0x000EF67B)
+  LFH Offset recorded in CDR: 730728 (0x000B2668)
+  CRC32: 0xE59AED83, Compressed: 17304, Uncompressed: 17294
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-32102742.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #47: 19/Condition_1505228033.png
+  CDR Offset: 980675 (0x000EF6C3)
+  LFH Offset recorded in CDR: 748104 (0x000B6A48)
+  CRC32: 0x6C75C3A5, Compressed: 22807, Uncompressed: 22797
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_1505228033.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #48: 19/Condition_1780613591.png
+  CDR Offset: 980748 (0x000EF70C)
+  LFH Offset recorded in CDR: 770984 (0x000BC3A8)
+  CRC32: 0x3FFB67EA, Compressed: 18244, Uncompressed: 18234
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_1780613591.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #49: 19/Condition_-92251823.png
+  CDR Offset: 980821 (0x000EF755)
+  LFH Offset recorded in CDR: 789301 (0x000C0B35)
+  CRC32: 0x443F3D7A, Compressed: 19686, Uncompressed: 19676
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-92251823.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #50: 19/Condition_900424467.png
+  CDR Offset: 980893 (0x000EF79D)
+  LFH Offset recorded in CDR: 809059 (0x000C5863)
+  CRC32: 0x3F6BD0D4, Compressed: 9728, Uncompressed: 9723
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_900424467.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #51: 19/Condition_1101605291.png
+  CDR Offset: 980965 (0x000EF7E5)
+  LFH Offset recorded in CDR: 818859 (0x000C7EAB)
+  CRC32: 0x28EC005B, Compressed: 29399, Uncompressed: 29393
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_1101605291.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #52: 19/Condition_-1117594484.png
+  CDR Offset: 981038 (0x000EF82E)
+  LFH Offset recorded in CDR: 848331 (0x000CF1CB)
+  CRC32: 0xD203F78F, Compressed: 1627, Uncompressed: 1622
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_-1117594484.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #53: 19/Condition_2021749155.png
+  CDR Offset: 981112 (0x000EF878)
+  LFH Offset recorded in CDR: 850032 (0x000CF870)
+  CRC32: 0xBD89F2FE, Compressed: 10898, Uncompressed: 10933
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_2021749155.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #54: 19/Condition_645147228.png
+  CDR Offset: 981185 (0x000EF8C1)
+  LFH Offset recorded in CDR: 861003 (0x000D234B)
+  CRC32: 0x289C3757, Compressed: 3218, Uncompressed: 3267
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 19/Condition_645147228.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #55: 20/
+  CDR Offset: 981257 (0x000EF909)
+  LFH Offset recorded in CDR: 864293 (0x000D3025)
+  CRC32: 0x00000000, Compressed: 2, Uncompressed: 0
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #56: 20/20.json
+  CDR Offset: 981306 (0x000EF93A)
+  LFH Offset recorded in CDR: 864344 (0x000D3058)
+  CRC32: 0x18E7C16D, Compressed: 1197, Uncompressed: 6488
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/20.json
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #57: 20/Condition_-396517155.png
+  CDR Offset: 981362 (0x000EF972)
+  LFH Offset recorded in CDR: 865597 (0x000D353D)
+  CRC32: 0xE77FED96, Compressed: 16700, Uncompressed: 16690
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_-396517155.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #58: 20/Condition_1082721742.png
+  CDR Offset: 981435 (0x000EF9BB)
+  LFH Offset recorded in CDR: 882370 (0x000D76C2)
+  CRC32: 0xD410D123, Compressed: 16375, Uncompressed: 16370
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_1082721742.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #59: 20/Condition_2097105570.png
+  CDR Offset: 981508 (0x000EFA04)
+  LFH Offset recorded in CDR: 898818 (0x000DB702)
+  CRC32: 0xBA804335, Compressed: 15158, Uncompressed: 15281
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_2097105570.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #60: 20/Condition_-645399866.png
+  CDR Offset: 981581 (0x000EFA4D)
+  LFH Offset recorded in CDR: 914049 (0x000DF281)
+  CRC32: 0xC798EBEE, Compressed: 39936, Uncompressed: 39921
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_-645399866.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #61: 20/Condition_988746362.png
+  CDR Offset: 981654 (0x000EFA96)
+  LFH Offset recorded in CDR: 954058 (0x000E8ECA)
+  CRC32: 0x3C0DDAFE, Compressed: 13272, Uncompressed: 13267
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_988746362.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------
+CDR #62: 20/Condition_2051383996.png
+  CDR Offset: 981726 (0x000EFADE)
+  LFH Offset recorded in CDR: 967402 (0x000EC2EA)
+  CRC32: 0x043C33BD, Compressed: 10513, Uncompressed: 10528
+  GP Flag: 0x0808, Comp Method: 8
+  [OK] LFH signature matches at offset.
+  LFH Name: 20/Condition_2051383996.png
+    LFH CRC32: 0x00000000, Compressed: 0, Uncompressed: 0
+    LFH GP Flag: 0x0808
+--------------------------------------------------

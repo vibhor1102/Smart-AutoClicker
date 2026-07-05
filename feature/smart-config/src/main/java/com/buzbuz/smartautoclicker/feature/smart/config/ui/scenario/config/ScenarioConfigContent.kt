@@ -85,7 +85,7 @@ class ScenarioConfigContent(appContext: Context) : NavBarDialogContent(appContex
                 setDescription(context.getString(R.string.field_copy_automation_desc))
                 chevron.setImageResource(com.buzbuz.smartautoclicker.core.ui.R.drawable.ic_copy)
                 setOnClickListener {
-                    val scenarioId = viewModel.uiState.value?.id ?: return@setOnClickListener
+                    val scenarioId = viewModel.scenarioId ?: return@setOnClickListener
                     com.buzbuz.smartautoclicker.core.ui.utils.copyAutomationIntentToClipboard(context, scenarioId, isSmart = true)
                 }
             }

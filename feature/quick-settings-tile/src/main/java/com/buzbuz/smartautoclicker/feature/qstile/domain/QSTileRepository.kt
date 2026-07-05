@@ -119,16 +119,16 @@ class QSTileRepository @Inject constructor(
     internal fun getLastScenarioDetails(): Pair<Long?, Boolean?> =
         qsTileDisplayInfo.value?.scenarioId to qsTileDisplayInfo.value?.isSmart
 
-    internal fun isAccessibilityServiceStarted(): Boolean =
+    fun isAccessibilityServiceStarted(): Boolean =
         qsTileActionHandler?.isRunning() ?: false
 
-    internal fun startDumbScenario(scenario: DumbScenario) =
+    fun startDumbScenario(scenario: DumbScenario) =
         qsTileActionHandler?.startDumbScenario(scenario)
 
-    internal fun startSmartScenario(resultCode: Int, data: Intent, scenario: Scenario) =
+    fun startSmartScenario(resultCode: Int, data: Intent, scenario: Scenario) =
         qsTileActionHandler?.startSmartScenario(resultCode, data, scenario)
 
-    internal fun stopScenarios() =
+    fun stopScenarios() =
         qsTileActionHandler?.stop()
 
     private fun Context.getTileDisplayInfo(isSmart: Boolean, runningId: Long?, scenarioId: Long?, scenarioName: String?): QSTileDisplayInfo {

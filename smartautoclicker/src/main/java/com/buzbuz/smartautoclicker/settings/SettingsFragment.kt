@@ -202,7 +202,7 @@ class SettingsFragment : Fragment() {
                     }
                     isCloseIconVisible = true
                     setOnCloseIconClickListener {
-                        val currentList = viewModel.thirdPartyWhitelist.value.toMutableSet()
+                        val currentList = packages.toMutableSet()
                         currentList.remove(packageName)
                         viewModel.updateWhitelist(currentList)
                     }

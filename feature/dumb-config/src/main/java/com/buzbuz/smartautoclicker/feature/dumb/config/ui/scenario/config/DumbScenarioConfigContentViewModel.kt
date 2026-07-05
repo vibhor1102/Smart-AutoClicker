@@ -72,6 +72,9 @@ class DumbScenarioConfigContentViewModel @Inject constructor(
     val randomization: Flow<Boolean> = userModifications
         .map { it?.randomize == true }
 
+    val scenarioId: Long?
+        get() = userModifications.value?.id?.databaseId
+
     fun setDumbScenarioName(name: String) {
         userModifications.value?.copy(name = name)?.let {
             dumbEditionRepository.updateDumbScenario(it)

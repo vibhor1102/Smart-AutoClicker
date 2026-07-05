@@ -63,6 +63,9 @@ class ScenarioConfigViewModel @Inject constructor(
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
+    val scenarioId: Long?
+        get() = editionRepository.editionState.getScenario()?.id?.databaseId
+
 
     /** Set a new name for the scenario. */
     fun setScenarioName(name: String) {

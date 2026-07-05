@@ -55,6 +55,12 @@ class SettingsViewModel @Inject constructor(
     val isInputWorkaroundEnabled: Flow<Boolean> =
         settingsRepository.isInputBlockWorkaroundEnabledFlow
 
+    val isThirdPartyTriggerEnabled: Flow<Boolean> =
+        settingsRepository.isThirdPartyTriggerEnabledFlow
+
+    val thirdPartyWhitelist: Flow<Set<String>> =
+        settingsRepository.thirdPartyWhitelistFlow
+
     val shouldShowEntireScreenCapture: Flow<Boolean> =
         flowOf(Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM)
 
@@ -88,6 +94,14 @@ class SettingsViewModel @Inject constructor(
 
     fun toggleInputBlockWorkaround() {
         settingsRepository.toggleInputBlockWorkaround()
+    }
+
+    fun toggleThirdPartyTrigger() {
+        settingsRepository.toggleThirdPartyTrigger()
+    }
+
+    fun updateWhitelist(packages: Set<String>) {
+        settingsRepository.setThirdPartyWhitelist(packages)
     }
 
     fun showPrivacySettings(activity: Activity) {

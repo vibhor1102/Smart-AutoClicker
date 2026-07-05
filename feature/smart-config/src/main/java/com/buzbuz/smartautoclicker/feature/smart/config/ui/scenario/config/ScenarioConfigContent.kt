@@ -80,6 +80,16 @@ class ScenarioConfigContent(appContext: Context) : NavBarDialogContent(appContex
                 setOnClickListener(viewModel::toggleRandomization)
             }
 
+            fieldCopyAutomation.apply {
+                setTitle(context.getString(R.string.field_copy_automation_title))
+                setDescription(context.getString(R.string.field_copy_automation_desc))
+                chevron.setImageResource(com.buzbuz.smartautoclicker.core.ui.R.drawable.ic_copy)
+                setOnClickListener {
+                    val scenarioId = viewModel.uiState.value?.id ?: return@setOnClickListener
+                    com.buzbuz.smartautoclicker.core.ui.utils.copyAutomationIntentToClipboard(context, scenarioId, isSmart = true)
+                }
+            }
+
             fieldKeepScreenOn.apply {
                 setTitle(context.resources.getString(R.string.field_scenario_keep_screen_on_title))
                 setupDescriptions(

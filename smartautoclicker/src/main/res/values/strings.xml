@@ -150,4 +150,11 @@
     <string name="button_condition_migration_running">Migrating</string>
     <string name="button_condition_migration_finished">OK</string>
 
+    <string name="field_third_party_trigger_title">Allow third-party app triggers</string>
+    <string name="field_third_party_trigger_desc">Let apps like Tasker or MacroDroid start scenarios</string>
+    <string name="label_whitelisted_apps">Allowed Apps (Click to add)</string>
+    <string name="placeholder_no_apps_whitelisted">No apps allowed. Click to select.</string>
+    <string name="dialog_title_allowed_apps">Select Whitelisted Apps</string>
+    <string name="action_done">Done</string>
+    <string name="toast_third_party_denied">Smart AutoClicker: Access denied. %1$s is not whitelisted in Settings.</string>
 </resources>

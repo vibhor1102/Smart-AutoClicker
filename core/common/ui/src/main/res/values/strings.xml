@@ -125,4 +125,7 @@
     <string name="content_desc_confirm">Confirm</string>
     <string name="content_desc_go_back">Back to dialog</string>
 
+    <string name="toast_copied_automation_intent">Intent details copied to clipboard!</string>
+    <string name="field_copy_automation_title">Copy Automation Intent</string>
+    <string name="field_copy_automation_desc">Copy the intent details to trigger this scenario from Tasker/MacroDroid</string>
 </resources>

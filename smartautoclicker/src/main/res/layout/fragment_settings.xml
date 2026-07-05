@@ -82,6 +82,60 @@
             android:layout_marginVertical="@dimen/margin_vertical_default" />
 
         <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider_third_party_trigger"
+            style="@style/AppTheme.Widget.Divider.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+        <include layout="@layout/include_field_switch"
+            android:id="@+id/field_third_party_trigger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_vertical_default" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider_whitelisted_apps"
+            style="@style/AppTheme.Widget.Divider.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/layout_whitelisted_apps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginVertical="@dimen/margin_vertical_default"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/label_whitelisted_apps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:layout_marginBottom="4dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_whitelisted_apps"
+                style="?attr/materialCardViewOutlinedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_whitelisted_apps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    app:chipSpacingHorizontal="8dp"
+                    app:chipSpacingVertical="4dp" />
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
             android:id="@+id/divider_privacy_settings"
             style="@style/AppTheme.Widget.Divider.Horizontal"
             android:layout_width="match_parent"

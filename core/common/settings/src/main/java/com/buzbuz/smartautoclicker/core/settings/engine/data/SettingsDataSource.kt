@@ -19,6 +19,7 @@ package com.buzbuz.smartautoclicker.core.settings.engine.data
 import android.content.Context
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.stringSetPreferencesKey
 
 import com.buzbuz.smartautoclicker.core.base.PreferencesDataStore
 import com.buzbuz.smartautoclicker.core.base.di.Dispatcher
@@ -53,6 +54,10 @@ internal class SettingsDataSource @Inject constructor(
             booleanPreferencesKey("forceEntireScreen")
         val KEY_INPUT_BLOCK_WORKAROUND: Preferences.Key<Boolean> =
             booleanPreferencesKey("inputBlockWorkaround")
+        val KEY_IS_THIRD_PARTY_TRIGGER_ENABLED: Preferences.Key<Boolean> =
+            booleanPreferencesKey("isThirdPartyTriggerEnabled")
+        val KEY_THIRD_PARTY_WHITELIST: Preferences.Key<Set<String>> =
+            stringSetPreferencesKey("thirdPartyWhitelist")
     }
 
     private val dataStore: PreferencesDataStore =
@@ -102,6 +107,24 @@ internal class SettingsDataSource @Inject constructor(
         if (!isImpactedByInputBlock()) return
         dataStore.edit { preferences ->
             preferences[KEY_INPUT_BLOCK_WORKAROUND] = !(preferences[KEY_INPUT_BLOCK_WORKAROUND] ?: false)
+        }
+    }
+
+    internal fun isThirdPartyTriggerEnabled(): Flow<Boolean> =
+        dataStore.data.map { preferences -> preferences[KEY_IS_THIRD_PARTY_TRIGGER_ENABLED] ?: false }
+
+    internal suspend fun toggleThirdPartyTrigger() {
+        dataStore.edit { preferences ->
+            preferences[KEY_IS_THIRD_PARTY_TRIGGER_ENABLED] = !(preferences[KEY_IS_THIRD_PARTY_TRIGGER_ENABLED] ?: false)
+        }
+    }
+
+    internal fun getThirdPartyWhitelist(): Flow<Set<String>> =
+        dataStore.data.map { preferences -> preferences[KEY_THIRD_PARTY_WHITELIST] ?: emptySet() }
+
+    internal suspend fun setThirdPartyWhitelist(packages: Set<String>) {
+        dataStore.edit { preferences ->
+            preferences[KEY_THIRD_PARTY_WHITELIST] = packages
         }
     }
 }

@@ -101,6 +101,16 @@ class DumbScenarioConfigContent(appContext: Context) : NavBarDialogContent(appCo
                 setOnClickListener(dialogViewModel::toggleRandomization)
 
             }
+
+            fieldCopyAutomation.apply {
+                setTitle(context.getString(R.string.field_copy_automation_title))
+                setDescription(context.getString(R.string.field_copy_automation_desc))
+                chevron.setImageResource(com.buzbuz.smartautoclicker.core.ui.R.drawable.ic_copy)
+                setOnClickListener {
+                    val scenarioId = dialogViewModel.scenarioId ?: return@setOnClickListener
+                    com.buzbuz.smartautoclicker.core.ui.utils.copyAutomationIntentToClipboard(context, scenarioId, isSmart = false)
+                }
+            }
         }
 
         return viewBinding.root

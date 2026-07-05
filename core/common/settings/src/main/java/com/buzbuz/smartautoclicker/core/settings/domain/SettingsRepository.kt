@@ -47,4 +47,12 @@ interface SettingsRepository {
     fun setScenarioSortOrder(invertSortOrder: Boolean)
     fun setScenarioSortShowDumb(show: Boolean)
     fun setScenarioSortShowSmart(show: Boolean)
+
+    val isThirdPartyTriggerEnabledFlow: Flow<Boolean>
+    fun isThirdPartyTriggerEnabled(): Boolean
+    fun toggleThirdPartyTrigger()
+
+    val thirdPartyWhitelistFlow: Flow<Set<String>>
+    fun getThirdPartyWhitelist(): Set<String>
+    fun setThirdPartyWhitelist(packages: Set<String>)
 }

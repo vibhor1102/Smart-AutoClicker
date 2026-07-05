@@ -66,6 +66,14 @@ internal class SettingsRepositoryImpl @Inject constructor(
         .stateIn(coroutineScope, SharingStarted.Eagerly, false)
     override val isInputBlockWorkaroundEnabledFlow: Flow<Boolean> = _isInputBlockWorkaroundEnabledFlow
 
+    private val _isThirdPartyTriggerEnabledFlow: StateFlow<Boolean> = dataSource.isThirdPartyTriggerEnabled()
+        .stateIn(coroutineScope, SharingStarted.Eagerly, false)
+    override val isThirdPartyTriggerEnabledFlow: Flow<Boolean> = _isThirdPartyTriggerEnabledFlow
+
+    private val _thirdPartyWhitelistFlow: StateFlow<Set<String>> = dataSource.getThirdPartyWhitelist()
+        .stateIn(coroutineScope, SharingStarted.Eagerly, emptySet())
+    override val thirdPartyWhitelistFlow: Flow<Set<String>> = _thirdPartyWhitelistFlow
+
     override val scenarioSortSettings: Flow<ScenarioSortSettings> = scenarioSortSettingsDatasource.getSortConfig()
 
 
@@ -112,6 +120,24 @@ internal class SettingsRepositoryImpl @Inject constructor(
     override fun toggleInputBlockWorkaround() {
         coroutineScope.launch {
             dataSource.toggleInputBlockWorkaround()
+        }
+    }
+
+    override fun isThirdPartyTriggerEnabled(): Boolean =
+        _isThirdPartyTriggerEnabledFlow.value
+
+    override fun toggleThirdPartyTrigger() {
+        coroutineScope.launch {
+            dataSource.toggleThirdPartyTrigger()
+        }
+    }
+
+    override fun getThirdPartyWhitelist(): Set<String> =
+        _thirdPartyWhitelistFlow.value
+
+    override fun setThirdPartyWhitelist(packages: Set<String>) {
+        coroutineScope.launch {
+            dataSource.setThirdPartyWhitelist(packages)
         }
     }
 

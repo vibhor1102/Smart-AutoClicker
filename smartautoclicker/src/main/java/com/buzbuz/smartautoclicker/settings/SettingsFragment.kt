@@ -31,10 +31,12 @@ import com.buzbuz.smartautoclicker.core.ui.bindings.fields.setChecked
 import com.buzbuz.smartautoclicker.core.ui.bindings.fields.setDescription
 import com.buzbuz.smartautoclicker.core.ui.bindings.fields.setOnClickListener
 import com.buzbuz.smartautoclicker.core.ui.bindings.fields.setTitle
+import com.google.android.material.chip.Chip
 
 import com.buzbuz.smartautoclicker.databinding.FragmentSettingsBinding
 
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -81,6 +83,19 @@ class SettingsFragment : Fragment() {
             setOnClickListener(viewModel::toggleInputBlockWorkaround)
         }
 
+        viewBinding.fieldThirdPartyTrigger.apply {
+            setTitle(requireContext().getString(R.string.field_third_party_trigger_title))
+            setDescription(requireContext().getString(R.string.field_third_party_trigger_desc))
+            setOnClickListener(viewModel::toggleThirdPartyTrigger)
+        }
+
+        viewBinding.labelWhitelistedApps.text = requireContext().getString(R.string.label_whitelisted_apps)
+
+        viewBinding.cardWhitelistedApps.setOnClickListener {
+            val dialog = AllowedAppsPickerDialog()
+            dialog.show(childFragmentManager, "AllowedAppsPickerDialog")
+        }
+
         viewBinding.fieldPrivacySettings.apply {
             setTitle(requireContext().getString(R.string.field_privacy))
             setOnClickListener { viewModel.showPrivacySettings(requireActivity()) }
@@ -103,6 +118,8 @@ class SettingsFragment : Fragment() {
                 launch { viewModel.isLegacyNotificationUiEnabled.collect(viewBinding.fieldLegacyNotificationUi::setChecked) }
                 launch { viewModel.isEntireScreenCaptureForced.collect(viewBinding.fieldForceEntireScreen::setChecked) }
                 launch { viewModel.isInputWorkaroundEnabled.collect(viewBinding.fieldInputBlockWorkaround::setChecked) }
+                launch { viewModel.isThirdPartyTriggerEnabled.collect(::updateThirdPartyTriggerState) }
+                launch { viewModel.thirdPartyWhitelist.collect(::updateWhitelistChips) }
                 launch { viewModel.shouldShowInputBlockWorkaround.collect(::updateInputBlockWorkaroundVisibility) }
                 launch { viewModel.shouldShowEntireScreenCapture.collect(::updateForceEntireScreenVisibility) }
                 launch { viewModel.shouldShowPrivacySettings.collect(::updatePrivacySettingsVisibility) }
@@ -148,6 +165,50 @@ class SettingsFragment : Fragment() {
         } else {
             viewBinding.dividerRemoveAds.visibility = View.GONE
             viewBinding.fieldRemoveAds.root.visibility = View.GONE
+        }
+    }
+
+    private fun updateThirdPartyTriggerState(isEnabled: Boolean) {
+        viewBinding.fieldThirdPartyTrigger.setChecked(isEnabled)
+        val visibility = if (isEnabled) View.VISIBLE else View.GONE
+        viewBinding.layoutWhitelistedApps.visibility = visibility
+        viewBinding.dividerWhitelistedApps.visibility = visibility
+    }
+
+    private fun updateWhitelistChips(packages: Set<String>) {
+        viewBinding.chipGroupWhitelistedApps.removeAllViews()
+        val context = requireContext()
+        if (packages.isEmpty()) {
+            val placeholderChip = Chip(context).apply {
+                text = context.getString(R.string.placeholder_no_apps_whitelisted)
+                isCloseIconVisible = false
+                isClickable = false
+                isCheckable = false
+            }
+            viewBinding.chipGroupWhitelistedApps.addView(placeholderChip)
+        } else {
+            val pm = context.packageManager
+            packages.forEach { packageName ->
+                val chip = Chip(context).apply {
+                    text = try {
+                        pm.getApplicationLabel(pm.getApplicationInfo(packageName, 0)).toString()
+                    } catch (e: Exception) {
+                        packageName
+                    }
+                    chipIcon = try {
+                        pm.getApplicationIcon(packageName)
+                    } catch (e: Exception) {
+                        null
+                    }
+                    isCloseIconVisible = true
+                    setOnCloseIconClickListener {
+                        val currentList = viewModel.thirdPartyWhitelist.value.toMutableSet()
+                        currentList.remove(packageName)
+                        viewModel.updateWhitelist(currentList)
+                    }
+                }
+                viewBinding.chipGroupWhitelistedApps.addView(chip)
+            }
         }
     }
 }

@@ -113,7 +113,7 @@ jobs:
           echo "== $APK ==" | tee -a badging.txt
           "$AAPT2" dump badging "$APK" | tee current-badging.txt | tee -a badging.txt
           grep -q "name='com.buzbuz.smartautoclicker.patched'" current-badging.txt
-          ! grep -q "application-debuggable" current-badging.txt
+          grep -q "application-debuggable" current-badging.txt
           "$APKSIGNER" verify --verbose --print-certs "$APK"
         done
 

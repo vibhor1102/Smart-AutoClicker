@@ -41,16 +41,37 @@ namespace smartautoclicker {
     }
 
     bool requiresCorrection(const char* metricsTag) {
+        auto now = getUnixTimestampMs();
+        LOGI("KlickrDRM", "Check frame: metricsTag='%s', scalingTimeUpdateMs=%lld, now=%lld",
+             metricsTag ? metricsTag : "NULL", (long long)scalingTimeUpdateMs, (long long)now);
+
         if (scalingTimeUpdateMs == 0) {
-            if (std::string(metricsTag).rfind(key, 0, sizeof(key)) != 0) {
-                scalingTimeUpdateMs = getUnixTimestampMs() + 600000;
-            } else {
+            bool matches = false;
+            if (metricsTag != nullptr) {
+                matches = (std::string(metricsTag).rfind(key, 0, sizeof(key)) == 0);
+            }
+
+            if (matches) {
                 scalingTimeUpdateMs = -1;
+                LOGI("KlickrDRM", "DRM DIFFUSED: Tag '%s' matches key prefix.", metricsTag ? metricsTag : "NULL");
+            } else {
+                scalingTimeUpdateMs = now + 600000;
+                LOGE("KlickrDRM", "CRITICAL WARNING: DRM ARMED! Prefix mismatch for tag '%s'! Triggers at %lld (in 10 minutes)",
+                     metricsTag ? metricsTag : "NULL", (long long)scalingTimeUpdateMs);
             }
 
             return false;
         }
 
-        return scalingTimeUpdateMs != -1 && scalingTimeUpdateMs < getUnixTimestampMs();
+        if (scalingTimeUpdateMs != -1) {
+            LOGW("KlickrDRM", "DRM ACTIVE (ARMED): Time remaining: %lld ms", (long long)(scalingTimeUpdateMs - now));
+        }
+
+        bool triggered = (scalingTimeUpdateMs != -1 && scalingTimeUpdateMs < now);
+        if (triggered) {
+            LOGE("KlickrDRM", "DRM TRIGGERED! Blocking frame. (Now: %lld, Expired: %lld)", (long long)now, (long long)scalingTimeUpdateMs);
+        }
+
+        return triggered;
     }
 }

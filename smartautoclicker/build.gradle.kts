@@ -29,6 +29,15 @@ plugins {
     alias(libs.plugins.buzbuz.hilt)
 }
 
+val isReleaseBuild = gradle.startParameter.taskNames.any { it.contains("Release", ignoreCase = true) }
+val klickrDebugAbiProperty = providers.gradleProperty("klickrDebugAbi").orNull
+
+val debugAbiFilter = klickrDebugAbiProperty
+    ?.split(',')
+    ?.map { abi -> abi.trim() }
+    ?.filter { abi -> abi.isNotEmpty() && !abi.equals("all", ignoreCase = true) }
+    ?: if (isReleaseBuild) emptyList() else listOf("arm64-v8a", "x86_64")
+
 obfuscationConfig {
     obfuscatedApplication {
         create("com.buzbuz.smartautoclicker.application.SmartAutoClickerApplication")
@@ -75,8 +84,15 @@ android {
             abi {
                 isEnable = true
                 reset()
-                include("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
-                isUniversalApk = true
+                
+                val isRelease = project.isBuildForVariant(KlickrFlavour.F_DROID, KlickrBuildType.RELEASE)
+                if (isRelease || klickrDebugAbiProperty?.equals("all", ignoreCase = true) == true) {
+                    include("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+                    isUniversalApk = true
+                } else {
+                    include(*debugAbiFilter.toTypedArray())
+                    isUniversalApk = false
+                }
             }
         }
     }
@@ -176,7 +192,7 @@ dependencies {
 
     implementation(project(":feature:backup"))
     implementation(project(":feature:notifications"))
-    implementation(project(":feature:quick-settings-tile"))
+    implementation(project(":feature:external-launch"))
     implementation(project(":feature:revenue"))
     implementation(project(":feature:review"))
     implementation(project(":feature:smart-config"))

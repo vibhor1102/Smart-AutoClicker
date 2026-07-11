@@ -26,6 +26,7 @@ import android.view.View
 import androidx.core.view.isVisible
 
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.doOnNextLayout
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -316,7 +317,13 @@ class MainMenu(
 
     private fun updateSwitchButtonVisibility(isVisible: Boolean) {
         if (viewBinding.btnPlay.tag == null) {
-            viewBinding.btnSwitchScenario.visibility = if (isVisible) View.VISIBLE else View.GONE
+            val visibility = if (isVisible) View.VISIBLE else View.GONE
+            if (viewBinding.btnSwitchScenario.visibility == visibility) return
+
+            viewBinding.menuItems.doOnNextLayout {
+                refreshMenuLayout()
+            }
+            viewBinding.btnSwitchScenario.visibility = visibility
             return
         }
 

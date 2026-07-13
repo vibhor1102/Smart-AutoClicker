@@ -27,6 +27,7 @@ import com.buzbuz.smartautoclicker.core.domain.model.action.Intent
 import com.buzbuz.smartautoclicker.core.domain.model.action.Notification
 import com.buzbuz.smartautoclicker.core.domain.model.action.Pause
 import com.buzbuz.smartautoclicker.core.domain.model.action.SetText
+import com.buzbuz.smartautoclicker.core.domain.model.action.Sound
 import com.buzbuz.smartautoclicker.core.domain.model.action.Swipe
 import com.buzbuz.smartautoclicker.core.domain.model.action.SystemAction
 import com.buzbuz.smartautoclicker.core.domain.model.action.ToggleEvent
@@ -43,6 +44,7 @@ internal fun Action.toEntity(): ActionEntity {
         is ToggleEvent -> toToggleEventEntity()
         is ChangeCounter -> toChangeCounterEntity()
         is Notification -> toNotificationEntity()
+        is Sound -> toSoundEntity()
         is SystemAction -> toSystemActionEntity()
         is SetText -> toSetTextEntity()
     }
@@ -139,6 +141,16 @@ private fun Notification.toNotificationEntity(): ActionEntity =
         type = ActionType.NOTIFICATION,
         notificationImportance = channelImportance,
         notificationMessageText = messageText,
+    )
+
+private fun Sound.toSoundEntity(): ActionEntity =
+    ActionEntity(
+        id = id.databaseId,
+        eventId = eventId.databaseId,
+        priority = priority,
+        name = name!!,
+        type = ActionType.SOUND,
+        soundUri = uri,
     )
 
 private fun SystemAction.toSystemActionEntity(): ActionEntity =

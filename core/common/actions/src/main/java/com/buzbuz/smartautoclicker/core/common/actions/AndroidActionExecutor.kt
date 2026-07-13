@@ -110,6 +110,9 @@ interface AndroidActionExecutor: Dumpable {
      * due to the queuing system).
      */
     fun postNotification(notificationRequest: ActionNotificationRequest)
+
+    /** Start playback of a selected system sound without waiting for its completion. */
+    fun playSound(uri: String)
 }
 
 /** The maximum supported duration for a gesture. This limitation comes from Android GestureStroke API.  */

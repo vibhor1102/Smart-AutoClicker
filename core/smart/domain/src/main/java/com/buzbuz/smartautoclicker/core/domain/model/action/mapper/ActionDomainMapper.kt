@@ -17,6 +17,7 @@ import com.buzbuz.smartautoclicker.core.domain.model.action.Intent
 import com.buzbuz.smartautoclicker.core.domain.model.action.Notification
 import com.buzbuz.smartautoclicker.core.domain.model.action.Pause
 import com.buzbuz.smartautoclicker.core.domain.model.action.SetText
+import com.buzbuz.smartautoclicker.core.domain.model.action.Sound
 import com.buzbuz.smartautoclicker.core.domain.model.action.Swipe
 import com.buzbuz.smartautoclicker.core.domain.model.action.SystemAction
 import com.buzbuz.smartautoclicker.core.domain.model.action.ToggleEvent
@@ -32,6 +33,7 @@ internal fun CompleteActionEntity.toDomain(cleanIds: Boolean = false): Action = 
     ActionType.TOGGLE_EVENT -> toDomainToggleEvent(cleanIds)
     ActionType.CHANGE_COUNTER -> toDomainChangeCounter(cleanIds)
     ActionType.NOTIFICATION -> toDomainNotification(cleanIds)
+    ActionType.SOUND -> toDomainSound(cleanIds)
     ActionType.SYSTEM -> toDomainSystem(cleanIds)
     ActionType.TEXT -> toDomainSetText(cleanIds)
 }
@@ -112,6 +114,14 @@ private fun CompleteActionEntity.toDomainNotification(cleanIds: Boolean = false)
     priority = action.priority,
     channelImportance = action.notificationImportance!!,
     messageText = action.notificationMessageText!!,
+)
+
+private fun CompleteActionEntity.toDomainSound(cleanIds: Boolean = false) = Sound(
+    id = Identifier(id = action.id, asTemporary = cleanIds),
+    eventId = Identifier(id = action.eventId, asTemporary = cleanIds),
+    name = action.name,
+    priority = action.priority,
+    uri = action.soundUri!!,
 )
 
 private fun CompleteActionEntity.toDomainSystem(cleanIds: Boolean = false) = SystemAction(

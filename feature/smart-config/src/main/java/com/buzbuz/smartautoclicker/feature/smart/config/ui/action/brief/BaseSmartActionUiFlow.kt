@@ -26,6 +26,7 @@ import com.buzbuz.smartautoclicker.core.domain.model.action.Intent
 import com.buzbuz.smartautoclicker.core.domain.model.action.Notification
 import com.buzbuz.smartautoclicker.core.domain.model.action.Pause
 import com.buzbuz.smartautoclicker.core.domain.model.action.SetText
+import com.buzbuz.smartautoclicker.core.domain.model.action.Sound
 import com.buzbuz.smartautoclicker.core.domain.model.action.Swipe
 import com.buzbuz.smartautoclicker.core.domain.model.action.SystemAction
 import com.buzbuz.smartautoclicker.core.domain.model.action.ToggleEvent
@@ -38,6 +39,7 @@ import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.pause.PauseDia
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.selection.ActionTypeChoice
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.selection.ActionTypeSelectionDialog
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.settext.SetTextDialog
+import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.sound.SoundDialog
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.swipe.SwipeDialog
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.system.SystemActionDialog
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.toggleevent.ToggleEventDialog
@@ -107,6 +109,7 @@ internal fun BaseOverlay.showActionConfigDialog(configurator: ActionConfigurator
             if (PermissionPostNotification().checkIfGranted(context)) NotificationDialog(actionConfigDialogListener)
             else newNotificationPermissionStarterOverlay(context)
         }
+        is Sound -> SoundDialog(actionConfigDialogListener)
     }
 
 

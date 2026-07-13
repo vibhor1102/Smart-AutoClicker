@@ -106,6 +106,9 @@
     <string name="item_notification_title">Notification</string>
     <string name="item_notification_desc">Send a notification to your device</string>
     <string name="item_notification_details_text">Send \"%1$s\"</string>
+    <string name="item_sound_title">Play sound</string>
+    <string name="item_sound_desc">Play a selected system sound</string>
+    <string name="item_sound_details">Play selected sound</string>
 
     <string name="item_system_action_title">System action</string>
     <string name="item_system_action_desc">Use an Android system action (back, home or recent apps)</string>
@@ -444,6 +447,9 @@
     <!-- Dialogs Notification ===================================================================================== -->
 
     <string name="dialog_title_notification">Notification</string>
+    <string name="dialog_title_sound">Play sound</string>
+    <string name="button_choose_sound">Choose sound</string>
+    <string name="sound_not_selected">No sound selected</string>
 
     <string name="field_notification_title_label">Title</string>
 

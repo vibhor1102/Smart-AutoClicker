@@ -21,6 +21,7 @@ import com.buzbuz.smartautoclicker.core.domain.model.action.ChangeCounter
 import com.buzbuz.smartautoclicker.core.domain.model.action.Click
 import com.buzbuz.smartautoclicker.core.domain.model.action.Intent
 import com.buzbuz.smartautoclicker.core.domain.model.action.Notification
+import com.buzbuz.smartautoclicker.core.domain.model.action.Sound
 import com.buzbuz.smartautoclicker.core.domain.model.action.Pause
 import com.buzbuz.smartautoclicker.core.domain.model.action.SetText
 import com.buzbuz.smartautoclicker.core.domain.model.action.Swipe
@@ -83,6 +84,7 @@ class GetDebugLiveDetectionResultUseCase @Inject constructor(
                 is ChangeCounter,
                 is Intent,
                 is Notification,
+                is Sound,
                 is SetText,
                 is SystemAction,
                 is ToggleEvent -> 0

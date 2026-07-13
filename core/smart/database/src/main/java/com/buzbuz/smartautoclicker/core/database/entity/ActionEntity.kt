@@ -84,6 +84,8 @@ import kotlinx.serialization.Serializable
  * @param notificationMessageText [ActionType.NOTIFICATION] only: used as notification message.
  * @param notificationImportance [ActionType.NOTIFICATION] only: how the notification will behave.
  *
+ * @param soundUri [ActionType.SOUND] only: the Android URI of the selected sound.
+ *
  * @param systemActionType [ActionType.SYSTEM] only: the type of system action to execute.
  *
  * @param textValue [ActionType.TEXT] only: the text to type in the focused view
@@ -155,6 +157,9 @@ data class ActionEntity(
     // ActionType.NOTIFICATION
     @ColumnInfo(name = "notification_message_text") val notificationMessageText: String? = null,
     @ColumnInfo(name = "notification_importance") var notificationImportance: Int? = null,
+
+    // ActionType.SOUND
+    @ColumnInfo(name = "sound_uri") val soundUri: String? = null,
 
     // ActionType.SYSTEM
     @ColumnInfo(name = "system_action_type") val systemActionType: SystemActionType? = null,

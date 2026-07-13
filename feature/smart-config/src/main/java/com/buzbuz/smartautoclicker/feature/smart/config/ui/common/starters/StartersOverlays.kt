@@ -44,3 +44,7 @@ internal fun newNotificationPermissionStarterOverlay(context: Context) = Activit
 internal fun newNotificationSettingsStarterOverlay() = ActivityStarterOverlayMenu(
     intent = getNotificationSettingsIntent(),
 )
+
+internal fun newSoundPickerStarterOverlay(context: Context) = ActivityStarterOverlayMenu(
+    intent = SoundPickerActivity.getStartIntent(context)
+)

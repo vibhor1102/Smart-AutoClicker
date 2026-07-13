@@ -80,6 +80,9 @@ internal class EditionDefaultValues {
     fun notificationName(context: Context): String =
         context.getString(R.string.default_notification_name)
 
+    fun soundName(context: Context): String =
+        context.getString(R.string.default_sound_name)
+
     fun systemActionName(context: Context): String =
         context.getString(R.string.default_system_action_name)
 

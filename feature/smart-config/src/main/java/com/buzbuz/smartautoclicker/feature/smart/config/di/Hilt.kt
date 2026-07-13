@@ -31,6 +31,7 @@ import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.intent.flags.F
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.notification.NotificationViewModel
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.pause.PauseViewModel
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.settext.SetTextViewModel
+import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.sound.SoundViewModel
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.swipe.SwipeViewModel
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.system.SystemActionViewModel
 import com.buzbuz.smartautoclicker.feature.smart.config.ui.action.toggleevent.EventTogglesViewModel
@@ -120,6 +121,7 @@ interface ScenarioConfigViewModelsEntryPoint {
     fun screenConditionSelectionViewModel(): ScreenConditionSelectionViewModel
     fun screenConditionTypeSelectionViewModel(): ScreenConditionTypeSelectionViewModel
     fun setTextViewModel(): SetTextViewModel
+    fun soundViewModel(): SoundViewModel
     fun smartActionsBriefViewModel(): SmartActionsBriefViewModel
     fun swipeViewModel(): SwipeViewModel
     fun systemActionViewModel(): SystemActionViewModel

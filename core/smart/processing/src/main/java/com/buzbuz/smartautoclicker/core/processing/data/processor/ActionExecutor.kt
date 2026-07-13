@@ -43,6 +43,7 @@ import com.buzbuz.smartautoclicker.core.domain.model.action.ToggleEvent
 import com.buzbuz.smartautoclicker.core.domain.model.action.ChangeCounter
 import com.buzbuz.smartautoclicker.core.domain.model.action.Notification
 import com.buzbuz.smartautoclicker.core.domain.model.action.SetText
+import com.buzbuz.smartautoclicker.core.domain.model.action.Sound
 import com.buzbuz.smartautoclicker.core.domain.model.action.SystemAction
 import com.buzbuz.smartautoclicker.core.domain.model.action.intent.putDomainExtra
 import com.buzbuz.smartautoclicker.core.domain.model.event.Event
@@ -99,6 +100,7 @@ internal class ActionExecutor(
                 is ToggleEvent -> executeToggleEvent(action)
                 is ChangeCounter -> executeChangeCounter(action)
                 is Notification -> executeNotification(event, action)
+                is Sound -> executeSound(action)
                 is SystemAction -> executeSystemAction(action)
                 is SetText -> executeSetText(action)
             }
@@ -274,6 +276,10 @@ internal class ActionExecutor(
                 importance = notification.channelImportance,
             )
         )
+    }
+
+    private fun executeSound(sound: Sound) {
+        androidExecutor.playSound(sound.uri)
     }
 
     private suspend fun executeSystemAction(action: SystemAction) {

@@ -27,6 +27,7 @@ import com.buzbuz.smartautoclicker.core.domain.model.action.ChangeCounter
 import com.buzbuz.smartautoclicker.core.domain.model.action.Click
 import com.buzbuz.smartautoclicker.core.domain.model.action.Intent
 import com.buzbuz.smartautoclicker.core.domain.model.action.Notification
+import com.buzbuz.smartautoclicker.core.domain.model.action.Sound
 import com.buzbuz.smartautoclicker.core.domain.model.action.Pause
 import com.buzbuz.smartautoclicker.core.domain.model.action.SetText
 import com.buzbuz.smartautoclicker.core.domain.model.action.Swipe
@@ -188,6 +189,7 @@ class DebugReportTimelineViewModel @Inject constructor(
             is ToggleEvent ->  R.drawable.ic_toggle_event
             is ChangeCounter -> R.drawable.ic_change_counter
             is Notification -> R.drawable.ic_action_notification
+            is Sound -> R.drawable.ic_action_notification
             is SetText -> R.drawable.ic_action_set_text
             is SystemAction -> R.drawable.ic_action_system
         }

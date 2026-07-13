@@ -49,6 +49,8 @@ enum class ActionType {
     CHANGE_COUNTER,
     /** Send a notification. */
     NOTIFICATION,
+    /** Play a selected system sound. */
+    SOUND,
     /** Interact with the system. */
     SYSTEM,
     /** Set the text of a focused view on the screen. */

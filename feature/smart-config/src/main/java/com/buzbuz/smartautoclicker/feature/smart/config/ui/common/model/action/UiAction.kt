@@ -27,6 +27,7 @@ import com.buzbuz.smartautoclicker.core.domain.model.action.Pause
 import com.buzbuz.smartautoclicker.core.domain.model.action.SetText
 import com.buzbuz.smartautoclicker.core.domain.model.action.Swipe
 import com.buzbuz.smartautoclicker.core.domain.model.action.SystemAction
+import com.buzbuz.smartautoclicker.core.domain.model.action.Sound
 import com.buzbuz.smartautoclicker.core.domain.model.action.ToggleEvent
 import com.buzbuz.smartautoclicker.core.domain.model.event.Event
 
@@ -57,6 +58,7 @@ internal fun Action.getIconRes(): Int = when (this) {
     is ToggleEvent -> getToggleEventIconRes()
     is ChangeCounter -> getChangeCounterIconRes()
     is Notification -> getNotificationIconRes()
+    is Sound -> R.drawable.ic_action_notification
     is SystemAction -> getSystemActionIconRes()
     is SetText -> getSetTextIconRes()
 }
@@ -69,6 +71,7 @@ internal fun Action.getActionDescription(context: Context, parent: Event?, inErr
     is ToggleEvent -> getDescription(context, inError)
     is ChangeCounter -> getDescription(context, inError)
     is Notification -> getDescription(context, inError)
+    is Sound -> getDescription(context, inError)
     is SystemAction -> getDescription(context, inError)
     is SetText -> getDescription(context, inError)
 }

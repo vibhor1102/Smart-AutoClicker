@@ -137,6 +137,7 @@ class SmartActionsBriefViewModel @Inject constructor(
                 add(ActionTypeChoice.ChangeCounter)
                 add(ActionTypeChoice.ToggleEvent)
                 add(ActionTypeChoice.Notification)
+                add(ActionTypeChoice.Sound)
                 add(ActionTypeChoice.Intent)
             }
         }.stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
@@ -180,6 +181,7 @@ class SmartActionsBriefViewModel @Inject constructor(
         ActionTypeChoice.ToggleEvent -> editionRepository.editedItemsBuilder.createNewToggleEvent(context)
         ActionTypeChoice.ChangeCounter -> editionRepository.editedItemsBuilder.createNewChangeCounter(context)
         ActionTypeChoice.Notification -> editionRepository.editedItemsBuilder.createNewNotification(context)
+        ActionTypeChoice.Sound -> editionRepository.editedItemsBuilder.createNewSound(context)
         ActionTypeChoice.System -> editionRepository.editedItemsBuilder.createNewSystemAction(context)
         ActionTypeChoice.SetText -> editionRepository.editedItemsBuilder.createNewSetText(context)
         ActionTypeChoice.Copy -> throw IllegalArgumentException("Unsupported action type for creation $choice")

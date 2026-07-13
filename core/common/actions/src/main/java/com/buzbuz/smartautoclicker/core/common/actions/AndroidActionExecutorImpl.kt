@@ -20,6 +20,8 @@ import android.accessibilityservice.AccessibilityService
 import android.accessibilityservice.GestureDescription
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.media.RingtoneManager
+import android.net.Uri
 import android.util.AndroidRuntimeException
 import android.util.Log
 
@@ -127,6 +129,16 @@ internal class AndroidActionExecutorImpl @Inject constructor(
     override fun postNotification(notificationRequest: ActionNotificationRequest) {
         accessibilityService ?: return // No need for service here, but init state is bound to it
         notificationRequestExecutor.postNotification(notificationRequest)
+    }
+
+    override fun playSound(uri: String) {
+        val service = accessibilityService ?: return
+        try {
+            RingtoneManager.getRingtone(service, Uri.parse(uri))?.play()
+                ?: Log.w(TAG, "Can't play sound, ringtone is unavailable: $uri")
+        } catch (ex: Exception) {
+            Log.w(TAG, "Can't play sound: $uri", ex)
+        }
     }
 
     override fun dump(writer: PrintWriter, prefix: CharSequence) {

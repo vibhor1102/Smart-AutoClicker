@@ -91,6 +91,13 @@ sealed class ActionTypeChoice(
         getNotificationIconRes(),
     )
 
+    /** Play a selected system sound. */
+    data object Sound : ActionTypeChoice(
+        R.string.item_sound_title,
+        R.string.item_sound_desc,
+        R.drawable.ic_action_notification,
+    )
+
     /** System Action choice (back, home...). */
     data object System : ActionTypeChoice(
         R.string.item_system_action_title,

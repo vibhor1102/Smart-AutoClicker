@@ -37,6 +37,7 @@ import com.buzbuz.smartautoclicker.core.domain.model.action.Intent
 import com.buzbuz.smartautoclicker.core.domain.model.action.Notification
 import com.buzbuz.smartautoclicker.core.domain.model.action.Pause
 import com.buzbuz.smartautoclicker.core.domain.model.action.SetText
+import com.buzbuz.smartautoclicker.core.domain.model.action.Sound
 import com.buzbuz.smartautoclicker.core.domain.model.action.Swipe
 import com.buzbuz.smartautoclicker.core.domain.model.action.SystemAction
 import com.buzbuz.smartautoclicker.core.domain.model.action.ToggleEvent
@@ -389,6 +390,15 @@ class EditedItemsBuilder internal constructor(
             priority = 0,
         )
 
+    fun createNewSound(context: Context): Sound =
+        Sound(
+            id = actionsIdCreator.generateNewIdentifier(),
+            eventId = getEditedEventIdOrThrow(),
+            name = defaultValues.soundName(context),
+            uri = "",
+            priority = 0,
+        )
+
     fun createNewSystemAction(context: Context): SystemAction =
         SystemAction(
             id = actionsIdCreator.generateNewIdentifier(),
@@ -416,6 +426,7 @@ class EditedItemsBuilder internal constructor(
         is ToggleEvent -> createNewToggleEventFrom(from, eventId)
         is ChangeCounter -> createNewChangeCounterFrom(from, eventId)
         is Notification -> createNewNotificationFrom(from, eventId)
+        is Sound -> createNewSoundFrom(from, eventId)
         is SystemAction -> createNewSystemActionFrom(from, eventId)
         is SetText -> createNewSetTextFrom(from, eventId)
     }
@@ -511,6 +522,14 @@ class EditedItemsBuilder internal constructor(
             messageText = "" + from.messageText,
         )
     }
+
+    private fun createNewSoundFrom(from: Sound, eventId: Identifier): Sound =
+        from.copy(
+            id = actionsIdCreator.generateNewIdentifier(),
+            eventId = eventId,
+            name = "" + from.name,
+            uri = "" + from.uri,
+        )
 
     private fun createNewSystemActionFrom(from: SystemAction, eventId: Identifier): SystemAction {
         val actionId = actionsIdCreator.generateNewIdentifier()

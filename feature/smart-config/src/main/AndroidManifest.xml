@@ -35,7 +35,7 @@
 
         <activity
             android:name=".ui.common.starters.SoundPickerActivity"
-            android:theme="@style.AppTheme.TranslucentActivity"
+            android:theme="@style/AppTheme.TranslucentActivity"
             android:excludeFromRecents="true"
             android:noHistory="true"
             android:exported="false"/>

@@ -475,6 +475,7 @@ internal open class CompatDeserializer : Deserializer {
             ActionType.TOGGLE_EVENT -> deserializeActionToggleEvent(jsonAction)
             ActionType.CHANGE_COUNTER -> deserializeActionChangeCounter(jsonAction)
             ActionType.NOTIFICATION -> deserializeActionNotification(jsonAction)
+            ActionType.SOUND -> null
             ActionType.SYSTEM -> deserializeActionSystem(jsonAction)
             ActionType.TEXT -> deserializeActionSetText(jsonAction)
             null -> null

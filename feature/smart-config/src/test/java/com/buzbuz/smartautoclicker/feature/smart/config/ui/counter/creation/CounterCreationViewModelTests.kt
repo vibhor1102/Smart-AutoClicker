@@ -23,7 +23,7 @@ import org.robolectric.annotation.Config
 class CounterCreationViewModelTests {
 
     @Test
-    fun createCounter_ignoresBlankAndDuplicateNames() = runTest {
+    fun createCounter_ignoresBlankName() = runTest {
         val scenario = Scenario(Identifier(databaseId = 1L), "Scenario", detectionQuality = 600)
         val existingCounter = Counter("existing", 1.0, scenario.id)
         val editionRepository = createEditionRepository(scenario, counters = listOf(existingCounter))
@@ -31,6 +31,17 @@ class CounterCreationViewModelTests {
 
         viewModel.setName("   ")
         viewModel.createCounter()
+
+        assertEquals(listOf(existingCounter), editionRepository.editionState.getAllEditedCounters())
+    }
+
+    @Test
+    fun createCounter_ignoresDuplicateName() = runTest {
+        val scenario = Scenario(Identifier(databaseId = 1L), "Scenario", detectionQuality = 600)
+        val existingCounter = Counter("existing", 1.0, scenario.id)
+        val editionRepository = createEditionRepository(scenario, counters = listOf(existingCounter))
+        val viewModel = CountersCreationViewModel(editionRepository)
+
         viewModel.setName(existingCounter.counterName)
         viewModel.createCounter()
 

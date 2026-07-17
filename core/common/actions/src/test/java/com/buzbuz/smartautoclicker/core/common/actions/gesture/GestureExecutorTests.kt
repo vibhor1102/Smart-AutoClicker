@@ -77,7 +77,7 @@ class GestureExecutorTests {
     }
 
     @Test
-    fun dispatchGesture_lateCallbackAfterTimeout_doesNotPreventNextGesture() = runTest {
+    fun dispatchGesture_lateCallbackAfterTimeout_doesNotCompleteNextGesture() = runTest {
         val service = mock(AccessibilityService::class.java)
         val executor = GestureExecutor()
         val callbackCaptor = ArgumentCaptor.forClass(GestureResultCallback::class.java)
@@ -89,11 +89,15 @@ class GestureExecutorTests {
 
         advanceTimeBy(200)
         assertFalse(timedOutResult.await())
-        timedOutCallback.onCompleted(null)
 
         val nextResult = async { executor.dispatchGesture(service, gesture()) }
         runCurrent()
         verify(service, times(2)).dispatchGesture(any(), callbackCaptor.capture(), any())
+
+        timedOutCallback.onCompleted(null)
+        runCurrent()
+        assertFalse(nextResult.isCompleted)
+
         callbackCaptor.allValues.last().onCompleted(null)
 
         assertTrue(nextResult.await())

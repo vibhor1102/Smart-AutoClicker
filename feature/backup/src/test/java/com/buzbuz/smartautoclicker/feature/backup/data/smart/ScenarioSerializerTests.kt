@@ -14,9 +14,13 @@ import com.buzbuz.smartautoclicker.core.database.DATABASE_VERSION
 import com.buzbuz.smartautoclicker.core.database.entity.CompleteScenario
 import com.buzbuz.smartautoclicker.core.database.entity.ScenarioEntity
 
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonObject
+import kotlinx.serialization.json.JsonPrimitive
+import kotlinx.serialization.json.jsonObject
+
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
@@ -48,10 +52,11 @@ class ScenarioSerializerTests {
             ),
             output,
         )
-        val backupWithFutureField = output.toString(Charsets.UTF_8)
-            .replaceFirst("\"scenario\":{", "\"scenario\":{\"futureField\":true,")
-
-        assertTrue(backupWithFutureField.contains("futureField"))
+        val originalBackup = Json.parseToJsonElement(output.toString(Charsets.UTF_8)).jsonObject
+        val scenario = originalBackup.getValue("scenario").jsonObject
+        val backupWithFutureField = JsonObject(
+            originalBackup + ("scenario" to JsonObject(scenario + ("futureField" to JsonPrimitive(true)))),
+        ).toString()
 
         val result = serializer.deserialize(backupWithFutureField.asInputStream())
 

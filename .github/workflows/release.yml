@@ -2,47 +2,183 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Release tag, for example v4.0.0-beta01-patched.1'
+        required: true
+        default: 'v4.0.0-beta01-patched.1'
+      release_name:
+        description: 'Public release name'
+        required: true
+        default: 'Klickr Patched v4.0.0-beta01-patched.1'
+      release_notes:
+        description: 'Release notes'
+        required: true
+        default: 'Signed F-Droid release build for the maintained patched fork.'
+      draft:
+        description: 'Create release as draft'
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
 
 jobs:
-  build:
-    name: Build application
+  unit-tests:
+    name: Run unit tests
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      checks: write
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
-    - name: set up JDK 21
-      uses: actions/setup-java@v4
+    - name: Set up JDK 21
+      uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
       with:
         distribution: 'zulu'
         java-version: '21'
+        cache: 'gradle'
 
-    - name: set NDK
+    - name: Set NDK
       shell: bash
       run: |
-        set -x
         echo "ANDROID_NDK=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
         echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
         echo "ANDROID_NDK_ROOT=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
 
-    - name: Restore keystore
+    - name: Run unit tests
+      shell: bash
       run: |
-        echo "${{ secrets.RELEASE_KEYSTORE }}" > smartautoclicker.jks.asc
-        gpg -d --passphrase "${{ secrets.RELEASE_KEYSTORE_PASSPHRASE }}" --batch smartautoclicker.jks.asc > smartautoclicker/smartautoclicker.jks
+        ./gradlew --no-daemon --max-workers=4 --parallel --build-cache \
+          testFDroidDebugUnitTest
+
+    - name: Publish unit-test report
+      if: ${{ !cancelled() }}
+      uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3.0.0
+      with:
+        name: Unit-test report
+        path: '**/build/test-results/testFDroidDebugUnitTest/TEST-*.xml'
+        reporter: java-junit
+
+  release:
+    name: Build and publish public fork release
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+
+    steps:
+    - name: Require main branch
+      if: github.ref_name != 'main'
+      shell: bash
+      run: |
+        echo "Releases for this fork must be dispatched from main; got '${{ github.ref_name }}'." >&2
+        exit 1
+
+    - name: Checkout release source
+      uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+      with:
+        distribution: 'zulu'
+        java-version: '21'
+        cache: 'gradle'
+
+    - name: Set NDK
+      shell: bash
+      run: |
+        echo "ANDROID_NDK=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
+        echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
+        echo "ANDROID_NDK_ROOT=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
+
+    - name: Install ccache
+      run: sudo apt-get install -y ccache
+
+    - name: Cache ccache
+      uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+      with:
+        path: .ccache
+        key: ${{ runner.os }}-release-ccache-${{ github.ref_name }}-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-release-ccache-${{ github.ref_name }}-
+          ${{ runner.os }}-release-ccache-
+
+    - name: Restore keystore
+      shell: bash
+      run: |
+        printf '%s' "${{ secrets.RELEASE_KEYSTORE }}" > smartautoclicker.jks.asc
+        gpg --batch --yes --pinentry-mode loopback \
+          --passphrase "${{ secrets.RELEASE_KEYSTORE_PASSPHRASE }}" \
+          --decrypt --output smartautoclicker/smartautoclicker.jks \
+          smartautoclicker.jks.asc
+
+    - name: Validate keystore secrets
+      shell: bash
+      run: |
+        keytool -list \
+          -keystore smartautoclicker/smartautoclicker.jks \
+          -storepass "${{ secrets.SIGNING_STORE_PASSWORD }}" \
+          -alias "${{ secrets.SIGNING_KEY_ALIAS }}" \
+          >/dev/null
 
     - name: Build with Gradle
+      shell: bash
+      env:
+        USE_CCACHE: "true"
+        CCACHE_DIR: ${{ github.workspace }}/.ccache
+        JAVA_TOOL_OPTIONS: "-Djava.net.preferIPv4Stack=true"
       run: |
-        ./gradlew --info \
+        ccache -M 500M
+        ./gradlew --no-daemon --max-workers=4 --parallel --build-cache \
           -PsigningStorePassword="${{ secrets.SIGNING_STORE_PASSWORD }}" \
           -PsigningKeyAlias="${{ secrets.SIGNING_KEY_ALIAS }}" \
           -PsigningKeyPassword="${{ secrets.SIGNING_KEY_PASSWORD }}" \
-          assembleFDroidRelease
-      env:
-        JAVA_TOOL_OPTIONS: "-Djava.net.preferIPv4Stack=true"
+          :smartautoclicker:assembleFDroidRelease
+        ccache -s
 
-    - name: Create draft release with APKs
-      uses: softprops/action-gh-release@v2
-      if: startsWith(github.ref, 'refs/tags/')
+    - name: Verify release APKs
+      shell: bash
+      run: |
+        AAPT2="$ANDROID_HOME/build-tools/$(ls "$ANDROID_HOME/build-tools" | sort -V | tail -n 1)/aapt2"
+        APKSIGNER="$ANDROID_HOME/build-tools/$(ls "$ANDROID_HOME/build-tools" | sort -V | tail -n 1)/apksigner"
+
+        mapfile -t APKS < <(find smartautoclicker/build/outputs/apk/fDroid/release -name '*.apk' | sort)
+        test "${#APKS[@]}" -gt 0
+
+        : > badging.txt
+        for APK in "${APKS[@]}"; do
+          echo "== $APK ==" | tee -a badging.txt
+          "$AAPT2" dump badging "$APK" | tee current-badging.txt | tee -a badging.txt
+          grep -q "name='com.buzbuz.smartautoclicker.patched'" current-badging.txt
+          # Fork policy: release APKs intentionally stay debuggable for direct daily-driver diagnosis.
+          grep -q "application-debuggable" current-badging.txt
+          "$APKSIGNER" verify --verbose --print-certs "$APK"
+        done
+
+    - name: Create public GitHub release
+      uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
       with:
-        draft: true
-        files: smartautoclicker/build/outputs/apk/fDroid/release/*.apk
+        tag_name: ${{ inputs.tag_name }}
+        target_commitish: ${{ github.sha }}
+        name: ${{ inputs.release_name }}
+        body: ${{ inputs.release_notes }}
+        draft: ${{ inputs.draft }}
+        prerelease: false
+        fail_on_unmatched_files: true
+        files: |
+          smartautoclicker/build/outputs/apk/fDroid/release/*.apk
+
+    - name: Upload workflow artifacts
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      with:
+        name: smartautoclicker-fdroid-release
+        path: |
+          smartautoclicker/build/outputs/apk/fDroid/release/*.apk
+          badging.txt

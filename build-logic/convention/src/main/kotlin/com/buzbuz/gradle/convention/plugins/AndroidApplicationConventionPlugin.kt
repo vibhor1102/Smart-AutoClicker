@@ -52,6 +52,9 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                     isMinifyEnabled = true
                     isShrinkResources = true
                     proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+                    // This fork's release APK is used only by its maintainer as a daily driver.
+                    // Keep it debuggable so real-world bugs can be diagnosed on the release app.
+                    isDebuggable = true
                 }
             }
         }

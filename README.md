@@ -51,6 +51,6 @@ Use this fork's GitHub releases for patched builds.
 
 ## Links:
 * A question ? Read the Wiki first: https://github.com/Nain57/Smart-AutoClicker/wiki
-* Found a fork-specific bug? Open an issue in this fork: https://github.com/vibhortwo/Smart-AutoClicker/issues/new
+* Found a fork-specific bug? Open an issue in this fork: https://github.com/vibhor1102/Smart-AutoClicker/issues/new
 * Found an upstream bug? Open it upstream: https://github.com/Nain57/Smart-AutoClicker/issues/new?template=bug_report.yml
 * You think an application is blocking Klick'r? Try the upstream obfuscated version: https://github.com/Nain57/Smart-AutoClicker/releases/tag/obfuscation-start

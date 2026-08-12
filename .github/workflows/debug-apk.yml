@@ -1,0 +1,228 @@
+name: Debug APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Run APK build/verification or verification-only tests
+        required: false
+        default: debug-apk
+        type: choice
+        options:
+          - debug-apk
+          - verify
+      abi:
+        description: Native ABI to package
+        required: false
+        default: arm64-v8a
+        type: choice
+        options:
+          - arm64-v8a
+          - armeabi-v7a
+          - x86_64
+          - x86
+          - all
+permissions:
+  contents: read
+
+jobs:
+  debug-apk:
+    name: Build debug APK
+    if: ${{ inputs.mode == 'debug-apk' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+      with:
+        distribution: 'zulu'
+        java-version: '21'
+        cache: 'gradle'
+
+    - name: Set NDK
+      shell: bash
+      run: |
+        echo "ANDROID_NDK=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
+        echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
+        echo "ANDROID_NDK_ROOT=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
+
+    - name: Restore debug keystore
+      shell: bash
+      env:
+        DEBUG_KEYSTORE_BASE64: ${{ secrets.DEBUG_KEYSTORE_BASE64 }}
+      run: |
+        test -n "$DEBUG_KEYSTORE_BASE64"
+        mkdir -p "$HOME/.android"
+        echo "$DEBUG_KEYSTORE_BASE64" | base64 --decode > "$HOME/.android/debug.keystore"
+        chmod 600 "$HOME/.android/debug.keystore"
+        echo "ANDROID_USER_HOME=$HOME/.android" >> "$GITHUB_ENV"
+        keytool -list -v -keystore "$HOME/.android/debug.keystore" -storepass android -alias androiddebugkey \
+          | grep 'SHA256:'
+
+    - name: Install ccache
+      run: sudo apt-get install -y ccache
+
+    - name: Cache ccache
+      uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+      with:
+        path: .ccache
+        key: ${{ runner.os }}-debug-ccache-${{ inputs.abi }}-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-debug-ccache-${{ inputs.abi }}-
+          ${{ runner.os }}-debug-ccache-
+
+    - name: Build debug APK
+      shell: bash
+      env:
+        USE_CCACHE: "true"
+        CCACHE_DIR: ${{ github.workspace }}/.ccache
+      run: |
+        ccache -M 500M
+
+        ./gradlew --no-daemon --max-workers=4 --parallel --build-cache \
+          "-PklickrDebugAbi=${{ inputs.abi }}" \
+          :smartautoclicker:assembleFDroidDebug
+        ccache -s
+
+    - name: Verify debug APK
+      shell: bash
+      run: |
+        AAPT2="$ANDROID_HOME/build-tools/$(ls "$ANDROID_HOME/build-tools" | sort -V | tail -n 1)/aapt2"
+        APKSIGNER="$ANDROID_HOME/build-tools/$(ls "$ANDROID_HOME/build-tools" | sort -V | tail -n 1)/apksigner"
+
+        if [ "${{ inputs.abi }}" = "all" ]; then
+          mapfile -t APKS < <(find smartautoclicker/build/outputs/apk/fDroid/debug -name '*.apk' | sort)
+        else
+          mapfile -t APKS < <(find smartautoclicker/build/outputs/apk/fDroid/debug -name "*${{ inputs.abi }}*.apk" | sort)
+        fi
+        test "${#APKS[@]}" -gt 0
+
+        : > debug-badging.txt
+        : > apk-files.txt
+        : > debug-signing-certs.txt
+        for APK in "${APKS[@]}"; do
+          echo "== $APK ==" | tee -a debug-badging.txt
+          "$AAPT2" dump badging "$APK" | tee current-debug-badging.txt | tee -a debug-badging.txt
+          grep -q -E "name='com.buzbuz.smartautoclicker(\.patched)?\.debug'" current-debug-badging.txt
+          grep -q "application-debuggable" current-debug-badging.txt
+          echo "== $APK ==" | tee -a debug-signing-certs.txt
+          "$APKSIGNER" verify --print-certs "$APK" | tee -a debug-signing-certs.txt
+          unzip -l "$APK" | tee -a apk-files.txt
+        done
+
+        if [ "${{ inputs.abi }}" != "all" ]; then
+          grep -q "lib/${{ inputs.abi }}/libsmartautoclicker.so" apk-files.txt
+        fi
+
+    - name: Collect debug artifacts
+      shell: bash
+      run: |
+        mkdir -p debug-apk-artifacts
+        cp debug-badging.txt debug-signing-certs.txt apk-files.txt debug-apk-artifacts/
+
+        if [ "${{ inputs.abi }}" = "all" ]; then
+          mapfile -t UPLOAD_APKS < <(find smartautoclicker/build/outputs/apk/fDroid/debug -name '*.apk' | sort)
+          test "${#UPLOAD_APKS[@]}" -gt 0
+          cp "${UPLOAD_APKS[@]}" debug-apk-artifacts/
+        else
+          mapfile -t SELECTED_APKS < <(find smartautoclicker/build/outputs/apk/fDroid/debug -name "*${{ inputs.abi }}*.apk" | sort)
+          test "${#SELECTED_APKS[@]}" -eq 1
+
+          RENAMED_APK="klickr-debug-${{ inputs.abi }}.apk"
+          cp "${SELECTED_APKS[0]}" "debug-apk-artifacts/$RENAMED_APK"
+        fi
+
+    - name: Upload debug APK
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+      with:
+        name: smartautoclicker-debug-${{ inputs.abi }}-apk
+        retention-days: 14
+        path: |
+          debug-apk-artifacts/*
+
+  unit-tests:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      checks: write
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4.8.0
+      with:
+        distribution: 'zulu'
+        java-version: '21'
+        cache: 'gradle'
+
+    - name: Set NDK
+      shell: bash
+      run: |
+        echo "ANDROID_NDK=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
+        echo "ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
+        echo "ANDROID_NDK_ROOT=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
+
+    - name: Run unit tests
+      shell: bash
+      run: |
+        ./gradlew --no-daemon --max-workers=4 --parallel --build-cache \
+          --continue \
+          :smartautoclicker:compileFDroidDebugKotlin \
+          testFDroidDebugUnitTest
+
+    - name: Publish unit-test report
+      if: ${{ !cancelled() }}
+      uses: dorny/test-reporter@a43b3a5f7366b97d083190328d2c652e1a8b6aa2 # v3.0.0
+      with:
+        name: Unit-test report
+        path: '**/build/test-results/testFDroidDebugUnitTest/TEST-*.xml'
+        reporter: java-junit
+
+  publish-debug-release:
+    name: Publish persistent debug APK
+    needs: [debug-apk, unit-tests]
+    if: ${{ inputs.mode == 'debug-apk' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+    - name: Download debug APK
+      uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+      with:
+        name: smartautoclicker-debug-${{ inputs.abi }}-apk
+        path: debug-apk-artifacts
+
+    - name: Create or update persistent GitHub release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      shell: bash
+      run: |
+        TAG_NAME="debug-apk-latest"
+
+        gh release create "$TAG_NAME" \
+          --title "Latest Debug APKs" \
+          --notes "This is a persistent release containing the latest debug APK builds." \
+          --prerelease \
+          --repo "${{ github.repository }}" \
+          || true
+
+        gh release edit "$TAG_NAME" \
+          --title "Latest Debug APKs" \
+          --notes "Latest debug APK build from branch **${{ github.ref_name }}** (commit \`${{ github.sha }}\`)." \
+          --repo "${{ github.repository }}"
+
+        gh release upload "$TAG_NAME" debug-apk-artifacts/*.apk \
+          --clobber \
+          --repo "${{ github.repository }}"

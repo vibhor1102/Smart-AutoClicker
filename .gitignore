@@ -96,3 +96,9 @@ scripts/**/*.pyc
 /*.zip
 /*.bat
 /*.ps1
+/artifacts/
+
+# APK verification outputs
+/badging.txt
+/debug-badging.txt
+/apk-files.txt

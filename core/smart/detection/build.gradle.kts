@@ -26,6 +26,15 @@ plugins {
     alias(libs.plugins.buzbuz.sourceDownload)
 }
 
+val isReleaseBuild = gradle.startParameter.taskNames.any { it.contains("Release", ignoreCase = true) }
+val klickrDebugAbiProperty = providers.gradleProperty("klickrDebugAbi").orNull
+
+val debugAbiFilter = klickrDebugAbiProperty
+    ?.split(',')
+    ?.map { abi -> abi.trim() }
+    ?.filter { abi -> abi.isNotEmpty() && !abi.equals("all", ignoreCase = true) }
+    ?: if (isReleaseBuild) emptyList() else listOf("arm64-v8a", "x86_64")
+
 sourceDownload {
     projects {
         register("openCv") {
@@ -56,9 +65,31 @@ android {
     }
 
     defaultConfig {
+        val activeAbiFilters = if (klickrDebugAbiProperty?.equals("all", ignoreCase = true) == true) {
+            emptyList()
+        } else {
+            debugAbiFilter
+        }
+
+        if (activeAbiFilters.isNotEmpty()) {
+            ndk {
+                abiFilters.addAll(activeAbiFilters)
+            }
+        }
+
         externalNativeBuild {
             cmake {
-
+                if (activeAbiFilters.isNotEmpty()) {
+                    abiFilters.addAll(activeAbiFilters)
+                }
+                if (System.getenv("USE_CCACHE") == "true") {
+                    arguments.addAll(
+                        listOf(
+                            "-DCMAKE_C_COMPILER_LAUNCHER=ccache",
+                            "-DCMAKE_CXX_COMPILER_LAUNCHER=ccache",
+                        )
+                    )
+                }
             }
         }
     }

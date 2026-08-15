@@ -37,6 +37,11 @@ internal class ImageReaderProxy @Inject constructor(
     /** The last frame received from the active [imageReader]. */
     private var lastFrame: Bitmap? = null
 
+    /** Temporary diagnostics for tracking frames across virtual-display resizes. */
+    private var readerGeneration: Int = 0
+    private var receivedFrameCount: Long = 0
+    private var consecutiveMissingFrameCount: Long = 0
+
     /**
      * A pixels row in an image.
      * Kept to avoid instantiating a new array at each image. It is reset at each [resize] call.
@@ -47,10 +52,14 @@ internal class ImageReaderProxy @Inject constructor(
         get() = imageReader!!.surface
 
     fun resize(size: Point) {
+        readerGeneration++
+        receivedFrameCount = 0
+        consecutiveMissingFrameCount = 0
         lastFrame = null
         copyImageRow = IntArray(size.x)
         imageReader?.close()
         imageReader = ImageReader.newInstance(size.x, size.y, PixelFormat.RGBA_8888, 2)
+        Log.i(TAG, "FrameProbe: created reader generation=$readerGeneration size=${size.x}x${size.y}")
     }
 
     fun close() {
@@ -67,9 +76,24 @@ internal class ImageReaderProxy @Inject constructor(
         }
 
         try {
-            return reader.acquireLatestImage()
-                ?.use { image -> image.toBitmap().also { lastFrame = it } }
-                ?: lastFrame
+            val image = reader.acquireLatestImage()
+            if (image != null) {
+                receivedFrameCount++
+                consecutiveMissingFrameCount = 0
+                if (receivedFrameCount == 1L) {
+                    Log.i(TAG, "FrameProbe: first frame from generation=$readerGeneration " +
+                        "image=${image.width}x${image.height}")
+                }
+
+                return image.use { it.toBitmap().also { bitmap -> lastFrame = bitmap } }
+            }
+
+            consecutiveMissingFrameCount++
+            if (consecutiveMissingFrameCount == 1L || consecutiveMissingFrameCount % 50L == 0L) {
+                Log.w(TAG, "FrameProbe: no new frame generation=$readerGeneration " +
+                    "missing=$consecutiveMissingFrameCount cachedFrame=${lastFrame != null}")
+            }
+            return lastFrame
         } catch (uoEx: UnsupportedOperationException) {
             Log.e(TAG, "Unsupported screen format", uoEx)
             return null

@@ -1,0 +1,1325 @@
+--------- beginning of main
+08-16 00:26:45.579  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:45.581  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.585  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:45.589  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.591  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.594  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.597  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.599  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.601  5010 28556 W CCTFlatFileLogStore: Deleted log file 1786211827485.NONE for source GAMES due to LogFileTooOld. Dropped 2 events.
+08-16 00:26:45.606  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.610  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.612  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.615  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:45.617  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.620  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.621  5010 28556 W CCTFlatFileLogStore: Deleted log file 1786211827324.NONE for source GAMES due to LogFileTooOld. Dropped 2 events.
+08-16 00:26:45.626  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.629  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.632  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.635  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:45.638  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.640  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.643  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.645  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.647  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.649  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.652  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.655  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.657  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.660  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.662  5010 28556 W CCTFlatFileLogStore: Deleted log file 1786211881904.NONE for source DRIVE due to LogFileTooOld. Dropped 2 events.
+08-16 00:26:45.669  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.672  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.675  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.678  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.680  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.683  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:45.687  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:45.689  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.691  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.694  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.697  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.705  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.712 15260 28573 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:45.712 15260 28573 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:45.713  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.716  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.719  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.721  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:45.724  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.726  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.729  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.731  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.734  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.736  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:45.739  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.741 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:45.743  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:45.746  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.748  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.750  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.753  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.755  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.758  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:45.760  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.763  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.765  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.767  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.769  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.772  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.774  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.777  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.778  5010 28556 W CCTFlatFileLogStore: Deleted log file 1786211826895.NONE for source GAMES due to LogFileTooOld. Dropped 2 events.
+08-16 00:26:45.778 12853 12853 W         : type=1400 audit(0.0:41223): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:26:45.784  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.786  5010 28556 W CCTFlatFileLogStore: Deleted log file 1786211881899.NONE for source DRIVE due to LogFileTooOld. Dropped 2 events.
+08-16 00:26:45.792  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.795  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.798  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.800  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:45.803  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.807  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.810  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.812  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.814  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.816  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.819  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+--------- beginning of system
+08-16 00:26:45.844  2010  2010 I wificond: station_bandwidth: P
+08-16 00:26:45.959 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:26:45.963 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:26:45.990  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:45.991  5010 28556 W CCTFlatFileLogStore: Deleted log file 1786211827420.NONE for source GAMES due to LogFileTooOld. Dropped 2 events.
+08-16 00:26:45.993  5010 28556 W CCTFlatFileLogStore: Deleted log file 1786211826963.NONE for source GAMES due to LogFileTooOld. Dropped 2 events.
+08-16 00:26:46.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 46s(f:0 m:0 s:0 k:0 z:46003) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:46.152  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.153  5010 28556 W CCTFlatFileLogStore: Deleted log file 1786211827235.NONE for source GAMES due to LogFileTooOld. Dropped 2 events.
+08-16 00:26:46.159  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:46.161  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.163  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.165  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.166  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.317  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.321  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.325  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.329  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.333  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.529  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:46.534  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.540  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:46.545  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.548  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.736  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.740  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.744 15260 28574 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:46.744 15260 28574 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:46.746  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.750  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:46.752  5010 28556 W CCTFlatFileLogStore: Deleted log file 1786211828934.NONE for source GAMES due to LogFileTooOld. Dropped 3 events.
+08-16 00:26:46.759  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:46.763  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.766  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:46.769  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.771  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.773  5010 28556 W CCTFlatFileLogStore: Deleted log file 1786211827633.NONE for source GAMES due to LogFileTooOld. Dropped 2 events.
+08-16 00:26:46.779  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.782  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.784  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.786  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.788 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:46.790  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.794  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.970  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.974  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.977  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.979  5010 28556 W CCTFlatFileLogStore: Deleted log file 1786211828256.NONE for source GAMES due to LogFileTooOld. Dropped 2 events.
+08-16 00:26:46.987  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:46.990  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[DRIVE]] because the account doesn't exist on the device.
+08-16 00:26:46.993  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.996  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:46.999  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:47.002  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:47.004  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:47.008  5010 28556 I AuthTokenManager: Failed to get auth token for log sources [[GAMES]] because the account doesn't exist on the device.
+08-16 00:26:47.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 47s(f:0 m:0 s:0 k:0 z:47003) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:47.328 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:26:47.441  5010 28486 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+08-16 00:26:47.483  2183  3281 I MiuiNetworkPolicy: updateUidState uid = 99910145, uidState = 8
+08-16 00:26:47.502  5010 28556 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+08-16 00:26:47.519  6038  6038 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-16 00:26:47.526  2183  7291 I SmartPower: com.google.android.gms/10145(5646): idle->background(5882ms) R(service create com.google.android.gms/.ads.social.GcmSchedulerWakeupService) adj=0.
+08-16 00:26:47.535  6038  6038 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-16 00:26:47.541  5010 28486 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+08-16 00:26:47.542  2183  3281 I MiuiNetworkPolicy: updateUidState uid = 99910145, uidState = 10
+08-16 00:26:47.550  5010 28486 I NetworkScheduler.Stats: (REDACTED) Task %s/%s started execution. cause:%s exec_start_elapsed_seconds: %s
+08-16 00:26:47.554  5010  5010 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-16 00:26:47.567  5010  5010 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-16 00:26:47.599  5646  9083 E Ads     : Failed to retrieve DSID: 
+08-16 00:26:47.599  5646  9083 E Ads     : ddha: Failed to process request
+08-16 00:26:47.599  5646  9083 E Ads     : 	at ddhi.a(:com.google.android.gms@263032029@26.30.32 (190400-956658866):23)
+08-16 00:26:47.599  5646  9083 E Ads     : 	at ddlf.b(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.599  5646  9083 E Ads     : 	at ddlw.onFailed(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.599  5646  9083 E Ads     : 	at m1.ln.onFailed(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):3)
+08-16 00:26:47.599  5646  9083 E Ads     : 	at m1.kj.run(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):16)
+08-16 00:26:47.599  5646  9083 E Ads     : 	at blhp.d(:com.google.android.gms@263032029@26.30.32 (190400-956658866):50)
+08-16 00:26:47.599  5646  9083 E Ads     : 	at blhp.c(:com.google.android.gms@263032029@26.30.32 (190400-956658866):6)
+08-16 00:26:47.599  5646  9083 E Ads     : 	at blhp.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):119)
+08-16 00:26:47.599  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-16 00:26:47.599  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-16 00:26:47.599  5646  9083 E Ads     : 	at blnk.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):8)
+08-16 00:26:47.599  5646  9083 E Ads     : 	at java.lang.Thread.run(Thread.java:1572)
+08-16 00:26:47.599  5646  9083 E Ads     : Caused by: m1.kw: Exception in CronetUrlRequest: net::ERR_CONNECTION_REFUSED, ErrorCode=7, InternalErrorCode=-102, Retryable=false
+08-16 00:26:47.599  5646  9083 E Ads     : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):74)
+08-16 00:26:47.626  5646  9083 E Ads     : Failed to retrieve DSID: 
+08-16 00:26:47.626  5646  9083 E Ads     : ddha: Failed to process request
+08-16 00:26:47.626  5646  9083 E Ads     : 	at ddhi.a(:com.google.android.gms@263032029@26.30.32 (190400-956658866):23)
+08-16 00:26:47.626  5646  9083 E Ads     : 	at ddlf.b(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.626  5646  9083 E Ads     : 	at ddlw.onFailed(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.626  5646  9083 E Ads     : 	at m1.ln.onFailed(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):3)
+08-16 00:26:47.626  5646  9083 E Ads     : 	at m1.kj.run(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):16)
+08-16 00:26:47.626  5646  9083 E Ads     : 	at blhp.d(:com.google.android.gms@263032029@26.30.32 (190400-956658866):50)
+08-16 00:26:47.626  5646  9083 E Ads     : 	at blhp.c(:com.google.android.gms@263032029@26.30.32 (190400-956658866):6)
+08-16 00:26:47.626  5646  9083 E Ads     : 	at blhp.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):119)
+08-16 00:26:47.626  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-16 00:26:47.626  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-16 00:26:47.626  5646  9083 E Ads     : 	at blnk.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):8)
+08-16 00:26:47.626  5646  9083 E Ads     : 	at java.lang.Thread.run(Thread.java:1572)
+08-16 00:26:47.626  5646  9083 E Ads     : Caused by: m1.kw: Exception in CronetUrlRequest: net::ERR_CONNECTION_REFUSED, ErrorCode=7, InternalErrorCode=-102, Retryable=false
+08-16 00:26:47.626  5646  9083 E Ads     : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):74)
+08-16 00:26:47.652  5646  9083 E Ads     : Failed to retrieve DSID: 
+08-16 00:26:47.652  5646  9083 E Ads     : ddha: Failed to process request
+08-16 00:26:47.652  5646  9083 E Ads     : 	at ddhi.a(:com.google.android.gms@263032029@26.30.32 (190400-956658866):23)
+08-16 00:26:47.652  5646  9083 E Ads     : 	at ddlf.b(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.652  5646  9083 E Ads     : 	at ddlw.onFailed(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.652  5646  9083 E Ads     : 	at m1.ln.onFailed(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):3)
+08-16 00:26:47.652  5646  9083 E Ads     : 	at m1.kj.run(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):16)
+08-16 00:26:47.652  5646  9083 E Ads     : 	at blhp.d(:com.google.android.gms@263032029@26.30.32 (190400-956658866):50)
+08-16 00:26:47.652  5646  9083 E Ads     : 	at blhp.c(:com.google.android.gms@263032029@26.30.32 (190400-956658866):6)
+08-16 00:26:47.652  5646  9083 E Ads     : 	at blhp.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):119)
+08-16 00:26:47.652  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-16 00:26:47.652  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-16 00:26:47.652  5646  9083 E Ads     : 	at blnk.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):8)
+08-16 00:26:47.652  5646  9083 E Ads     : 	at java.lang.Thread.run(Thread.java:1572)
+08-16 00:26:47.652  5646  9083 E Ads     : Caused by: m1.kw: Exception in CronetUrlRequest: net::ERR_CONNECTION_REFUSED, ErrorCode=7, InternalErrorCode=-102, Retryable=false
+08-16 00:26:47.652  5646  9083 E Ads     : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):74)
+08-16 00:26:47.679  5646  9083 E Ads     : Failed to retrieve DSID: 
+08-16 00:26:47.679  5646  9083 E Ads     : ddha: Failed to process request
+08-16 00:26:47.679  5646  9083 E Ads     : 	at ddhi.a(:com.google.android.gms@263032029@26.30.32 (190400-956658866):23)
+08-16 00:26:47.679  5646  9083 E Ads     : 	at ddlf.b(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.679  5646  9083 E Ads     : 	at ddlw.onFailed(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.679  5646  9083 E Ads     : 	at m1.ln.onFailed(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):3)
+08-16 00:26:47.679  5646  9083 E Ads     : 	at m1.kj.run(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):16)
+08-16 00:26:47.679  5646  9083 E Ads     : 	at blhp.d(:com.google.android.gms@263032029@26.30.32 (190400-956658866):50)
+08-16 00:26:47.679  5646  9083 E Ads     : 	at blhp.c(:com.google.android.gms@263032029@26.30.32 (190400-956658866):6)
+08-16 00:26:47.679  5646  9083 E Ads     : 	at blhp.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):119)
+08-16 00:26:47.679  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-16 00:26:47.679  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-16 00:26:47.679  5646  9083 E Ads     : 	at blnk.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):8)
+08-16 00:26:47.679  5646  9083 E Ads     : 	at java.lang.Thread.run(Thread.java:1572)
+08-16 00:26:47.679  5646  9083 E Ads     : Caused by: m1.kw: Exception in CronetUrlRequest: net::ERR_CONNECTION_REFUSED, ErrorCode=7, InternalErrorCode=-102, Retryable=false
+08-16 00:26:47.679  5646  9083 E Ads     : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):74)
+08-16 00:26:47.709  5646  9083 E Ads     : Failed to retrieve DSID: 
+08-16 00:26:47.709  5646  9083 E Ads     : ddha: Failed to process request
+08-16 00:26:47.709  5646  9083 E Ads     : 	at ddhi.a(:com.google.android.gms@263032029@26.30.32 (190400-956658866):23)
+08-16 00:26:47.709  5646  9083 E Ads     : 	at ddlf.b(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.709  5646  9083 E Ads     : 	at ddlw.onFailed(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.709  5646  9083 E Ads     : 	at m1.ln.onFailed(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):3)
+08-16 00:26:47.709  5646  9083 E Ads     : 	at m1.kj.run(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):16)
+08-16 00:26:47.709  5646  9083 E Ads     : 	at blhp.d(:com.google.android.gms@263032029@26.30.32 (190400-956658866):50)
+08-16 00:26:47.709  5646  9083 E Ads     : 	at blhp.c(:com.google.android.gms@263032029@26.30.32 (190400-956658866):6)
+08-16 00:26:47.709  5646  9083 E Ads     : 	at blhp.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):119)
+08-16 00:26:47.709  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-16 00:26:47.709  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-16 00:26:47.709  5646  9083 E Ads     : 	at blnk.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):8)
+08-16 00:26:47.709  5646  9083 E Ads     : 	at java.lang.Thread.run(Thread.java:1572)
+08-16 00:26:47.709  5646  9083 E Ads     : Caused by: m1.kw: Exception in CronetUrlRequest: net::ERR_CONNECTION_REFUSED, ErrorCode=7, InternalErrorCode=-102, Retryable=false
+08-16 00:26:47.709  5646  9083 E Ads     : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):74)
+08-16 00:26:47.737  5646  9083 E Ads     : Failed to retrieve DSID: 
+08-16 00:26:47.737  5646  9083 E Ads     : ddha: Failed to process request
+08-16 00:26:47.737  5646  9083 E Ads     : 	at ddhi.a(:com.google.android.gms@263032029@26.30.32 (190400-956658866):23)
+08-16 00:26:47.737  5646  9083 E Ads     : 	at ddlf.b(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.737  5646  9083 E Ads     : 	at ddlw.onFailed(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.737  5646  9083 E Ads     : 	at m1.ln.onFailed(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):3)
+08-16 00:26:47.737  5646  9083 E Ads     : 	at m1.kj.run(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):16)
+08-16 00:26:47.737  5646  9083 E Ads     : 	at blhp.d(:com.google.android.gms@263032029@26.30.32 (190400-956658866):50)
+08-16 00:26:47.737  5646  9083 E Ads     : 	at blhp.c(:com.google.android.gms@263032029@26.30.32 (190400-956658866):6)
+08-16 00:26:47.737  5646  9083 E Ads     : 	at blhp.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):119)
+08-16 00:26:47.737  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-16 00:26:47.737  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-16 00:26:47.737  5646  9083 E Ads     : 	at blnk.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):8)
+08-16 00:26:47.737  5646  9083 E Ads     : 	at java.lang.Thread.run(Thread.java:1572)
+08-16 00:26:47.737  5646  9083 E Ads     : Caused by: m1.kw: Exception in CronetUrlRequest: net::ERR_CONNECTION_REFUSED, ErrorCode=7, InternalErrorCode=-102, Retryable=false
+08-16 00:26:47.737  5646  9083 E Ads     : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):74)
+08-16 00:26:47.766  5646  9083 E Ads     : Failed to retrieve DSID: 
+08-16 00:26:47.766  5646  9083 E Ads     : ddha: Failed to process request
+08-16 00:26:47.766  5646  9083 E Ads     : 	at ddhi.a(:com.google.android.gms@263032029@26.30.32 (190400-956658866):23)
+08-16 00:26:47.766  5646  9083 E Ads     : 	at ddlf.b(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.766  5646  9083 E Ads     : 	at ddlw.onFailed(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.766  5646  9083 E Ads     : 	at m1.ln.onFailed(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):3)
+08-16 00:26:47.766  5646  9083 E Ads     : 	at m1.kj.run(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):16)
+08-16 00:26:47.766  5646  9083 E Ads     : 	at blhp.d(:com.google.android.gms@263032029@26.30.32 (190400-956658866):50)
+08-16 00:26:47.766  5646  9083 E Ads     : 	at blhp.c(:com.google.android.gms@263032029@26.30.32 (190400-956658866):6)
+08-16 00:26:47.766  5646  9083 E Ads     : 	at blhp.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):119)
+08-16 00:26:47.766  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-16 00:26:47.766  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-16 00:26:47.766  5646  9083 E Ads     : 	at blnk.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):8)
+08-16 00:26:47.766  5646  9083 E Ads     : 	at java.lang.Thread.run(Thread.java:1572)
+08-16 00:26:47.766  5646  9083 E Ads     : Caused by: m1.kw: Exception in CronetUrlRequest: net::ERR_CONNECTION_REFUSED, ErrorCode=7, InternalErrorCode=-102, Retryable=false
+08-16 00:26:47.766  5646  9083 E Ads     : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):74)
+08-16 00:26:47.792 15260 28577 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:47.792 15260 28577 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:47.798  5646  9083 E Ads     : Failed to retrieve DSID: 
+08-16 00:26:47.798  5646  9083 E Ads     : ddha: Failed to process request
+08-16 00:26:47.798  5646  9083 E Ads     : 	at ddhi.a(:com.google.android.gms@263032029@26.30.32 (190400-956658866):23)
+08-16 00:26:47.798  5646  9083 E Ads     : 	at ddlf.b(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.798  5646  9083 E Ads     : 	at ddlw.onFailed(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.798  5646  9083 E Ads     : 	at m1.ln.onFailed(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):3)
+08-16 00:26:47.798  5646  9083 E Ads     : 	at m1.kj.run(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):16)
+08-16 00:26:47.798  5646  9083 E Ads     : 	at blhp.d(:com.google.android.gms@263032029@26.30.32 (190400-956658866):50)
+08-16 00:26:47.798  5646  9083 E Ads     : 	at blhp.c(:com.google.android.gms@263032029@26.30.32 (190400-956658866):6)
+08-16 00:26:47.798  5646  9083 E Ads     : 	at blhp.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):119)
+08-16 00:26:47.798  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-16 00:26:47.798  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-16 00:26:47.798  5646  9083 E Ads     : 	at blnk.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):8)
+08-16 00:26:47.798  5646  9083 E Ads     : 	at java.lang.Thread.run(Thread.java:1572)
+08-16 00:26:47.798  5646  9083 E Ads     : Caused by: m1.kw: Exception in CronetUrlRequest: net::ERR_CONNECTION_REFUSED, ErrorCode=7, InternalErrorCode=-102, Retryable=false
+08-16 00:26:47.798  5646  9083 E Ads     : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):74)
+08-16 00:26:47.828  5646  9083 E Ads     : Failed to retrieve DSID: 
+08-16 00:26:47.828  5646  9083 E Ads     : ddha: Failed to process request
+08-16 00:26:47.828  5646  9083 E Ads     : 	at ddhi.a(:com.google.android.gms@263032029@26.30.32 (190400-956658866):23)
+08-16 00:26:47.828  5646  9083 E Ads     : 	at ddlf.b(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.828  5646  9083 E Ads     : 	at ddlw.onFailed(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.828  5646  9083 E Ads     : 	at m1.ln.onFailed(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):3)
+08-16 00:26:47.828  5646  9083 E Ads     : 	at m1.kj.run(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):16)
+08-16 00:26:47.828  5646  9083 E Ads     : 	at blhp.d(:com.google.android.gms@263032029@26.30.32 (190400-956658866):50)
+08-16 00:26:47.828  5646  9083 E Ads     : 	at blhp.c(:com.google.android.gms@263032029@26.30.32 (190400-956658866):6)
+08-16 00:26:47.828  5646  9083 E Ads     : 	at blhp.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):119)
+08-16 00:26:47.828  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-16 00:26:47.828  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-16 00:26:47.828  5646  9083 E Ads     : 	at blnk.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):8)
+08-16 00:26:47.828  5646  9083 E Ads     : 	at java.lang.Thread.run(Thread.java:1572)
+08-16 00:26:47.828  5646  9083 E Ads     : Caused by: m1.kw: Exception in CronetUrlRequest: net::ERR_CONNECTION_REFUSED, ErrorCode=7, InternalErrorCode=-102, Retryable=false
+08-16 00:26:47.828  5646  9083 E Ads     : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):74)
+08-16 00:26:47.838 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:47.858  5646  9083 E Ads     : Failed to retrieve DSID: 
+08-16 00:26:47.858  5646  9083 E Ads     : ddha: Failed to process request
+08-16 00:26:47.858  5646  9083 E Ads     : 	at ddhi.a(:com.google.android.gms@263032029@26.30.32 (190400-956658866):23)
+08-16 00:26:47.858  5646  9083 E Ads     : 	at ddlf.b(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.858  5646  9083 E Ads     : 	at ddlw.onFailed(:com.google.android.gms@263032029@26.30.32 (190400-956658866):15)
+08-16 00:26:47.858  5646  9083 E Ads     : 	at m1.ln.onFailed(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):3)
+08-16 00:26:47.858  5646  9083 E Ads     : 	at m1.kj.run(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):16)
+08-16 00:26:47.858  5646  9083 E Ads     : 	at blhp.d(:com.google.android.gms@263032029@26.30.32 (190400-956658866):50)
+08-16 00:26:47.858  5646  9083 E Ads     : 	at blhp.c(:com.google.android.gms@263032029@26.30.32 (190400-956658866):6)
+08-16 00:26:47.858  5646  9083 E Ads     : 	at blhp.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):119)
+08-16 00:26:47.858  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1100)
+08-16 00:26:47.858  5646  9083 E Ads     : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+08-16 00:26:47.858  5646  9083 E Ads     : 	at blnk.run(:com.google.android.gms@263032029@26.30.32 (190400-956658866):8)
+08-16 00:26:47.858  5646  9083 E Ads     : 	at java.lang.Thread.run(Thread.java:1572)
+08-16 00:26:47.858  5646  9083 E Ads     : Caused by: m1.kw: Exception in CronetUrlRequest: net::ERR_CONNECTION_REFUSED, ErrorCode=7, InternalErrorCode=-102, Retryable=false
+08-16 00:26:47.858  5646  9083 E Ads     : 	at org.chromium.net.impl.CronetUrlRequest.onError(:com.google.android.gms.dynamite_cronetdynamite@263032029@26.30.32 (190400-0):74)
+08-16 00:26:47.861  5010 28556 I NetworkScheduler.Stats: (REDACTED) Task %s/%s finished executing. cause:%s result: %s elapsed_millis: %s uptime_millis: %s exec_start_elapsed_seconds: %s
+08-16 00:26:48.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 48s(f:0 m:0 s:0 k:0 z:48003) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:48.715  5010 28571 I NearbyMediums: No BLE Fast/GATT advertisements found in the latest cycle.
+08-16 00:26:48.715  5010 28571 I NearbyMediums: Current Tracked Scanning Clients are : {NearbyConnections.EnvironmentMonitor, NearbySharing}
+08-16 00:26:48.782 12853 12853 W         : type=1400 audit(0.0:41224): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:26:48.794 12853 12853 W         : type=1400 audit(0.0:41225): avc:  denied  { read } for  name="tcp" dev="proc" ino=4026532142 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net_tcp_udp:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:26:48.840 15260 28582 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:48.840 15260 28582 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:48.858  2010  2010 I wificond: station_bandwidth: P
+08-16 00:26:48.869 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:49.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 49s(f:0 m:0 s:0 k:0 z:49003) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:49.872 15260 28583 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:49.872 15260 28583 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:49.902 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:50.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 50s(f:0 m:0 s:0 k:0 z:50003) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:50.528  2183  3451 I SmartPower: com.google.android.gms/10145(5646): background->idle(3002ms) R(service create com.google.android.gms/.ads.social.GcmSchedulerWakeupService) adj=600.
+08-16 00:26:50.834 11032 11032 D DynamicService:  ACTION_BATTERY_CHANGED change,USB plug = 0
+08-16 00:26:50.835  4115  4115 D HeadsetService: BroadcastReceiver android.intent.action.BATTERY_CHANGED
+08-16 00:26:50.835 11032 11032 D DynamicService_WifiBt:  ACTION_BATTERY_CHANGED change,USB plug = 0
+08-16 00:26:50.837  7430  7430 I NightChargeReceiver: onReceive: android.intent.action.BATTERY_CHANGED
+08-16 00:26:50.841  2183  2183 D UiModeManager: updateConfigurationLocked: mDockState=0; mCarMode=false; mCar=false; mPowerSave=false; mOverrideNightModeOn=false; mOverrideNightModeOff=false; mComputedNightMode=true; mNightMode=2; uiMode=33
+08-16 00:26:50.842  4205  4205 D QtiCarrierConfigHelper: WARNING, no carrier configs on phone Id: 1
+08-16 00:26:50.843 19724 19724 D DeviceStatisticsService: onReceive: action= android.intent.action.BATTERY_CHANGED
+08-16 00:26:50.845  7430  7430 I BatteryInfoReceiver: ACTION_BATTERY_CHANGED
+08-16 00:26:50.845 19724 19724 V DeviceStatisticsService: chargerType=0 batteryLevel=57 totalBatteryCapacity=364300000
+08-16 00:26:50.845  7430  7430 I PowerSaveService: onReceive: android.intent.action.BATTERY_CHANGED
+08-16 00:26:50.847  8835  9388 D PowerCheckerService: onBatteryChanged, mBatteryLevel = 57, status = 3, level = 57, plug = 0, scale = 100
+08-16 00:26:50.847  8835  9232 D PowerKeeper.Thermal: mBatteryTemperature: 40
+08-16 00:26:50.847  7430  7430 I PowerNoticeUI: handleBatteryChanged oldPlugType 0 mPlugType 0 oldBatteryLevel 57 mBatteryLevel 57 temperature 400
+08-16 00:26:50.905 15260 28584 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:50.905 15260 28584 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:50.933 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:51.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 51s(f:0 m:0 s:0 k:0 z:51003) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:51.290  2183  4129 D SLM-SRV-SLAService: checktemp temperature = 41618 temperature_average = 41665 isPerformanceMode = false thermal_enable_slm = true
+08-16 00:26:51.335  2183  2432 I SmartPower: com.whatsapp/10307(22614): idle->background(109508ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=915.
+08-16 00:26:51.336  2183  2432 I SmartPower: com.whatsapp/99910307(30366): idle->background(109508ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=903.
+08-16 00:26:51.338  2183  2432 I SmartPower: com.instagram.android/10326(16829): idle->background(109509ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=915.
+08-16 00:26:51.340  2183  2432 I SmartPower: com.android.chrome/10174(19311): idle->background(109509ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-16 00:26:51.341  2183  2432 I SmartPower: com.whatsapp.w4b/10321(19542): idle->background(109509ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-16 00:26:51.342  2183  2432 I SmartPower: com.nhn.android.band/10647(25272): idle->background(109510ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-16 00:26:51.786 12853 12853 W         : type=1400 audit(0.0:41226): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:26:51.877  2010  2010 I wificond: station_bandwidth: P
+08-16 00:26:51.938 15260 28585 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:51.938 15260 28585 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:51.965 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:52.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 52s(f:0 m:0 s:0 k:0 z:52003) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:52.577  2183  7291 W ProcessStats: Tracking association SourceState{6707dd4 com.supercell.clashofclans/10701 BTop #156294} whose proc state 2 is better than process ProcessState{dc081f9 com.google.android.adservices.api/10267 pkg=com.google.android.adservices.api} proc state 3 (93 skipped)
+08-16 00:26:52.969 15260 28586 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:52.969 15260 28586 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:52.997 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:53.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 53s(f:0 m:0 s:0 k:0 z:53004) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:53.182 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:26:53.186 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:26:54.001 15260 28589 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:54.001 15260 28589 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:54.037 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:54.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 54s(f:0 m:0 s:0 k:0 z:54003) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:54.337  2183  3451 I SmartPower: com.whatsapp/10307(22614): background->idle(3002ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=915.
+08-16 00:26:54.338  2183  3451 I SmartPower: com.whatsapp/99910307(30366): background->idle(3002ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=903.
+08-16 00:26:54.338  2183  3451 I SmartPower: com.instagram.android/10326(16829): background->idle(3000ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=915.
+08-16 00:26:54.340  2183  3451 I SmartPower: com.android.chrome/10174(19311): background->idle(3000ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-16 00:26:54.343  2183  3451 I SmartPower: com.whatsapp.w4b/10321(19542): background->idle(3002ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-16 00:26:54.343  2183  3451 I SmartPower: com.nhn.android.band/10647(25272): background->idle(3001ms) R(broadcast start Intent { act=android.intent.action.BATTERY_CHANGED flg=0x60000010 (has extras) }) adj=905.
+08-16 00:26:54.569  4115  4695 I BtGatt.ScanManager: msg.what = MSG_CHECK_SCAN_STATUS, msg.arg1 = CHECK_BACKGROUND_TIMEOUT
+08-16 00:26:54.786 12853 12853 W         : type=1400 audit(0.0:41227): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:26:54.798 12853 12853 W         : type=1400 audit(0.0:41228): avc:  denied  { read } for  name="tcp" dev="proc" ino=4026532142 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net_tcp_udp:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:26:54.895  2010  2010 I wificond: station_bandwidth: P
+08-16 00:26:55.012 15260 15260 I adbd    : adbd service requested 'jdwp:6221'
+08-16 00:26:55.042 15260 28592 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:55.042 15260 28592 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:55.069 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:55.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 55s(f:0 m:0 s:0 k:0 z:55003) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:55.517 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:26:55.655 21529 21821 D MobileLoggingSuite: Executing Sushi UploadTask...
+08-16 00:26:55.655 21529 21821 D MobileLoggingSuite: Starting upload of previously persisted events in path /data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal
+08-16 00:26:55.655 21529 21821 D MobileLoggingSuite: Uploading sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_39_eu_3'...
+08-16 00:26:55.662 21529 21821 E MobileLoggingSuite: Exception caught during file upload!
+08-16 00:26:55.662 21529 21821 D MobileLoggingSuite: Upload of Sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_39_eu_3' failed.
+08-16 00:26:55.662 21529 21821 D MobileLoggingSuite: Uploading sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_40_eu_8'...
+08-16 00:26:55.664 21529 21821 E MobileLoggingSuite: Exception caught during file upload!
+08-16 00:26:55.664 21529 21821 D MobileLoggingSuite: Upload of Sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_40_eu_8' failed.
+08-16 00:26:55.665 21529 21821 D MobileLoggingSuite: Uploading sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_41_eu_1'...
+08-16 00:26:55.667 21529 21821 E MobileLoggingSuite: Exception caught during file upload!
+08-16 00:26:55.667 21529 21821 D MobileLoggingSuite: Upload of Sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_41_eu_1' failed.
+08-16 00:26:55.670 21529 21821 D MobileLoggingSuite: Completed upload of previously persisted events in path /data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal
+08-16 00:26:55.670 21529 21821 D MobileLoggingSuite: Sushi UploadTask completed successfully
+08-16 00:26:56.073 15260 28594 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:56.073 15260 28594 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:56.097 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:56.103 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 56s(f:0 m:0 s:0 k:0 z:56000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:56.261  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41247768088670, lux: 61.0, extra_info=61 
+08-16 00:26:56.261  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:26:56.280  7430  8631 D TrafficManageService: onReceive: intent.action = com.android.server.action.NETWORK_STATS_UPDATED
+08-16 00:26:56.395  1303  1814 D RefreshRateSelector: Touch Boost
+08-16 00:26:56.396  1303  1814 D MI-SF   : mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 474(703), mIsKeepAutoMode 0
+08-16 00:26:56.396  1303  1814 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-16 00:26:56.396  1303  1814 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-16 00:26:56.397  2183  3245 D MIUIInput: [MotionEvent] publisher action=0x0, deviceId=4, 34911968, channel 'c3d879a com.buzbuz.smartautoclicker.patched (server)'
+08-16 00:26:56.397  2183  3245 D MIUIInput: [MotionEvent] publisher action=0x0, deviceId=4, 34911968, channel '[Gesture Monitor] miui-gesture (server)'
+08-16 00:26:56.444  2183  3245 D MIUIInput: [MotionEvent] publisher action=0x1, deviceId=4, 34912016, channel 'c3d879a com.buzbuz.smartautoclicker.patched (server)'
+08-16 00:26:56.444  2183  3245 D MIUIInput: [MotionEvent] publisher action=0x1, deviceId=4, 34912016, channel '[Gesture Monitor] miui-gesture (server)'
+08-16 00:26:56.448  6221 14439 I DetectorEngine: stopDetection
+08-16 00:26:56.449  6221 14439 I ScalingManager: Scaling metrics refreshed: ratio=1.0, screenSize=Point(2400, 1080), scaledScreenSize=Point(2400, 1080)
+08-16 00:26:56.449  6221 14439 I ScalingManager: Scaling data refresh for 0 conditions
+08-16 00:26:56.449  6221  5991 I DebugReportFileAccess: Stop debug report writing
+08-16 00:26:56.449  6221 14439 I DisplayRecorder: Resizing virtual display to Point(2400, 1080)
+08-16 00:26:56.450  6221  6221 W DefaultDispatch: type=1400 audit(0.0:41229): avc:  denied  { read } for  name="u:object_r:vendor_display_prop:s0" dev="tmpfs" ino=1422 scontext=u:r:untrusted_app:s0:c198,c258,c512,c768 tcontext=u:object_r:vendor_display_prop:s0 tclass=file permissive=0 app=com.buzbuz.smartautoclicker.patched
+08-16 00:26:56.455  6221 14439 W libc    : Access denied finding property "vendor.display.enable_optimal_refresh_rate"
+08-16 00:26:56.459  6221  6221 D OverlayMenu: Force window resize
+08-16 00:26:56.459  6221  6221 D OverlayMenu: Updating menu window position: 0/0
+08-16 00:26:56.459  6221  6221 D OverlayMenu: Updating menu window size: 154/286
+08-16 00:26:56.463  6221  6221 E OverlayMenu: Failed to remove OnComputeInternalInsetsListener via reflection
+08-16 00:26:56.463  6221  6221 E OverlayMenu: java.lang.reflect.InvocationTargetException
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at java.lang.reflect.Method.invoke(Native Method)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.removeInternalInsetsListener(OverlayMenu.kt:653)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.updateInternalInsetsListener(OverlayMenu.kt:667)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.refreshTouchHandling(OverlayMenu.kt:462)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.updateRuntimeDebugTouchHandling(MainMenu.kt:415)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.updateDebugOverlayViewVisibility(MainMenu.kt:408)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.access$updateDebugOverlayViewVisibility(MainMenu.kt:75)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$7.invokeSuspend$updateDebugOverlayViewVisibility(MainMenu.kt:164)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$7.access$invokeSuspend$updateDebugOverlayViewVisibility(MainMenu.kt:0)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$7$1.emit(MainMenu.kt:164)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$7$1.emit(MainMenu.kt:164)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.smart.debugging.domain.DebuggingRepositoryImpl$special$$inlined$map$1$2.emit(Emitters.kt:223)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.collect(StateFlow.kt:401)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl$collect$1.invokeSuspend(StateFlow.kt:0)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at android.os.Handler.handleCallback(Handler.java:958)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at android.os.Looper.loopOnce(Looper.java:224)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at android.os.Looper.loop(Looper.java:318)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at android.app.ActivityThread.main(ActivityThread.java:8790)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at java.lang.reflect.Method.invoke(Native Method)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:561)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1013)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: Caused by: java.lang.NullPointerException: Expected to unbox a 'boolean' primitive type but was returned null
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at $Proxy4.equals(Unknown Source)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at java.util.ArrayList.remove(ArrayList.java:714)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at android.view.ViewTreeObserver$CopyOnWriteArray.remove(ViewTreeObserver.java:1419)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	at android.view.ViewTreeObserver.removeOnComputeInternalInsetsListener(ViewTreeObserver.java:970)
+08-16 00:26:56.463  6221  6221 E OverlayMenu: 	... 24 more
+08-16 00:26:56.466  2183  2404 I DisplayDeviceRepository: Display device changed: DisplayDeviceInfo{"Klickr": uniqueId="virtual:com.buzbuz.smartautoclicker.patched,10710,Klickr,0", 2400 x 1080, modeId 141, renderFrameRate 60.0, defaultModeId 141, supportedModes [{id=141, width=2400, height=1080, fps=60.0, alternativeRefreshRates=[], supportedHdrTypes=[]}], colorMode 0, supportedColorModes [0], hdrCapabilities null, allmSupported false, gameContentTypeSupported false, density 440, 440.0 x 440.0 dpi, appVsyncOff 0, presDeadline 16666666, touch NONE, rotation 0, type VIRTUAL, deviceProductInfo null, state ON, committedState UNKNOWN, owner com.buzbuz.smartautoclicker.patched (uid 10710), frameRateOverride , brightnessMinimum 0.0, brightnessMaximum 0.0, brightnessDefault 0.0, hdrSdrRatio NaN, FLAG_PRIVATE, FLAG_PRESENTATION, installOrientation 0, displayShape DisplayShape{ spec=-1464947851 displayWidth=2400 displayHeight=1080 physicalPixelDisplaySizeRatio=1.0 rotation=0 offsetX=0 offsetY=0 scale=1.0}}
+08-16 00:26:56.470  6221  6221 D OverlayMenu: Force window resize
+08-16 00:26:56.470  6221  6221 D OverlayMenu: Updating menu window position: 0/0
+08-16 00:26:56.471  6221  6221 D OverlayMenu: Updating menu window size: 154/286
+08-16 00:26:56.475  6221  6221 E OverlayMenu: Failed to remove OnComputeInternalInsetsListener via reflection
+08-16 00:26:56.475  6221  6221 E OverlayMenu: java.lang.reflect.InvocationTargetException
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at java.lang.reflect.Method.invoke(Native Method)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.removeInternalInsetsListener(OverlayMenu.kt:653)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.updateInternalInsetsListener(OverlayMenu.kt:667)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.refreshTouchHandling(OverlayMenu.kt:462)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.updateRuntimeDebugTouchHandling(MainMenu.kt:415)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.updateDebugOverlayViewVisibility(MainMenu.kt:408)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.access$updateDebugOverlayViewVisibility(MainMenu.kt:75)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$7.invokeSuspend$updateDebugOverlayViewVisibility(MainMenu.kt:164)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$7.access$invokeSuspend$updateDebugOverlayViewVisibility(MainMenu.kt:0)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$7$1.emit(MainMenu.kt:164)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$7$1.emit(MainMenu.kt:164)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.smart.debugging.domain.DebuggingRepositoryImpl$special$$inlined$map$1$2.emit(Emitters.kt:223)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.collect(StateFlow.kt:401)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl$collect$1.invokeSuspend(StateFlow.kt:0)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at android.os.Handler.handleCallback(Handler.java:958)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at android.os.Looper.loopOnce(Looper.java:224)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at android.os.Looper.loop(Looper.java:318)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at android.app.ActivityThread.main(ActivityThread.java:8790)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at java.lang.reflect.Method.invoke(Native Method)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:561)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1013)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: Caused by: java.lang.NullPointerException: Expected to unbox a 'boolean' primitive type but was returned null
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at $Proxy4.equals(Unknown Source)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at java.util.ArrayList.remove(ArrayList.java:714)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at android.view.ViewTreeObserver$CopyOnWriteArray.remove(ViewTreeObserver.java:1419)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	at android.view.ViewTreeObserver.removeOnComputeInternalInsetsListener(ViewTreeObserver.java:970)
+08-16 00:26:56.475  6221  6221 E OverlayMenu: 	... 24 more
+08-16 00:26:56.478  1303  1303 D MI-SF   : getP3ProjectionScreenSupportStatus: map is empty, Klickr status return 0
+08-16 00:26:56.478  1303  1303 D MI-SF   : getP3ProjectionScreenSupportStatus: map is empty, unknown status return 0
+08-16 00:26:56.478  1303  1303 D MI-SF   : setupNewDisplayDeviceInternalcheck: displayName:Klickr, hasWideColorGamut=false, isScreenrecord=false
+08-16 00:26:56.478  1303  1303 I CompositionEngine: Enabling QtiRenderSurfaceExtension ...
+08-16 00:26:56.480  2183  2401 I WindowManager: Override config changes=20000d00 {0.0 ?mcc0mnc ?localeList ?layoutDir sw393dp w873dp h393dp 440dpi nrml long land ?uimode ?night -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 2400, 1080) mAppBounds=Rect(0, 0 - 2400, 1080) mMaxBounds=Rect(0, 0 - 2400, 1080) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0 mInSplitScreen=false letterBoxed=false foScaledfalse} ?fontWeightAdjustment/d/0 themeChanged=0 themeChangedFlags=0 extraData = Bundle[{}] screenType=0} ImeAppBounds:null ;isMultiWindowMode:false for displayId=10
+08-16 00:26:56.484  2183  2430 D MiuiMultiWindowRecommendHelper: displayConfigurationChange: configuration= {1.0 405mcc858mnc [en_US] ldltr sw393dp w844dp h348dp 440dpi nrml long hdr widecg land night finger -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 2400, 1080) mAppBounds=Rect(80, 0 - 2400, 1036) mMaxBounds=Rect(0, 0 - 2400, 1080) mDisplayRotation=ROTATION_90 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_90 mInSplitScreen=false letterBoxed=false foScaledfalse} s.5500 fontWeightAdjustment=0/d/0 themeChanged=0 themeChangedFlags=0 extraData = Bundle[{}] screenType=0} ImeAppBounds:null ;isMultiWindowMode:false
+08-16 00:26:56.492  4247  4247 V AutoDensityController: on display changed 10 context dpi:449 origin dpi:440 target dpi:449
+08-16 00:26:56.492  4247  4247 D ControlCenterWindowViewController: on display changed 10
+08-16 00:26:56.492  4247  4247 V AODAutoDensityController: on display changed 10 context dpi:449 origin dpi:440 target dpi:449
+08-16 00:26:56.494  4247  4443 D MiuiFreeformModeDisplayInfo:  onDisplayConfigurationChanged: displayId: 10 newConfig: {1.0 405mcc858mnc [en_US] ldltr sw393dp w873dp h393dp 440dpi nrml long land night -touch -keyb/v/h -nav/h winConfig={ mBounds=Rect(0, 0 - 2400, 1080) mAppBounds=Rect(0, 0 - 2400, 1080) mMaxBounds=Rect(0, 0 - 2400, 1080) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mDisplayWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0 mInSplitScreen=false letterBoxed=false foScaledfalse} s.5500 fontWeightAdjustment=0/d/0 themeChanged=0 themeChangedFlags=0 extraData = Bundle[EMPTY_PARCEL] screenType=0} ImeAppBounds:null ;isMultiWindowMode:false
+08-16 00:26:56.498  2183  9103 W WindowManager: Failed looking up window session=Session{1d61c5a 6221:u0a10710} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6665 com.android.server.wm.WindowManagerService.relayoutWindow:2593 com.android.server.wm.Session.relayout:260 
+08-16 00:26:56.508  6221  6281 E OpenGLRenderer: Unable to match the desired swap behavior.
+08-16 00:26:56.511  2183  9103 W WindowManager: Failed looking up window session=Session{1d61c5a 6221:u0a10710} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6665 com.android.server.wm.WindowManagerService.setInsetsWindow:2495 com.android.server.wm.Session.setInsets:288 
+08-16 00:26:56.512  2183  2404 D DisplayManagerService: Ignore redundant display event 10/2 to 10340/10597
+08-16 00:26:56.513  2183  2404 D DisplayManagerService: Ignore redundant display event 10/2 to 10097/11744
+08-16 00:26:56.513  2183  2404 D DisplayManagerService: Ignore redundant display event 10/2 to 10174/19311
+08-16 00:26:56.513  2183  2404 D DisplayManagerService: Ignore redundant display event 10/2 to 10647/25272
+08-16 00:26:56.513  2183  2404 D DisplayManagerService: Ignore redundant display event 10/2 to 99910307/30366
+08-16 00:26:56.519  6221  6221 D OverlayMenu: setMenuItemVisibility for 70219783, android.widget.ImageButton{b35032c GFED..C.. ........ 11,407-143,539 #7f080097 app:id/btn_switch_scenario} to true
+08-16 00:26:56.519  6221  6221 D OverlayMenuResizeController: Layout changes animations start for 2131230871
+08-16 00:26:56.521  6221  6221 D OverlayMenu: Force window resize
+08-16 00:26:56.521  6221  6221 D OverlayMenu: Updating menu window position: 0/0
+08-16 00:26:56.522  6221  6221 D OverlayMenu: Updating menu window size: 154/418
+08-16 00:26:56.525  2183  6673 D PerfShielderService: com.buzbuz.smartautoclicker.patched|com.buzbuz.smartautoclicker.patched-0|9276|34838238717229|9276|0|1
+08-16 00:26:56.527  6221  6221 E OverlayMenu: Failed to remove OnComputeInternalInsetsListener via reflection
+08-16 00:26:56.527  6221  6221 E OverlayMenu: java.lang.reflect.InvocationTargetException
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at java.lang.reflect.Method.invoke(Native Method)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.removeInternalInsetsListener(OverlayMenu.kt:653)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.updateInternalInsetsListener(OverlayMenu.kt:667)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.refreshTouchHandling(OverlayMenu.kt:462)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.updateRuntimeDebugTouchHandling(MainMenu.kt:415)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.updateDetectionState(MainMenu.kt:337)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.access$updateDetectionState(MainMenu.kt:75)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$4.invokeSuspend$updateDetectionState(MainMenu.kt:161)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$4.access$invokeSuspend$updateDetectionState(MainMenu.kt:0)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$4$1.emit(MainMenu.kt:161)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$4$1.emit(MainMenu.kt:161)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.collect(StateFlow.kt:401)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl$collect$1.invokeSuspend(StateFlow.kt:0)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.DispatchedTaskKt.resume(DispatchedTask.kt:237)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.DispatchedTaskKt.resumeUnconfined(DispatchedTask.kt:175)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.DispatchedTaskKt.dispatch(DispatchedTask.kt:147)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.CancellableContinuationImpl.dispatchResume(CancellableContinuationImpl.kt:470)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.CancellableContinuationImpl.resumeImpl$kotlinx_coroutines_core(CancellableContinuationImpl.kt:504)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.CancellableContinuationImpl.resumeImpl$kotlinx_coroutines_core$default(CancellableContinuationImpl.kt:493)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.CancellableContinuationImpl.resumeWith(CancellableContinuationImpl.kt:359)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowSlot.makePending(StateFlow.kt:290)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.updateState(StateFlow.kt:354)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.setValue(StateFlow.kt:321)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.emit(StateFlow.kt:378)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.DistinctFlowImpl$collect$2.emit(Distinct.kt:73)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenuModel$special$$inlined$map$2$2.emit(Emitters.kt:217)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.processing.domain.SmartProcessingRepositoryImpl$special$$inlined$mapNotNull$1$2.emit(Emitters.kt:219)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.collect(StateFlow.kt:401)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl$collect$1.invokeSuspend(StateFlow.kt:0)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at android.os.Handler.handleCallback(Handler.java:958)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at android.os.Looper.loopOnce(Looper.java:224)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at android.os.Looper.loop(Looper.java:318)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at android.app.ActivityThread.main(ActivityThread.java:8790)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at java.lang.reflect.Method.invoke(Native Method)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:561)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1013)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: Caused by: java.lang.NullPointerException: Expected to unbox a 'boolean' primitive type but was returned null
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at $Proxy4.equals(Unknown Source)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at java.util.ArrayList.remove(ArrayList.java:714)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at android.view.ViewTreeObserver$CopyOnWriteArray.remove(ViewTreeObserver.java:1419)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	at android.view.ViewTreeObserver.removeOnComputeInternalInsetsListener(ViewTreeObserver.java:970)
+08-16 00:26:56.527  6221  6221 E OverlayMenu: 	... 40 more
+08-16 00:26:56.527  6221  6221 D OverlayMenuResizeController: Starting layout changes animations
+08-16 00:26:56.527  6221  6221 D OverlayMenu: Updating menu window position: 0/0
+08-16 00:26:56.528  6221  6221 D OverlayMenu: Updating menu window size: 704/682
+08-16 00:26:56.528  6642 11793 W MiuiPerfServiceClient: interceptAndQueuing:6221|com.buzbuz.smartautoclicker.patched|9276|9276|34838238717229|Slow main thread|1
+08-16 00:26:56.528  6221  6221 D OverlayMenu: setMenuItemVisibility for 70219783, android.widget.ImageButton{9507832 GFED..C.. ........ 11,143-143,275 #7f080096 app:id/btn_stop} to true
+08-16 00:26:56.528  6221  6221 D OverlayMenuResizeController: Layout changes animations start for 2131230870
+08-16 00:26:56.529  6221  6221 D OverlayMenu: setMenuItemVisibility for 70219783, android.widget.ImageButton{48e9983 GFED..C.. ........ 11,275-143,407 #7f08008a app:id/btn_click_list} to true
+08-16 00:26:56.529  6221  6221 D OverlayMenuResizeController: Layout changes animations start for 2131230858
+08-16 00:26:56.529  6221  6221 D OverlayMenu: setMenuItemVisibility for 70219783, android.widget.ImageButton{b35032c VFED..C.. ......ID 11,407-143,539 #7f080097 app:id/btn_switch_scenario} to true
+08-16 00:26:56.532  6221  6221 D OverlayMenu: setMenuItemVisibility for 195360721, android.widget.ImageButton{964abb8 GFED..C.. ......ID 11,407-143,539 #7f080097 app:id/btn_switch_scenario} to true
+08-16 00:26:56.532  6221  6221 D OverlayMenuResizeController: Layout changes animations start for 2131230871
+08-16 00:26:56.532  2183  2404 I DisplayModeDirectorImpl: onDesiredDisplayModeSpecsChanged:baseModeId=141 allowGroupSwitching=false primary=physical: (0.0 Infinity) render:  (0.0 60.0) appRequest=physical: (0.0 Infinity) render:  (0.0 60.0) noVotes=false
+08-16 00:26:56.533  6221  6221 D OverlayMenu: Force window resize
+08-16 00:26:56.533  6221  6221 D OverlayMenu: Updating menu window position: 0/0
+08-16 00:26:56.533  6221  6221 D OverlayMenu: Updating menu window size: 154/418
+08-16 00:26:56.537  1303  1303 W Layer   : gatherBufferInfo: Received unknown dataspace from gralloc
+08-16 00:26:56.537  1303  1303 D RefreshRateSelector: Touch Boost
+08-16 00:26:56.537  1303  1303 D MI-SF   : mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 474(703), mIsKeepAutoMode 0
+08-16 00:26:56.537  1303  1303 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-16 00:26:56.537  1303  1303 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-16 00:26:56.539  6221  6221 E OverlayMenu: Failed to remove OnComputeInternalInsetsListener via reflection
+08-16 00:26:56.539  6221  6221 E OverlayMenu: java.lang.reflect.InvocationTargetException
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at java.lang.reflect.Method.invoke(Native Method)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.removeInternalInsetsListener(OverlayMenu.kt:653)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.updateInternalInsetsListener(OverlayMenu.kt:667)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.common.overlays.menu.OverlayMenu.refreshTouchHandling(OverlayMenu.kt:462)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.updateRuntimeDebugTouchHandling(MainMenu.kt:415)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.updateDetectionState(MainMenu.kt:337)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu.access$updateDetectionState(MainMenu.kt:75)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$4.invokeSuspend$updateDetectionState(MainMenu.kt:161)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$4.access$invokeSuspend$updateDetectionState(MainMenu.kt:0)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$4$1.emit(MainMenu.kt:161)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenu$onCreate$2$1$4$1.emit(MainMenu.kt:161)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.collect(StateFlow.kt:401)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl$collect$1.invokeSuspend(StateFlow.kt:0)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.DispatchedTaskKt.resume(DispatchedTask.kt:237)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.DispatchedTaskKt.resumeUnconfined(DispatchedTask.kt:175)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.DispatchedTaskKt.dispatch(DispatchedTask.kt:147)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.CancellableContinuationImpl.dispatchResume(CancellableContinuationImpl.kt:470)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.CancellableContinuationImpl.resumeImpl$kotlinx_coroutines_core(CancellableContinuationImpl.kt:504)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.CancellableContinuationImpl.resumeImpl$kotlinx_coroutines_core$default(CancellableContinuationImpl.kt:493)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.CancellableContinuationImpl.resumeWith(CancellableContinuationImpl.kt:359)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowSlot.makePending(StateFlow.kt:290)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.updateState(StateFlow.kt:354)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.setValue(StateFlow.kt:321)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.emit(StateFlow.kt:378)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.DistinctFlowImpl$collect$2.emit(Distinct.kt:73)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.feature.smart.config.ui.mainmenu.MainMenuModel$special$$inlined$map$2$2.emit(Emitters.kt:217)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.buzbuz.smartautoclicker.core.processing.domain.SmartProcessingRepositoryImpl$special$$inlined$mapNotNull$1$2.emit(Emitters.kt:219)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl.collect(StateFlow.kt:401)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.flow.StateFlowImpl$collect$1.invokeSuspend(StateFlow.kt:0)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at android.os.Handler.handleCallback(Handler.java:958)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at android.os.Looper.loopOnce(Looper.java:224)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at android.os.Looper.loop(Looper.java:318)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at android.app.ActivityThread.main(ActivityThread.java:8790)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at java.lang.reflect.Method.invoke(Native Method)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:561)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1013)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: Caused by: java.lang.NullPointerException: Expected to unbox a 'boolean' primitive type but was returned null
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at $Proxy4.equals(Unknown Source)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at java.util.ArrayList.remove(ArrayList.java:714)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at android.view.ViewTreeObserver$CopyOnWriteArray.remove(ViewTreeObserver.java:1419)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	at android.view.ViewTreeObserver.removeOnComputeInternalInsetsListener(ViewTreeObserver.java:970)
+08-16 00:26:56.539  6221  6221 E OverlayMenu: 	... 40 more
+08-16 00:26:56.539  6221  6221 D OverlayMenuResizeController: Starting layout changes animations
+08-16 00:26:56.539  6221  6221 D OverlayMenu: Updating menu window position: 0/0
+08-16 00:26:56.539  6221  6221 D OverlayMenu: Updating menu window size: 704/682
+08-16 00:26:56.540  6221  6221 D OverlayMenu: setMenuItemVisibility for 195360721, android.widget.ImageButton{6b568d2 GFED..C.. ......ID 11,143-143,275 #7f080096 app:id/btn_stop} to true
+08-16 00:26:56.540  6221  6221 D OverlayMenuResizeController: Layout changes animations start for 2131230870
+08-16 00:26:56.541  6221  6221 D OverlayMenu: setMenuItemVisibility for 195360721, android.widget.ImageButton{599cda3 GFED..C.. ......ID 11,275-143,407 #7f08008a app:id/btn_click_list} to true
+08-16 00:26:56.541  6221  6221 D OverlayMenuResizeController: Layout changes animations start for 2131230858
+08-16 00:26:56.541  6221  6221 D OverlayMenu: setMenuItemVisibility for 195360721, android.widget.ImageButton{964abb8 VFED..C.. ......ID 11,407-143,539 #7f080097 app:id/btn_switch_scenario} to true
+08-16 00:26:56.545  6221  6281 E OpenGLRenderer: Unable to match the desired swap behavior.
+08-16 00:26:56.545  6221  6221 D OverlayMenuResizeController: Layout changes animations start for 2131231395
+08-16 00:26:56.553  1303  1303 W Layer   : gatherBufferInfo: Received unknown dataspace from gralloc
+08-16 00:26:56.554  1303  1303 D RefreshRateSelector: Touch Boost
+08-16 00:26:56.554  1303  1303 D MI-SF   : mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 474(703), mIsKeepAutoMode 0
+08-16 00:26:56.554  1303  1303 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-16 00:26:56.554  1303  1303 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-16 00:26:56.567  2183  9103 W WindowManager: Failed looking up window session=Session{1d61c5a 6221:u0a10710} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6665 com.android.server.wm.WindowManagerService.relayoutWindow:2593 com.android.server.wm.Session.relayout:260 
+08-16 00:26:56.570  1303  1303 W Layer   : gatherBufferInfo: Received unknown dataspace from gralloc
+08-16 00:26:56.570  1303  1303 D RefreshRateSelector: Touch Boost
+08-16 00:26:56.570  1303  1303 D MI-SF   : mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 474(703), mIsKeepAutoMode 0
+08-16 00:26:56.570  1303  1303 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-16 00:26:56.570  1303  1303 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-16 00:26:56.573  6221  6221 D OverlayMenuResizeController: Layout changes animations start for 2131231395
+08-16 00:26:56.573  2183  7472 W WindowManager: Failed looking up window session=Session{1d61c5a 6221:u0a10710} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6665 com.android.server.wm.WindowManagerService.setInsetsWindow:2495 com.android.server.wm.Session.setInsets:288 
+08-16 00:26:56.576  6221  6221 I ServiceNotificationManager: Updating notification: ServiceNotificationState(scenarioName=✅ Electro Dragons, isScenarioRunning=false, isMenuVisible=true, isNightMode=true)
+08-16 00:26:56.586  1303  1303 W Layer   : gatherBufferInfo: Received unknown dataspace from gralloc
+08-16 00:26:56.636  1303  1303 W Layer   : gatherBufferInfo: Received unknown dataspace from gralloc
+08-16 00:26:56.809  4247  4247 D NotificationProvider: call method=canShowFocus extras=Bundle[{package=com.buzbuz.smartautoclicker.patched}]
+08-16 00:26:56.811  4247  4247 D MiuiBubbleManager: onEntryUpdated: com.android.systemui.statusbar.notification.collection.NotificationEntry@59ed0f1 true
+08-16 00:26:56.848  4247  4710 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-16 00:26:56.852  6221  6221 D OverlayMenuResizeController: Layout changes animations complete for 2131230871
+08-16 00:26:56.852  6221  6221 D OverlayMenuResizeController: Layout changes animations complete for 2131230870
+08-16 00:26:56.852  6221  6221 D OverlayMenuResizeController: Layout changes animations complete for 2131230858
+08-16 00:26:56.852  6221  6221 D OverlayMenuResizeController: Layout changes animations complete for 2131230871
+08-16 00:26:56.853  6221  6221 D OverlayMenuResizeController: Layout changes animations complete for 2131230870
+08-16 00:26:56.853  6221  6221 D OverlayMenuResizeController: Layout changes animations complete for 2131230858
+08-16 00:26:56.858  2183  9103 W WindowManager: Failed looking up window session=Session{1d61c5a 6221:u0a10710} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6665 com.android.server.wm.WindowManagerService.relayoutWindow:2593 com.android.server.wm.Session.relayout:260 
+08-16 00:26:56.860  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:26:56.860  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41248368190857, lux: 72.0, extra_info=72 
+08-16 00:26:56.863  2183  9103 W WindowManager: Failed looking up window session=Session{1d61c5a 6221:u0a10710} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6665 com.android.server.wm.WindowManagerService.setInsetsWindow:2495 com.android.server.wm.Session.setInsets:288 
+08-16 00:26:56.867  4247  4710 D LocalImageResolver: Couldn't use ImageDecoder for drawable, falling back to non-resized load.
+08-16 00:26:56.875  4247  4247 W NotificationInjector:  appNameText or sbn is null
+08-16 00:26:56.875  4247  4247 W NotificationInjector:  workProfile or sbn is null
+08-16 00:26:56.877  4247  4247 W NotificationInjector:  appNameText or sbn is null
+08-16 00:26:56.877  4247  4247 W NotificationInjector:  workProfile or sbn is null
+08-16 00:26:56.877  4247  4247 D AlertCoordinator: onViewBound, buzzBeep for 0|com.buzbuz.smartautoclicker.patched|1|null|10710
+08-16 00:26:56.901  6221  6221 D OverlayMenuResizeController: Layout changes animations complete for 2131231395
+08-16 00:26:56.901  6221  6221 D OverlayMenuResizeController: All layout changes animations completed
+08-16 00:26:56.901  6221  6221 D OverlayMenu: Updating menu window position: 0/0
+08-16 00:26:56.902  6221  6221 D OverlayMenu: Updating menu window size: 154/682
+08-16 00:26:56.903  6221  6221 D OverlayMenuResizeController: Layout changes animations complete for 2131231395
+08-16 00:26:56.903  6221  6221 D OverlayMenuResizeController: All layout changes animations completed
+08-16 00:26:56.903  6221  6221 D OverlayMenu: Updating menu window position: 0/0
+08-16 00:26:56.903  6221  6221 D OverlayMenu: Updating menu window size: 154/682
+08-16 00:26:56.908  6221  6281 E OpenGLRenderer: Unable to match the desired swap behavior.
+08-16 00:26:56.917  2183  9103 W WindowManager: Failed looking up window session=Session{1d61c5a 6221:u0a10710} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6665 com.android.server.wm.WindowManagerService.relayoutWindow:2593 com.android.server.wm.Session.relayout:260 
+08-16 00:26:56.917  1303  1303 W Layer   : gatherBufferInfo: Received unknown dataspace from gralloc
+08-16 00:26:56.926  2183  7472 W WindowManager: Failed looking up window session=Session{1d61c5a 6221:u0a10710} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6665 com.android.server.wm.WindowManagerService.setInsetsWindow:2495 com.android.server.wm.Session.setInsets:288 
+08-16 00:26:56.934  1303  1303 W Layer   : gatherBufferInfo: Received unknown dataspace from gralloc
+08-16 00:26:56.934  1303  1303 D RefreshRateSelector: Touch Boost
+08-16 00:26:56.934  1303  1303 D MI-SF   : mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 474(703), mIsKeepAutoMode 0
+08-16 00:26:56.934  1303  1303 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-16 00:26:56.935  1303  1303 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-16 00:26:57.101 15260 28597 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:57.102 15260 28597 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:57.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 57s(f:0 m:0 s:0 k:0 z:57004) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:57.137 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:57.790 12853 12853 W         : type=1400 audit(0.0:41230): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:26:57.910  2010  2010 I wificond: station_bandwidth: P
+08-16 00:26:57.994  2183  2411 D HeapUsage Monitor: HeapAllocSize : 119MB; monitorSize : 500MB
+08-16 00:26:58.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 58s(f:0 m:0 s:0 k:0 z:58003) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:58.140  1303  1303 D RefreshRateSelector: Touch Boost
+08-16 00:26:58.140  1303  1303 D MI-SF   : mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 474(703), mIsKeepAutoMode 0
+08-16 00:26:58.140  1303  1303 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-16 00:26:58.140  1303  1303 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-16 00:26:58.141 15260 28599 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:58.141 15260 28599 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:58.185 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:58.717  5010 28602 I NearbyMediums: No BLE Fast/GATT advertisements found in the latest cycle.
+08-16 00:26:58.717  5010 28602 I NearbyMediums: Current Tracked Scanning Clients are : {NearbyConnections.EnvironmentMonitor, NearbySharing}
+08-16 00:26:59.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 59s(f:0 m:0 s:0 k:0 z:59003) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:26:59.189 15260 28600 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:26:59.189 15260 28600 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:26:59.221 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:26:59.443  1303  1814 D MI-SF   : mIsSupportAutomodeForMaxFpsSetting is 0(0), getCurrentBrightness() = 474(703), mIsKeepAutoMode 0
+08-16 00:26:59.443  1303  1814 D RefreshRateSelector: fixedMode_group: 0, isFindModeGroup 0
+08-16 00:26:59.443  1303  1814 D RefreshRateSelector: find max refresh rate:60, mode Group:0
+08-16 00:26:59.561 17904 17962 D WM-DelayedWorkTracker: Scheduling work f1805854-8089-481a-9581-d8e1f4e5ae99
+08-16 00:26:59.567 17904 17962 D WM-GreedyScheduler: Starting work for f1805854-8089-481a-9581-d8e1f4e5ae99
+08-16 00:26:59.611 17904 17965 D WM-Processor: qxu: processing WorkGenerationalId(workSpecId=f1805854-8089-481a-9581-d8e1f4e5ae99, generation=0)
+08-16 00:26:59.630 17904 17904 D WM-WorkerWrapper: Starting work for com.google.apps.tiktok.contrib.work.TikTokListenableWorker
+08-16 00:26:59.657 17904 17904 I aatj    : Local calendar periodic scheduler worker starts.
+08-16 00:26:59.665 17904 17904 I A       : Scheduling the PCP local calendar update worker.
+08-16 00:26:59.690 17904 18206 I A       : Calendar refresh worker found. Do not schedule new one.
+08-16 00:26:59.710 17904 17950 I WM-WorkerWrapper: Worker result SUCCESS for Work [ id=f1805854-8089-481a-9581-d8e1f4e5ae99, class=com.google.apps.tiktok.contrib.work.TikTokListenableWorker, tags={ com.google.apps.tiktok.contrib.work.TikTokListenableWorker,TikTokWorker#com.google.android.apps.search.assistant.platform.pcp.featuredata.localcalendar.LocalCalendarPeriodicSchedulerWorker } ]
+08-16 00:26:59.714 17904 17904 D WM-Processor: qxu f1805854-8089-481a-9581-d8e1f4e5ae99 executed; reschedule = false
+08-16 00:26:59.717 17904 17944 D WM-SystemJobScheduler: Cancelling work ID f1805854-8089-481a-9581-d8e1f4e5ae99, Job ID 169687
+08-16 00:26:59.723 17904 17944 D WM-GreedyScheduler: Cancelling work ID f1805854-8089-481a-9581-d8e1f4e5ae99
+08-16 00:26:59.731 17904 17944 D WM-SystemJobScheduler: Scheduling work ID f1805854-8089-481a-9581-d8e1f4e5ae99 (com.google.apps.tiktok.contrib.work.TikTokListenableWorker), Job ID 169689
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Ignoring {WorkSpec: 91623a54-96db-4964-b7b3-b68a098e2d00}. Requires device idle.
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Ignoring {WorkSpec: 129e7cde-0380-4f88-a24e-3d95636a779c}. Requires device idle.
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Ignoring {WorkSpec: 032be4ce-a625-4132-9788-886a1473246b}. Requires device idle.
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Ignoring {WorkSpec: 7ef7c861-c79d-4d66-a467-05f24f691ae1}. Requires device idle.
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Ignoring {WorkSpec: 508940d9-f949-4d4b-940f-b6da9a085266}. Requires device idle.
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Ignoring {WorkSpec: 5f4dfd90-cdb7-40a4-89ec-a0c31af8eb18}. Requires device idle.
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Ignoring {WorkSpec: 47b7e49e-8073-49fb-9866-9bf6269a87e7}. Requires device idle.
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Ignoring {WorkSpec: e4713311-f96e-4420-8b28-ac0938dc6112}. Requires device idle.
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Ignoring {WorkSpec: 2458f235-9799-4de0-baed-f4bbe1f5f6c9}. Requires device idle.
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Ignoring {WorkSpec: 434b81ff-333b-4ae5-ac2d-7602a78e60e2}. Requires device idle.
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Ignoring {WorkSpec: 29070bd5-3ba7-499d-ba5c-2ee62ba92138}. Requires ContentUri triggers.
+08-16 00:26:59.733 17904 17944 D WM-GreedyScheduler: Starting tracking for da401ac9-7d05-41dd-b534-319a26e70558
+08-16 00:26:59.736  6642  6642 I MiuiPerfServiceClient: IonService onStartJob
+08-16 00:26:59.738  6642 28606 E MiuiPerfServiceClient: failed to read /sys/kernel/debug/ion/heaps/ion_mm_heap
+08-16 00:26:59.742  6642 28606 I MiuiPerfServiceClient: IonService schedule
+08-16 00:27:00.001  2183  3227 D AlarmManager: mBroadcastRefCount -> 1
+08-16 00:27:00.003  2183  2183 D AlarmManager: mBroadcastRefCount -> 0
+08-16 00:27:00.003  2183  2183 D AlarmManager: mPendingIntent -> null
+08-16 00:27:00.006  4247  4247 E ReflectUtils: invokeObject
+08-16 00:27:00.006  4247  4247 E ReflectUtils: java.lang.reflect.InvocationTargetException
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at java.lang.reflect.Method.invoke(Native Method)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at com.miui.clock.utils.ReflectUtils.invokeObject(go/retraceme 4c915b9ff25049f26d1b13c34dc55fd6bb52be7b2806360a61ff39417d8eebba:11)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at com.miui.clock.utils.DataUtils.isAppInstalledForUser(go/retraceme 4c915b9ff25049f26d1b13c34dc55fd6bb52be7b2806360a61ff39417d8eebba:54)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at com.miui.clock.classic.ClassicClockView.filterClassicClockInfo(go/retraceme 4c915b9ff25049f26d1b13c34dc55fd6bb52be7b2806360a61ff39417d8eebba:32)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at com.miui.clock.classic.ClassicClockView.updateTime(go/retraceme 4c915b9ff25049f26d1b13c34dc55fd6bb52be7b2806360a61ff39417d8eebba:3)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at com.miui.clock.MiuiClockController$1.run(go/retraceme 4c915b9ff25049f26d1b13c34dc55fd6bb52be7b2806360a61ff39417d8eebba:82)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at android.os.Handler.handleCallback(Handler.java:958)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at android.os.Looper.loopOnce(Looper.java:224)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at android.os.Looper.loop(Looper.java:318)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at android.app.ActivityThread.main(ActivityThread.java:8790)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at java.lang.reflect.Method.invoke(Native Method)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:561)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1013)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: Caused by: android.content.pm.PackageManager$NameNotFoundException: com.mi.health
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:259)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	at android.app.ApplicationPackageManager.getPackageInfoAsUser(ApplicationPackageManager.java:247)
+08-16 00:27:00.006  4247  4247 E ReflectUtils: 	... 14 more
+08-16 00:27:00.009  4247  4247 E AnimationHelper: updateTime mToAod:false mHasNotification: true, mClockType: classic
+08-16 00:27:00.012  4247  4247 D MiuiStatusBarClock: updateTime: 12:27
+08-16 00:27:00.107  1294 11145 D AudioFlinger: PlaybackThread::isPausedTrack()  not paused track
+08-16 00:27:00.108  1294 11145 I APM_AudioPolicyManager: isRelatedTrackActive() uid 10701, session 5361
+08-16 00:27:00.108 12853 18017 D AudioTrackImpl: [audioTrackData] isLongTimeZeroData out of time 60S 3mS , no related active track
+08-16 00:27:00.108 12853 18017 D AudioTrackImpl: isLongTimeZeroData noteMuteAudioInNeed(0) 
+08-16 00:27:00.109  2183  2443 I whetstone.activity: notifyMuteAudioInNeed uid is 10701, windowsStatus is true
+08-16 00:27:00.225 15260 28603 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:00.225 15260 28603 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:00.253  1120  1120 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON
+08-16 00:27:00.254 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:00.254  1120  1120 D vendor.qti.bluetooth@1.0-wake_lock: Acquire wakelock is acquired 
+08-16 00:27:00.254  1120  1120 I vendor.qti.bluetooth@1.0-ibs_handler: DeviceWakeUp: Writing IBS_WAKE_IND
+08-16 00:27:00.260  2183  9103 D TelephonyManager: requestModemActivityInfo: Sending result to app: ModemActivityInfo{ mTimestamp=41251769 mSleepTimeMs=39466266 mIdleTimeMs=251106 mActivityStatsTechSpecificInfo=[{mRat=UNKNOWN,mFrequencyRange=UNKNOWN,mTxTimeMs[]=[0, 2712, 501, 433, 35664],mRxTimeMs=1467465}]}
+08-16 00:27:00.260  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_ACK: 0xFC
+08-16 00:27:00.260  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Signal wack_cond_
+08-16 00:27:00.260  1120  1120 D vendor.qti.bluetooth@1.0-ibs_handler: DeviceWakeUp: Unblocked from waiting for FC, pthread_cond_timedwait ret = 0
+08-16 00:27:00.263  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD
+08-16 00:27:00.263  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK
+08-16 00:27:00.292  2183  2461 E system_server: updateValue is called with a value 72032, which is lower than the previous value 72044
+08-16 00:27:00.294   720   720 W binder:720_7: type=1400 audit(0.0:41231): avc:  denied  { open } for  path="/sys/devices/virtual/misc/msm_amrwb/wakeup58" dev="sysfs" ino=109822 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+08-16 00:27:00.298   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup58 (../../devices/virtual/misc/msm_amrwb/wakeup58): Permission denied
+08-16 00:27:00.298   720   720 W binder:720_7: type=1400 audit(0.0:41232): avc:  denied  { open } for  path="/sys/devices/platform/soc/soc:qcom,smp2p-dsps/wakeup/wakeup4" dev="sysfs" ino=63307 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+08-16 00:27:00.302   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup4 (../../devices/platform/soc/soc:qcom,smp2p-dsps/wakeup/wakeup4): Permission denied
+08-16 00:27:00.303  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE
+08-16 00:27:00.304   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup38 (../../devices/platform/soc/4080000.qcom,mss/wakeup/wakeup38): Permission denied
+08-16 00:27:00.298   720   720 W binder:720_7: type=1400 audit(0.0:41233): avc:  denied  { open } for  path="/sys/devices/platform/soc/4080000.qcom,mss/wakeup/wakeup38" dev="sysfs" ino=83270 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+08-16 00:27:00.302   720   720 W binder:720_7: type=1400 audit(0.0:41234): avc:  denied  { open } for  path="/sys/devices/virtual/misc/msm_qcelp/wakeup66" dev="sysfs" ino=110139 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+08-16 00:27:00.302   720   720 W binder:720_7: type=1400 audit(0.0:41235): avc:  denied  { open } for  path="/sys/devices/platform/soc/98900000.qcom,turing/wakeup/wakeup28" dev="sysfs" ino=82133 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+08-16 00:27:00.305   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup66 (../../devices/virtual/misc/msm_qcelp/wakeup66): Permission denied
+08-16 00:27:00.306   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup28 (../../devices/platform/soc/98900000.qcom,turing/wakeup/wakeup28): Permission denied
+08-16 00:27:00.302   720   720 W binder:720_7: type=1400 audit(0.0:41236): avc:  denied  { open } for  path="/sys/devices/virtual/misc/msm_alac/wakeup56" dev="sysfs" ino=109746 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+08-16 00:27:00.307   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup56 (../../devices/virtual/misc/msm_alac/wakeup56): Permission denied
+08-16 00:27:00.306   720   720 W binder:720_7: type=1400 audit(0.0:41237): avc:  denied  { open } for  path="/sys/devices/platform/soc/b0000000.qcom,cnss-qca6490/wakeup/wakeup46" dev="sysfs" ino=98856 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+08-16 00:27:00.309   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup46 (../../devices/platform/soc/b0000000.qcom,cnss-qca6490/wakeup/wakeup46): Permission denied
+08-16 00:27:00.306   720   720 W binder:720_7: type=1400 audit(0.0:41238): avc:  denied  { open } for  path="/sys/devices/platform/soc/1c00000.qcom,pcie/wakeup/wakeup36" dev="sysfs" ino=83071 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+08-16 00:27:00.312   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup36 (../../devices/platform/soc/1c00000.qcom,pcie/wakeup/wakeup36): Permission denied
+08-16 00:27:00.314   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup64 (../../devices/virtual/misc/msm_mp3/wakeup64): Permission denied
+08-16 00:27:00.310   720   720 W binder:720_7: type=1400 audit(0.0:41239): avc:  denied  { open } for  path="/sys/devices/virtual/misc/msm_mp3/wakeup64" dev="sysfs" ino=110063 scontext=u:r:system_suspend:s0 tcontext=u:object_r:sysfs:s0 tclass=dir permissive=0
+08-16 00:27:00.314   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup26 (../../devices/platform/soc/soc:qcom,kgsl-hyp/wakeup/wakeup26): Permission denied
+08-16 00:27:00.315   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup54 (../../devices/platform/soc/1c00000.qcom,pcie/pci0000:00/0000:00:00.0/0000:01:00.0/1103_00.01.00/wakeup/wakeup54): Permission denied
+08-16 00:27:00.315   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup16 (../../devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-00/c440000.qcom,spmi:qcom,pmk8350@0:rtc@6100/rtc/rtc0/wakeup16): Permission denied
+08-16 00:27:00.316   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup0 (../../devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-03/c440000.qcom,spmi:qcom,pm8350b@3:qcom,amoled/wakeup/wakeup0): Permission denied
+08-16 00:27:00.317   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup34 (../../devices/platform/soc/5c00000.qcom,ssc/wakeup/wakeup34): Permission denied
+08-16 00:27:00.317   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup62 (../../devices/virtual/misc/msm_g711alaw/wakeup62): Permission denied
+08-16 00:27:00.318   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup24 (../../devices/platform/soc/soc:qcom,trustedvm@d0800000/wakeup/wakeup24): Permission denied
+08-16 00:27:00.318   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup52 (../../devices/platform/soc/soc:fingerprint_fpc/wakeup/wakeup52): Permission denied
+08-16 00:27:00.319   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup9 (../../devices/platform/soc/soc:qcom,pmic_glink_log/wakeup/wakeup9): Permission denied
+08-16 00:27:00.319   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup14 (../../devices/platform/soc/soc:md_testing_mode/wakeup/wakeup14): Permission denied
+08-16 00:27:00.320   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup42 (../../devices/platform/soc/aab0000.qcom,venus/subsys9/wakeup/wakeup42): Permission denied
+08-16 00:27:00.320   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup140 (../../devices/platform/dummy_hcd.0/usb1/wakeup/wakeup140): Permission denied
+08-16 00:27:00.321   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup32 (../../devices/platform/soc/17300000.qcom,lpass/wakeup/wakeup32): Permission denied
+08-16 00:27:00.322   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup60 (../../devices/virtual/misc/msm_ape/wakeup60): Permission denied
+08-16 00:27:00.322   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup22 (../../devices/platform/soc/abb0000.qcom,evass/wakeup/wakeup22): Permission denied
+08-16 00:27:00.323   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup7 (../../devices/platform/soc/soc:qcom,smp2p_sleepstate/wakeup/wakeup7): Permission denied
+08-16 00:27:00.323   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup12 (../../devices/virtual/fastrpc/adsprpc-smd/wakeup12): Permission denied
+08-16 00:27:00.324   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup40 (../../devices/platform/soc/890000.qcom,qup_uart/wakeup/wakeup40): Permission denied
+08-16 00:27:00.324   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup69 (../../devices/platform/soc/a8c000.spi/spi_master/spi1/spi1.0/wakeup/wakeup69): Permission denied
+08-16 00:27:00.325   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup30 (../../devices/platform/soc/188101c.qcom,spss/wakeup/wakeup30): Permission denied
+08-16 00:27:00.325   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup59 (../../devices/virtual/misc/msm_amrwbplus/wakeup59): Permission denied
+08-16 00:27:00.326   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup20 (../../devices/platform/soc/soc:qcom,ipa_fws/wakeup/wakeup20): Permission denied
+08-16 00:27:00.327   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup5 (../../devices/platform/soc/soc:qcom,smp2p-nsp/wakeup/wakeup5): Permission denied
+08-16 00:27:00.327   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup10 (../../devices/platform/soc/soc:qcom,spcom/wakeup/wakeup10): Permission denied
+08-16 00:27:00.328   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup39 (../../devices/platform/soc/4080000.qcom,mss/subsys8/wakeup/wakeup39): Permission denied
+08-16 00:27:00.328   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup67 (../../devices/virtual/misc/msm_wma/wakeup67): Permission denied
+08-16 00:27:00.328   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup29 (../../devices/platform/soc/98900000.qcom,turing/subsys4/wakeup/wakeup29): Permission denied
+08-16 00:27:00.329   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup57 (../../devices/virtual/misc/msm_amrnb/wakeup57): Permission denied
+08-16 00:27:00.330   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup47 (../../devices/platform/soc/b0000000.qcom,cnss-qca6490/wakeup/wakeup47): Permission denied
+08-16 00:27:00.330   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup3 (../../devices/platform/soc/soc:qcom,smp2p-adsp/wakeup/wakeup3): Permission denied
+08-16 00:27:00.330   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup37 (../../devices/platform/soc/1c08000.qcom,pcie/wakeup/wakeup37): Permission denied
+08-16 00:27:00.331   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup27 (../../devices/platform/soc/soc:qcom,kgsl-hyp/subsys3/wakeup/wakeup27): Permission denied
+08-16 00:27:00.331   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup55 (../../devices/virtual/misc/msm_aac/wakeup55): Permission denied
+08-16 00:27:00.332   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup17 (../../devices/platform/soc/1e00000.qcom,ipa/wakeup/wakeup17): Permission denied
+08-16 00:27:00.333   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup35 (../../devices/platform/soc/5c00000.qcom,ssc/subsys7/wakeup/wakeup35): Permission denied
+08-16 00:27:00.333   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup25 (../../devices/platform/soc/soc:qcom,trustedvm@d0800000/subsys2/wakeup/wakeup25): Permission denied
+08-16 00:27:00.334   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup53 (../../devices/platform/soc/b0000000.qcom,cnss-qca6490/subsys10/wakeup/wakeup53): Permission denied
+08-16 00:27:00.335   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup33 (../../devices/platform/soc/17300000.qcom,lpass/subsys6/wakeup/wakeup33): Permission denied
+08-16 00:27:00.335   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup61 (../../devices/virtual/misc/msm_evrc/wakeup61): Permission denied
+08-16 00:27:00.336   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup23 (../../devices/platform/soc/abb0000.qcom,evass/subsys1/wakeup/wakeup23): Permission denied
+08-16 00:27:00.336   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup51 (../../devices/platform/soc/soc:fingerprint_fpc/wakeup/wakeup51): Permission denied
+08-16 00:27:00.336   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup8 (../../devices/platform/soc/soc:qcom,pmic_glink/wakeup/wakeup8): Permission denied
+08-16 00:27:00.336   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup13 (../../devices/virtual/fastrpc/adsprpc-smd-secure/wakeup13): Permission denied
+08-16 00:27:00.337   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup41 (../../devices/platform/soc/aab0000.qcom,venus/wakeup/wakeup41): Permission denied
+08-16 00:27:00.338   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup31 (../../devices/platform/soc/188101c.qcom,spss/subsys5/wakeup/wakeup31): Permission denied
+08-16 00:27:00.338   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup21 (../../devices/platform/soc/soc:qcom,ipa_fws/subsys0/wakeup/wakeup21): Permission denied
+08-16 00:27:00.338   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup6 (../../devices/platform/soc/soc:qcom,smp2p-modem/wakeup/wakeup6): Permission denied
+08-16 00:27:00.339   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup11 (../../devices/platform/soc/88e0000.qcom,msm-eud/wakeup/wakeup11): Permission denied
+08-16 00:27:00.339   720  3372 E android.system.suspend-service: Error opening kernel wakelock stats for: wakeup68 (../../devices/virtual/misc/msm_wmapro/wakeup68): Permission denied
+08-16 00:27:00.401 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:00.405 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:00.925  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:00.962 19542 19604 E msys    : E[N mns:TigonMNS]_LogError(334)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:00.965 19542 19604 E msys    : E[N mns:TigonMNS]_LogError(334)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:01.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 1s(f:0 m:0 s:0 k:0 z:1001) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:01.257 15260 28607 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:01.258 15260 28607 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:01.261  1120  4990 I vendor.qti.bluetooth@1.0-ibs_handler: DeviceSleep: TX Awake, Sending SLEEP_IND
+08-16 00:27:01.261  1120  4990 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF
+08-16 00:27:01.289 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:01.302  2183  4129 D SLM-SRV-SLAService: checktemp temperature = 41696 temperature_average = 41646 isPerformanceMode = false thermal_enable_slm = true
+08-16 00:27:01.411  1120  4703 D vendor.qti.bluetooth@1.0-wake_lock: Release wakelock is released 
+08-16 00:27:02.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 2s(f:0 m:0 s:0 k:0 z:2001) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:02.293 15260 28612 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:02.293 15260 28612 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:02.325 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:02.465 15260 15260 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-v' 'threadtime''
+08-16 00:27:02.604  6038  6038 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-16 00:27:02.605  2183  7472 W ProcessStats: Tracking association SourceState{6707dd4 com.supercell.clashofclans/10701 BTop #156303} whose proc state 2 is better than process ProcessState{dc081f9 com.google.android.adservices.api/10267 pkg=com.google.android.adservices.api} proc state 3 (9 skipped)
+08-16 00:27:02.607  6038  6038 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-16 00:27:02.612 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:02.623  5010  5010 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-16 00:27:02.627  5010  5010 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.presencemanager.service.INTERNAL_IDENTITY dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-16 00:27:02.838  5010  5010 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.auth.aang.events.services.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-16 00:27:03.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 3s(f:0 m:0 s:0 k:0 z:3000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:03.329 15260 28613 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:03.329 15260 28613 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:03.361 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:03.560  7430  8631 D TrafficManageService: onReceive: intent.action = com.android.server.action.NETWORK_STATS_UPDATED
+08-16 00:27:03.598  2183  2260 W System  : A resource failed to call close. 
+08-16 00:27:03.598  2183  2260 W System  : A resource failed to call close. 
+08-16 00:27:03.794 12853 12853 W         : type=1400 audit(0.0:41291): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:03.853  2183  3281 D MiuiNetworkPolicy: updateLimit mLimitEnabled=true,enabled=false,mNetworkPriorityMode=2,mThermalForceMode=0
+08-16 00:27:03.940  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:03.974  9206  9587 W Settings: Setting device_provisioned has moved from android.provider.Settings.Secure to android.provider.Settings.Global.
+08-16 00:27:03.976  6605  7354 I BugleRcsEngine: handleMessage processing message:[NOTIFY_UPTIME_IGNORE_STATE_CHANGED] with [non-null]:RcsEngineImpl reference [CONTEXT log_prefix="RcsEngineImpl[DUAL_REG]:[eb1ffb48-39ac]>Handler" thread_id=76 ]
+08-16 00:27:03.979  9206  9587 I JoyoseCloudControlManager3: network metered changed, network metered: false, deviceProvisioned: true, scAllowConn: true, try to setNetworkAccessEnabled: true
+08-16 00:27:03.983  2183  7472 I ClipboardServiceI: checkProviderWakePathForClipboard: primaryClip is null
+08-16 00:27:03.984  6605  7311 I BugleRcsEngine: Connected state: [1], networkType: [WIFI] [CONTEXT thread_id=71 ]
+08-16 00:27:03.988  9825  9825 I NetBusNetworkMonitor: gateway=192.*.*.1
+08-16 00:27:03.995  6038  6038 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-16 00:27:03.997  9825  9825 I NetBusNetworkMonitor: addConnectNetworkInterface mediumType:256, detail:NetworkDetailInfo{mIsConnected=false, mNetworkType=0, mIpAddress=192.*.*.170, mIfName=wlan0, mGateway=192.*.*.1, mNetmask=255.*.*.0}
+08-16 00:27:03.997  9825  9825 I NetBusNetworkMonitor: onCapabilitiesChanged handle=450082295821, mediumType=256, ifName=wlan0
+08-16 00:27:04.000  5010  5010 I MagicTether: (REDACTED) [ActiveNetworkTracker] setActiveNetwork: %s
+08-16 00:27:04.000  5010  5010 I MagicTether: (REDACTED) [TetherService] onActiveNetworkChanged: network=%s isLost=%s
+08-16 00:27:04.001  5010 28556 I MagicTether: [WifiConnectionHandler] Ignoring getWifiConfigurationByNetworkId when checking connected state [CONTEXT service_id=276 ]
+08-16 00:27:04.002  5010 28556 I MagicTether: [WifiConnectionHandler] No networkId set, can't be connected. [CONTEXT service_id=276 ]
+08-16 00:27:04.003  5010 28556 I MagicTether: (REDACTED) [TetherService] TRANSPORT_CELLULAR [%s], TRANSPORT_ETHERNET [%s], TRANSPORT_WIFI [%s]
+08-16 00:27:04.006  5010 28556 I MagicTether: (REDACTED) [TetherService] setRoles hasActiveNetworkConnection=%s canActiveNetworkBeTethered=%s isConnectedToInstantTether=%s isWifiEnabled=%s isHosting=%s
+08-16 00:27:04.012 17904 17971 D WM-WorkConstraintsTrack: NetworkRequestConstraintController onCapabilitiesChanged callback
+08-16 00:27:04.020  2183  9103 D ConnectivityService: Returning BLOCKED NetworkInfo to uid=10647
+08-16 00:27:04.020  2183  3304 D ConnectivityService: NetReassign [no changes] [c 0] [a 1] [i 3]
+08-16 00:27:04.022 30366 30473 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED LinkUpBandwidth>=73464Kbps LinkDnBandwidth>=56274Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.1.170, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 5, RSSI: -35, Link speed: 866Mbps, Tx Link speed: 866Mbps, Max Supported Tx Link speed: 866Mbps, Rx Link speed: 866Mbps, Max Supported Rx Link speed: 866Mbps, Frequency: 5745MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>> SignalStrength: -35 UnderlyingNetworks: Null]
+08-16 00:27:04.023  5010 28619 I NearbyMediums: Wifi changed new SSID: "Vibhor_5GHz"
+08-16 00:27:04.023  5010 28619 I NearbyMediums: WifiLanConnectivityInfo is not changed, skip notify.
+08-16 00:27:04.023  5010  5010 I MagicTether: (REDACTED) [LaunchUtils] Instant Wifi for status account: name: %s | type: %s | isLaunched: %s
+08-16 00:27:04.023  5010  5010 I MagicTether: (REDACTED) [TidepoolFeatureStatusManager] isInstantHotspotEnabled=%s
+08-16 00:27:04.023  5010  5010 I MagicTether: (REDACTED) [TidepoolFeatureStatusManager] isInstantWifiEnabled=%s
+08-16 00:27:04.024  5010  5010 I MagicTether: (REDACTED) [TetherService] startNearbyClientRole: start: %s isInstantHotspotEnabled: %s isInstantWifiEnabled: %s
+08-16 00:27:04.024  5010  5010 I MagicTether: [TetherService] Stopping Nearby client role [CONTEXT service_id=276 ]
+08-16 00:27:04.024  5010  5010 I MagicTether: [ClientTetherRole] Client role already stopped [CONTEXT service_id=276 ]
+08-16 00:27:04.026  5010  5010 I MagicTether: (REDACTED) [LaunchUtils] Instant Wifi for status account: name: %s | type: %s | isLaunched: %s
+08-16 00:27:04.026  5010  5010 I MagicTether: (REDACTED) [TidepoolFeatureStatusManager] isInstantHotspotEnabled=%s
+08-16 00:27:04.026  5010  5010 I MagicTether: (REDACTED) [TidepoolFeatureStatusManager] isInstantWifiEnabled=%s
+08-16 00:27:04.026  5010  5010 I MagicTether: (REDACTED) [TetherService] startNearbyHostRole: start: %s isInstantHotspotEnabled: %s isInstantWifiEnabled: %s
+08-16 00:27:04.026  5010  5010 I MagicTether: (REDACTED) [TidepoolFeatureStatusManager] isInstantHotspotEnabled=%s
+08-16 00:27:04.026  5010  5010 I MagicTether: [HostTetherRole] Nearby host role already started [CONTEXT service_id=276 ]
+08-16 00:27:04.029  6038  6038 I MagicTether: (REDACTED) [ActiveNetworkTracker] setActiveNetwork: %s
+08-16 00:27:04.032  6038 21207 I NearbyMediums: Wifi changed new SSID: "Vibhor_5GHz"
+08-16 00:27:04.032  6038 21207 I NearbyMediums: WifiLanConnectivityInfo is not changed, skip notify.
+08-16 00:27:04.037  2183  3304 D ConnectivityService: NetReassign [no changes] [c 0] [a 2] [i 6]
+08-16 00:27:04.041 19542 19672 D WM-NetworkStateTracker: Network capabilities changed: [ Transports: WIFI Capabilities: NOT_METERED&INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VPN&VALIDATED&NOT_ROAMING&FOREGROUND&NOT_CONGESTED&NOT_SUSPENDED&NOT_VCN_MANAGED LinkUpBandwidth>=73464Kbps LinkDnBandwidth>=56274Kbps TransportInfo: <SSID: <unknown ssid>, BSSID: 02:00:00:00:00:00, MAC: 02:00:00:00:00:00, IP: /192.168.1.170, Security type: 2, Supplicant state: COMPLETED, Wi-Fi standard: 5, RSSI: -35, Link speed: 866Mbps, Tx Link speed: 866Mbps, Max Supported Tx Link speed: 866Mbps, Rx Link speed: 866Mbps, Max Supported Rx Link speed: 866Mbps, Frequency: 5745MHz, Net ID: -1, Metered hint: false, score: 60, isUsable: true, CarrierMerged: false, SubscriptionId: -1, IsPrimary: -1, Trusted: true, Restricted: false, Ephemeral: false, OEM paid: false, OEM private: false, OSU AP: false, FQDN: <none>, Provider friendly name: <none>, Requesting package name: <none><none>MLO Information: , Is TID-To-Link negotiation supported by the AP: false, AP MLD Address: <none>, AP MLO Link Id: <none>, AP MLO Affiliated links: <none>> SignalStrength: -35 UnderlyingNetworks: Null]
+08-16 00:27:04.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 4s(f:0 m:0 s:0 k:0 z:4000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:04.260  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41255768180284, lux: 62.0, extra_info=62 
+08-16 00:27:04.260  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:04.364 15260 28618 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:04.365 15260 28618 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:04.401 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:04.460  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:04.460  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41255968181639, lux: 72.0, extra_info=72 
+08-16 00:27:04.487  5010 28602 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+08-16 00:27:04.488  5010 28619 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+08-16 00:27:04.588  7430  8631 D TrafficManageService: onReceive: intent.action = com.android.server.action.NETWORK_STATS_UPDATED
+08-16 00:27:05.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 5s(f:0 m:0 s:0 k:0 z:5001) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:05.407 15260 28622 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:05.407 15260 28622 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:05.433 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:06.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 6s(f:0 m:0 s:0 k:0 z:6000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:06.437 15260 28623 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:06.437 15260 28623 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:06.470 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:06.491  5010 28556 I CastDatabase: Saving the database
+08-16 00:27:06.499  5010 28556 I SQLiteCastStore: [CastNetworkInfo] saved: 1, skipped: 0, [CastDeviceInfo]: saved 1, skipped 0, [ProbedNetworks]: saved 0, skipped: 0, [ProbedSocketAddress]: saved 1, skipped: 0, [Network-Device pairs]: saved: 1
+08-16 00:27:06.794 12853 12853 W         : type=1400 audit(0.0:41292): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:06.806 12853 12853 W         : type=1400 audit(0.0:41293): avc:  denied  { read } for  name="tcp" dev="proc" ino=4026532142 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net_tcp_udp:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:06.963  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:07.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 7s(f:0 m:0 s:0 k:0 z:7000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:07.473 15260 28624 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:07.473 15260 28624 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:07.505 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:07.622 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:07.626 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:08.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 8s(f:0 m:0 s:0 k:0 z:8000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:08.509 15260 28625 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:08.509 15260 28625 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:08.545 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:08.719  5010 28619 I NearbyMediums: No BLE Fast/GATT advertisements found in the latest cycle.
+08-16 00:27:08.719  5010 28619 I NearbyMediums: Current Tracked Scanning Clients are : {NearbyConnections.EnvironmentMonitor, NearbySharing}
+08-16 00:27:08.861  2183  3281 D MiuiNetworkPolicy: updateLimit mLimitEnabled=false,enabled=true,mNetworkPriorityMode=2,mThermalForceMode=0
+08-16 00:27:09.045  6038  6038 D BoundBrokerSvc: onUnbind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+08-16 00:27:09.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 9s(f:0 m:0 s:0 k:0 z:9000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:09.549 15260 28628 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:09.549 15260 28628 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:09.581 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:09.798 12853 12853 W         : type=1400 audit(0.0:41294): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:09.984  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:10.081 21455 21571 I newrelic: Connecting, saved state is not available: DataToken{accountId=0, agentId=0}
+08-16 00:27:10.088 21455 21571 E newrelic: Failed to retrieve collector response: Unable to resolve host "cubeapm-ingestion-ext.dominos.co.in": No address associated with hostname
+08-16 00:27:10.088 21455 21571 E newrelic: HarvestConnection: Attempting to convert network exception java.net.UnknownHostException to error code.
+08-16 00:27:10.089 21455 21571 E newrelic: An unknown error occurred when connecting to the Collector.
+08-16 00:27:10.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 10s(f:0 m:0 s:0 k:0 z:10000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:10.453 21529 21668 I BatchCreator: enqueueBatchForTransmission
+08-16 00:27:10.455 21529 21668 I StorageManager: addBatch to BoundedBatchQueue, then write to disk file...
+08-16 00:27:10.497  2183  4127 I NetworkBoostStatusManager: handle: 105
+08-16 00:27:10.502  2183  4127 I NetworkBoostStatusManager: isModemSingnalStrengthStatus cellLteSignalRsrp = -117
+08-16 00:27:10.502  2183  4127 D SLM-SRV-SLAService: isModemSingnalStrengthStatus = 1
+08-16 00:27:10.585 15260 28629 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:10.585 15260 28629 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:10.617 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:10.775 16829 17204 E msys    : E[O MSync]ModularSyncService_rust_impl::service_ffi::handle_network_response(639)=>DB[223] - Encountered a network error (2002: StreamGroupNetworkRequest request cancelled: max retries reached; last err (TransientError domain: MNSSecureTCP code: 1 detail: SecureTCP connection establish timeout))
+08-16 00:27:10.775 16829 17204 E msys    : E[O MSync]ModularSyncService_rust_impl::service_ffi::handle_network_error_response(878)=>DB[223] - handle network error response
+08-16 00:27:10.776 16829 17204 E MDCoreSyncManagerImpl: [userId=-1742295174] Unknown event type: SUBSCRIPTION_STATE_CHANGED
+08-16 00:27:10.776 16829 17204 E IgnitionDebug: [userId=-1742295174] Unknown event type: SUBSCRIPTION_STATE_CHANGED
+08-16 00:27:10.776 16829 17158 W IrisSyncManager: Iris unsubscribed
+08-16 00:27:10.778 16829 17204 E MDCoreSyncManagerImpl: [userId=-1742295174] Unknown event type: SUBSCRIPTION_STATE_CHANGED
+08-16 00:27:10.778 16829 17204 E IgnitionDebug: [userId=-1742295174] Unknown event type: SUBSCRIPTION_STATE_CHANGED
+08-16 00:27:10.793 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:11.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 11s(f:0 m:0 s:0 k:0 z:11000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:11.314  2183  4129 D SLM-SRV-SLAService: checktemp temperature = 41829 temperature_average = 41672 isPerformanceMode = false thermal_enable_slm = true
+08-16 00:27:11.620 15260 28633 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:11.620 15260 28633 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:11.650 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:11.974 15260 15260 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:pidof com.buzbuz.smartautoclicker.patched'
+08-16 00:27:12.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 12s(f:0 m:0 s:0 k:0 z:12000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:12.653 15260 28636 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:12.653 15260 28636 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:12.681 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:12.798 12853 12853 W         : type=1400 audit(0.0:41295): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:12.810 12853 12853 W         : type=1400 audit(0.0:41296): avc:  denied  { read } for  name="tcp" dev="proc" ino=4026532142 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net_tcp_udp:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:13.001  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:13.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 13s(f:0 m:0 s:0 k:0 z:13000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:13.685 15260 28640 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:13.685 15260 28640 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:13.714 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:14.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 14s(f:0 m:0 s:0 k:0 z:14000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:14.719 15260 28641 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:14.719 15260 28641 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:14.749 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:14.840 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:14.843 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:15.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 15s(f:0 m:0 s:0 k:0 z:15000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:15.444 21529 21703 I MlsIntegration: Treatment for Weblab MLS_ANDROID_ZAZ_MIGRATION_1364350 is C_default (changed?: false)
+08-16 00:27:15.445 21529 21703 I MlsIntegration: Treatment for Weblab MLS_USE_PSEUDO_DEVICE_ID_ANDROID_1109242 is C_default (changed?: false)
+08-16 00:27:15.445 21529 21703 I MlsIntegration: Treatment for Weblab MLS_ENABLE_DEBUG_LOGS_1366122 is C_default (changed?: false)
+08-16 00:27:15.753 15260 28642 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:15.753 15260 28642 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:15.785 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:15.802 12853 12853 W         : type=1400 audit(0.0:41297): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:16.020  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:16.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 16s(f:0 m:0 s:0 k:0 z:16000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:16.789 15260 28646 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:16.789 15260 28646 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:16.829 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:17.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 17s(f:0 m:0 s:0 k:0 z:17001) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:17.197  2183  9103 W ProcessStats: Tracking association SourceState{6707dd4 com.supercell.clashofclans/10701 BTop #156319} whose proc state 2 is better than process ProcessState{dc081f9 com.google.android.adservices.api/10267 pkg=com.google.android.adservices.api} proc state 3 (23 skipped)
+08-16 00:27:17.198  2183  3281 I MiuiNetworkPolicy: updateUidState uid = 10412, uidState = 3
+08-16 00:27:17.199  4115  4695 I BtGatt.ScanManager: msg.what = MSG_IMPORTANCE_CHANGE, msg.arg1 = IMPORTANCE_CHANGE
+08-16 00:27:17.217  2183  3281 I MiuiNetworkPolicy: updateUidState uid = 10145, uidState = 3
+08-16 00:27:17.832 15260 28647 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:17.832 15260 28647 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:17.857 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:18.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 18s(f:0 m:0 s:0 k:0 z:18000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:18.720  5010 28619 I NearbyMediums: No BLE Fast/GATT advertisements found in the latest cycle.
+08-16 00:27:18.720  5010 28619 I NearbyMediums: Current Tracked Scanning Clients are : {NearbyConnections.EnvironmentMonitor, NearbySharing}
+08-16 00:27:18.802 12853 12853 W         : type=1400 audit(0.0:41298): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:18.814 12853 12853 W         : type=1400 audit(0.0:41299): avc:  denied  { read } for  name="tcp" dev="proc" ino=4026532142 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net_tcp_udp:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:18.861 15260 28648 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:18.861 15260 28648 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:18.897 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:19.038  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:19.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 19s(f:0 m:0 s:0 k:0 z:19000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:19.899 15260 28649 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:19.899 15260 28649 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:19.925 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:20.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 20s(f:0 m:0 s:0 k:0 z:20000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:20.930 15260 28650 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:20.930 15260 28650 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:20.961 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:21.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 21s(f:0 m:0 s:0 k:0 z:21000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:21.324  2183  4129 D SLM-SRV-SLAService: checktemp temperature = 41809 temperature_average = 41697 isPerformanceMode = false thermal_enable_slm = true
+08-16 00:27:21.361  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41272868109659, lux: 59.0, extra_info=59 
+08-16 00:27:21.361  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:21.560  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:21.561  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41273068181066, lux: 71.0, extra_info=71 
+08-16 00:27:21.806 12853 12853 W         : type=1400 audit(0.0:41300): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:21.965 15260 28651 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:21.965 15260 28651 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:22.001 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:22.059  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:22.069 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:22.073 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:22.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 22s(f:0 m:0 s:0 k:0 z:22000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:22.160 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:22.160  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:22.160  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41273668191534, lux: 89.0, extra_info=89 
+08-16 00:27:22.560  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:22.560  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41274068198305, lux: 80.0, extra_info=80 
+08-16 00:27:23.005 15260 28652 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:23.006 15260 28652 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:23.038 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:23.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 23s(f:0 m:0 s:0 k:0 z:23000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:24.041 15260 28656 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:24.042 15260 28656 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:24.070 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:24.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 24s(f:0 m:0 s:0 k:0 z:24000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:24.810 12853 12853 W         : type=1400 audit(0.0:41301): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:24.822 12853 12853 W         : type=1400 audit(0.0:41302): avc:  denied  { read } for  name="tcp" dev="proc" ino=4026532142 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net_tcp_udp:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:25.073 15260 28657 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:25.073 15260 28657 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:25.074  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:25.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 25s(f:0 m:0 s:0 k:0 z:25000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:25.113 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:25.655 21529 21821 D MobileLoggingSuite: Executing Sushi UploadTask...
+08-16 00:27:25.655 21529 21821 D MobileLoggingSuite: Starting upload of previously persisted events in path /data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal
+08-16 00:27:25.655 21529 21821 D MobileLoggingSuite: Uploading sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_39_eu_3'...
+08-16 00:27:25.662 21529 21821 E MobileLoggingSuite: Exception caught during file upload!
+08-16 00:27:25.662 21529 21821 D MobileLoggingSuite: Upload of Sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_39_eu_3' failed.
+08-16 00:27:25.662 21529 21821 D MobileLoggingSuite: Uploading sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_40_eu_8'...
+08-16 00:27:25.664 21529 21821 E MobileLoggingSuite: Exception caught during file upload!
+08-16 00:27:25.664 21529 21821 D MobileLoggingSuite: Upload of Sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_40_eu_8' failed.
+08-16 00:27:25.665 21529 21821 D MobileLoggingSuite: Uploading sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_41_eu_1'...
+08-16 00:27:25.667 21529 21821 E MobileLoggingSuite: Exception caught during file upload!
+08-16 00:27:25.667 21529 21821 D MobileLoggingSuite: Upload of Sushi file '/data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal/file_ring/v2_41_eu_1' failed.
+08-16 00:27:25.669 21529 21821 D MobileLoggingSuite: Completed upload of previously persisted events in path /data/user/0/in.amazon.mShop.android.shopping/files/mls/nexus/sushi_normal
+08-16 00:27:25.669 21529 21821 D MobileLoggingSuite: Sushi UploadTask completed successfully
+08-16 00:27:26.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 26s(f:0 m:0 s:0 k:0 z:26000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:26.117 15260 28658 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:26.117 15260 28658 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:26.146 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:26.161  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:26.161  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41277668189451, lux: 72.0, extra_info=72 
+08-16 00:27:26.616 15260 15260 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-v' 'threadtime' '-t' '400''
+08-16 00:27:26.676 15260 15260 I adbd    : adbd service requested 'shell,v2,TERM=dumb,raw:dumpsys media_projection'
+08-16 00:27:26.860  4056  4397 D IpClient/wlan0: interfaceLinkStateChanged: ifindex 24 up
+08-16 00:27:27.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 27s(f:0 m:0 s:0 k:0 z:27000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:27.149 15260 28660 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:27.149 15260 28660 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:27.181 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:27.814 12853 12853 W         : type=1400 audit(0.0:41303): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:27.996  2183  2411 D HeapUsage Monitor: HeapAllocSize : 118MB; monitorSize : 500MB
+08-16 00:27:28.090  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:28.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 28s(f:0 m:0 s:0 k:0 z:28000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:28.185 15260 28668 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:28.185 15260 28668 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:28.221 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:28.721  5010 28619 I NearbyMediums: No BLE Fast/GATT advertisements found in the latest cycle.
+08-16 00:27:28.722  5010 28619 I NearbyMediums: Current Tracked Scanning Clients are : {NearbyConnections.EnvironmentMonitor, NearbySharing}
+08-16 00:27:29.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 29s(f:0 m:0 s:0 k:0 z:29000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:29.225 15260 28669 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:29.225 15260 28669 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:29.262 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:29.295 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:29.299 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:30.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 30s(f:0 m:0 s:0 k:0 z:30000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:30.265 15260 28670 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:30.265 15260 28670 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:30.289 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:30.487 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:30.814 12853 12853 W         : type=1400 audit(0.0:41304): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:30.826 12853 12853 W         : type=1400 audit(0.0:41305): avc:  denied  { read } for  name="tcp" dev="proc" ino=4026532142 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net_tcp_udp:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:31.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 31s(f:0 m:0 s:0 k:0 z:31000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:31.108  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:31.293 15260 28674 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:31.294 15260 28674 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:31.336  2183  4129 D SLM-SRV-SLAService: checktemp temperature = 41727 temperature_average = 41714 isPerformanceMode = false thermal_enable_slm = true
+08-16 00:27:31.341 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:32.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 32s(f:0 m:0 s:0 k:0 z:32000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:32.160  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:32.161  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41283668188566, lux: 82.0, extra_info=82 
+08-16 00:27:32.224  2183  9103 W ProcessStats: Tracking association SourceState{6707dd4 com.supercell.clashofclans/10701 BTop #156320} whose proc state 2 is better than process ProcessState{dc081f9 com.google.android.adservices.api/10267 pkg=com.google.android.adservices.api} proc state 3 (2 skipped)
+08-16 00:27:32.228  2183  3281 I MiuiNetworkPolicy: updateUidState uid = 10412, uidState = 5
+08-16 00:27:32.228  4115  4695 I BtGatt.ScanManager: msg.what = MSG_IMPORTANCE_CHANGE, msg.arg1 = IMPORTANCE_CHANGE
+08-16 00:27:32.231  2183  3281 I MiuiNetworkPolicy: updateUidState uid = 10145, uidState = 5
+08-16 00:27:32.345 15260 28676 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:32.345 15260 28676 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:32.373 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:33.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 33s(f:0 m:0 s:0 k:0 z:33000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:33.377 15260 28677 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:33.377 15260 28677 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:33.410 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:33.413  5010 28619 I NearbySharing: ReceiveProvider: Received request to stop advertising.
+08-16 00:27:33.414  5010 28619 I NearbySharing: Advertising has stopped
+08-16 00:27:33.416  5010 28679 I NearbySharing: NearbySharing Internal event ReceiveManagerStopBroadcast
+08-16 00:27:33.417  5010 28680 I NearbySharing: [ClearcutLog] ADVERTISE_DEVICE_PRESENCE_END sessionId=0 flowId=4486550715613777777 
+08-16 00:27:33.426  5010 28679 I NearbySharing: NearbySharing Internal event ReceiveManagerEnd
+08-16 00:27:33.430  5010  5231 I NearbyConnections: Client 31393522 requested advertising to stop.
+08-16 00:27:33.432  5010 28619 I NearbySharing: Start advertising with mode BACKGROUND certificate visibility ALL_CONTACTS data usage preference ONLINE, bt advertising false, vendorId 0, deviceName included: false
+08-16 00:27:33.432  5010 28619 I NearbySharing: Uwb feature is off.
+08-16 00:27:33.432  5010 28619 I NearbySharing: Updating advertising options for [eaoy@4adeae, dvvr@c29711b] providers
+08-16 00:27:33.432  5010 28619 I NearbySharing: ReceiveProvider: Received request to start advertising.
+08-16 00:27:33.437  4115  4950 D BtGatt.AdvertiseManager: stopAdvertisingSet() android.os.BinderProxy@188fbeb
+08-16 00:27:33.438  4115  4950 I BtGatt.AdvertiseManager: findAdvertiser2() - advertiserId 4
+08-16 00:27:33.438  4115  4950 I BtGatt.AdvertiseManager: stopAdvertisingSet() - name com.google.android.gms
+08-16 00:27:33.438  4115  4950 I BtGatt.AdvertiseManager: stopAdvertisingSet() - advCount [0, 1, 4]
+08-16 00:27:33.438  1120  1120 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON
+08-16 00:27:33.439  4115  4950 I BtGatt.AdvertiseManager: stopAdvertisingSet() - advCount 22
+08-16 00:27:33.439  4115  4950 D BtGatt.AdvertiseManager: track advertise Data: callerPackage = [com.google.android.gms], behavior = [STOP_ADVERTISING_SET], regId = [0], advId = [4], duration = [847393ms], interval = [-1], txPowerLevel = [2]
+08-16 00:27:33.439  1120  1120 D vendor.qti.bluetooth@1.0-wake_lock: Acquire wakelock is acquired 
+08-16 00:27:33.439  1120  1120 I vendor.qti.bluetooth@1.0-ibs_handler: DeviceWakeUp: Writing IBS_WAKE_IND
+08-16 00:27:33.440  5010 28619 I NearbySharing: Advertising has started with mode BACKGROUND, Bt enabled : false
+08-16 00:27:33.441  5010 28680 D BluetoothAdapter: isLeEnabled(): ON
+08-16 00:27:33.441  5010 28680 D BluetoothLeAdvertiser:  Total bytes: size:10
+08-16 00:27:33.445  4115  4950 D BtGatt.AdvertiseManager: track advertise Data: callerPackage = [com.google.android.gms], behavior = [START_ADVERTISING_SET], regId = [-331], advId = [-1], duration = [0ms], interval = [160], txPowerLevel = [-7]
+08-16 00:27:33.445  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_ACK: 0xFC
+08-16 00:27:33.445  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Signal wack_cond_
+08-16 00:27:33.445  4115  4950 I BtGatt.AdvertiseManager: startAdvertisingSet2() - packageName com.google.android.gms
+08-16 00:27:33.445  4115  4950 I BtGatt.AdvertiseManager: startAdvertisingSet2() - containsKey com.google.android.gms
+08-16 00:27:33.446  4115  4950 I BtGatt.AdvertiseManager: startAdvertisingSet2() - advNum  [0, 1, -331]
+08-16 00:27:33.446  1120  1120 D vendor.qti.bluetooth@1.0-ibs_handler: DeviceWakeUp: Unblocked from waiting for FC, pthread_cond_timedwait ret = 0
+08-16 00:27:33.446  4115  4950 D BtGatt.AdvertiseManager: startAdvertisingSet() - reg_id=-331, callback: android.os.BinderProxy@2903d60
+08-16 00:27:33.446  4115  4950 D BtGatt.GattService: startAdvertisingSet callingPackage com.google.android.gms
+08-16 00:27:33.448  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD
+08-16 00:27:33.448  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK
+08-16 00:27:33.461  4115  4370 D BtGatt.AdvertiseManager: onAdvertisingSetStarted() - regId=-331, advertiserId=3, status=0
+08-16 00:27:33.461  4115  4370 D BtGatt.AdvertiseManager: track advertise Data: callerPackage = [com.google.android.gms], behavior = [ON_ADVERTISING_SET_STARTED], regId = [-331], advId = [3], duration = [0ms], interval = [-1], txPowerLevel = [2]
+08-16 00:27:33.463  4115  4370 I BtGatt.AdvertiseManager: findAdvertiser2() - advertiserId -331
+08-16 00:27:33.463  4115  4370 I BtGatt.AdvertiseManager: onAdvertisingSetStarted() - packageName com.google.android.gms
+08-16 00:27:33.463  4115  4370 I BtGatt.AdvertiseManager: onAdvertisingSetStarted() - advCount [0, 1, 3]
+08-16 00:27:33.464  5010  5010 I NearbyMediums: [InstantOnLostManager] Start instant onLost extended advertising, hashes = [ 0x9f 0xb4 0x70 0x93 ].
+08-16 00:27:33.464  5010 28680 I NearbyMediums: Successfully stopped BLE advertising for service NearbySharing
+08-16 00:27:33.465  5010 28680 D BluetoothSocket: close() this: XX:XX:XX:XX:88:C5, channel: 4, mSocketIS: android.net.LocalSocketImpl$SocketInputStream@181638c, mSocketOS: android.net.LocalSocketImpl$SocketOutputStream@ab43ad5, mSocket: android.net.LocalSocket@e6822ea impl:android.net.LocalSocketImpl@7f659db fd:java.io.FileDescriptor@da72c78, mSocketState: LISTENING
+08-16 00:27:33.465  5010 28680 D BluetoothSocket: removeChangeCallback
+08-16 00:27:33.466  5010 28679 I NearbySharing: Loading certificates with visibility ALL_CONTACTS
+08-16 00:27:33.466  5010 28679 I NearbySharing: Saving the private certificate to file nearby_sharing_private_certificate_file_for_all_contacts.
+08-16 00:27:33.467  2183  6673 D PowerKeeperPolicy: startRecord action = false fd =151 uid = 10145
+08-16 00:27:33.468  5010 28680 I NearbyMediums: Stopped accepting Bluetooth Classic connections for NearbySharing.
+08-16 00:27:33.469  5010 28680 I NearbyMediums: Can't stop accepting Wifi connections because it was never started.
+08-16 00:27:33.469  5010 28680 I NearbyMediums: Can't stop accepting WiFi connections because it was never started.
+08-16 00:27:33.469  5010 23653 D BluetoothSocket: close() this: XX:XX:XX:XX:88:C5, channel: 4, mSocketIS: android.net.LocalSocketImpl$SocketInputStream@181638c, mSocketOS: android.net.LocalSocketImpl$SocketOutputStream@ab43ad5, mSocket: null, mSocketState: CLOSED
+08-16 00:27:33.469  5010 28680 I NearbyMediums: Can't stop NFC advertising because it was never started.
+08-16 00:27:33.469  5010 28680 I NearbyMediums: Skipping stop accepting connections: we are not currently accepting WebRTC connections for NearbySharing.
+08-16 00:27:33.468  8835 13204 D PowerKeeper.ClientProxy: notifyBluetooth state= 0 fd=151 uid=10145
+08-16 00:27:33.477  5010 28680 I Nearby  : (REDACTED) Successfully shutdown executor %s.
+08-16 00:27:33.482  5010 28679 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+08-16 00:27:33.483  5010 28679 I NearbySharing: Network state changed: NetworkState(isRestricted=false, isOnline=true, isCongested=false, isMetered=false, isWifiConnected=true)
+08-16 00:27:33.483  5010  5231 I NearbyConnections: ClientProxy(0p:com.google.android.gms.nearby.sharing) allow WebRtc to use mobile data.
+08-16 00:27:33.483  5010  5231 I NearbyConnections: Client 31393522 requested advertising to start.
+08-16 00:27:33.483  5010 28679 I NearbyConnections: 31393522 0p:com.google.android.gms.nearby.sharing startAdvertising in nc mode.
+08-16 00:27:33.484  5010 23653 I Nearby  : (REDACTED) Note nearby client %s for operation %s
+08-16 00:27:33.485  5010 23653 I NearbyConnections: [PcpManager] In startAdvertising() advertisingMediums:[BLE] upgradeMediums:[USB, WIFI_LAN, WIFI_DIRECT, WIFI_AWARE, WIFI_HOTSPOT, WEB_RTC, BLE_L2CAP, BLUETOOTH, BLE, NFC] listener:59782434
+08-16 00:27:33.485  5010 23653 I NearbyConnections: Get local endpoint id from random generation AERC (last:null) for client 31393522
+08-16 00:27:33.485  5010 23653 I NearbyConnections: generateRxInstantConnectionAdvBytes() returns null due to supportInstantConnection not enabled.
+08-16 00:27:33.496  4115  4986 I bt_stack: [INFO:port_api.cc(123)] RFCOMM_CreateConnection BDA: ff:ff:ff:ff:ff:ff
+08-16 00:27:33.496  5010 23653 I NearbyMediums: Started accepting Bluetooth Classic connections for NearbySharing.
+08-16 00:27:33.496  5010 28681 D BluetoothSocket: accept(), timeout (ms):-1
+08-16 00:27:33.500  5010 23653 I NearbyMediums: BLE extended advertising not started.
+08-16 00:27:33.501  5010 23653 D BluetoothAdapter: isLeEnabled(): ON
+08-16 00:27:33.501  5010 23653 D BluetoothLeAdvertiser:  Total bytes: size:31
+08-16 00:27:33.501  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE
+08-16 00:27:33.503  4115  4950 D BtGatt.AdvertiseManager: track advertise Data: callerPackage = [com.google.android.gms], behavior = [START_ADVERTISING_SET], regId = [-332], advId = [-1], duration = [0ms], interval = [400], txPowerLevel = [1]
+08-16 00:27:33.503  4115  4950 I BtGatt.AdvertiseManager: startAdvertisingSet2() - packageName com.google.android.gms
+08-16 00:27:33.503  4115  4950 I BtGatt.AdvertiseManager: startAdvertisingSet2() - containsKey com.google.android.gms
+08-16 00:27:33.503  4115  4950 I BtGatt.AdvertiseManager: startAdvertisingSet2() - advNum  [0, 1, 3, -332]
+08-16 00:27:33.503  4115  4950 D BtGatt.AdvertiseManager: startAdvertisingSet() - reg_id=-332, callback: android.os.BinderProxy@cb102de
+08-16 00:27:33.504  4115  4950 D BtGatt.GattService: startAdvertisingSet callingPackage com.google.android.gms
+08-16 00:27:33.504  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD
+08-16 00:27:33.505  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK
+08-16 00:27:33.509  4115  4370 D BtGatt.AdvertiseManager: onAdvertisingSetStarted() - regId=-332, advertiserId=4, status=0
+08-16 00:27:33.510  4115  4370 D BtGatt.AdvertiseManager: track advertise Data: callerPackage = [com.google.android.gms], behavior = [ON_ADVERTISING_SET_STARTED], regId = [-332], advId = [4], duration = [0ms], interval = [-1], txPowerLevel = [2]
+08-16 00:27:33.510  4115  4370 I BtGatt.AdvertiseManager: findAdvertiser2() - advertiserId -332
+08-16 00:27:33.510  4115  4370 I BtGatt.AdvertiseManager: onAdvertisingSetStarted() - packageName com.google.android.gms
+08-16 00:27:33.510  4115  4370 I BtGatt.AdvertiseManager: onAdvertisingSetStarted() - advCount [0, 1, 3, 4]
+08-16 00:27:33.511  5010 23653 I NearbyMediums: Started BLE Legacy advertising. Regular Header Advertised : false, Fast Advertised : true, AdvertisingSettings : BleAdvertisingSetting{powerLevel= BALANCED_POWER, isConnectable= false, isPrivateGatt= true}, isAcceptingConnection : false
+08-16 00:27:33.511  5010 23653 I NearbyMediums: Successfully started BLE advertising of size 23 for service NearbySharing, deviceToken : [ 0x5f 0x5d ].
+08-16 00:27:33.518  5010 28680 I NearbySharing: [broadcast provider] advertising started.
+08-16 00:27:33.518  5010 28680 I NearbySharing: [broadcast controller] started.
+08-16 00:27:33.519  5010 28680 I NearbySharing: [ReceiveManager] started.
+08-16 00:27:33.519  5010 28680 I NearbySharing: NearbySharing Internal event ReceiveManagerStart(mode=2, isEveryoneMode=false, dataUsage=2, useQrCode=false, success=true)
+08-16 00:27:33.519  5010 28679 I NearbySharing: [ClearcutLog] ADVERTISE_DEVICE_PRESENCE_START sessionId=0 flowId=5069279208376787552 sessionStatus: 1, visibility: 1
+08-16 00:27:33.549  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE
+08-16 00:27:33.760  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:33.760  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41285268181951, lux: 92.0, extra_info=92 
+08-16 00:27:33.818 12853 12853 W         : type=1400 audit(0.0:41306): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:33.867  2183  3281 D MiuiNetworkPolicy: updateLimit mLimitEnabled=true,enabled=false,mNetworkPriorityMode=2,mThermalForceMode=0
+08-16 00:27:34.044  5010  5010 I NearbyPresence: Credential synced, check cached events and invalidate cached credentials. [CONTEXT service_id=317 ]
+08-16 00:27:34.107 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 34s(f:0 m:0 s:0 k:0 z:34000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:34.124  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:34.415 15260 28678 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:34.415 15260 28678 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:34.445 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:34.509  1120  4990 I vendor.qti.bluetooth@1.0-ibs_handler: DeviceSleep: TX Awake, Sending SLEEP_IND
+08-16 00:27:34.509  1120  4990 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF
+08-16 00:27:34.659  1120  4703 D vendor.qti.bluetooth@1.0-wake_lock: Release wakelock is released 
+08-16 00:27:35.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 35s(f:0 m:0 s:0 k:0 z:35000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:35.449 15260 28686 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:35.449 15260 28686 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:35.468  4115  4950 D BtGatt.AdvertiseManager: stopAdvertisingSet() android.os.BinderProxy@2903d60
+08-16 00:27:35.468  4115  4950 I BtGatt.AdvertiseManager: findAdvertiser2() - advertiserId 3
+08-16 00:27:35.468  4115  4950 I BtGatt.AdvertiseManager: stopAdvertisingSet() - name com.google.android.gms
+08-16 00:27:35.468  4115  4950 I BtGatt.AdvertiseManager: stopAdvertisingSet() - advCount [0, 1, 3, 4]
+08-16 00:27:35.468  4115  4950 I BtGatt.AdvertiseManager: stopAdvertisingSet() - advCount 23
+08-16 00:27:35.468  4115  4950 D BtGatt.AdvertiseManager: track advertise Data: callerPackage = [com.google.android.gms], behavior = [STOP_ADVERTISING_SET], regId = [0], advId = [3], duration = [2006ms], interval = [-1], txPowerLevel = [2]
+08-16 00:27:35.469  1120  1120 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK ON
+08-16 00:27:35.470  1120  1120 D vendor.qti.bluetooth@1.0-wake_lock: Acquire wakelock is acquired 
+08-16 00:27:35.470  1120  1120 I vendor.qti.bluetooth@1.0-ibs_handler: DeviceWakeUp: Writing IBS_WAKE_IND
+08-16 00:27:35.476  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_ACK: 0xFC
+08-16 00:27:35.476  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Signal wack_cond_
+08-16 00:27:35.476  1120  1120 D vendor.qti.bluetooth@1.0-ibs_handler: DeviceWakeUp: Unblocked from waiting for FC, pthread_cond_timedwait ret = 0
+08-16 00:27:35.476  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_WAKE_IND: 0xFD
+08-16 00:27:35.477  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Writing IBS_WAKE_ACK
+08-16 00:27:35.489 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:35.518  1120  4983 I vendor.qti.bluetooth@1.0-ibs_handler: ProcessIbsCmd: Received IBS_SLEEP_IND: 0xFE
+08-16 00:27:36.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 36s(f:0 m:0 s:0 k:0 z:36000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:36.160  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:36.160  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41287668189295, lux: 81.0, extra_info=81 
+08-16 00:27:36.478  1120  4990 I vendor.qti.bluetooth@1.0-ibs_handler: DeviceSleep: TX Awake, Sending SLEEP_IND
+08-16 00:27:36.478  1120  4990 D vendor.qti.bluetooth@1.0-ibs_handler: SerialClockVote: vote for UART CLK OFF
+08-16 00:27:36.493 15260 28687 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:36.493 15260 28687 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:36.520 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:36.521 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:36.523 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:36.629  1120  4703 D vendor.qti.bluetooth@1.0-wake_lock: Release wakelock is released 
+08-16 00:27:36.818 12853 12853 W         : type=1400 audit(0.0:41307): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:36.830 12853 12853 W         : type=1400 audit(0.0:41308): avc:  denied  { read } for  name="tcp" dev="proc" ino=4026532142 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net_tcp_udp:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:36.960  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:36.960  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41288468199764, lux: 91.0, extra_info=91 
+08-16 00:27:37.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 37s(f:0 m:0 s:0 k:0 z:37000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:37.143  2010  2010 I wificond: station_bandwidth: P
+08-16 00:27:37.497 16829 17095 E msys    : E[N mns:DGWClient]_LogError(328)=>Failed to resolve using system DNS resolver, getaddrinfo(): No address associated with hostname
+08-16 00:27:37.524 15260 28690 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:37.524 15260 28690 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:37.533  7430  8631 D TrafficManageService: onReceive: intent.action = com.android.server.action.NETWORK_STATS_UPDATED
+08-16 00:27:37.570 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:37.760  1143  3490 I sensors-hal: handle_sns_std_sensor_event:57, light_event: ts=41289268060649, lux: 78.0, extra_info=78 
+08-16 00:27:37.760  1123  2688 E CamX    : [ERROR][NCS    ] camxncsintfqsee.cpp:2438 FillSensorData() Invalid sensor index -1
+08-16 00:27:38.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 38s(f:0 m:0 s:0 k:0 z:38000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:38.574 15260 28692 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:38.575 15260 28692 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:38.605 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:38.723  5010 28619 I NearbyMediums: No BLE Fast/GATT advertisements found in the latest cycle.
+08-16 00:27:38.723  5010 28619 I NearbyMediums: Current Tracked Scanning Clients are : {NearbyConnections.EnvironmentMonitor, NearbySharing}
+08-16 00:27:38.873  2183  3281 D MiuiNetworkPolicy: updateLimit mLimitEnabled=false,enabled=true,mNetworkPriorityMode=2,mThermalForceMode=0
+08-16 00:27:39.106 12853 18017 D AudioTrackImpl: [audioTrackData][zero] 39s(f:0 m:0 s:0 k:0 z:39000) : pid 12853 uid 10701 sessionId 5361 sr 48000 ch 2 fmt 1
+08-16 00:27:39.609 15260 28693 W adbd    : timed out while waiting for FUNCTIONFS_BIND, trying again
+08-16 00:27:39.609 15260 28693 I adbd    : UsbFfs: connection terminated: monitor thread finished
+08-16 00:27:39.646 15260 15272 I adbd    : opening control endpoint /dev/usb-ffs/adb/ep0
+08-16 00:27:39.646 15260 15260 I adbd    : adbd service requested 'exec:run-as 'com.buzbuz.smartautoclicker.patched' 'cat' 'cache/DebugReportOverview.pb''
+08-16 00:27:39.822 12853 12853 W         : type=1400 audit(0.0:41309): avc:  denied  { read } for  name="unix" dev="proc" ino=4026532148 scontext=u:r:untrusted_app:s0:c189,c258,c512,c768 tcontext=u:object_r:proc_net:s0 tclass=file permissive=0 app=com.supercell.clashofclans
+08-16 00:27:39.963 15260 15260 I adbd    : adbd service requested 'shell,v2,TERM=dumb:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-v' 'threadtime' '-t' '1000''

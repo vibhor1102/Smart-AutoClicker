@@ -35,15 +35,13 @@ interface SmartProcessingListener {
      * @param counters the list of [Counter] to be processed for this scenario.
      * @param generateLiveEvents tells if the live debugging events should be generated.
      * @param generateReport tells if the debug report should be generated.
-     * @param generateConditionProfile tells if aggregate per-condition timings should be collected.
-     * @param conditions all conditions in this session, used to allocate fixed profiling storage before processing.
+     * @param conditions all conditions in this session, used to allocate fixed report storage before processing.
      */
     fun onSessionStarted(
         scenario: Scenario,
         counters: List<Counter>,
         generateLiveEvents: Boolean,
         generateReport: Boolean,
-        generateConditionProfile: Boolean,
         conditions: List<Condition>,
     ) = Unit
 

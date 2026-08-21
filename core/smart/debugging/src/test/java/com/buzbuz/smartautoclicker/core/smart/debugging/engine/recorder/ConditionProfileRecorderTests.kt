@@ -38,4 +38,19 @@ class ConditionProfileRecorderTests {
         assertEquals(0L, profile.minDurationNs)
         assertEquals(0L, profile.maxDurationNs)
     }
+
+    @Test
+    fun `starting a new session discards the previous session`() {
+        val recorder = ConditionProfileRecorder()
+        recorder.start(longArrayOf(1L))
+        recorder.record(conditionId = 1L, durationNs = 100L, fulfilled = true)
+
+        recorder.start(longArrayOf(2L))
+        recorder.record(conditionId = 2L, durationNs = 25L, fulfilled = false)
+
+        val profile = recorder.snapshot().single()
+        assertEquals(2L, profile.conditionId)
+        assertEquals(1L, profile.checkCount)
+        assertEquals(25L, profile.totalDurationNs)
+    }
 }

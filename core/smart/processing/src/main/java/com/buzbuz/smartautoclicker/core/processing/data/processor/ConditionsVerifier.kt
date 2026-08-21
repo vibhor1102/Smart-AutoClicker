@@ -34,7 +34,7 @@ import com.buzbuz.smartautoclicker.core.processing.data.processor.state.Processi
 import com.buzbuz.smartautoclicker.core.processing.data.scaling.ScalingManager
 import com.buzbuz.smartautoclicker.core.processing.data.scaling.ScreenConditionScalingInfo
 import com.buzbuz.smartautoclicker.core.processing.domain.SmartProcessingListener
-import com.buzbuz.smartautoclicker.core.processing.domain.ConditionProfiler
+import com.buzbuz.smartautoclicker.core.processing.domain.DebugReportTimingListener
 import com.buzbuz.smartautoclicker.core.processing.domain.model.ProcessedConditionResult
 
 import kotlinx.coroutines.yield
@@ -49,7 +49,7 @@ internal class ConditionsVerifier(
     private val scalingManager: ScalingManager,
     private val bitmapSupplier: suspend (String, Int, Int) -> Bitmap?,
     private val progressListener: SmartProcessingListener? = null,
-    private val conditionProfiler: ConditionProfiler? = null,
+    private val debugReportTimingListener: DebugReportTimingListener? = null,
 ) {
 
     /** List of results for the last call to verifyConditions. */
@@ -67,10 +67,10 @@ internal class ConditionsVerifier(
 
         var verificationResult: ProcessedConditionResult
         for (condition in conditions) {
-            verificationResult = conditionProfiler?.let { profiler ->
+            verificationResult = debugReportTimingListener?.let { timingListener ->
                 val startTimestampNs = SystemClock.elapsedRealtimeNanos()
                 val result = verifyCondition(condition)
-                profiler.recordConditionCheck(
+                timingListener.onConditionChecked(
                     conditionId = condition.getValidId(),
                     durationNs = SystemClock.elapsedRealtimeNanos() - startTimestampNs,
                     fulfilled = result.isFulfilled,

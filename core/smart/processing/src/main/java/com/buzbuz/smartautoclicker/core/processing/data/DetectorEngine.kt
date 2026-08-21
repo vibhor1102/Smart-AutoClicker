@@ -20,8 +20,8 @@ import android.content.Context
 import android.content.Intent
 import android.media.Image
 import android.media.projection.MediaProjectionManager
+import android.os.SystemClock
 import android.util.Log
-import android.provider.Settings
 
 import com.buzbuz.smartautoclicker.code.smart.detectionmodels.text.OCRModelsRepository
 import com.buzbuz.smartautoclicker.code.smart.detectionmodels.text.domain.OCRAlphabet
@@ -45,7 +45,7 @@ import com.buzbuz.smartautoclicker.core.processing.data.processor.ScenarioProces
 import com.buzbuz.smartautoclicker.core.processing.data.scaling.ScalingManager
 import com.buzbuz.smartautoclicker.core.settings.domain.SettingsRepository
 import com.buzbuz.smartautoclicker.core.processing.domain.SmartProcessingListener
-import com.buzbuz.smartautoclicker.core.processing.domain.ConditionProfiler
+import com.buzbuz.smartautoclicker.core.processing.domain.DebugReportTimingListener
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -83,6 +83,7 @@ class DetectorEngine @Inject constructor(
     private val settingsRepository: SettingsRepository,
     private val appComponentsProvider: AppComponentsProvider,
     private val debuggingListener: SmartProcessingListener,
+    private val debugReportTimingListener: DebugReportTimingListener,
     private val ocrModelsRepository: OCRModelsRepository,
 ) {
 
@@ -116,6 +117,10 @@ class DetectorEngine @Inject constructor(
 
     /** Scenario currently processed. Null if not detecting. */
     private var minProcessingDurationNs: Long = DEFAULT_MIN_PROCESSING_DURATION_NS
+    /** Report timing receiver for the current detection session, or null when report generation is disabled. */
+    private var activeDebugReportTimingListener: DebugReportTimingListener? = null
+    /** True only for the user-configured rate limit; the unlimited-mode safety delay is not reported as limiter time. */
+    private var isExecutionLimiterEnabled: Boolean = false
 
     /**
      * Start the screen detection.
@@ -191,7 +196,6 @@ class DetectorEngine @Inject constructor(
         counters: List<Counter>,
         liveDebugging: Boolean,
         generateReport: Boolean,
-        generateConditionProfile: Boolean = isConditionProfilingEnabled(context),
         imageDetectorFactory: () -> ImageDetector? = NativeDetector::newInstance,
     ) {
         if (_state.value != DetectorState.RECORDING) {
@@ -237,6 +241,7 @@ class DetectorEngine @Inject constructor(
 
             // Compute minimal processing duration
             val frameLimit = scenario.computeRate
+            isExecutionLimiterEnabled = frameLimit > 0.0
             minProcessingDurationNs =
                 if (frameLimit <= 0.0) DEFAULT_MIN_PROCESSING_DURATION_NS
                 else (ONE_SECOND_IN_NANO / frameLimit).toLong()
@@ -245,16 +250,16 @@ class DetectorEngine @Inject constructor(
                     "(${minProcessingDurationNs}ns per loop)")
 
             // Setup listeners if needed
-            if (liveDebugging || generateReport || generateConditionProfile) {
+            if (liveDebugging || generateReport) {
                 debuggingListener.onSessionStarted(
                     scenario = scenario,
                     counters = counters,
                     generateLiveEvents = liveDebugging,
                     generateReport = generateReport,
-                    generateConditionProfile = generateConditionProfile,
                     conditions = screenEvents.flatMap { it.conditions } + triggerEvents.flatMap { it.conditions },
                 )
             }
+            activeDebugReportTimingListener = debugReportTimingListener.takeIf { generateReport }
 
             // Instantiate the processor and initialize its detection state.
             scenarioProcessor = ScenarioProcessor(
@@ -270,7 +275,7 @@ class DetectorEngine @Inject constructor(
                 unblockWorkaroundEnabled = settingsRepository.isInputBlockWorkaroundEnabled(),
                 onStopRequested = { stopDetection() },
                 progressListener = if (liveDebugging || generateReport) debuggingListener else null,
-                conditionProfiler = if (generateConditionProfile) debuggingListener as ConditionProfiler else null,
+                debugReportTimingListener = activeDebugReportTimingListener,
             )
             scenarioProcessor?.onScenarioStart(context)
 
@@ -335,6 +340,7 @@ class DetectorEngine @Inject constructor(
             scenarioProcessor?.onScenarioEnd()
             scenarioProcessor = null
             debuggingListener.onSessionEnded()
+            activeDebugReportTimingListener = null
 
             scalingManager.stopScaling()
             displayRecorder.resizeDisplay(displayConfigManager.displayConfig.sizePx)
@@ -342,6 +348,7 @@ class DetectorEngine @Inject constructor(
             _state.emit(DetectorState.RECORDING)
             processingShutdownJob = null
             minProcessingDurationNs  = DEFAULT_MIN_PROCESSING_DURATION_NS
+            isExecutionLimiterEnabled = false
         }
     }
 
@@ -386,13 +393,19 @@ class DetectorEngine @Inject constructor(
                 processingDurationNs = measureNanoTime {
                     scenarioProcessor?.process(screenFrame)
                 }
+                activeDebugReportTimingListener?.onDetectionLoopProcessed(processingDurationNs)
 
                 // Avoid looping infinitely to quickly for nothing.
                 if (processingDurationNs < minProcessingDurationNs) {
-                    delay(duration = max(
+                    val limiterDelayMs = max(
                         a = 1,
                         b = (minProcessingDurationNs - processingDurationNs) / ONE_MILLISECOND_IN_NANO,
-                    ).milliseconds)
+                    )
+                    delayProcessingLoop(
+                        delayMs = limiterDelayMs,
+                        timingListener = activeDebugReportTimingListener,
+                        isExecutionLimiterEnabled = isExecutionLimiterEnabled,
+                    )
                 }
 
             } ?: delay(NO_IMAGE_DELAY_MS.milliseconds)
@@ -429,10 +442,26 @@ class DetectorEngine @Inject constructor(
     }
 }
 
-private fun isConditionProfilingEnabled(context: Context): Boolean =
-    Settings.Global.getInt(context.contentResolver, CONDITION_PROFILING_SETTING, 0) == 1
+/** Wait between processing loops and report only delays caused by the user-configured Execution Limiter. */
+internal suspend fun delayProcessingLoop(
+    delayMs: Long,
+    timingListener: DebugReportTimingListener?,
+    isExecutionLimiterEnabled: Boolean,
+    elapsedRealtimeNanos: () -> Long = SystemClock::elapsedRealtimeNanos,
+    delayBlock: suspend (Long) -> Unit = { durationMs -> delay(durationMs.milliseconds) },
+) {
+    if (timingListener == null || !isExecutionLimiterEnabled) {
+        delayBlock(delayMs)
+        return
+    }
 
-private const val CONDITION_PROFILING_SETTING = "smart_autoclicker_condition_profiling"
+    val startTimestampNs = elapsedRealtimeNanos()
+    try {
+        delayBlock(delayMs)
+    } finally {
+        timingListener.onExecutionLimiterWaited(elapsedRealtimeNanos() - startTimestampNs)
+    }
+}
 
 private fun OCRModel.getOCRModelPath(): String? =
     (state as? OCRModelState.Installed)?.path

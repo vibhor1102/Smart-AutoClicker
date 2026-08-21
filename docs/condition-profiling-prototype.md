@@ -24,6 +24,19 @@ adb shell settings get global smart_autoclicker_condition_profiling
 
 The setting is read once when detection starts. Restart detection after changing it.
 
+Override normal debug-report collection independently:
+
+```text
+adb shell settings put global smart_autoclicker_debug_report_override 1
+adb shell settings put global smart_autoclicker_debug_report_override 0
+```
+
+Remove the override and return control to the app's normal preference:
+
+```text
+adb shell settings delete global smart_autoclicker_debug_report_override
+```
+
 ## Retrieve the last profile
 
 After detection stops, dump the CSV from the upstream debug package:

@@ -18,6 +18,7 @@ package com.buzbuz.smartautoclicker.core.smart.debugging.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.provider.Settings
 import androidx.core.content.edit
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
@@ -27,6 +28,8 @@ import javax.inject.Singleton
 internal class DebugConfigurationLocalDataSource @Inject constructor(
     @ApplicationContext context: Context,
 ) {
+
+    private val contentResolver = context.contentResolver
 
     /** Shared preferences containing the debug config. */
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences(
@@ -39,8 +42,14 @@ internal class DebugConfigurationLocalDataSource @Inject constructor(
         sharedPreferences.getBoolean(PREF_DEBUG_VIEW_ENABLED, false)
 
     /** @return the isEnabled value for the debug report. */
-    fun isDebugReportEnabled(): Boolean =
-        sharedPreferences.getBoolean(PREF_DEBUG_REPORT_ENABLED, false)
+    fun isDebugReportEnabled(): Boolean {
+        val adbOverride = Settings.Global.getInt(contentResolver, DEBUG_REPORT_OVERRIDE_SETTING, -1)
+        return when (adbOverride) {
+            0 -> false
+            1 -> true
+            else -> sharedPreferences.getBoolean(PREF_DEBUG_REPORT_ENABLED, false)
+        }
+    }
 
     /** Save a new enabled value for the debug report. */
     fun setDebuggingConfig(debugView: Boolean, debugReport: Boolean) =
@@ -56,3 +65,5 @@ private const val DEBUG_CONFIGURATION_PREFERENCES_NAME = "DebugConfigPreferences
 private const val PREF_DEBUG_VIEW_ENABLED = "Debug_View_Enabled"
 /** User selection for the debug report in the SharedPreferences. */
 private const val PREF_DEBUG_REPORT_ENABLED = "Debug_Report_Enabled"
+/** Prototype-only ADB override. -1/missing uses the normal user preference, 0 disables, 1 enables. */
+private const val DEBUG_REPORT_OVERRIDE_SETTING = "smart_autoclicker_debug_report_override"

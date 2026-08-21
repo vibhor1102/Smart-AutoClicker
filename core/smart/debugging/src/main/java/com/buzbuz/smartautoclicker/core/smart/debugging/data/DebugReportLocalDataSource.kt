@@ -30,6 +30,7 @@ import com.buzbuz.smartautoclicker.core.smart.debugging.data.mapping.toProtobuf
 import com.buzbuz.smartautoclicker.core.smart.debugging.domain.model.report.DebugReportCounterInitialValue
 import com.buzbuz.smartautoclicker.core.smart.debugging.domain.model.report.DebugReportEventOccurrence
 import com.buzbuz.smartautoclicker.core.smart.debugging.domain.model.report.DebugReportOverview
+import com.buzbuz.smartautoclicker.core.smart.debugging.domain.model.report.ConditionProfile
 import com.google.protobuf.MessageLite
 
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -58,6 +59,7 @@ internal class DebugReportLocalDataSource @Inject constructor(
 
     private val overviewFile: File = File(context.cacheDir, DEBUG_REPORT_OVERVIEW_FILE_NAME)
     private val messagesFile: File = File(context.cacheDir, DEBUG_REPORT_MESSAGES_FILE_NAME)
+    private val conditionProfileDumpFile: File = File(context.cacheDir, CONDITION_PROFILE_DUMP_FILE_NAME)
     private val filesMutex: Mutex = Mutex()
 
     private var messagesOutputStream: OutputStream? = null
@@ -211,6 +213,28 @@ internal class DebugReportLocalDataSource @Inject constructor(
         }
     }
 
+    /** Write a command-line-friendly copy of the canonical aggregate profile after processing has stopped. */
+    suspend fun writeConditionProfileDump(profiles: List<ConditionProfile>) {
+        filesMutex.withLock {
+            conditionProfileDumpFile.safeRecreate()
+            conditionProfileDumpFile.safeBufferedOutputStream()?.bufferedWriter()?.use { writer ->
+                writer.appendLine("condition_id,check_count,fulfilled_count,total_duration_ns,min_duration_ns,max_duration_ns,average_duration_ns")
+                profiles.forEach { profile ->
+                    val averageDurationNs =
+                        if (profile.checkCount == 0L) 0L else profile.totalDurationNs / profile.checkCount
+                    writer.appendLine(
+                        "${profile.conditionId},${profile.checkCount},${profile.fulfilledCount}," +
+                            "${profile.totalDurationNs},${profile.minDurationNs},${profile.maxDurationNs},$averageDurationNs"
+                    )
+                }
+            }
+        }
+    }
+
+    suspend fun deleteConditionProfileDump() {
+        filesMutex.withLock { conditionProfileDumpFile.safeDelete() }
+    }
+
     private fun OutputStream.safeWriteDelimited(message: MessageLite) {
         try {
             message.writeDelimitedTo(this)
@@ -249,4 +273,5 @@ internal class DebugReportLocalDataSource @Inject constructor(
 
 private const val DEBUG_REPORT_MESSAGES_FILE_NAME = "DebugReportMessages.pb"
 private const val DEBUG_REPORT_OVERVIEW_FILE_NAME = "DebugReportOverview.pb"
+private const val CONDITION_PROFILE_DUMP_FILE_NAME = "ConditionProfile.csv"
 private const val LOG_TAG = "DebugReportFileAccess"

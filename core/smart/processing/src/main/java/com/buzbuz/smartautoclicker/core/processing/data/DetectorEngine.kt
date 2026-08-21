@@ -21,6 +21,7 @@ import android.content.Intent
 import android.media.Image
 import android.media.projection.MediaProjectionManager
 import android.util.Log
+import android.provider.Settings
 
 import com.buzbuz.smartautoclicker.code.smart.detectionmodels.text.OCRModelsRepository
 import com.buzbuz.smartautoclicker.code.smart.detectionmodels.text.domain.OCRAlphabet
@@ -44,6 +45,7 @@ import com.buzbuz.smartautoclicker.core.processing.data.processor.ScenarioProces
 import com.buzbuz.smartautoclicker.core.processing.data.scaling.ScalingManager
 import com.buzbuz.smartautoclicker.core.settings.domain.SettingsRepository
 import com.buzbuz.smartautoclicker.core.processing.domain.SmartProcessingListener
+import com.buzbuz.smartautoclicker.core.processing.domain.ConditionProfiler
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -189,6 +191,7 @@ class DetectorEngine @Inject constructor(
         counters: List<Counter>,
         liveDebugging: Boolean,
         generateReport: Boolean,
+        generateConditionProfile: Boolean = isConditionProfilingEnabled(context),
         imageDetectorFactory: () -> ImageDetector? = NativeDetector::newInstance,
     ) {
         if (_state.value != DetectorState.RECORDING) {
@@ -242,12 +245,14 @@ class DetectorEngine @Inject constructor(
                     "(${minProcessingDurationNs}ns per loop)")
 
             // Setup listeners if needed
-            if (liveDebugging || generateReport) {
+            if (liveDebugging || generateReport || generateConditionProfile) {
                 debuggingListener.onSessionStarted(
                     scenario = scenario,
                     counters = counters,
                     generateLiveEvents = liveDebugging,
                     generateReport = generateReport,
+                    generateConditionProfile = generateConditionProfile,
+                    conditions = screenEvents.flatMap { it.conditions } + triggerEvents.flatMap { it.conditions },
                 )
             }
 
@@ -264,7 +269,8 @@ class DetectorEngine @Inject constructor(
                 androidExecutor = actionExecutor,
                 unblockWorkaroundEnabled = settingsRepository.isInputBlockWorkaroundEnabled(),
                 onStopRequested = { stopDetection() },
-                progressListener  = if (liveDebugging || generateReport) debuggingListener else null,
+                progressListener = if (liveDebugging || generateReport) debuggingListener else null,
+                conditionProfiler = if (generateConditionProfile) debuggingListener as ConditionProfiler else null,
             )
             scenarioProcessor?.onScenarioStart(context)
 
@@ -422,6 +428,11 @@ class DetectorEngine @Inject constructor(
         return loadTextDetectionModels(ocrDetectModelPath, ocrRecoModels)
     }
 }
+
+private fun isConditionProfilingEnabled(context: Context): Boolean =
+    Settings.Global.getInt(context.contentResolver, CONDITION_PROFILING_SETTING, 0) == 1
+
+private const val CONDITION_PROFILING_SETTING = "smart_autoclicker_condition_profiling"
 
 private fun OCRModel.getOCRModelPath(): String? =
     (state as? OCRModelState.Installed)?.path

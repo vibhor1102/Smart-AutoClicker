@@ -22,6 +22,7 @@ import android.util.Size
 import com.buzbuz.smartautoclicker.core.base.di.Dispatcher
 import com.buzbuz.smartautoclicker.core.base.di.HiltCoroutineDispatchers.IO
 import com.buzbuz.smartautoclicker.core.domain.model.condition.ScreenCondition
+import com.buzbuz.smartautoclicker.core.domain.model.condition.Condition
 import com.buzbuz.smartautoclicker.core.domain.model.counter.Counter
 import com.buzbuz.smartautoclicker.core.domain.model.event.Event
 import com.buzbuz.smartautoclicker.core.domain.model.event.ScreenEvent
@@ -29,6 +30,7 @@ import com.buzbuz.smartautoclicker.core.domain.model.event.TriggerEvent
 import com.buzbuz.smartautoclicker.core.domain.model.scenario.Scenario
 import com.buzbuz.smartautoclicker.core.processing.domain.EventType
 import com.buzbuz.smartautoclicker.core.processing.domain.SmartProcessingListener
+import com.buzbuz.smartautoclicker.core.processing.domain.ConditionProfiler
 import com.buzbuz.smartautoclicker.core.processing.domain.model.ProcessedConditionResult
 import com.buzbuz.smartautoclicker.core.smart.debugging.data.DebugReportLocalDataSource
 import com.buzbuz.smartautoclicker.core.smart.debugging.domain.model.live.DebugLiveEventConditionResult
@@ -42,6 +44,8 @@ import com.buzbuz.smartautoclicker.core.smart.debugging.engine.recorder.EventOcc
 import com.buzbuz.smartautoclicker.core.smart.debugging.engine.recorder.EventStateRecorder
 import com.buzbuz.smartautoclicker.core.smart.debugging.data.mapping.toCountersInitProtobuf
 import com.buzbuz.smartautoclicker.core.smart.debugging.engine.recorder.ScreenConditionOccurrenceRecorder
+import com.buzbuz.smartautoclicker.core.smart.debugging.engine.recorder.ConditionProfileRecorder
+import com.buzbuz.smartautoclicker.core.smart.debugging.data.mapping.toProtobuf
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
@@ -68,7 +72,8 @@ internal class DebugEngine @Inject constructor(
     private val screenConditionOccurrenceRecorder: ScreenConditionOccurrenceRecorder,
     private val counterValuesRecorder: CounterValuesRecorder,
     private val eventStateRecorder: EventStateRecorder,
-) : SmartProcessingListener {
+    private val conditionProfileRecorder: ConditionProfileRecorder,
+) : SmartProcessingListener, ConditionProfiler {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     private val coroutineScopeIo: CoroutineScope =
@@ -76,6 +81,7 @@ internal class DebugEngine @Inject constructor(
 
     private var isReportEnabled: Boolean = false
     private var shouldGenerateLiveEvents: Boolean = false
+    private var isConditionProfileEnabled: Boolean = false
 
     private val shouldWriteReport: Boolean
         get() = isReportEnabled
@@ -92,11 +98,22 @@ internal class DebugEngine @Inject constructor(
         counters: List<Counter>,
         generateLiveEvents: Boolean,
         generateReport: Boolean,
+        generateConditionProfile: Boolean,
+        conditions: List<Condition>,
     ) {
+        isConditionProfileEnabled = generateConditionProfile
+        if (generateConditionProfile) {
+            conditionProfileRecorder.start(conditions.map { it.getValidId() }.toLongArray())
+        } else {
+            conditionProfileRecorder.reset()
+        }
+
         coroutineScopeIo.launch {
             isReportEnabled = generateReport
             shouldGenerateLiveEvents = generateLiveEvents
             _isDebuggingSession.value = true
+
+            debugReportLocalDataSource.deleteConditionProfileDump()
 
             if (shouldWriteReport) {
                 overviewRecorder.onSessionStart(scenario)
@@ -105,6 +122,12 @@ internal class DebugEngine @Inject constructor(
                 debugReportLocalDataSource.startReportWrite()
                 writeCountersInitToReport(counters)
             }
+        }
+    }
+
+    override fun recordConditionCheck(conditionId: Long, durationNs: Long, fulfilled: Boolean) {
+        if (isConditionProfileEnabled) {
+            conditionProfileRecorder.record(conditionId, durationNs, fulfilled)
         }
     }
 
@@ -224,7 +247,20 @@ internal class DebugEngine @Inject constructor(
     }
 
     override fun onSessionEnded() {
+        val conditionProfile =
+            if (isConditionProfileEnabled) conditionProfileRecorder.snapshot()
+            else emptyList()
+        isConditionProfileEnabled = false
+        conditionProfileRecorder.reset()
+
         coroutineScopeIo.launch {
+            if (conditionProfile.isNotEmpty()) {
+                if (shouldWriteReport) {
+                    debugReportLocalDataSource.writeMessageToReport(conditionProfile.toProtobuf())
+                }
+                debugReportLocalDataSource.writeConditionProfileDump(conditionProfile)
+            }
+
             if (shouldWriteReport) {
                 debugReportLocalDataSource.stopReportWrite(
                     overview = DebugReportOverview(
